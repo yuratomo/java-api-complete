@@ -1,0 +1,122 @@
+call javaapi#namespace('java.awt.image.renderable')
+
+call javaapi#interface('ContextualRenderedImageFactory', 'RenderedImageFactory', [
+  \ javaapi#method(0,'mapRenderContext(', 'int, RenderContext, ParameterBlock, RenderableImage)', 'RenderContext'),
+  \ javaapi#method(0,'create(', 'RenderContext, ParameterBlock)', 'RenderedImage'),
+  \ javaapi#method(0,'getBounds2D(', 'ParameterBlock)', 'Rectangle2D'),
+  \ javaapi#method(0,'getProperty(', 'ParameterBlock, String)', 'Object'),
+  \ javaapi#method(0,'getPropertyNames(', ')', 'String[]'),
+  \ javaapi#method(0,'isDynamic(', ')', 'boolean'),
+  \ ])
+
+call javaapi#class('ParameterBlock', '', [
+  \ javaapi#method(0,'ParameterBlock(', ')', ''),
+  \ javaapi#method(0,'ParameterBlock(', 'Object>)', ''),
+  \ javaapi#method(0,'ParameterBlock(', 'Object>, Object>)', ''),
+  \ javaapi#method(0,'shallowClone(', ')', 'Object'),
+  \ javaapi#method(0,'clone(', ')', 'Object'),
+  \ javaapi#method(0,'addSource(', 'Object)', 'ParameterBlock'),
+  \ javaapi#method(0,'getSource(', 'int)', 'Object'),
+  \ javaapi#method(0,'setSource(', 'Object, int)', 'ParameterBlock'),
+  \ javaapi#method(0,'getRenderedSource(', 'int)', 'RenderedImage'),
+  \ javaapi#method(0,'getRenderableSource(', 'int)', 'RenderableImage'),
+  \ javaapi#method(0,'getNumSources(', ')', 'int'),
+  \ javaapi#method(0,'getSources(', ')', 'Object>'),
+  \ javaapi#method(0,'setSources(', 'Object>)', 'void'),
+  \ javaapi#method(0,'removeSources(', ')', 'void'),
+  \ javaapi#method(0,'getNumParameters(', ')', 'int'),
+  \ javaapi#method(0,'getParameters(', ')', 'Object>'),
+  \ javaapi#method(0,'setParameters(', 'Object>)', 'void'),
+  \ javaapi#method(0,'removeParameters(', ')', 'void'),
+  \ javaapi#method(0,'add(', 'Object)', 'ParameterBlock'),
+  \ javaapi#method(0,'add(', 'byte)', 'ParameterBlock'),
+  \ javaapi#method(0,'add(', 'char)', 'ParameterBlock'),
+  \ javaapi#method(0,'add(', 'short)', 'ParameterBlock'),
+  \ javaapi#method(0,'add(', 'int)', 'ParameterBlock'),
+  \ javaapi#method(0,'add(', 'long)', 'ParameterBlock'),
+  \ javaapi#method(0,'add(', 'float)', 'ParameterBlock'),
+  \ javaapi#method(0,'add(', 'double)', 'ParameterBlock'),
+  \ javaapi#method(0,'set(', 'Object, int)', 'ParameterBlock'),
+  \ javaapi#method(0,'set(', 'byte, int)', 'ParameterBlock'),
+  \ javaapi#method(0,'set(', 'char, int)', 'ParameterBlock'),
+  \ javaapi#method(0,'set(', 'short, int)', 'ParameterBlock'),
+  \ javaapi#method(0,'set(', 'int, int)', 'ParameterBlock'),
+  \ javaapi#method(0,'set(', 'long, int)', 'ParameterBlock'),
+  \ javaapi#method(0,'set(', 'float, int)', 'ParameterBlock'),
+  \ javaapi#method(0,'set(', 'double, int)', 'ParameterBlock'),
+  \ javaapi#method(0,'getObjectParameter(', 'int)', 'Object'),
+  \ javaapi#method(0,'getByteParameter(', 'int)', 'byte'),
+  \ javaapi#method(0,'getCharParameter(', 'int)', 'char'),
+  \ javaapi#method(0,'getShortParameter(', 'int)', 'short'),
+  \ javaapi#method(0,'getIntParameter(', 'int)', 'int'),
+  \ javaapi#method(0,'getLongParameter(', 'int)', 'long'),
+  \ javaapi#method(0,'getFloatParameter(', 'int)', 'float'),
+  \ javaapi#method(0,'getDoubleParameter(', 'int)', 'double'),
+  \ javaapi#method(0,'getParamClasses(', ')', 'Class[]'),
+  \ ])
+
+call javaapi#class('RenderContext', '', [
+  \ javaapi#method(0,'RenderContext(', 'AffineTransform, Shape, RenderingHints)', ''),
+  \ javaapi#method(0,'RenderContext(', 'AffineTransform)', ''),
+  \ javaapi#method(0,'RenderContext(', 'AffineTransform, RenderingHints)', ''),
+  \ javaapi#method(0,'RenderContext(', 'AffineTransform, Shape)', ''),
+  \ javaapi#method(0,'getRenderingHints(', ')', 'RenderingHints'),
+  \ javaapi#method(0,'setRenderingHints(', 'RenderingHints)', 'void'),
+  \ javaapi#method(0,'setTransform(', 'AffineTransform)', 'void'),
+  \ javaapi#method(0,'preConcatenateTransform(', 'AffineTransform)', 'void'),
+  \ javaapi#method(0,'preConcetenateTransform(', 'AffineTransform)', 'void'),
+  \ javaapi#method(0,'concatenateTransform(', 'AffineTransform)', 'void'),
+  \ javaapi#method(0,'concetenateTransform(', 'AffineTransform)', 'void'),
+  \ javaapi#method(0,'getTransform(', ')', 'AffineTransform'),
+  \ javaapi#method(0,'setAreaOfInterest(', 'Shape)', 'void'),
+  \ javaapi#method(0,'getAreaOfInterest(', ')', 'Shape'),
+  \ javaapi#method(0,'clone(', ')', 'Object'),
+  \ ])
+
+call javaapi#interface('RenderableImage', '', [
+  \ javaapi#method(1,'HINTS_OBSERVED', '', 'String'),
+  \ javaapi#method(0,'getSources(', ')', 'RenderableImage>'),
+  \ javaapi#method(0,'getProperty(', 'String)', 'Object'),
+  \ javaapi#method(0,'getPropertyNames(', ')', 'String[]'),
+  \ javaapi#method(0,'isDynamic(', ')', 'boolean'),
+  \ javaapi#method(0,'getWidth(', ')', 'float'),
+  \ javaapi#method(0,'getHeight(', ')', 'float'),
+  \ javaapi#method(0,'getMinX(', ')', 'float'),
+  \ javaapi#method(0,'getMinY(', ')', 'float'),
+  \ javaapi#method(0,'createScaledRendering(', 'int, int, RenderingHints)', 'RenderedImage'),
+  \ javaapi#method(0,'createDefaultRendering(', ')', 'RenderedImage'),
+  \ javaapi#method(0,'createRendering(', 'RenderContext)', 'RenderedImage'),
+  \ ])
+
+call javaapi#class('RenderableImageOp', '', [
+  \ javaapi#method(0,'RenderableImageOp(', 'ContextualRenderedImageFactory, ParameterBlock)', ''),
+  \ javaapi#method(0,'getSources(', ')', 'RenderableImage>'),
+  \ javaapi#method(0,'getProperty(', 'String)', 'Object'),
+  \ javaapi#method(0,'getPropertyNames(', ')', 'String[]'),
+  \ javaapi#method(0,'isDynamic(', ')', 'boolean'),
+  \ javaapi#method(0,'getWidth(', ')', 'float'),
+  \ javaapi#method(0,'getHeight(', ')', 'float'),
+  \ javaapi#method(0,'getMinX(', ')', 'float'),
+  \ javaapi#method(0,'getMinY(', ')', 'float'),
+  \ javaapi#method(0,'setParameterBlock(', 'ParameterBlock)', 'ParameterBlock'),
+  \ javaapi#method(0,'getParameterBlock(', ')', 'ParameterBlock'),
+  \ javaapi#method(0,'createScaledRendering(', 'int, int, RenderingHints)', 'RenderedImage'),
+  \ javaapi#method(0,'createDefaultRendering(', ')', 'RenderedImage'),
+  \ javaapi#method(0,'createRendering(', 'RenderContext)', 'RenderedImage'),
+  \ ])
+
+call javaapi#class('RenderableImageProducer', '', [
+  \ javaapi#method(0,'RenderableImageProducer(', 'RenderableImage, RenderContext)', ''),
+  \ javaapi#method(0,'setRenderContext(', 'RenderContext) // [synchronized] ', 'void'),
+  \ javaapi#method(0,'addConsumer(', 'ImageConsumer) // [synchronized] ', 'void'),
+  \ javaapi#method(0,'isConsumer(', 'ImageConsumer) // [synchronized] ', 'boolean'),
+  \ javaapi#method(0,'removeConsumer(', 'ImageConsumer) // [synchronized] ', 'void'),
+  \ javaapi#method(0,'startProduction(', 'ImageConsumer) // [synchronized] ', 'void'),
+  \ javaapi#method(0,'requestTopDownLeftRightResend(', 'ImageConsumer)', 'void'),
+  \ javaapi#method(0,'run(', ')', 'void'),
+  \ ])
+
+call javaapi#interface('RenderedImageFactory', '', [
+  \ javaapi#method(0,'create(', 'ParameterBlock, RenderingHints)', 'RenderedImage'),
+  \ ])
+
