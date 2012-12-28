@@ -494,9 +494,9 @@ function! javaapi#namespace(ns)
 
   let parts = split(a:ns, '\.')
   for part in parts
-    if exists('s:parent') && index(s:parent.members, part) == -1
-      call add(s:parent.members, javaapi#field(part, part))
-    endif
+    "if exists('s:parent') && index(s:parent.members, part) == -1
+    "  call add(s:parent.members, javaapi#field(part, ''))
+    "endif
 
     if !javaapi#isClassExist(part)
       call s:namespace_item(part, '', [])
@@ -534,6 +534,7 @@ function! javaapi#field(name, class)
     \ 'kind'   : 'v', 
     \ 'name'   : a:name,
     \ 'class'  : a:class,
+    \ 'detail' : '',
     \ }
 endfunction
 
@@ -544,6 +545,7 @@ function! javaapi#enum(name, members)
     \ 'name'   : a:name,
     \ 'kind'   : 't',
     \ 'members': a:members,
+    \ 'detail' : '',
     \ }
 endfunction
 
@@ -644,18 +646,75 @@ function! s:class_new_completion(base, res)
   endfor
 endfunction
 
+function! javaapi#ref()
+  let line = line('.')
+  let cur = col('.')
+
+  if !exists("b:ref")
+    let b:ref = {
+    \ 'index' : 0,
+    \ 'fname' : '',
+    \ 'line'  : -1,
+    \ 'cur'   : -1,
+    \ }
+  endif
+  if !exists('g:javaapi#statusline')
+    let g:javaapi#statusline = &statusline
+  endif
+
+  if b:ref.line == line && b:ref.cur == cur
+    if len(b:ref.item) <= b:ref.index
+      let b:ref.index = 0
+      let &l:statusline = ""
+      return ""
+    endif
+  else
+    let b:ref.index = 0
+    let b:ref.item = s:ref('', line, cur)
+    if len(b:ref.item) == 0
+      return ""
+    endif
+    let b:ref.line = line
+    let b:ref.cur = cur
+  endif
+  let idx = b:ref.index+1
+  let &l:statusline = '(' . idx . '/' . len(b:ref.item) . ') ' . b:ref.item[ b:ref.index ]
+  let b:ref.index += 1
+
+  augroup javaapi
+    au InsertLeave * let &l:statusline = g:javaapi#statusline
+  augroup END
+  return ""
+endfunction
+
 function! javaapi#balloon()
-  let [ pstart, complete_mode, s:type, s:parts ] = s:analize(v:beval_lnum, v:beval_col)
+  return join(s:ref(v:beval_text, v:beval_lnum, v:beval_col), "\n")
+endfunction
+
+function! s:ref(word, lnum, col)
+  let line = getline('.')
+  let cc = strridx(line, '(', a:col)
+  if cc == -1
+    let cc = a:col
+  else
+    let cc -= 1
+  endif
+
+  let [ pstart, complete_mode, s:type, s:parts ] = s:analize(a:lnum, cc)
   if !empty(s:parts)
-    let s:parts[-1] = substitute(v:beval_text, '.*\.', '', '')
+    if a:word == ''
+      let s:parts[-1] = line[ pstart : cc]
+    else
+      let s:parts[-1] = substitute(a:word, '.*\.', '', '')
+    endif
     let res = []
     if len(s:parts) == 1
       if !javaapi#isClassExist(s:parts[0])
-        return ""
+        return [ "" ]
       endif
       call javaapi#getSuperClassList(s:parts[0], res)
       call insert(res, s:parts[0], 0)
-      return join(res, ' -> ')
+      return [ join(res, ' -> ') ]
     else
       call add(s:parts, '')
       call s:class_member_completion(s:parts[-2], res, 0)
@@ -663,10 +722,10 @@ function! javaapi#balloon()
       for member in res
         call add(menus, member.menu)
       endfor
-      return join(menus, "\n")
+      return menus
     endif
   endif
-  return ""
+  return [ "" ]
 endfunction
 
 " load
