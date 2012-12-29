@@ -646,45 +646,76 @@ function! s:class_new_completion(base, res)
   endfor
 endfunction
 
-function! javaapi#ref()
-  let line = line('.')
-  let cur = col('.')
-
-  if !exists("b:ref")
-    let b:ref = {
-    \ 'index' : 0,
-    \ 'fname' : '',
-    \ 'line'  : -1,
-    \ 'cur'   : -1,
-    \ }
-  endif
+function! javaapi#showRef()
   if !exists('g:javaapi#statusline')
     let g:javaapi#statusline = &statusline
   endif
 
-  if b:ref.line == line && b:ref.cur == cur
-    if len(b:ref.item) <= b:ref.index
-      let b:ref.index = 0
-      let &l:statusline = ""
-      return ""
-    endif
-  else
-    let b:ref.index = 0
-    let b:ref.item = s:ref('', line, cur)
-    if len(b:ref.item) == 0
-      return ""
-    endif
-    let b:ref.line = line
-    let b:ref.cur = cur
+  let items = s:ref('', line('.'), col('.'))
+  if len(items) == 0
+    return ""
   endif
-  let idx = b:ref.index+1
-  let &l:statusline = '(' . idx . '/' . len(b:ref.item) . ') ' . b:ref.item[ b:ref.index ]
-  let b:ref.index += 1
+
+  let b:ref = {
+  \ 'index' : -1,
+  \ 'items' : items,
+  \ 'line'  : line('.'),
+  \ }
+  call javaapi#nextRef()
 
   augroup javaapi
-    au InsertLeave * let &l:statusline = g:javaapi#statusline
+    au!
+    au InsertLeave  <buffer> call javaapi#clearRef()
+    au CursorMovedI <buffer> call javaapi#checkLineForRef()
   augroup END
   return ""
+endfunction
+
+function! s:toStatusLineString(str)
+  return substitute(
+        \ substitute(
+        \ substitute(
+        \ substitute(
+        \ a:str, 
+        \ '[', '%#Title#[', ''), 
+        \ ']', ']%#Function#', ''), 
+        \ '(', '%#Normal#(', ''),
+        \ '//','%#Comment#//', '')
+endfunction
+
+function! javaapi#nextRef()
+  return s:prevNextRef(1)
+endfunction
+function! javaapi#prevRef()
+  return s:prevNextRef(-1)
+endfunction
+function! s:prevNextRef(adjust)
+  if exists("b:ref")
+    let b:ref.index += a:adjust
+    if b:ref.index >= len(b:ref.items)
+      let b:ref.index = 0
+    elseif b:ref.index < 0
+      let b:ref.index = len(b:ref.items) - 1
+    endif
+    let idx = b:ref.index + 1
+    let &l:statusline = '(' . idx . '/' . len(b:ref.items) . ') %#Function#' . s:toStatusLineString(b:ref.items[ b:ref.index ])
+  endif
+  return ""
+endfunction
+
+function! javaapi#checkLineForRef()
+  if exists("b:ref")
+    if b:ref.line != line('.')
+      call javaapi#clearRef()
+    endif
+  endif
+endfunction
+
+function! javaapi#clearRef()
+  let &l:statusline = g:javaapi#statusline
+  augroup javaapi
+    au!
+  augroup END
 endfunction
 
 function! javaapi#balloon()
@@ -712,9 +743,18 @@ function! s:ref(word, lnum, col)
       if !javaapi#isClassExist(s:parts[0])
         return [ "" ]
       endif
-      call javaapi#getSuperClassList(s:parts[0], res)
-      call insert(res, s:parts[0], 0)
-      return [ join(res, ' -> ') ]
+"     call javaapi#getSuperClassList(s:parts[0], res)
+"     call insert(res, s:parts[0], 0)
+"     return [ join(res, ' -> ') ]
+      let item = javaapi#getClass(s:parts[0])
+      let menus = []
+      for member in item.members
+       if member.name =~ '^' . s:parts[0]
+          call add(menus, 
+            \ '[' . s:parts[0] . '] ' . member.name . member.detail)
+        endif
+      endfor
+      return menus
     else
       call add(s:parts, '')
       call s:class_member_completion(s:parts[-2], res, 0)
