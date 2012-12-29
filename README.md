@@ -6,5 +6,11 @@ Settings
 --------
 
     au BufNewFile,BufRead *.java    setl omnifunc=javaapi#complete
-    au BufNewFile,BufRead *.java    setl bexpr=javaapi#balloon()
-    au BufNewFile,BufRead *.java    setl ballooneval
+    au CompleteDone *.java          call javaapi#showRef()
+    if has("balloon_eval") && has("balloon_multiline") 
+      au BufNewFile,BufRead *.java  setl bexpr=javaapi#balloon()
+      au BufNewFile,BufRead *.java  setl ballooneval
+    endif
+    inoremap <expr> <c-down> javaapi#nextRef()
+    inoremap <expr> <c-up>   javaapi#prevRef()
+
