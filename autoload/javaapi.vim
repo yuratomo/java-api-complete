@@ -768,9 +768,80 @@ function! s:ref(word, lnum, col)
   return [ "" ]
 endfunction
 
+" jar2vim
+function! javaapi#jar2vim(jar, output_dir)
+  let outputs = []
+  let last_namespace = ''
+
+  let list = filter(split(system('jar -tf ' . a:jar), "\n"), 'v:val =~ ".*\.class"')
+
+  for item in list
+    let target = substitute(item, "\.class$", "", "")
+    let ns     = substitute(substitute(target, "\/[^/]*$", "", ""), "\/", ".", "g")
+    let def    = system('javap -public -classpath ' . a:jar . ' ' . target)
+    let defs   = split(def, "\n")[1:-2]
+    if len(defs) < 1
+      continue
+    endif
+
+    " regist namespace
+    if last_namespace != ns
+      call add(outputs, "call javaapi#namespace('" . ns . "')")
+      call add(outputs, "")
+      let last_namespace = ns
+    endif
+
+    let class_parts = split(defs[0], ' ')
+
+    " remove unnecessary class_parts
+    let unnecessary_keywords = ['abstract', 'static', 'public', 'private', 'protected', 'internal']
+    for uk in unnecessary_keywords
+      let uk_idx = index(class_parts, uk)
+      if uk_idx != -1
+        call remove(class_parts, uk_idx)
+      endif
+    endfor
+
+    " resolve super class
+    let super = ''
+    if len(class_parts) > 2 && class_parts[2] == 'implements'
+      let super = s:class_name(class_parts[3])
+    endif
+
+    " resolve class name
+    let class = s:class_name(class_parts[1])
+
+    " output defines
+    call add(outputs, "call javaapi#" . class_parts[0] . "('" . class . "', '" . super . "', [")
+    for member in defs[1:]
+      let bracket_start = stridx(member, '(')
+      let parts = split(member[0 : bracket_start], ' ')
+      let part1 = s:class_name(parts[-1])
+      let part2 = s:class_name(parts[-2])
+      let part3 = substitute(member[bracket_start+1:], ";", "", "")
+      let is_static = index(parts, 'static') >= 0
+      call add(outputs, "  \\ javaapi#method(" . is_static . ",'" . part1 . "', '" . part3 . "', '" . part2 . "'),")
+    endfor
+    call add(outputs, "  \\ ])")
+    call add(outputs, "")
+  endfor
+
+  call writefile(outputs, a:output_dir . substitute(substitute(a:jar, "jar$", "vim", ""), ".*[\\/]", "", "") )
+endfunction
+
+function! s:class_name(path)
+  let items = split(a:path, '\.')
+  if len(items) > 0
+    return items[-1]
+  else
+    return a:path
+  endif
+endfunction
+
 " load
 if !exists('s:dictionary_loaded')
-  for file in split(globpath(&runtimepath, 'autoload/javaapi/*.vim'), '\n')
+  let files = split(globpath(&runtimepath, 'autoload/javaapi/*.vim'), '\n')
+  for file in files
     exe 'echo "[java-complete] load ' . substitute(file, '^.*\','','') . '"'
     redraw
     exe 'so ' . file
