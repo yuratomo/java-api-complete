@@ -1,6 +1,21 @@
 call javaapi#namespace('java.util.prefs')
 
-call javaapi#class('AbstractPreferences', 'Preferences', [
+call javaapi#class('1', 'Boolean>', [
+  \ javaapi#method(0,'run(', ')', 'Boolean'),
+  \ javaapi#method(0,'run(', ')', 'Object'),
+  \ ])
+
+call javaapi#class('EventDispatchThread', '', [
+  \ javaapi#method(0,'run(', ')', 'void'),
+  \ ])
+
+call javaapi#class('NodeAddedEvent', '', [
+  \ ])
+
+call javaapi#class('NodeRemovedEvent', '', [
+  \ ])
+
+call javaapi#class('AbstractPreferences', '', [
   \ javaapi#method(0,'put(', 'String, String)', 'void'),
   \ javaapi#method(0,'get(', 'String, String)', 'String'),
   \ javaapi#method(0,'remove(', 'String)', 'void'),
@@ -37,47 +52,57 @@ call javaapi#class('AbstractPreferences', 'Preferences', [
   \ javaapi#method(0,'exportSubtree(', 'OutputStream) throws IOException, BackingStoreException', 'void'),
   \ ])
 
-call javaapi#class('BackingStoreException', 'Exception', [
-  \ javaapi#method(0,'BackingStoreException(', 'String)', ''),
-  \ javaapi#method(0,'BackingStoreException(', 'Throwable)', ''),
+call javaapi#class('BackingStoreException', '', [
+  \ javaapi#method(0,'BackingStoreException(', 'String)', 'public'),
+  \ javaapi#method(0,'BackingStoreException(', 'Throwable)', 'public'),
   \ ])
 
 call javaapi#class('Base64', '', [
   \ javaapi#method(1,'main(', 'String[])', 'void'),
   \ ])
 
-call javaapi#class('InvalidPreferencesFormatException', 'Exception', [
-  \ javaapi#method(0,'InvalidPreferencesFormatException(', 'Throwable)', ''),
-  \ javaapi#method(0,'InvalidPreferencesFormatException(', 'String)', ''),
-  \ javaapi#method(0,'InvalidPreferencesFormatException(', 'String, Throwable)', ''),
+call javaapi#class('InvalidPreferencesFormatException', '', [
+  \ javaapi#method(0,'InvalidPreferencesFormatException(', 'Throwable)', 'public'),
+  \ javaapi#method(0,'InvalidPreferencesFormatException(', 'String)', 'public'),
+  \ javaapi#method(0,'InvalidPreferencesFormatException(', 'String, Throwable)', 'public'),
   \ ])
 
-call javaapi#class('NodeChangeEvent', 'EventObject', [
-  \ javaapi#method(0,'NodeChangeEvent(', 'Preferences, Preferences)', ''),
+call javaapi#class('NodeChangeEvent', '', [
+  \ javaapi#method(0,'NodeChangeEvent(', 'Preferences, Preferences)', 'public'),
   \ javaapi#method(0,'getParent(', ')', 'Preferences'),
   \ javaapi#method(0,'getChild(', ')', 'Preferences'),
   \ ])
 
-call javaapi#interface('NodeChangeListener', 'EventListener', [
+call javaapi#interface('NodeChangeListener', '', [
   \ javaapi#method(0,'childAdded(', 'NodeChangeEvent)', 'void'),
   \ javaapi#method(0,'childRemoved(', 'NodeChangeEvent)', 'void'),
   \ ])
 
-call javaapi#class('PreferenceChangeEvent', 'EventObject', [
-  \ javaapi#method(0,'PreferenceChangeEvent(', 'Preferences, String, String)', ''),
+call javaapi#class('PreferenceChangeEvent', '', [
+  \ javaapi#method(0,'PreferenceChangeEvent(', 'Preferences, String, String)', 'public'),
   \ javaapi#method(0,'getNode(', ')', 'Preferences'),
   \ javaapi#method(0,'getKey(', ')', 'String'),
   \ javaapi#method(0,'getNewValue(', ')', 'String'),
   \ ])
 
-call javaapi#interface('PreferenceChangeListener', 'EventListener', [
+call javaapi#interface('PreferenceChangeListener', '', [
   \ javaapi#method(0,'preferenceChange(', 'PreferenceChangeEvent)', 'void'),
   \ ])
 
+call javaapi#class('1', 'String>', [
+  \ javaapi#method(0,'run(', ')', 'String'),
+  \ javaapi#method(0,'run(', ')', 'Object'),
+  \ ])
+
+call javaapi#class('2', 'PreferencesFactory>', [
+  \ javaapi#method(0,'run(', ')', 'PreferencesFactory'),
+  \ javaapi#method(0,'run(', ')', 'Object'),
+  \ ])
+
 call javaapi#class('Preferences', '', [
-  \ javaapi#method(1,'MAX_KEY_LENGTH', '', 'int'),
-  \ javaapi#method(1,'MAX_VALUE_LENGTH', '', 'int'),
-  \ javaapi#method(1,'MAX_NAME_LENGTH', '', 'int'),
+  \ javaapi#field(1,'MAX_KEY_LENGTH', 'int'),
+  \ javaapi#field(1,'MAX_VALUE_LENGTH', 'int'),
+  \ javaapi#field(1,'MAX_NAME_LENGTH', 'int'),
   \ javaapi#method(1,'userNodeForPackage(', 'Class<?>)', 'Preferences'),
   \ javaapi#method(1,'systemNodeForPackage(', 'Class<?>)', 'Preferences'),
   \ javaapi#method(1,'userRoot(', ')', 'Preferences'),
@@ -124,15 +149,28 @@ call javaapi#interface('PreferencesFactory', '', [
   \ javaapi#method(0,'userRoot(', ')', 'Preferences'),
   \ ])
 
-call javaapi#class('WindowsPreferences', 'AbstractPreferences', [
+call javaapi#class('WindowsPreferences', '', [
   \ javaapi#method(0,'flush(', ') throws BackingStoreException', 'void'),
   \ javaapi#method(0,'sync(', ') throws BackingStoreException', 'void'),
   \ javaapi#method(0,'removeNodeSpi(', ') throws BackingStoreException', 'void'),
   \ ])
 
-call javaapi#class('WindowsPreferencesFactory', '', [
+call javaapi#class('WindowsPreferencesFactory', 'PreferencesFactory', [
   \ javaapi#method(0,'userRoot(', ')', 'Preferences'),
   \ javaapi#method(0,'systemRoot(', ')', 'Preferences'),
+  \ ])
+
+call javaapi#class('1', '', [
+  \ ])
+
+call javaapi#class('EH', 'ErrorHandler', [
+  \ javaapi#method(0,'error(', 'SAXParseException) throws SAXException', 'void'),
+  \ javaapi#method(0,'fatalError(', 'SAXParseException) throws SAXException', 'void'),
+  \ javaapi#method(0,'warning(', 'SAXParseException) throws SAXException', 'void'),
+  \ ])
+
+call javaapi#class('Resolver', 'EntityResolver', [
+  \ javaapi#method(0,'resolveEntity(', 'String, String) throws SAXException', 'InputSource'),
   \ ])
 
 call javaapi#class('XmlSupport', '', [

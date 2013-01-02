@@ -1,22 +1,22 @@
 call javaapi#namespace('java.awt.geom')
 
-call javaapi#class('AffineTransform', '', [
-  \ javaapi#method(1,'TYPE_IDENTITY', '', 'int'),
-  \ javaapi#method(1,'TYPE_TRANSLATION', '', 'int'),
-  \ javaapi#method(1,'TYPE_UNIFORM_SCALE', '', 'int'),
-  \ javaapi#method(1,'TYPE_GENERAL_SCALE', '', 'int'),
-  \ javaapi#method(1,'TYPE_MASK_SCALE', '', 'int'),
-  \ javaapi#method(1,'TYPE_FLIP', '', 'int'),
-  \ javaapi#method(1,'TYPE_QUADRANT_ROTATION', '', 'int'),
-  \ javaapi#method(1,'TYPE_GENERAL_ROTATION', '', 'int'),
-  \ javaapi#method(1,'TYPE_MASK_ROTATION', '', 'int'),
-  \ javaapi#method(1,'TYPE_GENERAL_TRANSFORM', '', 'int'),
-  \ javaapi#method(0,'AffineTransform(', ')', ''),
-  \ javaapi#method(0,'AffineTransform(', 'AffineTransform)', ''),
-  \ javaapi#method(0,'AffineTransform(', 'float, float, float, float, float, float)', ''),
-  \ javaapi#method(0,'AffineTransform(', 'float[])', ''),
-  \ javaapi#method(0,'AffineTransform(', 'double, double, double, double, double, double)', ''),
-  \ javaapi#method(0,'AffineTransform(', 'double[])', ''),
+call javaapi#class('AffineTransform', 'Serializable', [
+  \ javaapi#field(1,'TYPE_IDENTITY', 'int'),
+  \ javaapi#field(1,'TYPE_TRANSLATION', 'int'),
+  \ javaapi#field(1,'TYPE_UNIFORM_SCALE', 'int'),
+  \ javaapi#field(1,'TYPE_GENERAL_SCALE', 'int'),
+  \ javaapi#field(1,'TYPE_MASK_SCALE', 'int'),
+  \ javaapi#field(1,'TYPE_FLIP', 'int'),
+  \ javaapi#field(1,'TYPE_QUADRANT_ROTATION', 'int'),
+  \ javaapi#field(1,'TYPE_GENERAL_ROTATION', 'int'),
+  \ javaapi#field(1,'TYPE_MASK_ROTATION', 'int'),
+  \ javaapi#field(1,'TYPE_GENERAL_TRANSFORM', 'int'),
+  \ javaapi#method(0,'AffineTransform(', ')', 'public'),
+  \ javaapi#method(0,'AffineTransform(', 'AffineTransform)', 'public'),
+  \ javaapi#method(0,'AffineTransform(', 'float, float, float, float, float, float)', 'public'),
+  \ javaapi#method(0,'AffineTransform(', 'float[])', 'public'),
+  \ javaapi#method(0,'AffineTransform(', 'double, double, double, double, double, double)', 'public'),
+  \ javaapi#method(0,'AffineTransform(', 'double[])', 'public'),
   \ javaapi#method(1,'getTranslateInstance(', 'double, double)', 'AffineTransform'),
   \ javaapi#method(1,'getRotateInstance(', 'double)', 'AffineTransform'),
   \ javaapi#method(1,'getRotateInstance(', 'double, double, double)', 'AffineTransform'),
@@ -78,10 +78,239 @@ call javaapi#class('AffineTransform', '', [
   \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
   \ ])
 
-call javaapi#class('Arc2D', 'RectangularShape', [
-  \ javaapi#method(1,'OPEN', '', 'int'),
-  \ javaapi#method(1,'CHORD', '', 'int'),
-  \ javaapi#method(1,'PIE', '', 'int'),
+
+call javaapi#class('Dimension2D', 'Cloneable', [
+  \ javaapi#method(0,'getWidth(', ')', 'double'),
+  \ javaapi#method(0,'getHeight(', ')', 'double'),
+  \ javaapi#method(0,'setSize(', 'double, double)', 'void'),
+  \ javaapi#method(0,'setSize(', 'Dimension2D)', 'void'),
+  \ javaapi#method(0,'clone(', ')', 'Object'),
+  \ ])
+
+
+call javaapi#class('Point2D', 'Cloneable', [
+  \ javaapi#method(0,'getX(', ')', 'double'),
+  \ javaapi#method(0,'getY(', ')', 'double'),
+  \ javaapi#method(0,'setLocation(', 'double, double)', 'void'),
+  \ javaapi#method(0,'setLocation(', 'Point2D)', 'void'),
+  \ javaapi#method(1,'distanceSq(', 'double, double, double, double)', 'double'),
+  \ javaapi#method(1,'distance(', 'double, double, double, double)', 'double'),
+  \ javaapi#method(0,'distanceSq(', 'double, double)', 'double'),
+  \ javaapi#method(0,'distanceSq(', 'Point2D)', 'double'),
+  \ javaapi#method(0,'distance(', 'double, double)', 'double'),
+  \ javaapi#method(0,'distance(', 'Point2D)', 'double'),
+  \ javaapi#method(0,'clone(', ')', 'Object'),
+  \ javaapi#method(0,'hashCode(', ')', 'int'),
+  \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
+  \ ])
+
+
+call javaapi#class('RectangularShape', 'Cloneable', [
+  \ javaapi#method(0,'getX(', ')', 'double'),
+  \ javaapi#method(0,'getY(', ')', 'double'),
+  \ javaapi#method(0,'getWidth(', ')', 'double'),
+  \ javaapi#method(0,'getHeight(', ')', 'double'),
+  \ javaapi#method(0,'getMinX(', ')', 'double'),
+  \ javaapi#method(0,'getMinY(', ')', 'double'),
+  \ javaapi#method(0,'getMaxX(', ')', 'double'),
+  \ javaapi#method(0,'getMaxY(', ')', 'double'),
+  \ javaapi#method(0,'getCenterX(', ')', 'double'),
+  \ javaapi#method(0,'getCenterY(', ')', 'double'),
+  \ javaapi#method(0,'getFrame(', ')', 'Rectangle2D'),
+  \ javaapi#method(0,'isEmpty(', ')', 'boolean'),
+  \ javaapi#method(0,'setFrame(', 'double, double, double, double)', 'void'),
+  \ javaapi#method(0,'setFrame(', 'Point2D, Dimension2D)', 'void'),
+  \ javaapi#method(0,'setFrame(', 'Rectangle2D)', 'void'),
+  \ javaapi#method(0,'setFrameFromDiagonal(', 'double, double, double, double)', 'void'),
+  \ javaapi#method(0,'setFrameFromDiagonal(', 'Point2D, Point2D)', 'void'),
+  \ javaapi#method(0,'setFrameFromCenter(', 'double, double, double, double)', 'void'),
+  \ javaapi#method(0,'setFrameFromCenter(', 'Point2D, Point2D)', 'void'),
+  \ javaapi#method(0,'contains(', 'Point2D)', 'boolean'),
+  \ javaapi#method(0,'intersects(', 'Rectangle2D)', 'boolean'),
+  \ javaapi#method(0,'contains(', 'Rectangle2D)', 'boolean'),
+  \ javaapi#method(0,'getBounds(', ')', 'Rectangle'),
+  \ javaapi#method(0,'getPathIterator(', 'AffineTransform, double)', 'PathIterator'),
+  \ javaapi#method(0,'clone(', ')', 'Object'),
+  \ ])
+
+call javaapi#class('Rectangle2D', '', [
+  \ javaapi#field(1,'OUT_LEFT', 'int'),
+  \ javaapi#field(1,'OUT_TOP', 'int'),
+  \ javaapi#field(1,'OUT_RIGHT', 'int'),
+  \ javaapi#field(1,'OUT_BOTTOM', 'int'),
+  \ javaapi#method(0,'setRect(', 'double, double, double, double)', 'void'),
+  \ javaapi#method(0,'setRect(', 'Rectangle2D)', 'void'),
+  \ javaapi#method(0,'intersectsLine(', 'double, double, double, double)', 'boolean'),
+  \ javaapi#method(0,'intersectsLine(', 'Line2D)', 'boolean'),
+  \ javaapi#method(0,'outcode(', 'double, double)', 'int'),
+  \ javaapi#method(0,'outcode(', 'Point2D)', 'int'),
+  \ javaapi#method(0,'setFrame(', 'double, double, double, double)', 'void'),
+  \ javaapi#method(0,'getBounds2D(', ')', 'Rectangle2D'),
+  \ javaapi#method(0,'contains(', 'double, double)', 'boolean'),
+  \ javaapi#method(0,'intersects(', 'double, double, double, double)', 'boolean'),
+  \ javaapi#method(0,'contains(', 'double, double, double, double)', 'boolean'),
+  \ javaapi#method(0,'createIntersection(', 'Rectangle2D)', 'Rectangle2D'),
+  \ javaapi#method(1,'intersect(', 'Rectangle2D, Rectangle2D, Rectangle2D)', 'void'),
+  \ javaapi#method(0,'createUnion(', 'Rectangle2D)', 'Rectangle2D'),
+  \ javaapi#method(1,'union(', 'Rectangle2D, Rectangle2D, Rectangle2D)', 'void'),
+  \ javaapi#method(0,'add(', 'double, double)', 'void'),
+  \ javaapi#method(0,'add(', 'Point2D)', 'void'),
+  \ javaapi#method(0,'add(', 'Rectangle2D)', 'void'),
+  \ javaapi#method(0,'getPathIterator(', 'AffineTransform)', 'PathIterator'),
+  \ javaapi#method(0,'getPathIterator(', 'AffineTransform, double)', 'PathIterator'),
+  \ javaapi#method(0,'hashCode(', ')', 'int'),
+  \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
+  \ ])
+
+
+call javaapi#class('Float', '', [
+  \ javaapi#method(0,'Float(', ')', 'public'),
+  \ javaapi#method(0,'Float(', 'int)', 'public'),
+  \ javaapi#method(0,'Float(', 'int, int)', 'public'),
+  \ javaapi#method(0,'Float(', 'Shape)', 'public'),
+  \ javaapi#method(0,'Float(', 'Shape, AffineTransform)', 'public'),
+  \ javaapi#method(0,'moveTo(', 'double, double)', 'void'),
+  \ javaapi#method(0,'moveTo(', 'float, float)', 'void'),
+  \ javaapi#method(0,'lineTo(', 'double, double)', 'void'),
+  \ javaapi#method(0,'lineTo(', 'float, float)', 'void'),
+  \ javaapi#method(0,'quadTo(', 'double, double, double, double)', 'void'),
+  \ javaapi#method(0,'quadTo(', 'float, float, float, float)', 'void'),
+  \ javaapi#method(0,'curveTo(', 'double, double, double, double, double, double)', 'void'),
+  \ javaapi#method(0,'curveTo(', 'float, float, float, float, float, float)', 'void'),
+  \ javaapi#method(0,'append(', 'PathIterator, boolean)', 'void'),
+  \ javaapi#method(0,'transform(', 'AffineTransform)', 'void'),
+  \ javaapi#method(0,'getBounds2D(', ')', 'Rectangle2D'),
+  \ javaapi#method(0,'getPathIterator(', 'AffineTransform)', 'PathIterator'),
+  \ javaapi#method(0,'clone(', ')', 'Object'),
+  \ ])
+
+call javaapi#class('Path2D', 'Cloneable', [
+  \ javaapi#field(1,'WIND_EVEN_ODD', 'int'),
+  \ javaapi#field(1,'WIND_NON_ZERO', 'int'),
+  \ javaapi#method(0,'moveTo(', 'double, double)', 'void'),
+  \ javaapi#method(0,'lineTo(', 'double, double)', 'void'),
+  \ javaapi#method(0,'quadTo(', 'double, double, double, double)', 'void'),
+  \ javaapi#method(0,'curveTo(', 'double, double, double, double, double, double)', 'void'),
+  \ javaapi#method(0,'closePath(', ')', 'void'),
+  \ javaapi#method(0,'append(', 'Shape, boolean)', 'void'),
+  \ javaapi#method(0,'append(', 'PathIterator, boolean)', 'void'),
+  \ javaapi#method(0,'getWindingRule(', ')', 'int'),
+  \ javaapi#method(0,'setWindingRule(', 'int)', 'void'),
+  \ javaapi#method(0,'getCurrentPoint(', ')', 'Point2D'),
+  \ javaapi#method(0,'reset(', ')', 'void'),
+  \ javaapi#method(0,'transform(', 'AffineTransform)', 'void'),
+  \ javaapi#method(0,'createTransformedShape(', 'AffineTransform)', 'Shape'),
+  \ javaapi#method(0,'getBounds(', ')', 'Rectangle'),
+  \ javaapi#method(1,'contains(', 'PathIterator, double, double)', 'boolean'),
+  \ javaapi#method(1,'contains(', 'PathIterator, Point2D)', 'boolean'),
+  \ javaapi#method(0,'contains(', 'double, double)', 'boolean'),
+  \ javaapi#method(0,'contains(', 'Point2D)', 'boolean'),
+  \ javaapi#method(1,'contains(', 'PathIterator, double, double, double, double)', 'boolean'),
+  \ javaapi#method(1,'contains(', 'PathIterator, Rectangle2D)', 'boolean'),
+  \ javaapi#method(0,'contains(', 'double, double, double, double)', 'boolean'),
+  \ javaapi#method(0,'contains(', 'Rectangle2D)', 'boolean'),
+  \ javaapi#method(1,'intersects(', 'PathIterator, double, double, double, double)', 'boolean'),
+  \ javaapi#method(1,'intersects(', 'PathIterator, Rectangle2D)', 'boolean'),
+  \ javaapi#method(0,'intersects(', 'double, double, double, double)', 'boolean'),
+  \ javaapi#method(0,'intersects(', 'Rectangle2D)', 'boolean'),
+  \ javaapi#method(0,'getPathIterator(', 'AffineTransform, double)', 'PathIterator'),
+  \ javaapi#method(0,'clone(', ')', 'Object'),
+  \ ])
+
+
+call javaapi#class('Float', '', [
+  \ javaapi#field(0,'x', 'float'),
+  \ javaapi#field(0,'y', 'float'),
+  \ javaapi#method(0,'Float(', ')', 'public'),
+  \ javaapi#method(0,'Float(', 'float, float)', 'public'),
+  \ javaapi#method(0,'getX(', ')', 'double'),
+  \ javaapi#method(0,'getY(', ')', 'double'),
+  \ javaapi#method(0,'setLocation(', 'double, double)', 'void'),
+  \ javaapi#method(0,'setLocation(', 'float, float)', 'void'),
+  \ javaapi#method(0,'toString(', ')', 'String'),
+  \ ])
+
+
+call javaapi#class('GeneralPath', '', [
+  \ javaapi#method(0,'GeneralPath(', ')', 'public'),
+  \ javaapi#method(0,'GeneralPath(', 'int)', 'public'),
+  \ javaapi#method(0,'GeneralPath(', 'int, int)', 'public'),
+  \ javaapi#method(0,'GeneralPath(', 'Shape)', 'public'),
+  \ ])
+
+call javaapi#class('Float', '', [
+  \ javaapi#field(0,'x', 'float'),
+  \ javaapi#field(0,'y', 'float'),
+  \ javaapi#field(0,'width', 'float'),
+  \ javaapi#field(0,'height', 'float'),
+  \ javaapi#method(0,'Float(', ')', 'public'),
+  \ javaapi#method(0,'Float(', 'float, float, float, float)', 'public'),
+  \ javaapi#method(0,'getX(', ')', 'double'),
+  \ javaapi#method(0,'getY(', ')', 'double'),
+  \ javaapi#method(0,'getWidth(', ')', 'double'),
+  \ javaapi#method(0,'getHeight(', ')', 'double'),
+  \ javaapi#method(0,'isEmpty(', ')', 'boolean'),
+  \ javaapi#method(0,'setRect(', 'float, float, float, float)', 'void'),
+  \ javaapi#method(0,'setRect(', 'double, double, double, double)', 'void'),
+  \ javaapi#method(0,'setRect(', 'Rectangle2D)', 'void'),
+  \ javaapi#method(0,'outcode(', 'double, double)', 'int'),
+  \ javaapi#method(0,'getBounds2D(', ')', 'Rectangle2D'),
+  \ javaapi#method(0,'createIntersection(', 'Rectangle2D)', 'Rectangle2D'),
+  \ javaapi#method(0,'createUnion(', 'Rectangle2D)', 'Rectangle2D'),
+  \ javaapi#method(0,'toString(', ')', 'String'),
+  \ ])
+
+
+call javaapi#class('Double', '', [
+  \ javaapi#field(0,'x', 'double'),
+  \ javaapi#field(0,'y', 'double'),
+  \ javaapi#field(0,'width', 'double'),
+  \ javaapi#field(0,'height', 'double'),
+  \ javaapi#field(0,'start', 'double'),
+  \ javaapi#field(0,'extent', 'double'),
+  \ javaapi#method(0,'Double(', ')', 'public'),
+  \ javaapi#method(0,'Double(', 'int)', 'public'),
+  \ javaapi#method(0,'Double(', 'double, double, double, double, double, double, int)', 'public'),
+  \ javaapi#method(0,'Double(', 'Rectangle2D, double, double, int)', 'public'),
+  \ javaapi#method(0,'getX(', ')', 'double'),
+  \ javaapi#method(0,'getY(', ')', 'double'),
+  \ javaapi#method(0,'getWidth(', ')', 'double'),
+  \ javaapi#method(0,'getHeight(', ')', 'double'),
+  \ javaapi#method(0,'getAngleStart(', ')', 'double'),
+  \ javaapi#method(0,'getAngleExtent(', ')', 'double'),
+  \ javaapi#method(0,'isEmpty(', ')', 'boolean'),
+  \ javaapi#method(0,'setArc(', 'double, double, double, double, double, double, int)', 'void'),
+  \ javaapi#method(0,'setAngleStart(', 'double)', 'void'),
+  \ javaapi#method(0,'setAngleExtent(', 'double)', 'void'),
+  \ ])
+
+call javaapi#class('Float', '', [
+  \ javaapi#field(0,'x', 'float'),
+  \ javaapi#field(0,'y', 'float'),
+  \ javaapi#field(0,'width', 'float'),
+  \ javaapi#field(0,'height', 'float'),
+  \ javaapi#field(0,'start', 'float'),
+  \ javaapi#field(0,'extent', 'float'),
+  \ javaapi#method(0,'Float(', ')', 'public'),
+  \ javaapi#method(0,'Float(', 'int)', 'public'),
+  \ javaapi#method(0,'Float(', 'float, float, float, float, float, float, int)', 'public'),
+  \ javaapi#method(0,'Float(', 'Rectangle2D, float, float, int)', 'public'),
+  \ javaapi#method(0,'getX(', ')', 'double'),
+  \ javaapi#method(0,'getY(', ')', 'double'),
+  \ javaapi#method(0,'getWidth(', ')', 'double'),
+  \ javaapi#method(0,'getHeight(', ')', 'double'),
+  \ javaapi#method(0,'getAngleStart(', ')', 'double'),
+  \ javaapi#method(0,'getAngleExtent(', ')', 'double'),
+  \ javaapi#method(0,'isEmpty(', ')', 'boolean'),
+  \ javaapi#method(0,'setArc(', 'double, double, double, double, double, double, int)', 'void'),
+  \ javaapi#method(0,'setAngleStart(', 'double)', 'void'),
+  \ javaapi#method(0,'setAngleExtent(', 'double)', 'void'),
+  \ ])
+
+call javaapi#class('Arc2D', '', [
+  \ javaapi#field(1,'OPEN', 'int'),
+  \ javaapi#field(1,'CHORD', 'int'),
+  \ javaapi#field(1,'PIE', 'int'),
   \ javaapi#method(0,'getAngleStart(', ')', 'double'),
   \ javaapi#method(0,'getAngleExtent(', ')', 'double'),
   \ javaapi#method(0,'getArcType(', ')', 'int'),
@@ -111,7 +340,7 @@ call javaapi#class('Arc2D', 'RectangularShape', [
   \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
   \ ])
 
-call javaapi#class('ArcIterator', '', [
+call javaapi#class('ArcIterator', 'PathIterator', [
   \ javaapi#method(0,'getWindingRule(', ')', 'int'),
   \ javaapi#method(0,'isDone(', ')', 'boolean'),
   \ javaapi#method(0,'next(', ')', 'void'),
@@ -119,9 +348,9 @@ call javaapi#class('ArcIterator', '', [
   \ javaapi#method(0,'currentSegment(', 'double[])', 'int'),
   \ ])
 
-call javaapi#class('Area', '', [
-  \ javaapi#method(0,'Area(', ')', ''),
-  \ javaapi#method(0,'Area(', 'Shape)', ''),
+call javaapi#class('Area', 'Cloneable', [
+  \ javaapi#method(0,'Area(', ')', 'public'),
+  \ javaapi#method(0,'Area(', 'Shape)', 'public'),
   \ javaapi#method(0,'add(', 'Area)', 'void'),
   \ javaapi#method(0,'subtract(', 'Area)', 'void'),
   \ javaapi#method(0,'intersect(', 'Area)', 'void'),
@@ -147,8 +376,8 @@ call javaapi#class('Area', '', [
   \ javaapi#method(0,'getPathIterator(', 'AffineTransform, double)', 'PathIterator'),
   \ ])
 
-call javaapi#class('AreaIterator', '', [
-  \ javaapi#method(0,'AreaIterator(', 'Vector, AffineTransform)', ''),
+call javaapi#class('AreaIterator', 'PathIterator', [
+  \ javaapi#method(0,'AreaIterator(', 'Vector, AffineTransform)', 'public'),
   \ javaapi#method(0,'getWindingRule(', ')', 'int'),
   \ javaapi#method(0,'isDone(', ')', 'boolean'),
   \ javaapi#method(0,'next(', ')', 'void'),
@@ -156,7 +385,62 @@ call javaapi#class('AreaIterator', '', [
   \ javaapi#method(0,'currentSegment(', 'double[])', 'int'),
   \ ])
 
-call javaapi#class('CubicCurve2D', '', [
+call javaapi#class('Double', '', [
+  \ javaapi#field(0,'x1', 'double'),
+  \ javaapi#field(0,'y1', 'double'),
+  \ javaapi#field(0,'ctrlx1', 'double'),
+  \ javaapi#field(0,'ctrly1', 'double'),
+  \ javaapi#field(0,'ctrlx2', 'double'),
+  \ javaapi#field(0,'ctrly2', 'double'),
+  \ javaapi#field(0,'x2', 'double'),
+  \ javaapi#field(0,'y2', 'double'),
+  \ javaapi#method(0,'Double(', ')', 'public'),
+  \ javaapi#method(0,'Double(', 'double, double, double, double, double, double, double, double)', 'public'),
+  \ javaapi#method(0,'getX1(', ')', 'double'),
+  \ javaapi#method(0,'getY1(', ')', 'double'),
+  \ javaapi#method(0,'getP1(', ')', 'Point2D'),
+  \ javaapi#method(0,'getCtrlX1(', ')', 'double'),
+  \ javaapi#method(0,'getCtrlY1(', ')', 'double'),
+  \ javaapi#method(0,'getCtrlP1(', ')', 'Point2D'),
+  \ javaapi#method(0,'getCtrlX2(', ')', 'double'),
+  \ javaapi#method(0,'getCtrlY2(', ')', 'double'),
+  \ javaapi#method(0,'getCtrlP2(', ')', 'Point2D'),
+  \ javaapi#method(0,'getX2(', ')', 'double'),
+  \ javaapi#method(0,'getY2(', ')', 'double'),
+  \ javaapi#method(0,'getP2(', ')', 'Point2D'),
+  \ javaapi#method(0,'setCurve(', 'double, double, double, double, double, double, double, double)', 'void'),
+  \ javaapi#method(0,'getBounds2D(', ')', 'Rectangle2D'),
+  \ ])
+
+call javaapi#class('Float', '', [
+  \ javaapi#field(0,'x1', 'float'),
+  \ javaapi#field(0,'y1', 'float'),
+  \ javaapi#field(0,'ctrlx1', 'float'),
+  \ javaapi#field(0,'ctrly1', 'float'),
+  \ javaapi#field(0,'ctrlx2', 'float'),
+  \ javaapi#field(0,'ctrly2', 'float'),
+  \ javaapi#field(0,'x2', 'float'),
+  \ javaapi#field(0,'y2', 'float'),
+  \ javaapi#method(0,'Float(', ')', 'public'),
+  \ javaapi#method(0,'Float(', 'float, float, float, float, float, float, float, float)', 'public'),
+  \ javaapi#method(0,'getX1(', ')', 'double'),
+  \ javaapi#method(0,'getY1(', ')', 'double'),
+  \ javaapi#method(0,'getP1(', ')', 'Point2D'),
+  \ javaapi#method(0,'getCtrlX1(', ')', 'double'),
+  \ javaapi#method(0,'getCtrlY1(', ')', 'double'),
+  \ javaapi#method(0,'getCtrlP1(', ')', 'Point2D'),
+  \ javaapi#method(0,'getCtrlX2(', ')', 'double'),
+  \ javaapi#method(0,'getCtrlY2(', ')', 'double'),
+  \ javaapi#method(0,'getCtrlP2(', ')', 'Point2D'),
+  \ javaapi#method(0,'getX2(', ')', 'double'),
+  \ javaapi#method(0,'getY2(', ')', 'double'),
+  \ javaapi#method(0,'getP2(', ')', 'Point2D'),
+  \ javaapi#method(0,'setCurve(', 'double, double, double, double, double, double, double, double)', 'void'),
+  \ javaapi#method(0,'setCurve(', 'float, float, float, float, float, float, float, float)', 'void'),
+  \ javaapi#method(0,'getBounds2D(', ')', 'Rectangle2D'),
+  \ ])
+
+call javaapi#class('CubicCurve2D', 'Cloneable', [
   \ javaapi#method(0,'getX1(', ')', 'double'),
   \ javaapi#method(0,'getY1(', ')', 'double'),
   \ javaapi#method(0,'getP1(', ')', 'Point2D'),
@@ -197,7 +481,7 @@ call javaapi#class('CubicCurve2D', '', [
   \ javaapi#method(0,'clone(', ')', 'Object'),
   \ ])
 
-call javaapi#class('CubicIterator', '', [
+call javaapi#class('CubicIterator', 'PathIterator', [
   \ javaapi#method(0,'getWindingRule(', ')', 'int'),
   \ javaapi#method(0,'isDone(', ')', 'boolean'),
   \ javaapi#method(0,'next(', ')', 'void'),
@@ -205,15 +489,40 @@ call javaapi#class('CubicIterator', '', [
   \ javaapi#method(0,'currentSegment(', 'double[])', 'int'),
   \ ])
 
-call javaapi#class('Dimension2D', '', [
+call javaapi#class('Double', '', [
+  \ javaapi#field(0,'x', 'double'),
+  \ javaapi#field(0,'y', 'double'),
+  \ javaapi#field(0,'width', 'double'),
+  \ javaapi#field(0,'height', 'double'),
+  \ javaapi#method(0,'Double(', ')', 'public'),
+  \ javaapi#method(0,'Double(', 'double, double, double, double)', 'public'),
+  \ javaapi#method(0,'getX(', ')', 'double'),
+  \ javaapi#method(0,'getY(', ')', 'double'),
   \ javaapi#method(0,'getWidth(', ')', 'double'),
   \ javaapi#method(0,'getHeight(', ')', 'double'),
-  \ javaapi#method(0,'setSize(', 'double, double)', 'void'),
-  \ javaapi#method(0,'setSize(', 'Dimension2D)', 'void'),
-  \ javaapi#method(0,'clone(', ')', 'Object'),
+  \ javaapi#method(0,'isEmpty(', ')', 'boolean'),
+  \ javaapi#method(0,'setFrame(', 'double, double, double, double)', 'void'),
+  \ javaapi#method(0,'getBounds2D(', ')', 'Rectangle2D'),
   \ ])
 
-call javaapi#class('Ellipse2D', 'RectangularShape', [
+call javaapi#class('Float', '', [
+  \ javaapi#field(0,'x', 'float'),
+  \ javaapi#field(0,'y', 'float'),
+  \ javaapi#field(0,'width', 'float'),
+  \ javaapi#field(0,'height', 'float'),
+  \ javaapi#method(0,'Float(', ')', 'public'),
+  \ javaapi#method(0,'Float(', 'float, float, float, float)', 'public'),
+  \ javaapi#method(0,'getX(', ')', 'double'),
+  \ javaapi#method(0,'getY(', ')', 'double'),
+  \ javaapi#method(0,'getWidth(', ')', 'double'),
+  \ javaapi#method(0,'getHeight(', ')', 'double'),
+  \ javaapi#method(0,'isEmpty(', ')', 'boolean'),
+  \ javaapi#method(0,'setFrame(', 'float, float, float, float)', 'void'),
+  \ javaapi#method(0,'setFrame(', 'double, double, double, double)', 'void'),
+  \ javaapi#method(0,'getBounds2D(', ')', 'Rectangle2D'),
+  \ ])
+
+call javaapi#class('Ellipse2D', '', [
   \ javaapi#method(0,'contains(', 'double, double)', 'boolean'),
   \ javaapi#method(0,'intersects(', 'double, double, double, double)', 'boolean'),
   \ javaapi#method(0,'contains(', 'double, double, double, double)', 'boolean'),
@@ -222,8 +531,8 @@ call javaapi#class('Ellipse2D', 'RectangularShape', [
   \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
   \ ])
 
-call javaapi#class('EllipseIterator', '', [
-  \ javaapi#method(1,'CtrlVal', '', 'double'),
+call javaapi#class('EllipseIterator', 'PathIterator', [
+  \ javaapi#field(1,'CtrlVal', 'double'),
   \ javaapi#method(0,'getWindingRule(', ')', 'int'),
   \ javaapi#method(0,'isDone(', ')', 'boolean'),
   \ javaapi#method(0,'next(', ')', 'void'),
@@ -231,9 +540,9 @@ call javaapi#class('EllipseIterator', '', [
   \ javaapi#method(0,'currentSegment(', 'double[])', 'int'),
   \ ])
 
-call javaapi#class('FlatteningPathIterator', '', [
-  \ javaapi#method(0,'FlatteningPathIterator(', 'PathIterator, double)', ''),
-  \ javaapi#method(0,'FlatteningPathIterator(', 'PathIterator, double, int)', ''),
+call javaapi#class('FlatteningPathIterator', 'PathIterator', [
+  \ javaapi#method(0,'FlatteningPathIterator(', 'PathIterator, double)', 'public'),
+  \ javaapi#method(0,'FlatteningPathIterator(', 'PathIterator, double, int)', 'public'),
   \ javaapi#method(0,'getFlatness(', ')', 'double'),
   \ javaapi#method(0,'getRecursionLimit(', ')', 'int'),
   \ javaapi#method(0,'getWindingRule(', ')', 'int'),
@@ -243,19 +552,49 @@ call javaapi#class('FlatteningPathIterator', '', [
   \ javaapi#method(0,'currentSegment(', 'double[])', 'int'),
   \ ])
 
-call javaapi#class('GeneralPath', 'Path2D$Float', [
-  \ javaapi#method(0,'GeneralPath(', ')', ''),
-  \ javaapi#method(0,'GeneralPath(', 'int)', ''),
-  \ javaapi#method(0,'GeneralPath(', 'int, int)', ''),
-  \ javaapi#method(0,'GeneralPath(', 'Shape)', ''),
+call javaapi#class('IllegalPathStateException', '', [
+  \ javaapi#method(0,'IllegalPathStateException(', ')', 'public'),
+  \ javaapi#method(0,'IllegalPathStateException(', 'String)', 'public'),
   \ ])
 
-call javaapi#class('IllegalPathStateException', 'RuntimeException', [
-  \ javaapi#method(0,'IllegalPathStateException(', ')', ''),
-  \ javaapi#method(0,'IllegalPathStateException(', 'String)', ''),
+call javaapi#class('Double', '', [
+  \ javaapi#field(0,'x1', 'double'),
+  \ javaapi#field(0,'y1', 'double'),
+  \ javaapi#field(0,'x2', 'double'),
+  \ javaapi#field(0,'y2', 'double'),
+  \ javaapi#method(0,'Double(', ')', 'public'),
+  \ javaapi#method(0,'Double(', 'double, double, double, double)', 'public'),
+  \ javaapi#method(0,'Double(', 'Point2D, Point2D)', 'public'),
+  \ javaapi#method(0,'getX1(', ')', 'double'),
+  \ javaapi#method(0,'getY1(', ')', 'double'),
+  \ javaapi#method(0,'getP1(', ')', 'Point2D'),
+  \ javaapi#method(0,'getX2(', ')', 'double'),
+  \ javaapi#method(0,'getY2(', ')', 'double'),
+  \ javaapi#method(0,'getP2(', ')', 'Point2D'),
+  \ javaapi#method(0,'setLine(', 'double, double, double, double)', 'void'),
+  \ javaapi#method(0,'getBounds2D(', ')', 'Rectangle2D'),
   \ ])
 
-call javaapi#class('Line2D', '', [
+call javaapi#class('Float', '', [
+  \ javaapi#field(0,'x1', 'float'),
+  \ javaapi#field(0,'y1', 'float'),
+  \ javaapi#field(0,'x2', 'float'),
+  \ javaapi#field(0,'y2', 'float'),
+  \ javaapi#method(0,'Float(', ')', 'public'),
+  \ javaapi#method(0,'Float(', 'float, float, float, float)', 'public'),
+  \ javaapi#method(0,'Float(', 'Point2D, Point2D)', 'public'),
+  \ javaapi#method(0,'getX1(', ')', 'double'),
+  \ javaapi#method(0,'getY1(', ')', 'double'),
+  \ javaapi#method(0,'getP1(', ')', 'Point2D'),
+  \ javaapi#method(0,'getX2(', ')', 'double'),
+  \ javaapi#method(0,'getY2(', ')', 'double'),
+  \ javaapi#method(0,'getP2(', ')', 'Point2D'),
+  \ javaapi#method(0,'setLine(', 'double, double, double, double)', 'void'),
+  \ javaapi#method(0,'setLine(', 'float, float, float, float)', 'void'),
+  \ javaapi#method(0,'getBounds2D(', ')', 'Rectangle2D'),
+  \ ])
+
+call javaapi#class('Line2D', 'Cloneable', [
   \ javaapi#method(0,'getX1(', ')', 'double'),
   \ javaapi#method(0,'getY1(', ')', 'double'),
   \ javaapi#method(0,'getP1(', ')', 'Point2D'),
@@ -295,7 +634,7 @@ call javaapi#class('Line2D', '', [
   \ javaapi#method(0,'clone(', ')', 'Object'),
   \ ])
 
-call javaapi#class('LineIterator', '', [
+call javaapi#class('LineIterator', 'PathIterator', [
   \ javaapi#method(0,'getWindingRule(', ')', 'int'),
   \ javaapi#method(0,'isDone(', ')', 'boolean'),
   \ javaapi#method(0,'next(', ')', 'void'),
@@ -303,51 +642,61 @@ call javaapi#class('LineIterator', '', [
   \ javaapi#method(0,'currentSegment(', 'double[])', 'int'),
   \ ])
 
-call javaapi#class('NoninvertibleTransformException', 'Exception', [
-  \ javaapi#method(0,'NoninvertibleTransformException(', 'String)', ''),
+call javaapi#class('NoninvertibleTransformException', '', [
+  \ javaapi#method(0,'NoninvertibleTransformException(', 'String)', 'public'),
   \ ])
 
-call javaapi#class('Path2D', '', [
-  \ javaapi#method(1,'WIND_EVEN_ODD', '', 'int'),
-  \ javaapi#method(1,'WIND_NON_ZERO', '', 'int'),
+call javaapi#class('CopyIterator', '', [
+  \ javaapi#method(0,'currentSegment(', 'float[])', 'int'),
+  \ javaapi#method(0,'currentSegment(', 'double[])', 'int'),
+  \ ])
+
+call javaapi#class('TxIterator', '', [
+  \ javaapi#method(0,'currentSegment(', 'float[])', 'int'),
+  \ javaapi#method(0,'currentSegment(', 'double[])', 'int'),
+  \ ])
+
+call javaapi#class('Double', '', [
+  \ javaapi#method(0,'Double(', ')', 'public'),
+  \ javaapi#method(0,'Double(', 'int)', 'public'),
+  \ javaapi#method(0,'Double(', 'int, int)', 'public'),
+  \ javaapi#method(0,'Double(', 'Shape)', 'public'),
+  \ javaapi#method(0,'Double(', 'Shape, AffineTransform)', 'public'),
   \ javaapi#method(0,'moveTo(', 'double, double)', 'void'),
   \ javaapi#method(0,'lineTo(', 'double, double)', 'void'),
   \ javaapi#method(0,'quadTo(', 'double, double, double, double)', 'void'),
   \ javaapi#method(0,'curveTo(', 'double, double, double, double, double, double)', 'void'),
-  \ javaapi#method(0,'closePath(', ') // [synchronized] ', 'void'),
-  \ javaapi#method(0,'append(', 'Shape, boolean)', 'void'),
   \ javaapi#method(0,'append(', 'PathIterator, boolean)', 'void'),
-  \ javaapi#method(0,'getWindingRule(', ') // [synchronized] ', 'int'),
-  \ javaapi#method(0,'setWindingRule(', 'int)', 'void'),
-  \ javaapi#method(0,'getCurrentPoint(', ') // [synchronized] ', 'Point2D'),
-  \ javaapi#method(0,'reset(', ') // [synchronized] ', 'void'),
   \ javaapi#method(0,'transform(', 'AffineTransform)', 'void'),
-  \ javaapi#method(0,'createTransformedShape(', 'AffineTransform) // [synchronized] ', 'Shape'),
-  \ javaapi#method(0,'getBounds(', ')', 'Rectangle'),
-  \ javaapi#method(1,'contains(', 'PathIterator, double, double)', 'boolean'),
-  \ javaapi#method(1,'contains(', 'PathIterator, Point2D)', 'boolean'),
-  \ javaapi#method(0,'contains(', 'double, double)', 'boolean'),
-  \ javaapi#method(0,'contains(', 'Point2D)', 'boolean'),
-  \ javaapi#method(1,'contains(', 'PathIterator, double, double, double, double)', 'boolean'),
-  \ javaapi#method(1,'contains(', 'PathIterator, Rectangle2D)', 'boolean'),
-  \ javaapi#method(0,'contains(', 'double, double, double, double)', 'boolean'),
-  \ javaapi#method(0,'contains(', 'Rectangle2D)', 'boolean'),
-  \ javaapi#method(1,'intersects(', 'PathIterator, double, double, double, double)', 'boolean'),
-  \ javaapi#method(1,'intersects(', 'PathIterator, Rectangle2D)', 'boolean'),
-  \ javaapi#method(0,'intersects(', 'double, double, double, double)', 'boolean'),
-  \ javaapi#method(0,'intersects(', 'Rectangle2D)', 'boolean'),
-  \ javaapi#method(0,'getPathIterator(', 'AffineTransform, double)', 'PathIterator'),
+  \ javaapi#method(0,'getBounds2D(', ')', 'Rectangle2D'),
+  \ javaapi#method(0,'getPathIterator(', 'AffineTransform)', 'PathIterator'),
   \ javaapi#method(0,'clone(', ')', 'Object'),
   \ ])
 
+call javaapi#class('CopyIterator', '', [
+  \ javaapi#method(0,'currentSegment(', 'float[])', 'int'),
+  \ javaapi#method(0,'currentSegment(', 'double[])', 'int'),
+  \ ])
+
+call javaapi#class('TxIterator', '', [
+  \ javaapi#method(0,'currentSegment(', 'float[])', 'int'),
+  \ javaapi#method(0,'currentSegment(', 'double[])', 'int'),
+  \ ])
+
+call javaapi#class('Iterator', 'PathIterator', [
+  \ javaapi#method(0,'getWindingRule(', ')', 'int'),
+  \ javaapi#method(0,'isDone(', ')', 'boolean'),
+  \ javaapi#method(0,'next(', ')', 'void'),
+  \ ])
+
 call javaapi#interface('PathIterator', '', [
-  \ javaapi#method(1,'WIND_EVEN_ODD', '', 'int'),
-  \ javaapi#method(1,'WIND_NON_ZERO', '', 'int'),
-  \ javaapi#method(1,'SEG_MOVETO', '', 'int'),
-  \ javaapi#method(1,'SEG_LINETO', '', 'int'),
-  \ javaapi#method(1,'SEG_QUADTO', '', 'int'),
-  \ javaapi#method(1,'SEG_CUBICTO', '', 'int'),
-  \ javaapi#method(1,'SEG_CLOSE', '', 'int'),
+  \ javaapi#field(1,'WIND_EVEN_ODD', 'int'),
+  \ javaapi#field(1,'WIND_NON_ZERO', 'int'),
+  \ javaapi#field(1,'SEG_MOVETO', 'int'),
+  \ javaapi#field(1,'SEG_LINETO', 'int'),
+  \ javaapi#field(1,'SEG_QUADTO', 'int'),
+  \ javaapi#field(1,'SEG_CUBICTO', 'int'),
+  \ javaapi#field(1,'SEG_CLOSE', 'int'),
   \ javaapi#method(0,'getWindingRule(', ')', 'int'),
   \ javaapi#method(0,'isDone(', ')', 'boolean'),
   \ javaapi#method(0,'next(', ')', 'void'),
@@ -355,23 +704,63 @@ call javaapi#interface('PathIterator', '', [
   \ javaapi#method(0,'currentSegment(', 'double[])', 'int'),
   \ ])
 
-call javaapi#class('Point2D', '', [
+call javaapi#class('Double', '', [
+  \ javaapi#field(0,'x', 'double'),
+  \ javaapi#field(0,'y', 'double'),
+  \ javaapi#method(0,'Double(', ')', 'public'),
+  \ javaapi#method(0,'Double(', 'double, double)', 'public'),
   \ javaapi#method(0,'getX(', ')', 'double'),
   \ javaapi#method(0,'getY(', ')', 'double'),
   \ javaapi#method(0,'setLocation(', 'double, double)', 'void'),
-  \ javaapi#method(0,'setLocation(', 'Point2D)', 'void'),
-  \ javaapi#method(1,'distanceSq(', 'double, double, double, double)', 'double'),
-  \ javaapi#method(1,'distance(', 'double, double, double, double)', 'double'),
-  \ javaapi#method(0,'distanceSq(', 'double, double)', 'double'),
-  \ javaapi#method(0,'distanceSq(', 'Point2D)', 'double'),
-  \ javaapi#method(0,'distance(', 'double, double)', 'double'),
-  \ javaapi#method(0,'distance(', 'Point2D)', 'double'),
-  \ javaapi#method(0,'clone(', ')', 'Object'),
-  \ javaapi#method(0,'hashCode(', ')', 'int'),
-  \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
+  \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('QuadCurve2D', '', [
+call javaapi#class('Double', '', [
+  \ javaapi#field(0,'x1', 'double'),
+  \ javaapi#field(0,'y1', 'double'),
+  \ javaapi#field(0,'ctrlx', 'double'),
+  \ javaapi#field(0,'ctrly', 'double'),
+  \ javaapi#field(0,'x2', 'double'),
+  \ javaapi#field(0,'y2', 'double'),
+  \ javaapi#method(0,'Double(', ')', 'public'),
+  \ javaapi#method(0,'Double(', 'double, double, double, double, double, double)', 'public'),
+  \ javaapi#method(0,'getX1(', ')', 'double'),
+  \ javaapi#method(0,'getY1(', ')', 'double'),
+  \ javaapi#method(0,'getP1(', ')', 'Point2D'),
+  \ javaapi#method(0,'getCtrlX(', ')', 'double'),
+  \ javaapi#method(0,'getCtrlY(', ')', 'double'),
+  \ javaapi#method(0,'getCtrlPt(', ')', 'Point2D'),
+  \ javaapi#method(0,'getX2(', ')', 'double'),
+  \ javaapi#method(0,'getY2(', ')', 'double'),
+  \ javaapi#method(0,'getP2(', ')', 'Point2D'),
+  \ javaapi#method(0,'setCurve(', 'double, double, double, double, double, double)', 'void'),
+  \ javaapi#method(0,'getBounds2D(', ')', 'Rectangle2D'),
+  \ ])
+
+call javaapi#class('Float', '', [
+  \ javaapi#field(0,'x1', 'float'),
+  \ javaapi#field(0,'y1', 'float'),
+  \ javaapi#field(0,'ctrlx', 'float'),
+  \ javaapi#field(0,'ctrly', 'float'),
+  \ javaapi#field(0,'x2', 'float'),
+  \ javaapi#field(0,'y2', 'float'),
+  \ javaapi#method(0,'Float(', ')', 'public'),
+  \ javaapi#method(0,'Float(', 'float, float, float, float, float, float)', 'public'),
+  \ javaapi#method(0,'getX1(', ')', 'double'),
+  \ javaapi#method(0,'getY1(', ')', 'double'),
+  \ javaapi#method(0,'getP1(', ')', 'Point2D'),
+  \ javaapi#method(0,'getCtrlX(', ')', 'double'),
+  \ javaapi#method(0,'getCtrlY(', ')', 'double'),
+  \ javaapi#method(0,'getCtrlPt(', ')', 'Point2D'),
+  \ javaapi#method(0,'getX2(', ')', 'double'),
+  \ javaapi#method(0,'getY2(', ')', 'double'),
+  \ javaapi#method(0,'getP2(', ')', 'Point2D'),
+  \ javaapi#method(0,'setCurve(', 'double, double, double, double, double, double)', 'void'),
+  \ javaapi#method(0,'setCurve(', 'float, float, float, float, float, float)', 'void'),
+  \ javaapi#method(0,'getBounds2D(', ')', 'Rectangle2D'),
+  \ ])
+
+call javaapi#class('QuadCurve2D', 'Cloneable', [
   \ javaapi#method(0,'getX1(', ')', 'double'),
   \ javaapi#method(0,'getY1(', ')', 'double'),
   \ javaapi#method(0,'getP1(', ')', 'Point2D'),
@@ -409,7 +798,7 @@ call javaapi#class('QuadCurve2D', '', [
   \ javaapi#method(0,'clone(', ')', 'Object'),
   \ ])
 
-call javaapi#class('QuadIterator', '', [
+call javaapi#class('QuadIterator', 'PathIterator', [
   \ javaapi#method(0,'getWindingRule(', ')', 'int'),
   \ javaapi#method(0,'isDone(', ')', 'boolean'),
   \ javaapi#method(0,'next(', ')', 'void'),
@@ -417,7 +806,7 @@ call javaapi#class('QuadIterator', '', [
   \ javaapi#method(0,'currentSegment(', 'double[])', 'int'),
   \ ])
 
-call javaapi#class('RectIterator', '', [
+call javaapi#class('RectIterator', 'PathIterator', [
   \ javaapi#method(0,'getWindingRule(', ')', 'int'),
   \ javaapi#method(0,'isDone(', ')', 'boolean'),
   \ javaapi#method(0,'next(', ')', 'void'),
@@ -425,64 +814,28 @@ call javaapi#class('RectIterator', '', [
   \ javaapi#method(0,'currentSegment(', 'double[])', 'int'),
   \ ])
 
-call javaapi#class('Rectangle2D', 'RectangularShape', [
-  \ javaapi#method(1,'OUT_LEFT', '', 'int'),
-  \ javaapi#method(1,'OUT_TOP', '', 'int'),
-  \ javaapi#method(1,'OUT_RIGHT', '', 'int'),
-  \ javaapi#method(1,'OUT_BOTTOM', '', 'int'),
-  \ javaapi#method(0,'setRect(', 'double, double, double, double)', 'void'),
-  \ javaapi#method(0,'setRect(', 'Rectangle2D)', 'void'),
-  \ javaapi#method(0,'intersectsLine(', 'double, double, double, double)', 'boolean'),
-  \ javaapi#method(0,'intersectsLine(', 'Line2D)', 'boolean'),
-  \ javaapi#method(0,'outcode(', 'double, double)', 'int'),
-  \ javaapi#method(0,'outcode(', 'Point2D)', 'int'),
-  \ javaapi#method(0,'setFrame(', 'double, double, double, double)', 'void'),
-  \ javaapi#method(0,'getBounds2D(', ')', 'Rectangle2D'),
-  \ javaapi#method(0,'contains(', 'double, double)', 'boolean'),
-  \ javaapi#method(0,'intersects(', 'double, double, double, double)', 'boolean'),
-  \ javaapi#method(0,'contains(', 'double, double, double, double)', 'boolean'),
-  \ javaapi#method(0,'createIntersection(', 'Rectangle2D)', 'Rectangle2D'),
-  \ javaapi#method(1,'intersect(', 'Rectangle2D, Rectangle2D, Rectangle2D)', 'void'),
-  \ javaapi#method(0,'createUnion(', 'Rectangle2D)', 'Rectangle2D'),
-  \ javaapi#method(1,'union(', 'Rectangle2D, Rectangle2D, Rectangle2D)', 'void'),
-  \ javaapi#method(0,'add(', 'double, double)', 'void'),
-  \ javaapi#method(0,'add(', 'Point2D)', 'void'),
-  \ javaapi#method(0,'add(', 'Rectangle2D)', 'void'),
-  \ javaapi#method(0,'getPathIterator(', 'AffineTransform)', 'PathIterator'),
-  \ javaapi#method(0,'getPathIterator(', 'AffineTransform, double)', 'PathIterator'),
-  \ javaapi#method(0,'hashCode(', ')', 'int'),
-  \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
-  \ ])
-
-call javaapi#class('RectangularShape', '', [
+call javaapi#class('Double', '', [
+  \ javaapi#field(0,'x', 'double'),
+  \ javaapi#field(0,'y', 'double'),
+  \ javaapi#field(0,'width', 'double'),
+  \ javaapi#field(0,'height', 'double'),
+  \ javaapi#method(0,'Double(', ')', 'public'),
+  \ javaapi#method(0,'Double(', 'double, double, double, double)', 'public'),
   \ javaapi#method(0,'getX(', ')', 'double'),
   \ javaapi#method(0,'getY(', ')', 'double'),
   \ javaapi#method(0,'getWidth(', ')', 'double'),
   \ javaapi#method(0,'getHeight(', ')', 'double'),
-  \ javaapi#method(0,'getMinX(', ')', 'double'),
-  \ javaapi#method(0,'getMinY(', ')', 'double'),
-  \ javaapi#method(0,'getMaxX(', ')', 'double'),
-  \ javaapi#method(0,'getMaxY(', ')', 'double'),
-  \ javaapi#method(0,'getCenterX(', ')', 'double'),
-  \ javaapi#method(0,'getCenterY(', ')', 'double'),
-  \ javaapi#method(0,'getFrame(', ')', 'Rectangle2D'),
   \ javaapi#method(0,'isEmpty(', ')', 'boolean'),
-  \ javaapi#method(0,'setFrame(', 'double, double, double, double)', 'void'),
-  \ javaapi#method(0,'setFrame(', 'Point2D, Dimension2D)', 'void'),
-  \ javaapi#method(0,'setFrame(', 'Rectangle2D)', 'void'),
-  \ javaapi#method(0,'setFrameFromDiagonal(', 'double, double, double, double)', 'void'),
-  \ javaapi#method(0,'setFrameFromDiagonal(', 'Point2D, Point2D)', 'void'),
-  \ javaapi#method(0,'setFrameFromCenter(', 'double, double, double, double)', 'void'),
-  \ javaapi#method(0,'setFrameFromCenter(', 'Point2D, Point2D)', 'void'),
-  \ javaapi#method(0,'contains(', 'Point2D)', 'boolean'),
-  \ javaapi#method(0,'intersects(', 'Rectangle2D)', 'boolean'),
-  \ javaapi#method(0,'contains(', 'Rectangle2D)', 'boolean'),
-  \ javaapi#method(0,'getBounds(', ')', 'Rectangle'),
-  \ javaapi#method(0,'getPathIterator(', 'AffineTransform, double)', 'PathIterator'),
-  \ javaapi#method(0,'clone(', ')', 'Object'),
+  \ javaapi#method(0,'setRect(', 'double, double, double, double)', 'void'),
+  \ javaapi#method(0,'setRect(', 'Rectangle2D)', 'void'),
+  \ javaapi#method(0,'outcode(', 'double, double)', 'int'),
+  \ javaapi#method(0,'getBounds2D(', ')', 'Rectangle2D'),
+  \ javaapi#method(0,'createIntersection(', 'Rectangle2D)', 'Rectangle2D'),
+  \ javaapi#method(0,'createUnion(', 'Rectangle2D)', 'Rectangle2D'),
+  \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('RoundRectIterator', '', [
+call javaapi#class('RoundRectIterator', 'PathIterator', [
   \ javaapi#method(0,'getWindingRule(', ')', 'int'),
   \ javaapi#method(0,'isDone(', ')', 'boolean'),
   \ javaapi#method(0,'next(', ')', 'void'),
@@ -490,7 +843,50 @@ call javaapi#class('RoundRectIterator', '', [
   \ javaapi#method(0,'currentSegment(', 'double[])', 'int'),
   \ ])
 
-call javaapi#class('RoundRectangle2D', 'RectangularShape', [
+call javaapi#class('Double', '', [
+  \ javaapi#field(0,'x', 'double'),
+  \ javaapi#field(0,'y', 'double'),
+  \ javaapi#field(0,'width', 'double'),
+  \ javaapi#field(0,'height', 'double'),
+  \ javaapi#field(0,'arcwidth', 'double'),
+  \ javaapi#field(0,'archeight', 'double'),
+  \ javaapi#method(0,'Double(', ')', 'public'),
+  \ javaapi#method(0,'Double(', 'double, double, double, double, double, double)', 'public'),
+  \ javaapi#method(0,'getX(', ')', 'double'),
+  \ javaapi#method(0,'getY(', ')', 'double'),
+  \ javaapi#method(0,'getWidth(', ')', 'double'),
+  \ javaapi#method(0,'getHeight(', ')', 'double'),
+  \ javaapi#method(0,'getArcWidth(', ')', 'double'),
+  \ javaapi#method(0,'getArcHeight(', ')', 'double'),
+  \ javaapi#method(0,'isEmpty(', ')', 'boolean'),
+  \ javaapi#method(0,'setRoundRect(', 'double, double, double, double, double, double)', 'void'),
+  \ javaapi#method(0,'setRoundRect(', 'RoundRectangle2D)', 'void'),
+  \ javaapi#method(0,'getBounds2D(', ')', 'Rectangle2D'),
+  \ ])
+
+call javaapi#class('Float', '', [
+  \ javaapi#field(0,'x', 'float'),
+  \ javaapi#field(0,'y', 'float'),
+  \ javaapi#field(0,'width', 'float'),
+  \ javaapi#field(0,'height', 'float'),
+  \ javaapi#field(0,'arcwidth', 'float'),
+  \ javaapi#field(0,'archeight', 'float'),
+  \ javaapi#method(0,'Float(', ')', 'public'),
+  \ javaapi#method(0,'Float(', 'float, float, float, float, float, float)', 'public'),
+  \ javaapi#method(0,'getX(', ')', 'double'),
+  \ javaapi#method(0,'getY(', ')', 'double'),
+  \ javaapi#method(0,'getWidth(', ')', 'double'),
+  \ javaapi#method(0,'getHeight(', ')', 'double'),
+  \ javaapi#method(0,'getArcWidth(', ')', 'double'),
+  \ javaapi#method(0,'getArcHeight(', ')', 'double'),
+  \ javaapi#method(0,'isEmpty(', ')', 'boolean'),
+  \ javaapi#method(0,'setRoundRect(', 'float, float, float, float, float, float)', 'void'),
+  \ javaapi#method(0,'setRoundRect(', 'double, double, double, double, double, double)', 'void'),
+  \ javaapi#method(0,'setRoundRect(', 'RoundRectangle2D)', 'void'),
+  \ javaapi#method(0,'getBounds2D(', ')', 'Rectangle2D'),
+  \ ])
+
+call javaapi#class('RoundRectangle2D', '', [
   \ javaapi#method(0,'getArcWidth(', ')', 'double'),
   \ javaapi#method(0,'getArcHeight(', ')', 'double'),
   \ javaapi#method(0,'setRoundRect(', 'double, double, double, double, double, double)', 'void'),

@@ -1,38 +1,13 @@
 call javaapi#namespace('java.awt.peer')
 
-call javaapi#interface('ButtonPeer', 'ComponentPeer', [
-  \ javaapi#method(0,'setLabel(', 'String)', 'void'),
-  \ ])
-
-call javaapi#interface('CanvasPeer', 'ComponentPeer', [
-  \ javaapi#method(0,'getAppropriateGraphicsConfiguration(', 'GraphicsConfiguration)', 'GraphicsConfiguration'),
-  \ ])
-
-call javaapi#interface('CheckboxMenuItemPeer', 'MenuItemPeer', [
-  \ javaapi#method(0,'setState(', 'boolean)', 'void'),
-  \ ])
-
-call javaapi#interface('CheckboxPeer', 'ComponentPeer', [
-  \ javaapi#method(0,'setState(', 'boolean)', 'void'),
-  \ javaapi#method(0,'setCheckboxGroup(', 'CheckboxGroup)', 'void'),
-  \ javaapi#method(0,'setLabel(', 'String)', 'void'),
-  \ ])
-
-call javaapi#interface('ChoicePeer', 'ComponentPeer', [
-  \ javaapi#method(0,'add(', 'String, int)', 'void'),
-  \ javaapi#method(0,'remove(', 'int)', 'void'),
-  \ javaapi#method(0,'removeAll(', ')', 'void'),
-  \ javaapi#method(0,'select(', 'int)', 'void'),
-  \ ])
-
 call javaapi#interface('ComponentPeer', '', [
-  \ javaapi#method(1,'SET_LOCATION', '', 'int'),
-  \ javaapi#method(1,'SET_SIZE', '', 'int'),
-  \ javaapi#method(1,'SET_BOUNDS', '', 'int'),
-  \ javaapi#method(1,'SET_CLIENT_SIZE', '', 'int'),
-  \ javaapi#method(1,'RESET_OPERATION', '', 'int'),
-  \ javaapi#method(1,'NO_EMBEDDED_CHECK', '', 'int'),
-  \ javaapi#method(1,'DEFAULT_OPERATION', '', 'int'),
+  \ javaapi#field(1,'SET_LOCATION', 'int'),
+  \ javaapi#field(1,'SET_SIZE', 'int'),
+  \ javaapi#field(1,'SET_BOUNDS', 'int'),
+  \ javaapi#field(1,'SET_CLIENT_SIZE', 'int'),
+  \ javaapi#field(1,'RESET_OPERATION', 'int'),
+  \ javaapi#field(1,'NO_EMBEDDED_CHECK', 'int'),
+  \ javaapi#field(1,'DEFAULT_OPERATION', 'int'),
   \ javaapi#method(0,'isObscured(', ')', 'boolean'),
   \ javaapi#method(0,'canDetermineObscurity(', ')', 'boolean'),
   \ javaapi#method(0,'setVisible(', 'boolean)', 'void'),
@@ -54,7 +29,7 @@ call javaapi#interface('ComponentPeer', '', [
   \ javaapi#method(0,'setBackground(', 'Color)', 'void'),
   \ javaapi#method(0,'setFont(', 'Font)', 'void'),
   \ javaapi#method(0,'updateCursorImmediately(', ')', 'void'),
-  \ javaapi#method(0,'requestFocus(', 'Component, boolean, boolean, long, CausedFocusEvent$Cause)', 'boolean'),
+  \ javaapi#method(0,'requestFocus(', 'Component, boolean, boolean, long, Cause)', 'boolean'),
   \ javaapi#method(0,'isFocusable(', ')', 'boolean'),
   \ javaapi#method(0,'createImage(', 'ImageProducer)', 'Image'),
   \ javaapi#method(0,'createImage(', 'int, int)', 'Image'),
@@ -65,7 +40,7 @@ call javaapi#interface('ComponentPeer', '', [
   \ javaapi#method(0,'handlesWheelScrolling(', ')', 'boolean'),
   \ javaapi#method(0,'createBuffers(', 'int, BufferCapabilities) throws AWTException', 'void'),
   \ javaapi#method(0,'getBackBuffer(', ')', 'Image'),
-  \ javaapi#method(0,'flip(', 'int, int, int, int, BufferCapabilities$FlipContents)', 'void'),
+  \ javaapi#method(0,'flip(', 'int, int, int, int, FlipContents)', 'void'),
   \ javaapi#method(0,'destroyBuffers(', ')', 'void'),
   \ javaapi#method(0,'reparent(', 'ContainerPeer)', 'void'),
   \ javaapi#method(0,'isReparentSupported(', ')', 'boolean'),
@@ -75,7 +50,8 @@ call javaapi#interface('ComponentPeer', '', [
   \ javaapi#method(0,'updateGraphicsData(', 'GraphicsConfiguration)', 'boolean'),
   \ ])
 
-call javaapi#interface('ContainerPeer', 'ComponentPeer', [
+
+call javaapi#interface('ContainerPeer', '', [
   \ javaapi#method(0,'getInsets(', ')', 'Insets'),
   \ javaapi#method(0,'beginValidate(', ')', 'void'),
   \ javaapi#method(0,'endValidate(', ')', 'void'),
@@ -83,31 +59,39 @@ call javaapi#interface('ContainerPeer', 'ComponentPeer', [
   \ javaapi#method(0,'endLayout(', ')', 'void'),
   \ ])
 
-call javaapi#interface('DesktopPeer', '', [
-  \ javaapi#method(0,'isSupported(', 'Desktop$Action)', 'boolean'),
-  \ javaapi#method(0,'open(', 'File) throws IOException', 'void'),
-  \ javaapi#method(0,'edit(', 'File) throws IOException', 'void'),
-  \ javaapi#method(0,'print(', 'File) throws IOException', 'void'),
-  \ javaapi#method(0,'mail(', 'URI) throws IOException', 'void'),
-  \ javaapi#method(0,'browse(', 'URI) throws IOException', 'void'),
+call javaapi#interface('WindowPeer', '', [
+  \ javaapi#method(0,'toFront(', ')', 'void'),
+  \ javaapi#method(0,'toBack(', ')', 'void'),
+  \ javaapi#method(0,'setAlwaysOnTop(', 'boolean)', 'void'),
+  \ javaapi#method(0,'updateFocusableWindowState(', ')', 'void'),
+  \ javaapi#method(0,'setModalBlocked(', 'Dialog, boolean)', 'void'),
+  \ javaapi#method(0,'updateMinimumSize(', ')', 'void'),
+  \ javaapi#method(0,'updateIconImages(', ')', 'void'),
+  \ javaapi#method(0,'setOpacity(', 'float)', 'void'),
+  \ javaapi#method(0,'setOpaque(', 'boolean)', 'void'),
+  \ javaapi#method(0,'updateWindow(', ')', 'void'),
+  \ javaapi#method(0,'repositionSecurityWarning(', ')', 'void'),
   \ ])
 
-call javaapi#interface('DialogPeer', 'WindowPeer', [
-  \ javaapi#method(0,'setTitle(', 'String)', 'void'),
-  \ javaapi#method(0,'setResizable(', 'boolean)', 'void'),
-  \ javaapi#method(0,'blockWindows(', 'Window>)', 'void'),
+
+call javaapi#interface('PanelPeer', '', [
   \ ])
 
-call javaapi#interface('FileDialogPeer', 'DialogPeer', [
-  \ javaapi#method(0,'setFile(', 'String)', 'void'),
-  \ javaapi#method(0,'setDirectory(', 'String)', 'void'),
-  \ javaapi#method(0,'setFilenameFilter(', 'FilenameFilter)', 'void'),
+
+call javaapi#interface('CanvasPeer', '', [
+  \ javaapi#method(0,'getAppropriateGraphicsConfiguration(', 'GraphicsConfiguration)', 'GraphicsConfiguration'),
   \ ])
 
-call javaapi#interface('FontPeer', '', [
+
+call javaapi#interface('KeyboardFocusManagerPeer', '', [
+  \ javaapi#method(0,'getCurrentFocusedWindow(', ')', 'Window'),
+  \ javaapi#method(0,'setCurrentFocusOwner(', 'Component)', 'void'),
+  \ javaapi#method(0,'getCurrentFocusOwner(', ')', 'Component'),
+  \ javaapi#method(0,'clearGlobalFocusOwner(', 'Window)', 'void'),
   \ ])
 
-call javaapi#interface('FramePeer', 'WindowPeer', [
+
+call javaapi#interface('FramePeer', '', [
   \ javaapi#method(0,'setTitle(', 'String)', 'void'),
   \ javaapi#method(0,'setMenuBar(', 'MenuBar)', 'void'),
   \ javaapi#method(0,'setResizable(', 'boolean)', 'void'),
@@ -118,22 +102,89 @@ call javaapi#interface('FramePeer', 'WindowPeer', [
   \ javaapi#method(0,'getBoundsPrivate(', ')', 'Rectangle'),
   \ ])
 
-call javaapi#interface('KeyboardFocusManagerPeer', '', [
-  \ javaapi#method(0,'getCurrentFocusedWindow(', ')', 'Window'),
-  \ javaapi#method(0,'setCurrentFocusOwner(', 'Component)', 'void'),
-  \ javaapi#method(0,'getCurrentFocusOwner(', ')', 'Component'),
-  \ javaapi#method(0,'clearGlobalFocusOwner(', 'Window)', 'void'),
+
+call javaapi#interface('DialogPeer', '', [
+  \ javaapi#method(0,'setTitle(', 'String)', 'void'),
+  \ javaapi#method(0,'setResizable(', 'boolean)', 'void'),
+  \ javaapi#method(0,'blockWindows(', 'List<Window>)', 'void'),
   \ ])
 
-call javaapi#interface('LabelPeer', 'ComponentPeer', [
+call javaapi#interface('FileDialogPeer', '', [
+  \ javaapi#method(0,'setFile(', 'String)', 'void'),
+  \ javaapi#method(0,'setDirectory(', 'String)', 'void'),
+  \ javaapi#method(0,'setFilenameFilter(', 'FilenameFilter)', 'void'),
+  \ ])
+
+
+call javaapi#interface('FontPeer', '', [
+  \ ])
+
+
+call javaapi#interface('LightweightPeer', '', [
+  \ ])
+
+
+call javaapi#interface('LabelPeer', '', [
   \ javaapi#method(0,'setText(', 'String)', 'void'),
   \ javaapi#method(0,'setAlignment(', 'int)', 'void'),
   \ ])
 
-call javaapi#interface('LightweightPeer', 'ComponentPeer', [
+
+call javaapi#interface('MenuComponentPeer', '', [
+  \ javaapi#method(0,'dispose(', ')', 'void'),
+  \ javaapi#method(0,'setFont(', 'Font)', 'void'),
   \ ])
 
-call javaapi#interface('ListPeer', 'ComponentPeer', [
+call javaapi#interface('MenuBarPeer', '', [
+  \ javaapi#method(0,'addMenu(', 'Menu)', 'void'),
+  \ javaapi#method(0,'delMenu(', 'int)', 'void'),
+  \ javaapi#method(0,'addHelpMenu(', 'Menu)', 'void'),
+  \ ])
+
+
+call javaapi#interface('MenuItemPeer', '', [
+  \ javaapi#method(0,'setLabel(', 'String)', 'void'),
+  \ javaapi#method(0,'setEnabled(', 'boolean)', 'void'),
+  \ ])
+
+call javaapi#interface('MenuPeer', '', [
+  \ javaapi#method(0,'addSeparator(', ')', 'void'),
+  \ javaapi#method(0,'addItem(', 'MenuItem)', 'void'),
+  \ javaapi#method(0,'delItem(', 'int)', 'void'),
+  \ ])
+
+
+call javaapi#interface('ButtonPeer', '', [
+  \ javaapi#method(0,'setLabel(', 'String)', 'void'),
+  \ ])
+
+call javaapi#interface('CheckboxMenuItemPeer', '', [
+  \ javaapi#method(0,'setState(', 'boolean)', 'void'),
+  \ ])
+
+call javaapi#interface('CheckboxPeer', '', [
+  \ javaapi#method(0,'setState(', 'boolean)', 'void'),
+  \ javaapi#method(0,'setCheckboxGroup(', 'CheckboxGroup)', 'void'),
+  \ javaapi#method(0,'setLabel(', 'String)', 'void'),
+  \ ])
+
+call javaapi#interface('ChoicePeer', '', [
+  \ javaapi#method(0,'add(', 'String, int)', 'void'),
+  \ javaapi#method(0,'remove(', 'int)', 'void'),
+  \ javaapi#method(0,'removeAll(', ')', 'void'),
+  \ javaapi#method(0,'select(', 'int)', 'void'),
+  \ ])
+
+call javaapi#interface('DesktopPeer', '', [
+  \ javaapi#method(0,'isSupported(', 'Action)', 'boolean'),
+  \ javaapi#method(0,'open(', 'File) throws IOException', 'void'),
+  \ javaapi#method(0,'edit(', 'File) throws IOException', 'void'),
+  \ javaapi#method(0,'print(', 'File) throws IOException', 'void'),
+  \ javaapi#method(0,'mail(', 'URI) throws IOException', 'void'),
+  \ javaapi#method(0,'browse(', 'URI) throws IOException', 'void'),
+  \ ])
+
+call javaapi#interface('ListPeer', '', [
   \ javaapi#method(0,'getSelectedIndexes(', ')', 'int[]'),
   \ javaapi#method(0,'add(', 'String, int)', 'void'),
   \ javaapi#method(0,'delItems(', 'int, int)', 'void'),
@@ -146,37 +197,12 @@ call javaapi#interface('ListPeer', 'ComponentPeer', [
   \ javaapi#method(0,'getMinimumSize(', 'int)', 'Dimension'),
   \ ])
 
-call javaapi#interface('MenuBarPeer', 'MenuComponentPeer', [
-  \ javaapi#method(0,'addMenu(', 'Menu)', 'void'),
-  \ javaapi#method(0,'delMenu(', 'int)', 'void'),
-  \ javaapi#method(0,'addHelpMenu(', 'Menu)', 'void'),
-  \ ])
-
-call javaapi#interface('MenuComponentPeer', '', [
-  \ javaapi#method(0,'dispose(', ')', 'void'),
-  \ javaapi#method(0,'setFont(', 'Font)', 'void'),
-  \ ])
-
-call javaapi#interface('MenuItemPeer', 'MenuComponentPeer', [
-  \ javaapi#method(0,'setLabel(', 'String)', 'void'),
-  \ javaapi#method(0,'setEnabled(', 'boolean)', 'void'),
-  \ ])
-
-call javaapi#interface('MenuPeer', 'MenuItemPeer', [
-  \ javaapi#method(0,'addSeparator(', ')', 'void'),
-  \ javaapi#method(0,'addItem(', 'MenuItem)', 'void'),
-  \ javaapi#method(0,'delItem(', 'int)', 'void'),
-  \ ])
-
 call javaapi#interface('MouseInfoPeer', '', [
   \ javaapi#method(0,'fillPointWithCoords(', 'Point)', 'int'),
   \ javaapi#method(0,'isWindowUnderMouse(', 'Window)', 'boolean'),
   \ ])
 
-call javaapi#interface('PanelPeer', 'ContainerPeer', [
-  \ ])
-
-call javaapi#interface('PopupMenuPeer', 'MenuPeer', [
+call javaapi#interface('PopupMenuPeer', '', [
   \ javaapi#method(0,'show(', 'Event)', 'void'),
   \ ])
 
@@ -192,7 +218,7 @@ call javaapi#interface('RobotPeer', '', [
   \ javaapi#method(0,'dispose(', ')', 'void'),
   \ ])
 
-call javaapi#interface('ScrollPanePeer', 'ContainerPeer', [
+call javaapi#interface('ScrollPanePeer', '', [
   \ javaapi#method(0,'getHScrollbarHeight(', ')', 'int'),
   \ javaapi#method(0,'getVScrollbarWidth(', ')', 'int'),
   \ javaapi#method(0,'setScrollPosition(', 'int, int)', 'void'),
@@ -201,7 +227,7 @@ call javaapi#interface('ScrollPanePeer', 'ContainerPeer', [
   \ javaapi#method(0,'setValue(', 'Adjustable, int)', 'void'),
   \ ])
 
-call javaapi#interface('ScrollbarPeer', 'ComponentPeer', [
+call javaapi#interface('ScrollbarPeer', '', [
   \ javaapi#method(0,'setValues(', 'int, int, int, int)', 'void'),
   \ javaapi#method(0,'setLineIncrement(', 'int)', 'void'),
   \ javaapi#method(0,'setPageIncrement(', 'int)', 'void'),
@@ -211,14 +237,14 @@ call javaapi#interface('SystemTrayPeer', '', [
   \ javaapi#method(0,'getTrayIconSize(', ')', 'Dimension'),
   \ ])
 
-call javaapi#interface('TextAreaPeer', 'TextComponentPeer', [
+call javaapi#interface('TextAreaPeer', '', [
   \ javaapi#method(0,'insert(', 'String, int)', 'void'),
   \ javaapi#method(0,'replaceRange(', 'String, int, int)', 'void'),
   \ javaapi#method(0,'getPreferredSize(', 'int, int)', 'Dimension'),
   \ javaapi#method(0,'getMinimumSize(', 'int, int)', 'Dimension'),
   \ ])
 
-call javaapi#interface('TextComponentPeer', 'ComponentPeer', [
+call javaapi#interface('TextComponentPeer', '', [
   \ javaapi#method(0,'setEditable(', 'boolean)', 'void'),
   \ javaapi#method(0,'getText(', ')', 'String'),
   \ javaapi#method(0,'setText(', 'String)', 'void'),
@@ -230,7 +256,7 @@ call javaapi#interface('TextComponentPeer', 'ComponentPeer', [
   \ javaapi#method(0,'getInputMethodRequests(', ')', 'InputMethodRequests'),
   \ ])
 
-call javaapi#interface('TextFieldPeer', 'TextComponentPeer', [
+call javaapi#interface('TextFieldPeer', '', [
   \ javaapi#method(0,'setEchoChar(', 'char)', 'void'),
   \ javaapi#method(0,'getPreferredSize(', 'int)', 'Dimension'),
   \ javaapi#method(0,'getMinimumSize(', 'int)', 'Dimension'),
@@ -242,19 +268,5 @@ call javaapi#interface('TrayIconPeer', '', [
   \ javaapi#method(0,'updateImage(', ')', 'void'),
   \ javaapi#method(0,'displayMessage(', 'String, String, String)', 'void'),
   \ javaapi#method(0,'showPopupMenu(', 'int, int)', 'void'),
-  \ ])
-
-call javaapi#interface('WindowPeer', 'ContainerPeer', [
-  \ javaapi#method(0,'toFront(', ')', 'void'),
-  \ javaapi#method(0,'toBack(', ')', 'void'),
-  \ javaapi#method(0,'setAlwaysOnTop(', 'boolean)', 'void'),
-  \ javaapi#method(0,'updateFocusableWindowState(', ')', 'void'),
-  \ javaapi#method(0,'setModalBlocked(', 'Dialog, boolean)', 'void'),
-  \ javaapi#method(0,'updateMinimumSize(', ')', 'void'),
-  \ javaapi#method(0,'updateIconImages(', ')', 'void'),
-  \ javaapi#method(0,'setOpacity(', 'float)', 'void'),
-  \ javaapi#method(0,'setOpaque(', 'boolean)', 'void'),
-  \ javaapi#method(0,'updateWindow(', ')', 'void'),
-  \ javaapi#method(0,'repositionSecurityWarning(', ')', 'void'),
   \ ])
 

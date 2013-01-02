@@ -4,27 +4,27 @@ call javaapi#interface('Array', '', [
   \ javaapi#method(0,'getBaseTypeName(', ') throws SQLException', 'String'),
   \ javaapi#method(0,'getBaseType(', ') throws SQLException', 'int'),
   \ javaapi#method(0,'getArray(', ') throws SQLException', 'Object'),
-  \ javaapi#method(0,'getArray(', 'String, Class<?>>) throws SQLException', 'Object'),
+  \ javaapi#method(0,'getArray(', 'Map<String, Class<?>>) throws SQLException', 'Object'),
   \ javaapi#method(0,'getArray(', 'long, int) throws SQLException', 'Object'),
-  \ javaapi#method(0,'getArray(', 'long, int, String, Class<?>>) throws SQLException', 'Object'),
+  \ javaapi#method(0,'getArray(', 'long, int, Map<String, Class<?>>) throws SQLException', 'Object'),
   \ javaapi#method(0,'getResultSet(', ') throws SQLException', 'ResultSet'),
-  \ javaapi#method(0,'getResultSet(', 'String, Class<?>>) throws SQLException', 'ResultSet'),
+  \ javaapi#method(0,'getResultSet(', 'Map<String, Class<?>>) throws SQLException', 'ResultSet'),
   \ javaapi#method(0,'getResultSet(', 'long, int) throws SQLException', 'ResultSet'),
-  \ javaapi#method(0,'getResultSet(', 'long, int, String, Class<?>>) throws SQLException', 'ResultSet'),
+  \ javaapi#method(0,'getResultSet(', 'long, int, Map<String, Class<?>>) throws SQLException', 'ResultSet'),
   \ javaapi#method(0,'free(', ') throws SQLException', 'void'),
   \ ])
 
-call javaapi#class('BatchUpdateException', 'SQLException', [
-  \ javaapi#method(0,'BatchUpdateException(', 'String, String, int, int[])', ''),
-  \ javaapi#method(0,'BatchUpdateException(', 'String, String, int[])', ''),
-  \ javaapi#method(0,'BatchUpdateException(', 'String, int[])', ''),
-  \ javaapi#method(0,'BatchUpdateException(', 'int[])', ''),
-  \ javaapi#method(0,'BatchUpdateException(', ')', ''),
-  \ javaapi#method(0,'BatchUpdateException(', 'Throwable)', ''),
-  \ javaapi#method(0,'BatchUpdateException(', 'int[], Throwable)', ''),
-  \ javaapi#method(0,'BatchUpdateException(', 'String, int[], Throwable)', ''),
-  \ javaapi#method(0,'BatchUpdateException(', 'String, String, int[], Throwable)', ''),
-  \ javaapi#method(0,'BatchUpdateException(', 'String, String, int, int[], Throwable)', ''),
+call javaapi#class('BatchUpdateException', '', [
+  \ javaapi#method(0,'BatchUpdateException(', 'String, String, int, int[])', 'public'),
+  \ javaapi#method(0,'BatchUpdateException(', 'String, String, int[])', 'public'),
+  \ javaapi#method(0,'BatchUpdateException(', 'String, int[])', 'public'),
+  \ javaapi#method(0,'BatchUpdateException(', 'int[])', 'public'),
+  \ javaapi#method(0,'BatchUpdateException(', ')', 'public'),
+  \ javaapi#method(0,'BatchUpdateException(', 'Throwable)', 'public'),
+  \ javaapi#method(0,'BatchUpdateException(', 'int[], Throwable)', 'public'),
+  \ javaapi#method(0,'BatchUpdateException(', 'String, int[], Throwable)', 'public'),
+  \ javaapi#method(0,'BatchUpdateException(', 'String, String, int[], Throwable)', 'public'),
+  \ javaapi#method(0,'BatchUpdateException(', 'String, String, int, int[], Throwable)', 'public'),
   \ javaapi#method(0,'getUpdateCounts(', ')', 'int[]'),
   \ ])
 
@@ -42,7 +42,7 @@ call javaapi#interface('Blob', '', [
   \ javaapi#method(0,'getBinaryStream(', 'long, long) throws SQLException', 'InputStream'),
   \ ])
 
-call javaapi#interface('CallableStatement', 'PreparedStatement', [
+call javaapi#interface('CallableStatement', '', [
   \ javaapi#method(0,'registerOutParameter(', 'int, int) throws SQLException', 'void'),
   \ javaapi#method(0,'registerOutParameter(', 'int, int, int) throws SQLException', 'void'),
   \ javaapi#method(0,'wasNull(', ') throws SQLException', 'boolean'),
@@ -61,7 +61,7 @@ call javaapi#interface('CallableStatement', 'PreparedStatement', [
   \ javaapi#method(0,'getTimestamp(', 'int) throws SQLException', 'Timestamp'),
   \ javaapi#method(0,'getObject(', 'int) throws SQLException', 'Object'),
   \ javaapi#method(0,'getBigDecimal(', 'int) throws SQLException', 'BigDecimal'),
-  \ javaapi#method(0,'getObject(', 'int, String, Class<?>>) throws SQLException', 'Object'),
+  \ javaapi#method(0,'getObject(', 'int, Map<String, Class<?>>) throws SQLException', 'Object'),
   \ javaapi#method(0,'getRef(', 'int) throws SQLException', 'Ref'),
   \ javaapi#method(0,'getBlob(', 'int) throws SQLException', 'Blob'),
   \ javaapi#method(0,'getClob(', 'int) throws SQLException', 'Clob'),
@@ -113,7 +113,7 @@ call javaapi#interface('CallableStatement', 'PreparedStatement', [
   \ javaapi#method(0,'getTimestamp(', 'String) throws SQLException', 'Timestamp'),
   \ javaapi#method(0,'getObject(', 'String) throws SQLException', 'Object'),
   \ javaapi#method(0,'getBigDecimal(', 'String) throws SQLException', 'BigDecimal'),
-  \ javaapi#method(0,'getObject(', 'String, String, Class<?>>) throws SQLException', 'Object'),
+  \ javaapi#method(0,'getObject(', 'String, Map<String, Class<?>>) throws SQLException', 'Object'),
   \ javaapi#method(0,'getRef(', 'String) throws SQLException', 'Ref'),
   \ javaapi#method(0,'getBlob(', 'String) throws SQLException', 'Blob'),
   \ javaapi#method(0,'getClob(', 'String) throws SQLException', 'Clob'),
@@ -154,15 +154,15 @@ call javaapi#interface('CallableStatement', 'PreparedStatement', [
   \ javaapi#method(0,'setClob(', 'String, Reader) throws SQLException', 'void'),
   \ javaapi#method(0,'setBlob(', 'String, InputStream) throws SQLException', 'void'),
   \ javaapi#method(0,'setNClob(', 'String, Reader) throws SQLException', 'void'),
-  \ javaapi#method(0,'getObject(', 'int, Class<T>) throws SQLException', '<java/lang/Object>T'),
-  \ javaapi#method(0,'getObject(', 'String, Class<T>) throws SQLException', '<java/lang/Object>T'),
+  \ javaapi#method(0,'getObject(', 'int, Class<T>) throws SQLException', 'T'),
+  \ javaapi#method(0,'getObject(', 'String, Class<T>) throws SQLException', 'T'),
   \ ])
 
-call javaapi#class('ClientInfoStatus', 'ClientInfoStatus>', [
-  \ javaapi#method(1,'REASON_UNKNOWN', '', 'ClientInfoStatus'),
-  \ javaapi#method(1,'REASON_UNKNOWN_PROPERTY', '', 'ClientInfoStatus'),
-  \ javaapi#method(1,'REASON_VALUE_INVALID', '', 'ClientInfoStatus'),
-  \ javaapi#method(1,'REASON_VALUE_TRUNCATED', '', 'ClientInfoStatus'),
+call javaapi#class('ClientInfoStatus', '', [
+  \ javaapi#field(1,'REASON_UNKNOWN', 'ClientInfoStatus'),
+  \ javaapi#field(1,'REASON_UNKNOWN_PROPERTY', 'ClientInfoStatus'),
+  \ javaapi#field(1,'REASON_VALUE_INVALID', 'ClientInfoStatus'),
+  \ javaapi#field(1,'REASON_VALUE_TRUNCATED', 'ClientInfoStatus'),
   \ javaapi#method(1,'values(', ')', 'ClientInfoStatus[]'),
   \ javaapi#method(1,'valueOf(', 'String)', 'ClientInfoStatus'),
   \ ])
@@ -183,12 +183,12 @@ call javaapi#interface('Clob', '', [
   \ javaapi#method(0,'getCharacterStream(', 'long, long) throws SQLException', 'Reader'),
   \ ])
 
-call javaapi#interface('Connection', 'AutoCloseable', [
-  \ javaapi#method(1,'TRANSACTION_NONE', '', 'int'),
-  \ javaapi#method(1,'TRANSACTION_READ_UNCOMMITTED', '', 'int'),
-  \ javaapi#method(1,'TRANSACTION_READ_COMMITTED', '', 'int'),
-  \ javaapi#method(1,'TRANSACTION_REPEATABLE_READ', '', 'int'),
-  \ javaapi#method(1,'TRANSACTION_SERIALIZABLE', '', 'int'),
+call javaapi#interface('Connection', '', [
+  \ javaapi#field(1,'TRANSACTION_NONE', 'int'),
+  \ javaapi#field(1,'TRANSACTION_READ_UNCOMMITTED', 'int'),
+  \ javaapi#field(1,'TRANSACTION_READ_COMMITTED', 'int'),
+  \ javaapi#field(1,'TRANSACTION_REPEATABLE_READ', 'int'),
+  \ javaapi#field(1,'TRANSACTION_SERIALIZABLE', 'int'),
   \ javaapi#method(0,'createStatement(', ') throws SQLException', 'Statement'),
   \ javaapi#method(0,'prepareStatement(', 'String) throws SQLException', 'PreparedStatement'),
   \ javaapi#method(0,'prepareCall(', 'String) throws SQLException', 'CallableStatement'),
@@ -211,8 +211,8 @@ call javaapi#interface('Connection', 'AutoCloseable', [
   \ javaapi#method(0,'createStatement(', 'int, int) throws SQLException', 'Statement'),
   \ javaapi#method(0,'prepareStatement(', 'String, int, int) throws SQLException', 'PreparedStatement'),
   \ javaapi#method(0,'prepareCall(', 'String, int, int) throws SQLException', 'CallableStatement'),
-  \ javaapi#method(0,'getTypeMap(', ') throws SQLException', 'String, Class<?>>'),
-  \ javaapi#method(0,'setTypeMap(', 'String, Class<?>>) throws SQLException', 'void'),
+  \ javaapi#method(0,'getTypeMap(', ') throws SQLException', 'Class<?>>'),
+  \ javaapi#method(0,'setTypeMap(', 'Map<String, Class<?>>) throws SQLException', 'void'),
   \ javaapi#method(0,'setHoldability(', 'int) throws SQLException', 'void'),
   \ javaapi#method(0,'getHoldability(', ') throws SQLException', 'int'),
   \ javaapi#method(0,'setSavepoint(', ') throws SQLException', 'Savepoint'),
@@ -243,9 +243,9 @@ call javaapi#interface('Connection', 'AutoCloseable', [
   \ javaapi#method(0,'getNetworkTimeout(', ') throws SQLException', 'int'),
   \ ])
 
-call javaapi#class('DataTruncation', 'SQLWarning', [
-  \ javaapi#method(0,'DataTruncation(', 'int, boolean, boolean, int, int)', ''),
-  \ javaapi#method(0,'DataTruncation(', 'int, boolean, boolean, int, int, Throwable)', ''),
+call javaapi#class('DataTruncation', '', [
+  \ javaapi#method(0,'DataTruncation(', 'int, boolean, boolean, int, int)', 'public'),
+  \ javaapi#method(0,'DataTruncation(', 'int, boolean, boolean, int, int, Throwable)', 'public'),
   \ javaapi#method(0,'getIndex(', ')', 'int'),
   \ javaapi#method(0,'getParameter(', ')', 'boolean'),
   \ javaapi#method(0,'getRead(', ')', 'boolean'),
@@ -253,68 +253,68 @@ call javaapi#class('DataTruncation', 'SQLWarning', [
   \ javaapi#method(0,'getTransferSize(', ')', 'int'),
   \ ])
 
-call javaapi#interface('DatabaseMetaData', 'Wrapper', [
-  \ javaapi#method(1,'procedureResultUnknown', '', 'int'),
-  \ javaapi#method(1,'procedureNoResult', '', 'int'),
-  \ javaapi#method(1,'procedureReturnsResult', '', 'int'),
-  \ javaapi#method(1,'procedureColumnUnknown', '', 'int'),
-  \ javaapi#method(1,'procedureColumnIn', '', 'int'),
-  \ javaapi#method(1,'procedureColumnInOut', '', 'int'),
-  \ javaapi#method(1,'procedureColumnOut', '', 'int'),
-  \ javaapi#method(1,'procedureColumnReturn', '', 'int'),
-  \ javaapi#method(1,'procedureColumnResult', '', 'int'),
-  \ javaapi#method(1,'procedureNoNulls', '', 'int'),
-  \ javaapi#method(1,'procedureNullable', '', 'int'),
-  \ javaapi#method(1,'procedureNullableUnknown', '', 'int'),
-  \ javaapi#method(1,'columnNoNulls', '', 'int'),
-  \ javaapi#method(1,'columnNullable', '', 'int'),
-  \ javaapi#method(1,'columnNullableUnknown', '', 'int'),
-  \ javaapi#method(1,'bestRowTemporary', '', 'int'),
-  \ javaapi#method(1,'bestRowTransaction', '', 'int'),
-  \ javaapi#method(1,'bestRowSession', '', 'int'),
-  \ javaapi#method(1,'bestRowUnknown', '', 'int'),
-  \ javaapi#method(1,'bestRowNotPseudo', '', 'int'),
-  \ javaapi#method(1,'bestRowPseudo', '', 'int'),
-  \ javaapi#method(1,'versionColumnUnknown', '', 'int'),
-  \ javaapi#method(1,'versionColumnNotPseudo', '', 'int'),
-  \ javaapi#method(1,'versionColumnPseudo', '', 'int'),
-  \ javaapi#method(1,'importedKeyCascade', '', 'int'),
-  \ javaapi#method(1,'importedKeyRestrict', '', 'int'),
-  \ javaapi#method(1,'importedKeySetNull', '', 'int'),
-  \ javaapi#method(1,'importedKeyNoAction', '', 'int'),
-  \ javaapi#method(1,'importedKeySetDefault', '', 'int'),
-  \ javaapi#method(1,'importedKeyInitiallyDeferred', '', 'int'),
-  \ javaapi#method(1,'importedKeyInitiallyImmediate', '', 'int'),
-  \ javaapi#method(1,'importedKeyNotDeferrable', '', 'int'),
-  \ javaapi#method(1,'typeNoNulls', '', 'int'),
-  \ javaapi#method(1,'typeNullable', '', 'int'),
-  \ javaapi#method(1,'typeNullableUnknown', '', 'int'),
-  \ javaapi#method(1,'typePredNone', '', 'int'),
-  \ javaapi#method(1,'typePredChar', '', 'int'),
-  \ javaapi#method(1,'typePredBasic', '', 'int'),
-  \ javaapi#method(1,'typeSearchable', '', 'int'),
-  \ javaapi#method(1,'tableIndexStatistic', '', 'short'),
-  \ javaapi#method(1,'tableIndexClustered', '', 'short'),
-  \ javaapi#method(1,'tableIndexHashed', '', 'short'),
-  \ javaapi#method(1,'tableIndexOther', '', 'short'),
-  \ javaapi#method(1,'attributeNoNulls', '', 'short'),
-  \ javaapi#method(1,'attributeNullable', '', 'short'),
-  \ javaapi#method(1,'attributeNullableUnknown', '', 'short'),
-  \ javaapi#method(1,'sqlStateXOpen', '', 'int'),
-  \ javaapi#method(1,'sqlStateSQL', '', 'int'),
-  \ javaapi#method(1,'sqlStateSQL99', '', 'int'),
-  \ javaapi#method(1,'functionColumnUnknown', '', 'int'),
-  \ javaapi#method(1,'functionColumnIn', '', 'int'),
-  \ javaapi#method(1,'functionColumnInOut', '', 'int'),
-  \ javaapi#method(1,'functionColumnOut', '', 'int'),
-  \ javaapi#method(1,'functionReturn', '', 'int'),
-  \ javaapi#method(1,'functionColumnResult', '', 'int'),
-  \ javaapi#method(1,'functionNoNulls', '', 'int'),
-  \ javaapi#method(1,'functionNullable', '', 'int'),
-  \ javaapi#method(1,'functionNullableUnknown', '', 'int'),
-  \ javaapi#method(1,'functionResultUnknown', '', 'int'),
-  \ javaapi#method(1,'functionNoTable', '', 'int'),
-  \ javaapi#method(1,'functionReturnsTable', '', 'int'),
+call javaapi#interface('DatabaseMetaData', '', [
+  \ javaapi#field(1,'procedureResultUnknown', 'int'),
+  \ javaapi#field(1,'procedureNoResult', 'int'),
+  \ javaapi#field(1,'procedureReturnsResult', 'int'),
+  \ javaapi#field(1,'procedureColumnUnknown', 'int'),
+  \ javaapi#field(1,'procedureColumnIn', 'int'),
+  \ javaapi#field(1,'procedureColumnInOut', 'int'),
+  \ javaapi#field(1,'procedureColumnOut', 'int'),
+  \ javaapi#field(1,'procedureColumnReturn', 'int'),
+  \ javaapi#field(1,'procedureColumnResult', 'int'),
+  \ javaapi#field(1,'procedureNoNulls', 'int'),
+  \ javaapi#field(1,'procedureNullable', 'int'),
+  \ javaapi#field(1,'procedureNullableUnknown', 'int'),
+  \ javaapi#field(1,'columnNoNulls', 'int'),
+  \ javaapi#field(1,'columnNullable', 'int'),
+  \ javaapi#field(1,'columnNullableUnknown', 'int'),
+  \ javaapi#field(1,'bestRowTemporary', 'int'),
+  \ javaapi#field(1,'bestRowTransaction', 'int'),
+  \ javaapi#field(1,'bestRowSession', 'int'),
+  \ javaapi#field(1,'bestRowUnknown', 'int'),
+  \ javaapi#field(1,'bestRowNotPseudo', 'int'),
+  \ javaapi#field(1,'bestRowPseudo', 'int'),
+  \ javaapi#field(1,'versionColumnUnknown', 'int'),
+  \ javaapi#field(1,'versionColumnNotPseudo', 'int'),
+  \ javaapi#field(1,'versionColumnPseudo', 'int'),
+  \ javaapi#field(1,'importedKeyCascade', 'int'),
+  \ javaapi#field(1,'importedKeyRestrict', 'int'),
+  \ javaapi#field(1,'importedKeySetNull', 'int'),
+  \ javaapi#field(1,'importedKeyNoAction', 'int'),
+  \ javaapi#field(1,'importedKeySetDefault', 'int'),
+  \ javaapi#field(1,'importedKeyInitiallyDeferred', 'int'),
+  \ javaapi#field(1,'importedKeyInitiallyImmediate', 'int'),
+  \ javaapi#field(1,'importedKeyNotDeferrable', 'int'),
+  \ javaapi#field(1,'typeNoNulls', 'int'),
+  \ javaapi#field(1,'typeNullable', 'int'),
+  \ javaapi#field(1,'typeNullableUnknown', 'int'),
+  \ javaapi#field(1,'typePredNone', 'int'),
+  \ javaapi#field(1,'typePredChar', 'int'),
+  \ javaapi#field(1,'typePredBasic', 'int'),
+  \ javaapi#field(1,'typeSearchable', 'int'),
+  \ javaapi#field(1,'tableIndexStatistic', 'short'),
+  \ javaapi#field(1,'tableIndexClustered', 'short'),
+  \ javaapi#field(1,'tableIndexHashed', 'short'),
+  \ javaapi#field(1,'tableIndexOther', 'short'),
+  \ javaapi#field(1,'attributeNoNulls', 'short'),
+  \ javaapi#field(1,'attributeNullable', 'short'),
+  \ javaapi#field(1,'attributeNullableUnknown', 'short'),
+  \ javaapi#field(1,'sqlStateXOpen', 'int'),
+  \ javaapi#field(1,'sqlStateSQL', 'int'),
+  \ javaapi#field(1,'sqlStateSQL99', 'int'),
+  \ javaapi#field(1,'functionColumnUnknown', 'int'),
+  \ javaapi#field(1,'functionColumnIn', 'int'),
+  \ javaapi#field(1,'functionColumnInOut', 'int'),
+  \ javaapi#field(1,'functionColumnOut', 'int'),
+  \ javaapi#field(1,'functionReturn', 'int'),
+  \ javaapi#field(1,'functionColumnResult', 'int'),
+  \ javaapi#field(1,'functionNoNulls', 'int'),
+  \ javaapi#field(1,'functionNullable', 'int'),
+  \ javaapi#field(1,'functionNullableUnknown', 'int'),
+  \ javaapi#field(1,'functionResultUnknown', 'int'),
+  \ javaapi#field(1,'functionNoTable', 'int'),
+  \ javaapi#field(1,'functionReturnsTable', 'int'),
   \ javaapi#method(0,'allProceduresAreCallable(', ') throws SQLException', 'boolean'),
   \ javaapi#method(0,'allTablesAreSelectable(', ') throws SQLException', 'boolean'),
   \ javaapi#method(0,'getURL(', ') throws SQLException', 'String'),
@@ -491,9 +491,9 @@ call javaapi#interface('DatabaseMetaData', 'Wrapper', [
   \ javaapi#method(0,'generatedKeyAlwaysReturned(', ') throws SQLException', 'boolean'),
   \ ])
 
-call javaapi#class('Date', 'Date', [
-  \ javaapi#method(0,'Date(', 'int, int, int)', ''),
-  \ javaapi#method(0,'Date(', 'long)', ''),
+call javaapi#class('Date', '', [
+  \ javaapi#method(0,'Date(', 'int, int, int)', 'public'),
+  \ javaapi#method(0,'Date(', 'long)', 'public'),
   \ javaapi#method(0,'setTime(', 'long)', 'void'),
   \ javaapi#method(1,'valueOf(', 'String)', 'Date'),
   \ javaapi#method(0,'toString(', ')', 'String'),
@@ -521,6 +521,16 @@ call javaapi#class('DriverInfo', '', [
   \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
+call javaapi#class('1', 'String>', [
+  \ javaapi#method(0,'run(', ')', 'String'),
+  \ javaapi#method(0,'run(', ')', 'Object'),
+  \ ])
+
+call javaapi#class('2', 'Void>', [
+  \ javaapi#method(0,'run(', ')', 'Void'),
+  \ javaapi#method(0,'run(', ')', 'Object'),
+  \ ])
+
 call javaapi#class('DriverManager', '', [
   \ javaapi#method(1,'getLogWriter(', ')', 'PrintWriter'),
   \ javaapi#method(1,'setLogWriter(', 'PrintWriter)', 'void'),
@@ -539,25 +549,25 @@ call javaapi#class('DriverManager', '', [
   \ ])
 
 call javaapi#class('DriverPropertyInfo', '', [
-  \ javaapi#method(0,'name', '', 'String'),
-  \ javaapi#method(0,'description', '', 'String'),
-  \ javaapi#method(0,'required', '', 'boolean'),
-  \ javaapi#method(0,'value', '', 'String'),
-  \ javaapi#method(0,'choices', '', 'String[]'),
-  \ javaapi#method(0,'DriverPropertyInfo(', 'String, String)', ''),
+  \ javaapi#field(0,'name', 'String'),
+  \ javaapi#field(0,'description', 'String'),
+  \ javaapi#field(0,'required', 'boolean'),
+  \ javaapi#field(0,'value', 'String'),
+  \ javaapi#field(0,'choices', 'String[]'),
+  \ javaapi#method(0,'DriverPropertyInfo(', 'String, String)', 'public'),
   \ ])
 
-call javaapi#interface('NClob', 'Clob', [
+call javaapi#interface('NClob', '', [
   \ ])
 
-call javaapi#interface('ParameterMetaData', 'Wrapper', [
-  \ javaapi#method(1,'parameterNoNulls', '', 'int'),
-  \ javaapi#method(1,'parameterNullable', '', 'int'),
-  \ javaapi#method(1,'parameterNullableUnknown', '', 'int'),
-  \ javaapi#method(1,'parameterModeUnknown', '', 'int'),
-  \ javaapi#method(1,'parameterModeIn', '', 'int'),
-  \ javaapi#method(1,'parameterModeInOut', '', 'int'),
-  \ javaapi#method(1,'parameterModeOut', '', 'int'),
+call javaapi#interface('ParameterMetaData', '', [
+  \ javaapi#field(1,'parameterNoNulls', 'int'),
+  \ javaapi#field(1,'parameterNullable', 'int'),
+  \ javaapi#field(1,'parameterNullableUnknown', 'int'),
+  \ javaapi#field(1,'parameterModeUnknown', 'int'),
+  \ javaapi#field(1,'parameterModeIn', 'int'),
+  \ javaapi#field(1,'parameterModeInOut', 'int'),
+  \ javaapi#field(1,'parameterModeOut', 'int'),
   \ javaapi#method(0,'getParameterCount(', ') throws SQLException', 'int'),
   \ javaapi#method(0,'isNullable(', 'int) throws SQLException', 'int'),
   \ javaapi#method(0,'isSigned(', 'int) throws SQLException', 'boolean'),
@@ -569,7 +579,7 @@ call javaapi#interface('ParameterMetaData', 'Wrapper', [
   \ javaapi#method(0,'getParameterMode(', 'int) throws SQLException', 'int'),
   \ ])
 
-call javaapi#interface('PreparedStatement', 'Statement', [
+call javaapi#interface('PreparedStatement', '', [
   \ javaapi#method(0,'executeQuery(', ') throws SQLException', 'ResultSet'),
   \ javaapi#method(0,'executeUpdate(', ') throws SQLException', 'int'),
   \ javaapi#method(0,'setNull(', 'int, int) throws SQLException', 'void'),
@@ -627,33 +637,33 @@ call javaapi#interface('PreparedStatement', 'Statement', [
   \ javaapi#method(0,'setNClob(', 'int, Reader) throws SQLException', 'void'),
   \ ])
 
-call javaapi#class('PseudoColumnUsage', 'PseudoColumnUsage>', [
-  \ javaapi#method(1,'SELECT_LIST_ONLY', '', 'PseudoColumnUsage'),
-  \ javaapi#method(1,'WHERE_CLAUSE_ONLY', '', 'PseudoColumnUsage'),
-  \ javaapi#method(1,'NO_USAGE_RESTRICTIONS', '', 'PseudoColumnUsage'),
-  \ javaapi#method(1,'USAGE_UNKNOWN', '', 'PseudoColumnUsage'),
+call javaapi#class('PseudoColumnUsage', '', [
+  \ javaapi#field(1,'SELECT_LIST_ONLY', 'PseudoColumnUsage'),
+  \ javaapi#field(1,'WHERE_CLAUSE_ONLY', 'PseudoColumnUsage'),
+  \ javaapi#field(1,'NO_USAGE_RESTRICTIONS', 'PseudoColumnUsage'),
+  \ javaapi#field(1,'USAGE_UNKNOWN', 'PseudoColumnUsage'),
   \ javaapi#method(1,'values(', ')', 'PseudoColumnUsage[]'),
   \ javaapi#method(1,'valueOf(', 'String)', 'PseudoColumnUsage'),
   \ ])
 
 call javaapi#interface('Ref', '', [
   \ javaapi#method(0,'getBaseTypeName(', ') throws SQLException', 'String'),
-  \ javaapi#method(0,'getObject(', 'String, Class<?>>) throws SQLException', 'Object'),
+  \ javaapi#method(0,'getObject(', 'Map<String, Class<?>>) throws SQLException', 'Object'),
   \ javaapi#method(0,'getObject(', ') throws SQLException', 'Object'),
   \ javaapi#method(0,'setObject(', 'Object) throws SQLException', 'void'),
   \ ])
 
-call javaapi#interface('ResultSet', 'AutoCloseable', [
-  \ javaapi#method(1,'FETCH_FORWARD', '', 'int'),
-  \ javaapi#method(1,'FETCH_REVERSE', '', 'int'),
-  \ javaapi#method(1,'FETCH_UNKNOWN', '', 'int'),
-  \ javaapi#method(1,'TYPE_FORWARD_ONLY', '', 'int'),
-  \ javaapi#method(1,'TYPE_SCROLL_INSENSITIVE', '', 'int'),
-  \ javaapi#method(1,'TYPE_SCROLL_SENSITIVE', '', 'int'),
-  \ javaapi#method(1,'CONCUR_READ_ONLY', '', 'int'),
-  \ javaapi#method(1,'CONCUR_UPDATABLE', '', 'int'),
-  \ javaapi#method(1,'HOLD_CURSORS_OVER_COMMIT', '', 'int'),
-  \ javaapi#method(1,'CLOSE_CURSORS_AT_COMMIT', '', 'int'),
+call javaapi#interface('ResultSet', '', [
+  \ javaapi#field(1,'FETCH_FORWARD', 'int'),
+  \ javaapi#field(1,'FETCH_REVERSE', 'int'),
+  \ javaapi#field(1,'FETCH_UNKNOWN', 'int'),
+  \ javaapi#field(1,'TYPE_FORWARD_ONLY', 'int'),
+  \ javaapi#field(1,'TYPE_SCROLL_INSENSITIVE', 'int'),
+  \ javaapi#field(1,'TYPE_SCROLL_SENSITIVE', 'int'),
+  \ javaapi#field(1,'CONCUR_READ_ONLY', 'int'),
+  \ javaapi#field(1,'CONCUR_UPDATABLE', 'int'),
+  \ javaapi#field(1,'HOLD_CURSORS_OVER_COMMIT', 'int'),
+  \ javaapi#field(1,'CLOSE_CURSORS_AT_COMMIT', 'int'),
   \ javaapi#method(0,'next(', ') throws SQLException', 'boolean'),
   \ javaapi#method(0,'close(', ') throws SQLException', 'void'),
   \ javaapi#method(0,'wasNull(', ') throws SQLException', 'boolean'),
@@ -767,12 +777,12 @@ call javaapi#interface('ResultSet', 'AutoCloseable', [
   \ javaapi#method(0,'moveToInsertRow(', ') throws SQLException', 'void'),
   \ javaapi#method(0,'moveToCurrentRow(', ') throws SQLException', 'void'),
   \ javaapi#method(0,'getStatement(', ') throws SQLException', 'Statement'),
-  \ javaapi#method(0,'getObject(', 'int, String, Class<?>>) throws SQLException', 'Object'),
+  \ javaapi#method(0,'getObject(', 'int, Map<String, Class<?>>) throws SQLException', 'Object'),
   \ javaapi#method(0,'getRef(', 'int) throws SQLException', 'Ref'),
   \ javaapi#method(0,'getBlob(', 'int) throws SQLException', 'Blob'),
   \ javaapi#method(0,'getClob(', 'int) throws SQLException', 'Clob'),
   \ javaapi#method(0,'getArray(', 'int) throws SQLException', 'Array'),
-  \ javaapi#method(0,'getObject(', 'String, String, Class<?>>) throws SQLException', 'Object'),
+  \ javaapi#method(0,'getObject(', 'String, Map<String, Class<?>>) throws SQLException', 'Object'),
   \ javaapi#method(0,'getRef(', 'String) throws SQLException', 'Ref'),
   \ javaapi#method(0,'getBlob(', 'String) throws SQLException', 'Blob'),
   \ javaapi#method(0,'getClob(', 'String) throws SQLException', 'Clob'),
@@ -841,14 +851,14 @@ call javaapi#interface('ResultSet', 'AutoCloseable', [
   \ javaapi#method(0,'updateClob(', 'String, Reader) throws SQLException', 'void'),
   \ javaapi#method(0,'updateNClob(', 'int, Reader) throws SQLException', 'void'),
   \ javaapi#method(0,'updateNClob(', 'String, Reader) throws SQLException', 'void'),
-  \ javaapi#method(0,'getObject(', 'int, Class<T>) throws SQLException', '<java/lang/Object>T'),
-  \ javaapi#method(0,'getObject(', 'String, Class<T>) throws SQLException', '<java/lang/Object>T'),
+  \ javaapi#method(0,'getObject(', 'int, Class<T>) throws SQLException', 'T'),
+  \ javaapi#method(0,'getObject(', 'String, Class<T>) throws SQLException', 'T'),
   \ ])
 
-call javaapi#interface('ResultSetMetaData', 'Wrapper', [
-  \ javaapi#method(1,'columnNoNulls', '', 'int'),
-  \ javaapi#method(1,'columnNullable', '', 'int'),
-  \ javaapi#method(1,'columnNullableUnknown', '', 'int'),
+call javaapi#interface('ResultSetMetaData', '', [
+  \ javaapi#field(1,'columnNoNulls', 'int'),
+  \ javaapi#field(1,'columnNullable', 'int'),
+  \ javaapi#field(1,'columnNullableUnknown', 'int'),
   \ javaapi#method(0,'getColumnCount(', ') throws SQLException', 'int'),
   \ javaapi#method(0,'isAutoIncrement(', 'int) throws SQLException', 'boolean'),
   \ javaapi#method(0,'isCaseSensitive(', 'int) throws SQLException', 'boolean'),
@@ -879,27 +889,27 @@ call javaapi#interface('RowId', '', [
   \ javaapi#method(0,'hashCode(', ')', 'int'),
   \ ])
 
-call javaapi#class('RowIdLifetime', 'RowIdLifetime>', [
-  \ javaapi#method(1,'ROWID_UNSUPPORTED', '', 'RowIdLifetime'),
-  \ javaapi#method(1,'ROWID_VALID_OTHER', '', 'RowIdLifetime'),
-  \ javaapi#method(1,'ROWID_VALID_SESSION', '', 'RowIdLifetime'),
-  \ javaapi#method(1,'ROWID_VALID_TRANSACTION', '', 'RowIdLifetime'),
-  \ javaapi#method(1,'ROWID_VALID_FOREVER', '', 'RowIdLifetime'),
+call javaapi#class('RowIdLifetime', '', [
+  \ javaapi#field(1,'ROWID_UNSUPPORTED', 'RowIdLifetime'),
+  \ javaapi#field(1,'ROWID_VALID_OTHER', 'RowIdLifetime'),
+  \ javaapi#field(1,'ROWID_VALID_SESSION', 'RowIdLifetime'),
+  \ javaapi#field(1,'ROWID_VALID_TRANSACTION', 'RowIdLifetime'),
+  \ javaapi#field(1,'ROWID_VALID_FOREVER', 'RowIdLifetime'),
   \ javaapi#method(1,'values(', ')', 'RowIdLifetime[]'),
   \ javaapi#method(1,'valueOf(', 'String)', 'RowIdLifetime'),
   \ ])
 
-call javaapi#class('SQLClientInfoException', 'SQLException', [
-  \ javaapi#method(0,'SQLClientInfoException(', ')', ''),
-  \ javaapi#method(0,'SQLClientInfoException(', 'String, ClientInfoStatus>)', ''),
-  \ javaapi#method(0,'SQLClientInfoException(', 'String, ClientInfoStatus>, Throwable)', ''),
-  \ javaapi#method(0,'SQLClientInfoException(', 'String, String, ClientInfoStatus>)', ''),
-  \ javaapi#method(0,'SQLClientInfoException(', 'String, String, ClientInfoStatus>, Throwable)', ''),
-  \ javaapi#method(0,'SQLClientInfoException(', 'String, String, String, ClientInfoStatus>)', ''),
-  \ javaapi#method(0,'SQLClientInfoException(', 'String, String, String, ClientInfoStatus>, Throwable)', ''),
-  \ javaapi#method(0,'SQLClientInfoException(', 'String, String, int, String, ClientInfoStatus>)', ''),
-  \ javaapi#method(0,'SQLClientInfoException(', 'String, String, int, String, ClientInfoStatus>, Throwable)', ''),
-  \ javaapi#method(0,'getFailedProperties(', ')', 'String, ClientInfoStatus>'),
+call javaapi#class('SQLClientInfoException', '', [
+  \ javaapi#method(0,'SQLClientInfoException(', ')', 'public'),
+  \ javaapi#method(0,'SQLClientInfoException(', 'Map<String, ClientInfoStatus>)', 'public'),
+  \ javaapi#method(0,'SQLClientInfoException(', 'Map<String, ClientInfoStatus>, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLClientInfoException(', 'String, Map<String, ClientInfoStatus>)', 'public'),
+  \ javaapi#method(0,'SQLClientInfoException(', 'String, Map<String, ClientInfoStatus>, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLClientInfoException(', 'String, String, Map<String, ClientInfoStatus>)', 'public'),
+  \ javaapi#method(0,'SQLClientInfoException(', 'String, String, Map<String, ClientInfoStatus>, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLClientInfoException(', 'String, String, int, Map<String, ClientInfoStatus>)', 'public'),
+  \ javaapi#method(0,'SQLClientInfoException(', 'String, String, int, Map<String, ClientInfoStatus>, Throwable)', 'public'),
+  \ javaapi#method(0,'getFailedProperties(', ')', 'ClientInfoStatus>'),
   \ ])
 
 call javaapi#interface('SQLData', '', [
@@ -908,26 +918,33 @@ call javaapi#interface('SQLData', '', [
   \ javaapi#method(0,'writeSQL(', 'SQLOutput) throws SQLException', 'void'),
   \ ])
 
-call javaapi#class('SQLDataException', 'SQLNonTransientException', [
-  \ javaapi#method(0,'SQLDataException(', ')', ''),
-  \ javaapi#method(0,'SQLDataException(', 'String)', ''),
-  \ javaapi#method(0,'SQLDataException(', 'String, String)', ''),
-  \ javaapi#method(0,'SQLDataException(', 'String, String, int)', ''),
-  \ javaapi#method(0,'SQLDataException(', 'Throwable)', ''),
-  \ javaapi#method(0,'SQLDataException(', 'String, Throwable)', ''),
-  \ javaapi#method(0,'SQLDataException(', 'String, String, Throwable)', ''),
-  \ javaapi#method(0,'SQLDataException(', 'String, String, int, Throwable)', ''),
+call javaapi#class('SQLDataException', '', [
+  \ javaapi#method(0,'SQLDataException(', ')', 'public'),
+  \ javaapi#method(0,'SQLDataException(', 'String)', 'public'),
+  \ javaapi#method(0,'SQLDataException(', 'String, String)', 'public'),
+  \ javaapi#method(0,'SQLDataException(', 'String, String, int)', 'public'),
+  \ javaapi#method(0,'SQLDataException(', 'Throwable)', 'public'),
+  \ javaapi#method(0,'SQLDataException(', 'String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLDataException(', 'String, String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLDataException(', 'String, String, int, Throwable)', 'public'),
   \ ])
 
-call javaapi#class('SQLException', 'Exception', [
-  \ javaapi#method(0,'SQLException(', 'String, String, int)', ''),
-  \ javaapi#method(0,'SQLException(', 'String, String)', ''),
-  \ javaapi#method(0,'SQLException(', 'String)', ''),
-  \ javaapi#method(0,'SQLException(', ')', ''),
-  \ javaapi#method(0,'SQLException(', 'Throwable)', ''),
-  \ javaapi#method(0,'SQLException(', 'String, Throwable)', ''),
-  \ javaapi#method(0,'SQLException(', 'String, String, Throwable)', ''),
-  \ javaapi#method(0,'SQLException(', 'String, String, int, Throwable)', ''),
+call javaapi#class('1', 'Throwable>', [
+  \ javaapi#method(0,'hasNext(', ')', 'boolean'),
+  \ javaapi#method(0,'next(', ')', 'Throwable'),
+  \ javaapi#method(0,'remove(', ')', 'void'),
+  \ javaapi#method(0,'next(', ')', 'Object'),
+  \ ])
+
+call javaapi#class('SQLException', '', [
+  \ javaapi#method(0,'SQLException(', 'String, String, int)', 'public'),
+  \ javaapi#method(0,'SQLException(', 'String, String)', 'public'),
+  \ javaapi#method(0,'SQLException(', 'String)', 'public'),
+  \ javaapi#method(0,'SQLException(', ')', 'public'),
+  \ javaapi#method(0,'SQLException(', 'Throwable)', 'public'),
+  \ javaapi#method(0,'SQLException(', 'String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLException(', 'String, String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLException(', 'String, String, int, Throwable)', 'public'),
   \ javaapi#method(0,'getSQLState(', ')', 'String'),
   \ javaapi#method(0,'getErrorCode(', ')', 'int'),
   \ javaapi#method(0,'getNextException(', ')', 'SQLException'),
@@ -935,15 +952,15 @@ call javaapi#class('SQLException', 'Exception', [
   \ javaapi#method(0,'iterator(', ')', 'Throwable>'),
   \ ])
 
-call javaapi#class('SQLFeatureNotSupportedException', 'SQLNonTransientException', [
-  \ javaapi#method(0,'SQLFeatureNotSupportedException(', ')', ''),
-  \ javaapi#method(0,'SQLFeatureNotSupportedException(', 'String)', ''),
-  \ javaapi#method(0,'SQLFeatureNotSupportedException(', 'String, String)', ''),
-  \ javaapi#method(0,'SQLFeatureNotSupportedException(', 'String, String, int)', ''),
-  \ javaapi#method(0,'SQLFeatureNotSupportedException(', 'Throwable)', ''),
-  \ javaapi#method(0,'SQLFeatureNotSupportedException(', 'String, Throwable)', ''),
-  \ javaapi#method(0,'SQLFeatureNotSupportedException(', 'String, String, Throwable)', ''),
-  \ javaapi#method(0,'SQLFeatureNotSupportedException(', 'String, String, int, Throwable)', ''),
+call javaapi#class('SQLFeatureNotSupportedException', '', [
+  \ javaapi#method(0,'SQLFeatureNotSupportedException(', ')', 'public'),
+  \ javaapi#method(0,'SQLFeatureNotSupportedException(', 'String)', 'public'),
+  \ javaapi#method(0,'SQLFeatureNotSupportedException(', 'String, String)', 'public'),
+  \ javaapi#method(0,'SQLFeatureNotSupportedException(', 'String, String, int)', 'public'),
+  \ javaapi#method(0,'SQLFeatureNotSupportedException(', 'Throwable)', 'public'),
+  \ javaapi#method(0,'SQLFeatureNotSupportedException(', 'String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLFeatureNotSupportedException(', 'String, String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLFeatureNotSupportedException(', 'String, String, int, Throwable)', 'public'),
   \ ])
 
 call javaapi#interface('SQLInput', '', [
@@ -976,48 +993,48 @@ call javaapi#interface('SQLInput', '', [
   \ javaapi#method(0,'readRowId(', ') throws SQLException', 'RowId'),
   \ ])
 
-call javaapi#class('SQLIntegrityConstraintViolationException', 'SQLNonTransientException', [
-  \ javaapi#method(0,'SQLIntegrityConstraintViolationException(', ')', ''),
-  \ javaapi#method(0,'SQLIntegrityConstraintViolationException(', 'String)', ''),
-  \ javaapi#method(0,'SQLIntegrityConstraintViolationException(', 'String, String)', ''),
-  \ javaapi#method(0,'SQLIntegrityConstraintViolationException(', 'String, String, int)', ''),
-  \ javaapi#method(0,'SQLIntegrityConstraintViolationException(', 'Throwable)', ''),
-  \ javaapi#method(0,'SQLIntegrityConstraintViolationException(', 'String, Throwable)', ''),
-  \ javaapi#method(0,'SQLIntegrityConstraintViolationException(', 'String, String, Throwable)', ''),
-  \ javaapi#method(0,'SQLIntegrityConstraintViolationException(', 'String, String, int, Throwable)', ''),
+call javaapi#class('SQLIntegrityConstraintViolationException', '', [
+  \ javaapi#method(0,'SQLIntegrityConstraintViolationException(', ')', 'public'),
+  \ javaapi#method(0,'SQLIntegrityConstraintViolationException(', 'String)', 'public'),
+  \ javaapi#method(0,'SQLIntegrityConstraintViolationException(', 'String, String)', 'public'),
+  \ javaapi#method(0,'SQLIntegrityConstraintViolationException(', 'String, String, int)', 'public'),
+  \ javaapi#method(0,'SQLIntegrityConstraintViolationException(', 'Throwable)', 'public'),
+  \ javaapi#method(0,'SQLIntegrityConstraintViolationException(', 'String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLIntegrityConstraintViolationException(', 'String, String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLIntegrityConstraintViolationException(', 'String, String, int, Throwable)', 'public'),
   \ ])
 
-call javaapi#class('SQLInvalidAuthorizationSpecException', 'SQLNonTransientException', [
-  \ javaapi#method(0,'SQLInvalidAuthorizationSpecException(', ')', ''),
-  \ javaapi#method(0,'SQLInvalidAuthorizationSpecException(', 'String)', ''),
-  \ javaapi#method(0,'SQLInvalidAuthorizationSpecException(', 'String, String)', ''),
-  \ javaapi#method(0,'SQLInvalidAuthorizationSpecException(', 'String, String, int)', ''),
-  \ javaapi#method(0,'SQLInvalidAuthorizationSpecException(', 'Throwable)', ''),
-  \ javaapi#method(0,'SQLInvalidAuthorizationSpecException(', 'String, Throwable)', ''),
-  \ javaapi#method(0,'SQLInvalidAuthorizationSpecException(', 'String, String, Throwable)', ''),
-  \ javaapi#method(0,'SQLInvalidAuthorizationSpecException(', 'String, String, int, Throwable)', ''),
+call javaapi#class('SQLInvalidAuthorizationSpecException', '', [
+  \ javaapi#method(0,'SQLInvalidAuthorizationSpecException(', ')', 'public'),
+  \ javaapi#method(0,'SQLInvalidAuthorizationSpecException(', 'String)', 'public'),
+  \ javaapi#method(0,'SQLInvalidAuthorizationSpecException(', 'String, String)', 'public'),
+  \ javaapi#method(0,'SQLInvalidAuthorizationSpecException(', 'String, String, int)', 'public'),
+  \ javaapi#method(0,'SQLInvalidAuthorizationSpecException(', 'Throwable)', 'public'),
+  \ javaapi#method(0,'SQLInvalidAuthorizationSpecException(', 'String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLInvalidAuthorizationSpecException(', 'String, String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLInvalidAuthorizationSpecException(', 'String, String, int, Throwable)', 'public'),
   \ ])
 
-call javaapi#class('SQLNonTransientConnectionException', 'SQLNonTransientException', [
-  \ javaapi#method(0,'SQLNonTransientConnectionException(', ')', ''),
-  \ javaapi#method(0,'SQLNonTransientConnectionException(', 'String)', ''),
-  \ javaapi#method(0,'SQLNonTransientConnectionException(', 'String, String)', ''),
-  \ javaapi#method(0,'SQLNonTransientConnectionException(', 'String, String, int)', ''),
-  \ javaapi#method(0,'SQLNonTransientConnectionException(', 'Throwable)', ''),
-  \ javaapi#method(0,'SQLNonTransientConnectionException(', 'String, Throwable)', ''),
-  \ javaapi#method(0,'SQLNonTransientConnectionException(', 'String, String, Throwable)', ''),
-  \ javaapi#method(0,'SQLNonTransientConnectionException(', 'String, String, int, Throwable)', ''),
+call javaapi#class('SQLNonTransientConnectionException', '', [
+  \ javaapi#method(0,'SQLNonTransientConnectionException(', ')', 'public'),
+  \ javaapi#method(0,'SQLNonTransientConnectionException(', 'String)', 'public'),
+  \ javaapi#method(0,'SQLNonTransientConnectionException(', 'String, String)', 'public'),
+  \ javaapi#method(0,'SQLNonTransientConnectionException(', 'String, String, int)', 'public'),
+  \ javaapi#method(0,'SQLNonTransientConnectionException(', 'Throwable)', 'public'),
+  \ javaapi#method(0,'SQLNonTransientConnectionException(', 'String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLNonTransientConnectionException(', 'String, String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLNonTransientConnectionException(', 'String, String, int, Throwable)', 'public'),
   \ ])
 
-call javaapi#class('SQLNonTransientException', 'SQLException', [
-  \ javaapi#method(0,'SQLNonTransientException(', ')', ''),
-  \ javaapi#method(0,'SQLNonTransientException(', 'String)', ''),
-  \ javaapi#method(0,'SQLNonTransientException(', 'String, String)', ''),
-  \ javaapi#method(0,'SQLNonTransientException(', 'String, String, int)', ''),
-  \ javaapi#method(0,'SQLNonTransientException(', 'Throwable)', ''),
-  \ javaapi#method(0,'SQLNonTransientException(', 'String, Throwable)', ''),
-  \ javaapi#method(0,'SQLNonTransientException(', 'String, String, Throwable)', ''),
-  \ javaapi#method(0,'SQLNonTransientException(', 'String, String, int, Throwable)', ''),
+call javaapi#class('SQLNonTransientException', '', [
+  \ javaapi#method(0,'SQLNonTransientException(', ')', 'public'),
+  \ javaapi#method(0,'SQLNonTransientException(', 'String)', 'public'),
+  \ javaapi#method(0,'SQLNonTransientException(', 'String, String)', 'public'),
+  \ javaapi#method(0,'SQLNonTransientException(', 'String, String, int)', 'public'),
+  \ javaapi#method(0,'SQLNonTransientException(', 'Throwable)', 'public'),
+  \ javaapi#method(0,'SQLNonTransientException(', 'String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLNonTransientException(', 'String, String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLNonTransientException(', 'String, String, int, Throwable)', 'public'),
   \ ])
 
 call javaapi#interface('SQLOutput', '', [
@@ -1050,86 +1067,86 @@ call javaapi#interface('SQLOutput', '', [
   \ javaapi#method(0,'writeSQLXML(', 'SQLXML) throws SQLException', 'void'),
   \ ])
 
-call javaapi#class('SQLPermission', 'BasicPermission', [
-  \ javaapi#method(0,'SQLPermission(', 'String)', ''),
-  \ javaapi#method(0,'SQLPermission(', 'String, String)', ''),
+call javaapi#class('SQLPermission', '', [
+  \ javaapi#method(0,'SQLPermission(', 'String)', 'public'),
+  \ javaapi#method(0,'SQLPermission(', 'String, String)', 'public'),
   \ ])
 
-call javaapi#class('SQLRecoverableException', 'SQLException', [
-  \ javaapi#method(0,'SQLRecoverableException(', ')', ''),
-  \ javaapi#method(0,'SQLRecoverableException(', 'String)', ''),
-  \ javaapi#method(0,'SQLRecoverableException(', 'String, String)', ''),
-  \ javaapi#method(0,'SQLRecoverableException(', 'String, String, int)', ''),
-  \ javaapi#method(0,'SQLRecoverableException(', 'Throwable)', ''),
-  \ javaapi#method(0,'SQLRecoverableException(', 'String, Throwable)', ''),
-  \ javaapi#method(0,'SQLRecoverableException(', 'String, String, Throwable)', ''),
-  \ javaapi#method(0,'SQLRecoverableException(', 'String, String, int, Throwable)', ''),
+call javaapi#class('SQLRecoverableException', '', [
+  \ javaapi#method(0,'SQLRecoverableException(', ')', 'public'),
+  \ javaapi#method(0,'SQLRecoverableException(', 'String)', 'public'),
+  \ javaapi#method(0,'SQLRecoverableException(', 'String, String)', 'public'),
+  \ javaapi#method(0,'SQLRecoverableException(', 'String, String, int)', 'public'),
+  \ javaapi#method(0,'SQLRecoverableException(', 'Throwable)', 'public'),
+  \ javaapi#method(0,'SQLRecoverableException(', 'String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLRecoverableException(', 'String, String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLRecoverableException(', 'String, String, int, Throwable)', 'public'),
   \ ])
 
-call javaapi#class('SQLSyntaxErrorException', 'SQLNonTransientException', [
-  \ javaapi#method(0,'SQLSyntaxErrorException(', ')', ''),
-  \ javaapi#method(0,'SQLSyntaxErrorException(', 'String)', ''),
-  \ javaapi#method(0,'SQLSyntaxErrorException(', 'String, String)', ''),
-  \ javaapi#method(0,'SQLSyntaxErrorException(', 'String, String, int)', ''),
-  \ javaapi#method(0,'SQLSyntaxErrorException(', 'Throwable)', ''),
-  \ javaapi#method(0,'SQLSyntaxErrorException(', 'String, Throwable)', ''),
-  \ javaapi#method(0,'SQLSyntaxErrorException(', 'String, String, Throwable)', ''),
-  \ javaapi#method(0,'SQLSyntaxErrorException(', 'String, String, int, Throwable)', ''),
+call javaapi#class('SQLSyntaxErrorException', '', [
+  \ javaapi#method(0,'SQLSyntaxErrorException(', ')', 'public'),
+  \ javaapi#method(0,'SQLSyntaxErrorException(', 'String)', 'public'),
+  \ javaapi#method(0,'SQLSyntaxErrorException(', 'String, String)', 'public'),
+  \ javaapi#method(0,'SQLSyntaxErrorException(', 'String, String, int)', 'public'),
+  \ javaapi#method(0,'SQLSyntaxErrorException(', 'Throwable)', 'public'),
+  \ javaapi#method(0,'SQLSyntaxErrorException(', 'String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLSyntaxErrorException(', 'String, String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLSyntaxErrorException(', 'String, String, int, Throwable)', 'public'),
   \ ])
 
-call javaapi#class('SQLTimeoutException', 'SQLTransientException', [
-  \ javaapi#method(0,'SQLTimeoutException(', ')', ''),
-  \ javaapi#method(0,'SQLTimeoutException(', 'String)', ''),
-  \ javaapi#method(0,'SQLTimeoutException(', 'String, String)', ''),
-  \ javaapi#method(0,'SQLTimeoutException(', 'String, String, int)', ''),
-  \ javaapi#method(0,'SQLTimeoutException(', 'Throwable)', ''),
-  \ javaapi#method(0,'SQLTimeoutException(', 'String, Throwable)', ''),
-  \ javaapi#method(0,'SQLTimeoutException(', 'String, String, Throwable)', ''),
-  \ javaapi#method(0,'SQLTimeoutException(', 'String, String, int, Throwable)', ''),
+call javaapi#class('SQLTimeoutException', '', [
+  \ javaapi#method(0,'SQLTimeoutException(', ')', 'public'),
+  \ javaapi#method(0,'SQLTimeoutException(', 'String)', 'public'),
+  \ javaapi#method(0,'SQLTimeoutException(', 'String, String)', 'public'),
+  \ javaapi#method(0,'SQLTimeoutException(', 'String, String, int)', 'public'),
+  \ javaapi#method(0,'SQLTimeoutException(', 'Throwable)', 'public'),
+  \ javaapi#method(0,'SQLTimeoutException(', 'String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLTimeoutException(', 'String, String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLTimeoutException(', 'String, String, int, Throwable)', 'public'),
   \ ])
 
-call javaapi#class('SQLTransactionRollbackException', 'SQLTransientException', [
-  \ javaapi#method(0,'SQLTransactionRollbackException(', ')', ''),
-  \ javaapi#method(0,'SQLTransactionRollbackException(', 'String)', ''),
-  \ javaapi#method(0,'SQLTransactionRollbackException(', 'String, String)', ''),
-  \ javaapi#method(0,'SQLTransactionRollbackException(', 'String, String, int)', ''),
-  \ javaapi#method(0,'SQLTransactionRollbackException(', 'Throwable)', ''),
-  \ javaapi#method(0,'SQLTransactionRollbackException(', 'String, Throwable)', ''),
-  \ javaapi#method(0,'SQLTransactionRollbackException(', 'String, String, Throwable)', ''),
-  \ javaapi#method(0,'SQLTransactionRollbackException(', 'String, String, int, Throwable)', ''),
+call javaapi#class('SQLTransactionRollbackException', '', [
+  \ javaapi#method(0,'SQLTransactionRollbackException(', ')', 'public'),
+  \ javaapi#method(0,'SQLTransactionRollbackException(', 'String)', 'public'),
+  \ javaapi#method(0,'SQLTransactionRollbackException(', 'String, String)', 'public'),
+  \ javaapi#method(0,'SQLTransactionRollbackException(', 'String, String, int)', 'public'),
+  \ javaapi#method(0,'SQLTransactionRollbackException(', 'Throwable)', 'public'),
+  \ javaapi#method(0,'SQLTransactionRollbackException(', 'String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLTransactionRollbackException(', 'String, String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLTransactionRollbackException(', 'String, String, int, Throwable)', 'public'),
   \ ])
 
-call javaapi#class('SQLTransientConnectionException', 'SQLTransientException', [
-  \ javaapi#method(0,'SQLTransientConnectionException(', ')', ''),
-  \ javaapi#method(0,'SQLTransientConnectionException(', 'String)', ''),
-  \ javaapi#method(0,'SQLTransientConnectionException(', 'String, String)', ''),
-  \ javaapi#method(0,'SQLTransientConnectionException(', 'String, String, int)', ''),
-  \ javaapi#method(0,'SQLTransientConnectionException(', 'Throwable)', ''),
-  \ javaapi#method(0,'SQLTransientConnectionException(', 'String, Throwable)', ''),
-  \ javaapi#method(0,'SQLTransientConnectionException(', 'String, String, Throwable)', ''),
-  \ javaapi#method(0,'SQLTransientConnectionException(', 'String, String, int, Throwable)', ''),
+call javaapi#class('SQLTransientConnectionException', '', [
+  \ javaapi#method(0,'SQLTransientConnectionException(', ')', 'public'),
+  \ javaapi#method(0,'SQLTransientConnectionException(', 'String)', 'public'),
+  \ javaapi#method(0,'SQLTransientConnectionException(', 'String, String)', 'public'),
+  \ javaapi#method(0,'SQLTransientConnectionException(', 'String, String, int)', 'public'),
+  \ javaapi#method(0,'SQLTransientConnectionException(', 'Throwable)', 'public'),
+  \ javaapi#method(0,'SQLTransientConnectionException(', 'String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLTransientConnectionException(', 'String, String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLTransientConnectionException(', 'String, String, int, Throwable)', 'public'),
   \ ])
 
-call javaapi#class('SQLTransientException', 'SQLException', [
-  \ javaapi#method(0,'SQLTransientException(', ')', ''),
-  \ javaapi#method(0,'SQLTransientException(', 'String)', ''),
-  \ javaapi#method(0,'SQLTransientException(', 'String, String)', ''),
-  \ javaapi#method(0,'SQLTransientException(', 'String, String, int)', ''),
-  \ javaapi#method(0,'SQLTransientException(', 'Throwable)', ''),
-  \ javaapi#method(0,'SQLTransientException(', 'String, Throwable)', ''),
-  \ javaapi#method(0,'SQLTransientException(', 'String, String, Throwable)', ''),
-  \ javaapi#method(0,'SQLTransientException(', 'String, String, int, Throwable)', ''),
+call javaapi#class('SQLTransientException', '', [
+  \ javaapi#method(0,'SQLTransientException(', ')', 'public'),
+  \ javaapi#method(0,'SQLTransientException(', 'String)', 'public'),
+  \ javaapi#method(0,'SQLTransientException(', 'String, String)', 'public'),
+  \ javaapi#method(0,'SQLTransientException(', 'String, String, int)', 'public'),
+  \ javaapi#method(0,'SQLTransientException(', 'Throwable)', 'public'),
+  \ javaapi#method(0,'SQLTransientException(', 'String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLTransientException(', 'String, String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLTransientException(', 'String, String, int, Throwable)', 'public'),
   \ ])
 
-call javaapi#class('SQLWarning', 'SQLException', [
-  \ javaapi#method(0,'SQLWarning(', 'String, String, int)', ''),
-  \ javaapi#method(0,'SQLWarning(', 'String, String)', ''),
-  \ javaapi#method(0,'SQLWarning(', 'String)', ''),
-  \ javaapi#method(0,'SQLWarning(', ')', ''),
-  \ javaapi#method(0,'SQLWarning(', 'Throwable)', ''),
-  \ javaapi#method(0,'SQLWarning(', 'String, Throwable)', ''),
-  \ javaapi#method(0,'SQLWarning(', 'String, String, Throwable)', ''),
-  \ javaapi#method(0,'SQLWarning(', 'String, String, int, Throwable)', ''),
+call javaapi#class('SQLWarning', '', [
+  \ javaapi#method(0,'SQLWarning(', 'String, String, int)', 'public'),
+  \ javaapi#method(0,'SQLWarning(', 'String, String)', 'public'),
+  \ javaapi#method(0,'SQLWarning(', 'String)', 'public'),
+  \ javaapi#method(0,'SQLWarning(', ')', 'public'),
+  \ javaapi#method(0,'SQLWarning(', 'Throwable)', 'public'),
+  \ javaapi#method(0,'SQLWarning(', 'String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLWarning(', 'String, String, Throwable)', 'public'),
+  \ javaapi#method(0,'SQLWarning(', 'String, String, int, Throwable)', 'public'),
   \ javaapi#method(0,'getNextWarning(', ')', 'SQLWarning'),
   \ javaapi#method(0,'setNextWarning(', 'SQLWarning)', 'void'),
   \ ])
@@ -1142,8 +1159,8 @@ call javaapi#interface('SQLXML', '', [
   \ javaapi#method(0,'setCharacterStream(', ') throws SQLException', 'Writer'),
   \ javaapi#method(0,'getString(', ') throws SQLException', 'String'),
   \ javaapi#method(0,'setString(', 'String) throws SQLException', 'void'),
-  \ javaapi#method(0,'getSource(', 'Class<T>) throws SQLException', '<javax/xml/transform/Source>T'),
-  \ javaapi#method(0,'setResult(', 'Class<T>) throws SQLException', '<javax/xml/transform/Result>T'),
+  \ javaapi#method(0,'getSource(', 'Class<T>) throws SQLException', 'T'),
+  \ javaapi#method(0,'setResult(', 'Class<T>) throws SQLException', 'T'),
   \ ])
 
 call javaapi#interface('Savepoint', '', [
@@ -1151,14 +1168,14 @@ call javaapi#interface('Savepoint', '', [
   \ javaapi#method(0,'getSavepointName(', ') throws SQLException', 'String'),
   \ ])
 
-call javaapi#interface('Statement', 'AutoCloseable', [
-  \ javaapi#method(1,'CLOSE_CURRENT_RESULT', '', 'int'),
-  \ javaapi#method(1,'KEEP_CURRENT_RESULT', '', 'int'),
-  \ javaapi#method(1,'CLOSE_ALL_RESULTS', '', 'int'),
-  \ javaapi#method(1,'SUCCESS_NO_INFO', '', 'int'),
-  \ javaapi#method(1,'EXECUTE_FAILED', '', 'int'),
-  \ javaapi#method(1,'RETURN_GENERATED_KEYS', '', 'int'),
-  \ javaapi#method(1,'NO_GENERATED_KEYS', '', 'int'),
+call javaapi#interface('Statement', '', [
+  \ javaapi#field(1,'CLOSE_CURRENT_RESULT', 'int'),
+  \ javaapi#field(1,'KEEP_CURRENT_RESULT', 'int'),
+  \ javaapi#field(1,'CLOSE_ALL_RESULTS', 'int'),
+  \ javaapi#field(1,'SUCCESS_NO_INFO', 'int'),
+  \ javaapi#field(1,'EXECUTE_FAILED', 'int'),
+  \ javaapi#field(1,'RETURN_GENERATED_KEYS', 'int'),
+  \ javaapi#field(1,'NO_GENERATED_KEYS', 'int'),
   \ javaapi#method(0,'executeQuery(', 'String) throws SQLException', 'ResultSet'),
   \ javaapi#method(0,'executeUpdate(', 'String) throws SQLException', 'int'),
   \ javaapi#method(0,'close(', ') throws SQLException', 'void'),
@@ -1206,12 +1223,12 @@ call javaapi#interface('Statement', 'AutoCloseable', [
 call javaapi#interface('Struct', '', [
   \ javaapi#method(0,'getSQLTypeName(', ') throws SQLException', 'String'),
   \ javaapi#method(0,'getAttributes(', ') throws SQLException', 'Object[]'),
-  \ javaapi#method(0,'getAttributes(', 'String, Class<?>>) throws SQLException', 'Object[]'),
+  \ javaapi#method(0,'getAttributes(', 'Map<String, Class<?>>) throws SQLException', 'Object[]'),
   \ ])
 
-call javaapi#class('Time', 'Date', [
-  \ javaapi#method(0,'Time(', 'int, int, int)', ''),
-  \ javaapi#method(0,'Time(', 'long)', ''),
+call javaapi#class('Time', '', [
+  \ javaapi#method(0,'Time(', 'int, int, int)', 'public'),
+  \ javaapi#method(0,'Time(', 'long)', 'public'),
   \ javaapi#method(0,'setTime(', 'long)', 'void'),
   \ javaapi#method(1,'valueOf(', 'String)', 'Time'),
   \ javaapi#method(0,'toString(', ')', 'String'),
@@ -1224,9 +1241,9 @@ call javaapi#class('Time', 'Date', [
   \ javaapi#method(0,'setDate(', 'int)', 'void'),
   \ ])
 
-call javaapi#class('Timestamp', 'Date', [
-  \ javaapi#method(0,'Timestamp(', 'int, int, int, int, int, int, int)', ''),
-  \ javaapi#method(0,'Timestamp(', 'long)', ''),
+call javaapi#class('Timestamp', '', [
+  \ javaapi#method(0,'Timestamp(', 'int, int, int, int, int, int, int)', 'public'),
+  \ javaapi#method(0,'Timestamp(', 'long)', 'public'),
   \ javaapi#method(0,'setTime(', 'long)', 'void'),
   \ javaapi#method(0,'getTime(', ')', 'long'),
   \ javaapi#method(1,'valueOf(', 'String)', 'Timestamp'),
@@ -1244,46 +1261,46 @@ call javaapi#class('Timestamp', 'Date', [
   \ ])
 
 call javaapi#class('Types', '', [
-  \ javaapi#method(1,'BIT', '', 'int'),
-  \ javaapi#method(1,'TINYINT', '', 'int'),
-  \ javaapi#method(1,'SMALLINT', '', 'int'),
-  \ javaapi#method(1,'INTEGER', '', 'int'),
-  \ javaapi#method(1,'BIGINT', '', 'int'),
-  \ javaapi#method(1,'FLOAT', '', 'int'),
-  \ javaapi#method(1,'REAL', '', 'int'),
-  \ javaapi#method(1,'DOUBLE', '', 'int'),
-  \ javaapi#method(1,'NUMERIC', '', 'int'),
-  \ javaapi#method(1,'DECIMAL', '', 'int'),
-  \ javaapi#method(1,'CHAR', '', 'int'),
-  \ javaapi#method(1,'VARCHAR', '', 'int'),
-  \ javaapi#method(1,'LONGVARCHAR', '', 'int'),
-  \ javaapi#method(1,'DATE', '', 'int'),
-  \ javaapi#method(1,'TIME', '', 'int'),
-  \ javaapi#method(1,'TIMESTAMP', '', 'int'),
-  \ javaapi#method(1,'BINARY', '', 'int'),
-  \ javaapi#method(1,'VARBINARY', '', 'int'),
-  \ javaapi#method(1,'LONGVARBINARY', '', 'int'),
-  \ javaapi#method(1,'NULL', '', 'int'),
-  \ javaapi#method(1,'OTHER', '', 'int'),
-  \ javaapi#method(1,'JAVA_OBJECT', '', 'int'),
-  \ javaapi#method(1,'DISTINCT', '', 'int'),
-  \ javaapi#method(1,'STRUCT', '', 'int'),
-  \ javaapi#method(1,'ARRAY', '', 'int'),
-  \ javaapi#method(1,'BLOB', '', 'int'),
-  \ javaapi#method(1,'CLOB', '', 'int'),
-  \ javaapi#method(1,'REF', '', 'int'),
-  \ javaapi#method(1,'DATALINK', '', 'int'),
-  \ javaapi#method(1,'BOOLEAN', '', 'int'),
-  \ javaapi#method(1,'ROWID', '', 'int'),
-  \ javaapi#method(1,'NCHAR', '', 'int'),
-  \ javaapi#method(1,'NVARCHAR', '', 'int'),
-  \ javaapi#method(1,'LONGNVARCHAR', '', 'int'),
-  \ javaapi#method(1,'NCLOB', '', 'int'),
-  \ javaapi#method(1,'SQLXML', '', 'int'),
+  \ javaapi#field(1,'BIT', 'int'),
+  \ javaapi#field(1,'TINYINT', 'int'),
+  \ javaapi#field(1,'SMALLINT', 'int'),
+  \ javaapi#field(1,'INTEGER', 'int'),
+  \ javaapi#field(1,'BIGINT', 'int'),
+  \ javaapi#field(1,'FLOAT', 'int'),
+  \ javaapi#field(1,'REAL', 'int'),
+  \ javaapi#field(1,'DOUBLE', 'int'),
+  \ javaapi#field(1,'NUMERIC', 'int'),
+  \ javaapi#field(1,'DECIMAL', 'int'),
+  \ javaapi#field(1,'CHAR', 'int'),
+  \ javaapi#field(1,'VARCHAR', 'int'),
+  \ javaapi#field(1,'LONGVARCHAR', 'int'),
+  \ javaapi#field(1,'DATE', 'int'),
+  \ javaapi#field(1,'TIME', 'int'),
+  \ javaapi#field(1,'TIMESTAMP', 'int'),
+  \ javaapi#field(1,'BINARY', 'int'),
+  \ javaapi#field(1,'VARBINARY', 'int'),
+  \ javaapi#field(1,'LONGVARBINARY', 'int'),
+  \ javaapi#field(1,'NULL', 'int'),
+  \ javaapi#field(1,'OTHER', 'int'),
+  \ javaapi#field(1,'JAVA_OBJECT', 'int'),
+  \ javaapi#field(1,'DISTINCT', 'int'),
+  \ javaapi#field(1,'STRUCT', 'int'),
+  \ javaapi#field(1,'ARRAY', 'int'),
+  \ javaapi#field(1,'BLOB', 'int'),
+  \ javaapi#field(1,'CLOB', 'int'),
+  \ javaapi#field(1,'REF', 'int'),
+  \ javaapi#field(1,'DATALINK', 'int'),
+  \ javaapi#field(1,'BOOLEAN', 'int'),
+  \ javaapi#field(1,'ROWID', 'int'),
+  \ javaapi#field(1,'NCHAR', 'int'),
+  \ javaapi#field(1,'NVARCHAR', 'int'),
+  \ javaapi#field(1,'LONGNVARCHAR', 'int'),
+  \ javaapi#field(1,'NCLOB', 'int'),
+  \ javaapi#field(1,'SQLXML', 'int'),
   \ ])
 
 call javaapi#interface('Wrapper', '', [
-  \ javaapi#method(0,'unwrap(', 'Class<T>) throws SQLException', '<java/lang/Object>T'),
+  \ javaapi#method(0,'unwrap(', 'Class<T>) throws SQLException', 'T'),
   \ javaapi#method(0,'isWrapperFor(', 'Class<?>) throws SQLException', 'boolean'),
   \ ])
 

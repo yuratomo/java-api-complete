@@ -1,8 +1,8 @@
 call javaapi#namespace('java.applet')
 
-call javaapi#class('Applet', 'Panel', [
-  \ javaapi#method(0,'Applet(', ')throws HeadlessException', ''),
-  \ javaapi#method(0,'setStub(', ')', 'void'),
+call javaapi#class('Applet', '', [
+  \ javaapi#method(0,'Applet(', ') throws HeadlessException', 'public'),
+  \ javaapi#method(0,'setStub(', 'AppletStub)', 'void'),
   \ javaapi#method(0,'isActive(', ')', 'boolean'),
   \ javaapi#method(0,'getDocumentBase(', ')', 'URL'),
   \ javaapi#method(0,'getCodeBase(', ')', 'URL'),
@@ -29,6 +29,7 @@ call javaapi#class('Applet', 'Panel', [
   \ javaapi#method(0,'getAccessibleContext(', ')', 'AccessibleContext'),
   \ ])
 
+
 call javaapi#interface('AppletContext', '', [
   \ javaapi#method(0,'getAudioClip(', 'URL)', 'AudioClip'),
   \ javaapi#method(0,'getImage(', 'URL)', 'Image'),
@@ -42,6 +43,7 @@ call javaapi#interface('AppletContext', '', [
   \ javaapi#method(0,'getStreamKeys(', ')', 'String>'),
   \ ])
 
+
 call javaapi#interface('AppletStub', '', [
   \ javaapi#method(0,'isActive(', ')', 'boolean'),
   \ javaapi#method(0,'getDocumentBase(', ')', 'URL'),
@@ -49,6 +51,12 @@ call javaapi#interface('AppletStub', '', [
   \ javaapi#method(0,'getParameter(', 'String)', 'String'),
   \ javaapi#method(0,'getAppletContext(', ')', 'AppletContext'),
   \ javaapi#method(0,'appletResize(', 'int, int)', 'void'),
+  \ ])
+
+
+call javaapi#class('AccessibleApplet', '', [
+  \ javaapi#method(0,'getAccessibleRole(', ')', 'AccessibleRole'),
+  \ javaapi#method(0,'getAccessibleStateSet(', ')', 'AccessibleStateSet'),
   \ ])
 
 call javaapi#interface('AudioClip', '', [

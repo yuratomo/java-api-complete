@@ -1,13 +1,13 @@
 call javaapi#namespace('java.lang.management')
 
-call javaapi#interface('BufferPoolMXBean', 'PlatformManagedObject', [
+call javaapi#interface('BufferPoolMXBean', '', [
   \ javaapi#method(0,'getName(', ')', 'String'),
   \ javaapi#method(0,'getCount(', ')', 'long'),
   \ javaapi#method(0,'getTotalCapacity(', ')', 'long'),
   \ javaapi#method(0,'getMemoryUsed(', ')', 'long'),
   \ ])
 
-call javaapi#interface('ClassLoadingMXBean', 'PlatformManagedObject', [
+call javaapi#interface('ClassLoadingMXBean', '', [
   \ javaapi#method(0,'getTotalLoadedClassCount(', ')', 'long'),
   \ javaapi#method(0,'getLoadedClassCount(', ')', 'int'),
   \ javaapi#method(0,'getUnloadedClassCount(', ')', 'long'),
@@ -15,34 +15,44 @@ call javaapi#interface('ClassLoadingMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,'setVerbose(', 'boolean)', 'void'),
   \ ])
 
-call javaapi#interface('CompilationMXBean', 'PlatformManagedObject', [
+call javaapi#interface('CompilationMXBean', '', [
   \ javaapi#method(0,'getName(', ')', 'String'),
   \ javaapi#method(0,'isCompilationTimeMonitoringSupported(', ')', 'boolean'),
   \ javaapi#method(0,'getTotalCompilationTime(', ')', 'long'),
   \ ])
 
-call javaapi#interface('GarbageCollectorMXBean', 'MemoryManagerMXBean', [
+call javaapi#interface('GarbageCollectorMXBean', '', [
   \ javaapi#method(0,'getCollectionCount(', ')', 'long'),
   \ javaapi#method(0,'getCollectionTime(', ')', 'long'),
   \ ])
 
 call javaapi#class('LockInfo', '', [
-  \ javaapi#method(0,'LockInfo(', 'String, int)', ''),
+  \ javaapi#method(0,'LockInfo(', 'String, int)', 'public'),
   \ javaapi#method(0,'getClassName(', ')', 'String'),
   \ javaapi#method(0,'getIdentityHashCode(', ')', 'int'),
   \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
+call javaapi#class('1', 'ClassLoader>', [
+  \ javaapi#method(0,'run(', ')', 'ClassLoader'),
+  \ javaapi#method(0,'run(', ')', 'Object'),
+  \ ])
+
+call javaapi#class('2', 'Void>', [
+  \ javaapi#method(0,'run(', ') throws InstanceAlreadyExistsException, MBeanRegistrationException, NotCompliantMBeanException', 'Void'),
+  \ javaapi#method(0,'run(', ') throws Exception', 'Object'),
+  \ ])
+
 call javaapi#class('ManagementFactory', '', [
-  \ javaapi#method(1,'CLASS_LOADING_MXBEAN_NAME', '', 'String'),
-  \ javaapi#method(1,'COMPILATION_MXBEAN_NAME', '', 'String'),
-  \ javaapi#method(1,'MEMORY_MXBEAN_NAME', '', 'String'),
-  \ javaapi#method(1,'OPERATING_SYSTEM_MXBEAN_NAME', '', 'String'),
-  \ javaapi#method(1,'RUNTIME_MXBEAN_NAME', '', 'String'),
-  \ javaapi#method(1,'THREAD_MXBEAN_NAME', '', 'String'),
-  \ javaapi#method(1,'GARBAGE_COLLECTOR_MXBEAN_DOMAIN_TYPE', '', 'String'),
-  \ javaapi#method(1,'MEMORY_MANAGER_MXBEAN_DOMAIN_TYPE', '', 'String'),
-  \ javaapi#method(1,'MEMORY_POOL_MXBEAN_DOMAIN_TYPE', '', 'String'),
+  \ javaapi#field(1,'CLASS_LOADING_MXBEAN_NAME', 'String'),
+  \ javaapi#field(1,'COMPILATION_MXBEAN_NAME', 'String'),
+  \ javaapi#field(1,'MEMORY_MXBEAN_NAME', 'String'),
+  \ javaapi#field(1,'OPERATING_SYSTEM_MXBEAN_NAME', 'String'),
+  \ javaapi#field(1,'RUNTIME_MXBEAN_NAME', 'String'),
+  \ javaapi#field(1,'THREAD_MXBEAN_NAME', 'String'),
+  \ javaapi#field(1,'GARBAGE_COLLECTOR_MXBEAN_DOMAIN_TYPE', 'String'),
+  \ javaapi#field(1,'MEMORY_MANAGER_MXBEAN_DOMAIN_TYPE', 'String'),
+  \ javaapi#field(1,'MEMORY_POOL_MXBEAN_DOMAIN_TYPE', 'String'),
   \ javaapi#method(1,'getClassLoadingMXBean(', ')', 'ClassLoadingMXBean'),
   \ javaapi#method(1,'getMemoryMXBean(', ')', 'MemoryMXBean'),
   \ javaapi#method(1,'getThreadMXBean(', ')', 'ThreadMXBean'),
@@ -53,20 +63,20 @@ call javaapi#class('ManagementFactory', '', [
   \ javaapi#method(1,'getMemoryManagerMXBeans(', ')', 'MemoryManagerMXBean>'),
   \ javaapi#method(1,'getGarbageCollectorMXBeans(', ')', 'GarbageCollectorMXBean>'),
   \ javaapi#method(1,'getPlatformMBeanServer(', ')', 'MBeanServer'),
-  \ javaapi#method(1,'newPlatformMXBeanProxy(', 'MBeanServerConnection, String, Class<T>) throws IOException', '<java/lang/Object>T'),
-  \ javaapi#method(1,'getPlatformMXBean(', 'Class<T>)', '<java/lang/management/PlatformManagedObject>T'),
+  \ javaapi#method(1,'newPlatformMXBeanProxy(', 'MBeanServerConnection, String, Class<T>) throws IOException', 'T'),
+  \ javaapi#method(1,'getPlatformMXBean(', 'Class<T>)', 'T'),
   \ javaapi#method(1,'getPlatformMXBeans(', 'Class<T>)', 'List<T>'),
-  \ javaapi#method(1,'getPlatformMXBean(', 'MBeanServerConnection, Class<T>) throws IOException', '<java/lang/management/PlatformManagedObject>T'),
-  \ javaapi#method(1,'getPlatformMXBeans(', 'MBeanServerConnection, Class<T>)', 'List<T>'),
-  \ javaapi#method(1,'getPlatformManagementInterfaces(', 'PlatformManagedObject>>)', 'Class<?'),
+  \ javaapi#method(1,'getPlatformMXBean(', 'MBeanServerConnection, Class<T>) throws IOException', 'T'),
+  \ javaapi#method(1,'getPlatformMXBeans(', 'MBeanServerConnection, Class<T>) throws IOException', 'List<T>'),
+  \ javaapi#method(1,'getPlatformManagementInterfaces(', ')', 'PlatformManagedObject>>'),
   \ ])
 
-call javaapi#class('ManagementPermission', 'BasicPermission', [
-  \ javaapi#method(0,'ManagementPermission(', 'String)', ''),
-  \ javaapi#method(0,'ManagementPermission(', 'String, String)throws IllegalArgumentException', ''),
+call javaapi#class('ManagementPermission', '', [
+  \ javaapi#method(0,'ManagementPermission(', 'String)', 'public'),
+  \ javaapi#method(0,'ManagementPermission(', 'String, String) throws IllegalArgumentException', 'public'),
   \ ])
 
-call javaapi#interface('MemoryMXBean', 'PlatformManagedObject', [
+call javaapi#interface('MemoryMXBean', '', [
   \ javaapi#method(0,'getObjectPendingFinalizationCount(', ')', 'int'),
   \ javaapi#method(0,'getHeapMemoryUsage(', ')', 'MemoryUsage'),
   \ javaapi#method(0,'getNonHeapMemoryUsage(', ')', 'MemoryUsage'),
@@ -75,23 +85,23 @@ call javaapi#interface('MemoryMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,'gc(', ')', 'void'),
   \ ])
 
-call javaapi#interface('MemoryManagerMXBean', 'PlatformManagedObject', [
+call javaapi#interface('MemoryManagerMXBean', '', [
   \ javaapi#method(0,'getName(', ')', 'String'),
   \ javaapi#method(0,'isValid(', ')', 'boolean'),
   \ javaapi#method(0,'getMemoryPoolNames(', ')', 'String[]'),
   \ ])
 
 call javaapi#class('MemoryNotificationInfo', '', [
-  \ javaapi#method(1,'MEMORY_THRESHOLD_EXCEEDED', '', 'String'),
-  \ javaapi#method(1,'MEMORY_COLLECTION_THRESHOLD_EXCEEDED', '', 'String'),
-  \ javaapi#method(0,'MemoryNotificationInfo(', 'String, MemoryUsage, long)', ''),
+  \ javaapi#field(1,'MEMORY_THRESHOLD_EXCEEDED', 'String'),
+  \ javaapi#field(1,'MEMORY_COLLECTION_THRESHOLD_EXCEEDED', 'String'),
+  \ javaapi#method(0,'MemoryNotificationInfo(', 'String, MemoryUsage, long)', 'public'),
   \ javaapi#method(0,'getPoolName(', ')', 'String'),
   \ javaapi#method(0,'getUsage(', ')', 'MemoryUsage'),
   \ javaapi#method(0,'getCount(', ')', 'long'),
   \ javaapi#method(1,'from(', 'CompositeData)', 'MemoryNotificationInfo'),
   \ ])
 
-call javaapi#interface('MemoryPoolMXBean', 'PlatformManagedObject', [
+call javaapi#interface('MemoryPoolMXBean', '', [
   \ javaapi#method(0,'getName(', ')', 'String'),
   \ javaapi#method(0,'getType(', ')', 'MemoryType'),
   \ javaapi#method(0,'getUsage(', ')', 'MemoryUsage'),
@@ -112,16 +122,16 @@ call javaapi#interface('MemoryPoolMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,'isCollectionUsageThresholdSupported(', ')', 'boolean'),
   \ ])
 
-call javaapi#class('MemoryType', 'MemoryType>', [
-  \ javaapi#method(1,'HEAP', '', 'MemoryType'),
-  \ javaapi#method(1,'NON_HEAP', '', 'MemoryType'),
+call javaapi#class('MemoryType', '', [
+  \ javaapi#field(1,'HEAP', 'MemoryType'),
+  \ javaapi#field(1,'NON_HEAP', 'MemoryType'),
   \ javaapi#method(1,'values(', ')', 'MemoryType[]'),
   \ javaapi#method(1,'valueOf(', 'String)', 'MemoryType'),
   \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
 call javaapi#class('MemoryUsage', '', [
-  \ javaapi#method(0,'MemoryUsage(', 'long, long, long, long)', ''),
+  \ javaapi#method(0,'MemoryUsage(', 'long, long, long, long)', 'public'),
   \ javaapi#method(0,'getInit(', ')', 'long'),
   \ javaapi#method(0,'getUsed(', ')', 'long'),
   \ javaapi#method(0,'getCommitted(', ')', 'long'),
@@ -130,14 +140,14 @@ call javaapi#class('MemoryUsage', '', [
   \ javaapi#method(1,'from(', 'CompositeData)', 'MemoryUsage'),
   \ ])
 
-call javaapi#class('MonitorInfo', 'LockInfo', [
-  \ javaapi#method(0,'MonitorInfo(', 'String, int, int, StackTraceElement)', ''),
+call javaapi#class('MonitorInfo', '', [
+  \ javaapi#method(0,'MonitorInfo(', 'String, int, int, StackTraceElement)', 'public'),
   \ javaapi#method(0,'getLockedStackDepth(', ')', 'int'),
   \ javaapi#method(0,'getLockedStackFrame(', ')', 'StackTraceElement'),
   \ javaapi#method(1,'from(', 'CompositeData)', 'MonitorInfo'),
   \ ])
 
-call javaapi#interface('OperatingSystemMXBean', 'PlatformManagedObject', [
+call javaapi#interface('OperatingSystemMXBean', '', [
   \ javaapi#method(0,'getName(', ')', 'String'),
   \ javaapi#method(0,'getArch(', ')', 'String'),
   \ javaapi#method(0,'getVersion(', ')', 'String'),
@@ -145,27 +155,91 @@ call javaapi#interface('OperatingSystemMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,'getSystemLoadAverage(', ')', 'double'),
   \ ])
 
-call javaapi#class('PlatformComponent', 'PlatformComponent>', [
-  \ javaapi#method(1,'CLASS_LOADING', '', 'PlatformComponent'),
-  \ javaapi#method(1,'COMPILATION', '', 'PlatformComponent'),
-  \ javaapi#method(1,'MEMORY', '', 'PlatformComponent'),
-  \ javaapi#method(1,'GARBAGE_COLLECTOR', '', 'PlatformComponent'),
-  \ javaapi#method(1,'MEMORY_MANAGER', '', 'PlatformComponent'),
-  \ javaapi#method(1,'MEMORY_POOL', '', 'PlatformComponent'),
-  \ javaapi#method(1,'OPERATING_SYSTEM', '', 'PlatformComponent'),
-  \ javaapi#method(1,'RUNTIME', '', 'PlatformComponent'),
-  \ javaapi#method(1,'THREADING', '', 'PlatformComponent'),
-  \ javaapi#method(1,'LOGGING', '', 'PlatformComponent'),
-  \ javaapi#method(1,'BUFFER_POOL', '', 'PlatformComponent'),
-  \ javaapi#method(1,'SUN_GARBAGE_COLLECTOR', '', 'PlatformComponent'),
-  \ javaapi#method(1,'SUN_OPERATING_SYSTEM', '', 'PlatformComponent'),
-  \ javaapi#method(1,'SUN_UNIX_OPERATING_SYSTEM', '', 'PlatformComponent'),
-  \ javaapi#method(1,'HOTSPOT_DIAGNOSTIC', '', 'PlatformComponent'),
+call javaapi#class('1', 'ClassLoadingMXBean>', [
+  \ javaapi#method(0,'getMXBeans(', ')', 'ClassLoadingMXBean>'),
+  \ ])
+
+call javaapi#class('10', 'PlatformLoggingMXBean>', [
+  \ javaapi#method(0,'getMXBeans(', ')', 'PlatformLoggingMXBean>'),
+  \ ])
+
+call javaapi#class('11', 'BufferPoolMXBean>', [
+  \ javaapi#method(0,'getMXBeans(', ')', 'BufferPoolMXBean>'),
+  \ ])
+
+call javaapi#class('12', 'GarbageCollectorMXBean>', [
+  \ javaapi#method(0,'getMXBeans(', ')', 'GarbageCollectorMXBean>'),
+  \ ])
+
+call javaapi#class('13', 'OperatingSystemMXBean>', [
+  \ javaapi#method(0,'getMXBeans(', ')', 'OperatingSystemMXBean>'),
+  \ ])
+
+call javaapi#class('14', 'UnixOperatingSystemMXBean>', [
+  \ javaapi#method(0,'getMXBeans(', ')', 'UnixOperatingSystemMXBean>'),
+  \ ])
+
+call javaapi#class('15', 'HotSpotDiagnosticMXBean>', [
+  \ javaapi#method(0,'getMXBeans(', ')', 'HotSpotDiagnosticMXBean>'),
+  \ ])
+
+call javaapi#class('2', 'CompilationMXBean>', [
+  \ javaapi#method(0,'getMXBeans(', ')', 'CompilationMXBean>'),
+  \ ])
+
+call javaapi#class('3', 'MemoryMXBean>', [
+  \ javaapi#method(0,'getMXBeans(', ')', 'MemoryMXBean>'),
+  \ ])
+
+call javaapi#class('4', 'GarbageCollectorMXBean>', [
+  \ javaapi#method(0,'getMXBeans(', ')', 'GarbageCollectorMXBean>'),
+  \ ])
+
+call javaapi#class('5', 'MemoryManagerMXBean>', [
+  \ javaapi#method(0,'getMXBeans(', ')', 'MemoryManagerMXBean>'),
+  \ ])
+
+call javaapi#class('6', 'MemoryPoolMXBean>', [
+  \ javaapi#method(0,'getMXBeans(', ')', 'MemoryPoolMXBean>'),
+  \ ])
+
+call javaapi#class('7', 'OperatingSystemMXBean>', [
+  \ javaapi#method(0,'getMXBeans(', ')', 'OperatingSystemMXBean>'),
+  \ ])
+
+call javaapi#class('8', 'RuntimeMXBean>', [
+  \ javaapi#method(0,'getMXBeans(', ')', 'RuntimeMXBean>'),
+  \ ])
+
+call javaapi#class('9', 'ThreadMXBean>', [
+  \ javaapi#method(0,'getMXBeans(', ')', 'ThreadMXBean>'),
+  \ ])
+
+call javaapi#interface('MXBeanFetcher<T', '', [
+  \ javaapi#method(0,'getMXBeans(', ')', 'List<T>'),
+  \ ])
+
+call javaapi#class('PlatformComponent', '', [
+  \ javaapi#field(1,'CLASS_LOADING', 'PlatformComponent'),
+  \ javaapi#field(1,'COMPILATION', 'PlatformComponent'),
+  \ javaapi#field(1,'MEMORY', 'PlatformComponent'),
+  \ javaapi#field(1,'GARBAGE_COLLECTOR', 'PlatformComponent'),
+  \ javaapi#field(1,'MEMORY_MANAGER', 'PlatformComponent'),
+  \ javaapi#field(1,'MEMORY_POOL', 'PlatformComponent'),
+  \ javaapi#field(1,'OPERATING_SYSTEM', 'PlatformComponent'),
+  \ javaapi#field(1,'RUNTIME', 'PlatformComponent'),
+  \ javaapi#field(1,'THREADING', 'PlatformComponent'),
+  \ javaapi#field(1,'LOGGING', 'PlatformComponent'),
+  \ javaapi#field(1,'BUFFER_POOL', 'PlatformComponent'),
+  \ javaapi#field(1,'SUN_GARBAGE_COLLECTOR', 'PlatformComponent'),
+  \ javaapi#field(1,'SUN_OPERATING_SYSTEM', 'PlatformComponent'),
+  \ javaapi#field(1,'SUN_UNIX_OPERATING_SYSTEM', 'PlatformComponent'),
+  \ javaapi#field(1,'HOTSPOT_DIAGNOSTIC', 'PlatformComponent'),
   \ javaapi#method(1,'values(', ')', 'PlatformComponent[]'),
   \ javaapi#method(1,'valueOf(', 'String)', 'PlatformComponent'),
   \ ])
 
-call javaapi#interface('PlatformLoggingMXBean', 'PlatformManagedObject', [
+call javaapi#interface('PlatformLoggingMXBean', '', [
   \ javaapi#method(0,'getLoggerNames(', ')', 'String>'),
   \ javaapi#method(0,'getLoggerLevel(', 'String)', 'String'),
   \ javaapi#method(0,'setLoggerLevel(', 'String, String)', 'void'),
@@ -176,7 +250,7 @@ call javaapi#interface('PlatformManagedObject', '', [
   \ javaapi#method(0,'getObjectName(', ')', 'ObjectName'),
   \ ])
 
-call javaapi#interface('RuntimeMXBean', 'PlatformManagedObject', [
+call javaapi#interface('RuntimeMXBean', '', [
   \ javaapi#method(0,'getName(', ')', 'String'),
   \ javaapi#method(0,'getVmName(', ')', 'String'),
   \ javaapi#method(0,'getVmVendor(', ')', 'String'),
@@ -192,7 +266,10 @@ call javaapi#interface('RuntimeMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,'getInputArguments(', ')', 'String>'),
   \ javaapi#method(0,'getUptime(', ')', 'long'),
   \ javaapi#method(0,'getStartTime(', ')', 'long'),
-  \ javaapi#method(0,'getSystemProperties(', ')', 'String, String>'),
+  \ javaapi#method(0,'getSystemProperties(', ')', 'String>'),
+  \ ])
+
+call javaapi#class('1', '', [
   \ ])
 
 call javaapi#class('ThreadInfo', '', [
@@ -216,7 +293,7 @@ call javaapi#class('ThreadInfo', '', [
   \ javaapi#method(0,'getLockedSynchronizers(', ')', 'LockInfo[]'),
   \ ])
 
-call javaapi#interface('ThreadMXBean', 'PlatformManagedObject', [
+call javaapi#interface('ThreadMXBean', '', [
   \ javaapi#method(0,'getThreadCount(', ')', 'int'),
   \ javaapi#method(0,'getPeakThreadCount(', ')', 'int'),
   \ javaapi#method(0,'getTotalStartedThreadCount(', ')', 'long'),

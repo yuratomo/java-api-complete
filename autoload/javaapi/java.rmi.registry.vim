@@ -10,8 +10,8 @@ call javaapi#class('LocateRegistry', '', [
   \ javaapi#method(1,'createRegistry(', 'int, RMIClientSocketFactory, RMIServerSocketFactory) throws RemoteException', 'Registry'),
   \ ])
 
-call javaapi#interface('Registry', 'Remote', [
-  \ javaapi#method(1,'REGISTRY_PORT', '', 'int'),
+call javaapi#interface('Registry', '', [
+  \ javaapi#field(1,'REGISTRY_PORT', 'int'),
   \ javaapi#method(0,'lookup(', 'String) throws RemoteException, NotBoundException, AccessException', 'Remote'),
   \ javaapi#method(0,'bind(', 'String, Remote) throws RemoteException, AlreadyBoundException, AccessException', 'void'),
   \ javaapi#method(0,'unbind(', 'String) throws RemoteException, NotBoundException, AccessException', 'void'),

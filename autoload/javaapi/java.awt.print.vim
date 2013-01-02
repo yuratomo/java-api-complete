@@ -1,7 +1,22 @@
 call javaapi#namespace('java.awt.print')
 
-call javaapi#class('Book', '', [
-  \ javaapi#method(0,'Book(', ')', ''),
+call javaapi#interface('PrinterGraphics', '', [
+  \ javaapi#method(0,'getPrinterJob(', ')', 'PrinterJob'),
+  \ ])
+
+
+call javaapi#interface('Printable', '', [
+  \ javaapi#field(1,'PAGE_EXISTS', 'int'),
+  \ javaapi#field(1,'NO_SUCH_PAGE', 'int'),
+  \ javaapi#method(0,'print(', 'Graphics, PageFormat, int) throws PrinterException', 'int'),
+  \ ])
+
+
+call javaapi#class('BookPage', '', [
+  \ ])
+
+call javaapi#class('Book', 'Pageable', [
+  \ javaapi#method(0,'Book(', ')', 'public'),
   \ javaapi#method(0,'getNumberOfPages(', ')', 'int'),
   \ javaapi#method(0,'getPageFormat(', 'int) throws IndexOutOfBoundsException', 'PageFormat'),
   \ javaapi#method(0,'getPrintable(', 'int) throws IndexOutOfBoundsException', 'Printable'),
@@ -10,11 +25,11 @@ call javaapi#class('Book', '', [
   \ javaapi#method(0,'append(', 'Printable, PageFormat, int)', 'void'),
   \ ])
 
-call javaapi#class('PageFormat', '', [
-  \ javaapi#method(1,'LANDSCAPE', '', 'int'),
-  \ javaapi#method(1,'PORTRAIT', '', 'int'),
-  \ javaapi#method(1,'REVERSE_LANDSCAPE', '', 'int'),
-  \ javaapi#method(0,'PageFormat(', ')', ''),
+call javaapi#class('PageFormat', 'Cloneable', [
+  \ javaapi#field(1,'LANDSCAPE', 'int'),
+  \ javaapi#field(1,'PORTRAIT', 'int'),
+  \ javaapi#field(1,'REVERSE_LANDSCAPE', 'int'),
+  \ javaapi#method(0,'PageFormat(', ')', 'public'),
   \ javaapi#method(0,'clone(', ')', 'Object'),
   \ javaapi#method(0,'getWidth(', ')', 'double'),
   \ javaapi#method(0,'getHeight(', ')', 'double'),
@@ -30,14 +45,14 @@ call javaapi#class('PageFormat', '', [
   \ ])
 
 call javaapi#interface('Pageable', '', [
-  \ javaapi#method(1,'UNKNOWN_NUMBER_OF_PAGES', '', 'int'),
+  \ javaapi#field(1,'UNKNOWN_NUMBER_OF_PAGES', 'int'),
   \ javaapi#method(0,'getNumberOfPages(', ')', 'int'),
   \ javaapi#method(0,'getPageFormat(', 'int) throws IndexOutOfBoundsException', 'PageFormat'),
   \ javaapi#method(0,'getPrintable(', 'int) throws IndexOutOfBoundsException', 'Printable'),
   \ ])
 
-call javaapi#class('Paper', '', [
-  \ javaapi#method(0,'Paper(', ')', ''),
+call javaapi#class('Paper', 'Cloneable', [
+  \ javaapi#method(0,'Paper(', ')', 'public'),
   \ javaapi#method(0,'clone(', ')', 'Object'),
   \ javaapi#method(0,'getHeight(', ')', 'double'),
   \ javaapi#method(0,'setSize(', 'double, double)', 'void'),
@@ -49,37 +64,31 @@ call javaapi#class('Paper', '', [
   \ javaapi#method(0,'getImageableHeight(', ')', 'double'),
   \ ])
 
-call javaapi#interface('Printable', '', [
-  \ javaapi#method(1,'PAGE_EXISTS', '', 'int'),
-  \ javaapi#method(1,'NO_SUCH_PAGE', '', 'int'),
-  \ javaapi#method(0,'print(', 'Graphics, PageFormat, int) throws PrinterException', 'int'),
+call javaapi#class('PrinterAbortException', '', [
+  \ javaapi#method(0,'PrinterAbortException(', ')', 'public'),
+  \ javaapi#method(0,'PrinterAbortException(', 'String)', 'public'),
   \ ])
 
-call javaapi#class('PrinterAbortException', 'PrinterException', [
-  \ javaapi#method(0,'PrinterAbortException(', ')', ''),
-  \ javaapi#method(0,'PrinterAbortException(', 'String)', ''),
+call javaapi#class('PrinterException', '', [
+  \ javaapi#method(0,'PrinterException(', ')', 'public'),
+  \ javaapi#method(0,'PrinterException(', 'String)', 'public'),
   \ ])
 
-call javaapi#class('PrinterException', 'Exception', [
-  \ javaapi#method(0,'PrinterException(', ')', ''),
-  \ javaapi#method(0,'PrinterException(', 'String)', ''),
-  \ ])
-
-call javaapi#interface('PrinterGraphics', '', [
-  \ javaapi#method(0,'getPrinterJob(', ')', 'PrinterJob'),
-  \ ])
-
-call javaapi#class('PrinterIOException', 'PrinterException', [
-  \ javaapi#method(0,'PrinterIOException(', 'IOException)', ''),
+call javaapi#class('PrinterIOException', '', [
+  \ javaapi#method(0,'PrinterIOException(', 'IOException)', 'public'),
   \ javaapi#method(0,'getIOException(', ')', 'IOException'),
   \ javaapi#method(0,'getCause(', ')', 'Throwable'),
+  \ ])
+
+call javaapi#class('1', 'PrivilegedAction', [
+  \ javaapi#method(0,'run(', ')', 'Object'),
   \ ])
 
 call javaapi#class('PrinterJob', '', [
   \ javaapi#method(1,'getPrinterJob(', ')', 'PrinterJob'),
   \ javaapi#method(1,'lookupPrintServices(', ')', 'PrintService[]'),
   \ javaapi#method(1,'lookupStreamPrintServices(', 'String)', 'StreamPrintServiceFactory[]'),
-  \ javaapi#method(0,'PrinterJob(', ')', ''),
+  \ javaapi#method(0,'PrinterJob(', ')', 'public'),
   \ javaapi#method(0,'getPrintService(', ')', 'PrintService'),
   \ javaapi#method(0,'setPrintService(', 'PrintService) throws PrinterException', 'void'),
   \ javaapi#method(0,'setPrintable(', 'Printable)', 'void'),

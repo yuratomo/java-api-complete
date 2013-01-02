@@ -1,11 +1,17 @@
 call javaapi#namespace('java.nio.channels.spi')
 
-call javaapi#class('AbstractInterruptibleChannel', '', [
+call javaapi#class('AbstractInterruptibleChannel', 'InterruptibleChannel', [
   \ javaapi#method(0,'close(', ') throws IOException', 'void'),
   \ javaapi#method(0,'isOpen(', ')', 'boolean'),
   \ ])
 
-call javaapi#class('AbstractSelectableChannel', 'SelectableChannel', [
+
+call javaapi#class('1', 'Interruptible', [
+  \ javaapi#method(0,'interrupt(', 'Thread)', 'void'),
+  \ ])
+
+
+call javaapi#class('AbstractSelectableChannel', '', [
   \ javaapi#method(0,'provider(', ')', 'SelectorProvider'),
   \ javaapi#method(0,'isRegistered(', ')', 'boolean'),
   \ javaapi#method(0,'keyFor(', 'Selector)', 'SelectionKey'),
@@ -15,15 +21,28 @@ call javaapi#class('AbstractSelectableChannel', 'SelectableChannel', [
   \ javaapi#method(0,'configureBlocking(', 'boolean) throws IOException', 'SelectableChannel'),
   \ ])
 
-call javaapi#class('AbstractSelectionKey', 'SelectionKey', [
+
+call javaapi#class('AbstractSelectionKey', '', [
   \ javaapi#method(0,'isValid(', ')', 'boolean'),
   \ javaapi#method(0,'cancel(', ')', 'void'),
   \ ])
 
-call javaapi#class('AbstractSelector', 'Selector', [
+call javaapi#class('1', 'Interruptible', [
+  \ javaapi#method(0,'interrupt(', 'Thread)', 'void'),
+  \ ])
+
+call javaapi#class('AbstractSelector', '', [
   \ javaapi#method(0,'close(', ') throws IOException', 'void'),
   \ javaapi#method(0,'isOpen(', ')', 'boolean'),
   \ javaapi#method(0,'provider(', ')', 'SelectorProvider'),
+  \ ])
+
+call javaapi#class('1', 'AsynchronousChannelProvider>', [
+  \ javaapi#method(0,'run(', ')', 'AsynchronousChannelProvider'),
+  \ javaapi#method(0,'run(', ')', 'Object'),
+  \ ])
+
+call javaapi#class('ProviderHolder', '', [
   \ ])
 
 call javaapi#class('AsynchronousChannelProvider', '', [
@@ -32,6 +51,11 @@ call javaapi#class('AsynchronousChannelProvider', '', [
   \ javaapi#method(0,'openAsynchronousChannelGroup(', 'ExecutorService, int) throws IOException', 'AsynchronousChannelGroup'),
   \ javaapi#method(0,'openAsynchronousServerSocketChannel(', 'AsynchronousChannelGroup) throws IOException', 'AsynchronousServerSocketChannel'),
   \ javaapi#method(0,'openAsynchronousSocketChannel(', 'AsynchronousChannelGroup) throws IOException', 'AsynchronousSocketChannel'),
+  \ ])
+
+call javaapi#class('1', 'SelectorProvider>', [
+  \ javaapi#method(0,'run(', ')', 'SelectorProvider'),
+  \ javaapi#method(0,'run(', ')', 'Object'),
   \ ])
 
 call javaapi#class('SelectorProvider', '', [

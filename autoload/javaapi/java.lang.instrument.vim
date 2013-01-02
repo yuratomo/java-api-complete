@@ -1,8 +1,8 @@
 call javaapi#namespace('java.lang.instrument')
 
 call javaapi#class('ClassDefinition', '', [
-  \ javaapi#method(0,'ClassDefinition(', 'Class<?>, byte[])', ''),
-  \ javaapi#method(0,'getDefinitionClass(', '', 'Class<?>'),
+  \ javaapi#method(0,'ClassDefinition(', 'Class<?>, byte[])', 'public'),
+  \ javaapi#method(0,'getDefinitionClass(', ')', 'Class<?>'),
   \ javaapi#method(0,'getDefinitionClassFile(', ')', 'byte[]'),
   \ ])
 
@@ -10,9 +10,9 @@ call javaapi#interface('ClassFileTransformer', '', [
   \ javaapi#method(0,'transform(', 'ClassLoader, String, Class<?>, ProtectionDomain, byte[]) throws IllegalClassFormatException', 'byte[]'),
   \ ])
 
-call javaapi#class('IllegalClassFormatException', 'Exception', [
-  \ javaapi#method(0,'IllegalClassFormatException(', ')', ''),
-  \ javaapi#method(0,'IllegalClassFormatException(', 'String)', ''),
+call javaapi#class('IllegalClassFormatException', '', [
+  \ javaapi#method(0,'IllegalClassFormatException(', ')', 'public'),
+  \ javaapi#method(0,'IllegalClassFormatException(', 'String)', 'public'),
   \ ])
 
 call javaapi#interface('Instrumentation', '', [
@@ -20,7 +20,7 @@ call javaapi#interface('Instrumentation', '', [
   \ javaapi#method(0,'addTransformer(', 'ClassFileTransformer)', 'void'),
   \ javaapi#method(0,'removeTransformer(', 'ClassFileTransformer)', 'boolean'),
   \ javaapi#method(0,'isRetransformClassesSupported(', ')', 'boolean'),
-  \ javaapi#method(0,'retransformClasses(', ') throws UnmodifiableClassException', 'void'),
+  \ javaapi#method(0,'retransformClasses(', 'Class<?>) throws UnmodifiableClassException', 'void'),
   \ javaapi#method(0,'isRedefineClassesSupported(', ')', 'boolean'),
   \ javaapi#method(0,'redefineClasses(', ') throws ClassNotFoundException, UnmodifiableClassException', 'void'),
   \ javaapi#method(0,'isModifiableClass(', 'Class<?>)', 'boolean'),
@@ -33,8 +33,8 @@ call javaapi#interface('Instrumentation', '', [
   \ javaapi#method(0,'setNativeMethodPrefix(', 'ClassFileTransformer, String)', 'void'),
   \ ])
 
-call javaapi#class('UnmodifiableClassException', 'Exception', [
-  \ javaapi#method(0,'UnmodifiableClassException(', ')', ''),
-  \ javaapi#method(0,'UnmodifiableClassException(', 'String)', ''),
+call javaapi#class('UnmodifiableClassException', '', [
+  \ javaapi#method(0,'UnmodifiableClassException(', ')', 'public'),
+  \ javaapi#method(0,'UnmodifiableClassException(', 'String)', 'public'),
   \ ])
 

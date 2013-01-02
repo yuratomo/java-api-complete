@@ -1,5 +1,5 @@
 let [ s:TYPE_NAMESPACE, s:TYPE_CLASS, s:TYPE_ENUM , s:TYPE_METHOD, s:TYPE_FIELD, s:MODE_NEW_CLASS ] = range(6)
-let [ s:MODE_NAMESPACE, s:MODE_CLASS, s:MODE_MEMBER, s:MODE_ENUM, s:MODE_NEW_CLASS ] = range(5)
+let [ s:MODE_NAMESPACE, s:MODE_CLASS, s:MODE_MEMBER, s:MODE_ENUM, s:MODE_NEW_CLASS, s:MODE_EQUAL ] = range(6)
 
 let g:java_complete_item_len = 30
 let s:complete_mode = s:MODE_CLASS
@@ -92,7 +92,6 @@ function! s:analize(line, cur)
     endwhile
 
     if line[idx] == '='
-"     let compmode = s:MODE_ENUM
       let compmode = s:MODE_EQUAL
 
       " resolve property type of forward 'equal'
@@ -151,6 +150,9 @@ function! javaapi#complete(findstart, base)
 
     elseif s:complete_mode == s:MODE_NEW_CLASS
       call s:class_new_completion(s:type, res)
+
+    elseif s:complete_mode == s:MODE_EQUAL
+      call s:class_member_completion(a:base, res, 1)
 
     else
       if len(s:parts) >= 1 
@@ -465,7 +467,7 @@ function! javaapi#class(name, extend, members)
     \ 'members': a:members,
     \ }
   if exists('s:parent') && index(s:parent.members, a:name) == -1
-    call add(s:parent.members, javaapi#field(a:name, a:name))
+    call add(s:parent.members, javaapi#field(0, a:name, a:name))
   endif
 endfunction
 function! javaapi#interface(name, extend, members)
@@ -528,12 +530,13 @@ function! javaapi#method(static, name, detail, class)
     \ }
 endfunction
 
-function! javaapi#field(name, class)
+function! javaapi#field(static, name, class)
   return {
     \ 'type'   : s:TYPE_FIELD,
     \ 'kind'   : 'v', 
     \ 'name'   : a:name,
     \ 'class'  : a:class,
+    \ 'static' : a:static,
     \ 'detail' : '',
     \ }
 endfunction
@@ -791,10 +794,10 @@ function! javaapi#jar2vim(jar, output_dir)
       let last_namespace = ns
     endif
 
-    let class_parts = split(defs[0], ' ')
+    let class_parts = split(substitute(defs[0], ", ", ",", "g"), ' ')
 
     " remove unnecessary class_parts
-    let unnecessary_keywords = ['abstract', 'static', 'public', 'private', 'protected', 'internal']
+    let unnecessary_keywords = ['abstract', 'static', 'public', 'private', 'protected', 'internal', 'final']
     for uk in unnecessary_keywords
       let uk_idx = index(class_parts, uk)
       if uk_idx != -1
@@ -806,6 +809,8 @@ function! javaapi#jar2vim(jar, output_dir)
     let super = ''
     if len(class_parts) > 2 && class_parts[2] == 'implements'
       let super = s:class_name(class_parts[3])
+    elseif len(class_parts) < 1
+      continue
     endif
 
     " resolve class name
@@ -815,12 +820,21 @@ function! javaapi#jar2vim(jar, output_dir)
     call add(outputs, "call javaapi#" . class_parts[0] . "('" . class . "', '" . super . "', [")
     for member in defs[1:]
       let bracket_start = stridx(member, '(')
-      let parts = split(member[0 : bracket_start], ' ')
-      let part1 = s:class_name(parts[-1])
-      let part2 = s:class_name(parts[-2])
-      let part3 = substitute(member[bracket_start+1:], ";", "", "")
-      let is_static = index(parts, 'static') >= 0
-      call add(outputs, "  \\ javaapi#method(" . is_static . ",'" . part1 . "', '" . part3 . "', '" . part2 . "'),")
+      if bracket_start == -1
+        let bracket_start = len(member)-1
+        let parts = split(member[0 : bracket_start], ' ')
+        let part1 = s:class_name(parts[-1])
+        let part2 = s:class_name(parts[-2])
+        let is_static = index(parts, 'static') >= 0
+        call add(outputs, "  \\ javaapi#field(" . is_static . ",'" . part1 . "', '" . part2 . "'),")
+      else
+        let parts = split(member[0 : bracket_start], ' ')
+        let part1 = s:class_name(parts[-1])
+        let part2 = s:class_name(parts[-2])
+        let part3 = s:normalize_class(member[bracket_start+1:])
+        let is_static = index(parts, 'static') >= 0
+        call add(outputs, "  \\ javaapi#method(" . is_static . ",'" . part1 . "', '" . part3 . "', '" . part2 . "'),")
+      endif
     endfor
     call add(outputs, "  \\ ])")
     call add(outputs, "")
@@ -830,12 +844,16 @@ function! javaapi#jar2vim(jar, output_dir)
 endfunction
 
 function! s:class_name(path)
-  let items = split(a:path, '\.')
+  let items = split(substitute(a:path, ";", "", ""), '[.$]')
   if len(items) > 0
     return items[-1]
   else
     return a:path
   endif
+endfunction
+
+function! s:normalize_class(path)
+  return substitute(substitute(a:path, "[a-zA-Z0-9_.]*[.$]", "", "g"), ";", "", "")
 endfunction
 
 " load
