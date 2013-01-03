@@ -75,10 +75,6 @@ call javaapi#class('ActivationGroupID', 'Serializable', [
   \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
   \ ])
 
-call javaapi#java.rmi.activation.ActivationGroup_Stub(java.rmi.server.RemoteRef);('ActivationGroupID', '', [
-  \ javaapi#method(0,'newInstance(', 'ActivationID, ActivationDesc) throws RemoteException, ActivationException', 'MarshalledObject'),
-  \ ])
-
 call javaapi#class('ActivationID', 'Serializable', [
   \ javaapi#method(0,'ActivationID(', 'Activator)', 'public'),
   \ javaapi#method(0,'activate(', 'boolean) throws ActivationException, UnknownObjectException, RemoteException', 'Remote'),
