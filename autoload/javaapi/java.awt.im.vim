@@ -1,32 +1,5 @@
 call javaapi#namespace('java.awt.im')
 
-call javaapi#class('InputContext', '', [
-  \ javaapi#method(1,'getInstance(', ')', 'InputContext'),
-  \ javaapi#method(0,'selectInputMethod(', 'Locale)', 'boolean'),
-  \ javaapi#method(0,'getLocale(', ')', 'Locale'),
-  \ javaapi#method(0,'setCharacterSubsets(', 'Subset[])', 'void'),
-  \ javaapi#method(0,'setCompositionEnabled(', 'boolean)', 'void'),
-  \ javaapi#method(0,'isCompositionEnabled(', ')', 'boolean'),
-  \ javaapi#method(0,'reconvert(', ')', 'void'),
-  \ javaapi#method(0,'dispatchEvent(', 'AWTEvent)', 'void'),
-  \ javaapi#method(0,'removeNotify(', 'Component)', 'void'),
-  \ javaapi#method(0,'endComposition(', ')', 'void'),
-  \ javaapi#method(0,'dispose(', ')', 'void'),
-  \ javaapi#method(0,'getInputMethodControlObject(', ')', 'Object'),
-  \ ])
-
-
-call javaapi#interface('InputMethodRequests', '', [
-  \ javaapi#method(0,'getTextLocation(', 'TextHitInfo)', 'Rectangle'),
-  \ javaapi#method(0,'getLocationOffset(', 'int, int)', 'TextHitInfo'),
-  \ javaapi#method(0,'getInsertPositionOffset(', ')', 'int'),
-  \ javaapi#method(0,'getCommittedText(', 'int, int, Attribute[])', 'AttributedCharacterIterator'),
-  \ javaapi#method(0,'getCommittedTextLength(', ')', 'int'),
-  \ javaapi#method(0,'cancelLatestCommittedText(', 'Attribute[])', 'AttributedCharacterIterator'),
-  \ javaapi#method(0,'getSelectedText(', 'Attribute[])', 'AttributedCharacterIterator'),
-  \ ])
-
-
 call javaapi#class('InputMethodHighlight', '', [
   \ javaapi#field(1,'RAW_TEXT', 'int'),
   \ javaapi#field(1,'CONVERTED_TEXT', 'int'),
@@ -43,7 +16,7 @@ call javaapi#class('InputMethodHighlight', '', [
   \ javaapi#method(0,'getStyle(', ')', '?>'),
   \ ])
 
-call javaapi#class('InputSubset', '', [
+call javaapi#class('InputSubset', 'Subset', [
   \ javaapi#field(1,'LATIN', 'InputSubset'),
   \ javaapi#field(1,'LATIN_DIGITS', 'InputSubset'),
   \ javaapi#field(1,'TRADITIONAL_HANZI', 'InputSubset'),
@@ -53,5 +26,34 @@ call javaapi#class('InputSubset', '', [
   \ javaapi#field(1,'HALFWIDTH_KATAKANA', 'InputSubset'),
   \ javaapi#field(1,'FULLWIDTH_LATIN', 'InputSubset'),
   \ javaapi#field(1,'FULLWIDTH_DIGITS', 'InputSubset'),
+  \ ])
+
+call javaapi#namespace('java.awt.im')
+
+call javaapi#interface('InputMethodRequests', '', [
+  \ javaapi#method(0,'getTextLocation(', 'TextHitInfo)', 'Rectangle'),
+  \ javaapi#method(0,'getLocationOffset(', 'int, int)', 'TextHitInfo'),
+  \ javaapi#method(0,'getInsertPositionOffset(', ')', 'int'),
+  \ javaapi#method(0,'getCommittedText(', 'int, int, Attribute[])', 'AttributedCharacterIterator'),
+  \ javaapi#method(0,'getCommittedTextLength(', ')', 'int'),
+  \ javaapi#method(0,'cancelLatestCommittedText(', 'Attribute[])', 'AttributedCharacterIterator'),
+  \ javaapi#method(0,'getSelectedText(', 'Attribute[])', 'AttributedCharacterIterator'),
+  \ ])
+
+call javaapi#namespace('java.awt.im')
+
+call javaapi#class('InputContext', '', [
+  \ javaapi#method(1,'getInstance(', ')', 'InputContext'),
+  \ javaapi#method(0,'selectInputMethod(', 'Locale)', 'boolean'),
+  \ javaapi#method(0,'getLocale(', ')', 'Locale'),
+  \ javaapi#method(0,'setCharacterSubsets(', 'Subset[])', 'void'),
+  \ javaapi#method(0,'setCompositionEnabled(', 'boolean)', 'void'),
+  \ javaapi#method(0,'isCompositionEnabled(', ')', 'boolean'),
+  \ javaapi#method(0,'reconvert(', ')', 'void'),
+  \ javaapi#method(0,'dispatchEvent(', 'AWTEvent)', 'void'),
+  \ javaapi#method(0,'removeNotify(', 'Component)', 'void'),
+  \ javaapi#method(0,'endComposition(', ')', 'void'),
+  \ javaapi#method(0,'dispose(', ')', 'void'),
+  \ javaapi#method(0,'getInputMethodControlObject(', ')', 'Object'),
   \ ])
 

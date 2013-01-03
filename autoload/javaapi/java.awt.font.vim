@@ -1,137 +1,5 @@
 call javaapi#namespace('java.awt.font')
 
-call javaapi#class('TextAttribute', '', [
-  \ javaapi#field(1,'FAMILY', 'TextAttribute'),
-  \ javaapi#field(1,'WEIGHT', 'TextAttribute'),
-  \ javaapi#field(1,'WEIGHT_EXTRA_LIGHT', 'Float'),
-  \ javaapi#field(1,'WEIGHT_LIGHT', 'Float'),
-  \ javaapi#field(1,'WEIGHT_DEMILIGHT', 'Float'),
-  \ javaapi#field(1,'WEIGHT_REGULAR', 'Float'),
-  \ javaapi#field(1,'WEIGHT_SEMIBOLD', 'Float'),
-  \ javaapi#field(1,'WEIGHT_MEDIUM', 'Float'),
-  \ javaapi#field(1,'WEIGHT_DEMIBOLD', 'Float'),
-  \ javaapi#field(1,'WEIGHT_BOLD', 'Float'),
-  \ javaapi#field(1,'WEIGHT_HEAVY', 'Float'),
-  \ javaapi#field(1,'WEIGHT_EXTRABOLD', 'Float'),
-  \ javaapi#field(1,'WEIGHT_ULTRABOLD', 'Float'),
-  \ javaapi#field(1,'WIDTH', 'TextAttribute'),
-  \ javaapi#field(1,'WIDTH_CONDENSED', 'Float'),
-  \ javaapi#field(1,'WIDTH_SEMI_CONDENSED', 'Float'),
-  \ javaapi#field(1,'WIDTH_REGULAR', 'Float'),
-  \ javaapi#field(1,'WIDTH_SEMI_EXTENDED', 'Float'),
-  \ javaapi#field(1,'WIDTH_EXTENDED', 'Float'),
-  \ javaapi#field(1,'POSTURE', 'TextAttribute'),
-  \ javaapi#field(1,'POSTURE_REGULAR', 'Float'),
-  \ javaapi#field(1,'POSTURE_OBLIQUE', 'Float'),
-  \ javaapi#field(1,'SIZE', 'TextAttribute'),
-  \ javaapi#field(1,'TRANSFORM', 'TextAttribute'),
-  \ javaapi#field(1,'SUPERSCRIPT', 'TextAttribute'),
-  \ javaapi#field(1,'SUPERSCRIPT_SUPER', 'Integer'),
-  \ javaapi#field(1,'SUPERSCRIPT_SUB', 'Integer'),
-  \ javaapi#field(1,'FONT', 'TextAttribute'),
-  \ javaapi#field(1,'CHAR_REPLACEMENT', 'TextAttribute'),
-  \ javaapi#field(1,'FOREGROUND', 'TextAttribute'),
-  \ javaapi#field(1,'BACKGROUND', 'TextAttribute'),
-  \ javaapi#field(1,'UNDERLINE', 'TextAttribute'),
-  \ javaapi#field(1,'UNDERLINE_ON', 'Integer'),
-  \ javaapi#field(1,'STRIKETHROUGH', 'TextAttribute'),
-  \ javaapi#field(1,'STRIKETHROUGH_ON', 'Boolean'),
-  \ javaapi#field(1,'RUN_DIRECTION', 'TextAttribute'),
-  \ javaapi#field(1,'RUN_DIRECTION_LTR', 'Boolean'),
-  \ javaapi#field(1,'RUN_DIRECTION_RTL', 'Boolean'),
-  \ javaapi#field(1,'BIDI_EMBEDDING', 'TextAttribute'),
-  \ javaapi#field(1,'JUSTIFICATION', 'TextAttribute'),
-  \ javaapi#field(1,'JUSTIFICATION_FULL', 'Float'),
-  \ javaapi#field(1,'JUSTIFICATION_NONE', 'Float'),
-  \ javaapi#field(1,'INPUT_METHOD_HIGHLIGHT', 'TextAttribute'),
-  \ javaapi#field(1,'INPUT_METHOD_UNDERLINE', 'TextAttribute'),
-  \ javaapi#field(1,'UNDERLINE_LOW_ONE_PIXEL', 'Integer'),
-  \ javaapi#field(1,'UNDERLINE_LOW_TWO_PIXEL', 'Integer'),
-  \ javaapi#field(1,'UNDERLINE_LOW_DOTTED', 'Integer'),
-  \ javaapi#field(1,'UNDERLINE_LOW_GRAY', 'Integer'),
-  \ javaapi#field(1,'UNDERLINE_LOW_DASHED', 'Integer'),
-  \ javaapi#field(1,'SWAP_COLORS', 'TextAttribute'),
-  \ javaapi#field(1,'SWAP_COLORS_ON', 'Boolean'),
-  \ javaapi#field(1,'NUMERIC_SHAPING', 'TextAttribute'),
-  \ javaapi#field(1,'KERNING', 'TextAttribute'),
-  \ javaapi#field(1,'KERNING_ON', 'Integer'),
-  \ javaapi#field(1,'LIGATURES', 'TextAttribute'),
-  \ javaapi#field(1,'LIGATURES_ON', 'Integer'),
-  \ javaapi#field(1,'TRACKING', 'TextAttribute'),
-  \ javaapi#field(1,'TRACKING_TIGHT', 'Float'),
-  \ javaapi#field(1,'TRACKING_LOOSE', 'Float'),
-  \ ])
-
-
-call javaapi#class('FontRenderContext', '', [
-  \ javaapi#method(0,'FontRenderContext(', 'AffineTransform, boolean, boolean)', 'public'),
-  \ javaapi#method(0,'FontRenderContext(', 'AffineTransform, Object, Object)', 'public'),
-  \ javaapi#method(0,'isTransformed(', ')', 'boolean'),
-  \ javaapi#method(0,'getTransformType(', ')', 'int'),
-  \ javaapi#method(0,'getTransform(', ')', 'AffineTransform'),
-  \ javaapi#method(0,'isAntiAliased(', ')', 'boolean'),
-  \ javaapi#method(0,'usesFractionalMetrics(', ')', 'boolean'),
-  \ javaapi#method(0,'getAntiAliasingHint(', ')', 'Object'),
-  \ javaapi#method(0,'getFractionalMetricsHint(', ')', 'Object'),
-  \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
-  \ javaapi#method(0,'equals(', 'FontRenderContext)', 'boolean'),
-  \ javaapi#method(0,'hashCode(', ')', 'int'),
-  \ ])
-
-
-call javaapi#class('GlyphVector', 'Cloneable', [
-  \ javaapi#field(1,'FLAG_HAS_TRANSFORMS', 'int'),
-  \ javaapi#field(1,'FLAG_HAS_POSITION_ADJUSTMENTS', 'int'),
-  \ javaapi#field(1,'FLAG_RUN_RTL', 'int'),
-  \ javaapi#field(1,'FLAG_COMPLEX_GLYPHS', 'int'),
-  \ javaapi#field(1,'FLAG_MASK', 'int'),
-  \ javaapi#method(0,'GlyphVector(', ')', 'public'),
-  \ javaapi#method(0,'getFont(', ')', 'Font'),
-  \ javaapi#method(0,'getFontRenderContext(', ')', 'FontRenderContext'),
-  \ javaapi#method(0,'performDefaultLayout(', ')', 'void'),
-  \ javaapi#method(0,'getNumGlyphs(', ')', 'int'),
-  \ javaapi#method(0,'getGlyphCode(', 'int)', 'int'),
-  \ javaapi#method(0,'getGlyphCodes(', 'int, int, int[])', 'int[]'),
-  \ javaapi#method(0,'getGlyphCharIndex(', 'int)', 'int'),
-  \ javaapi#method(0,'getGlyphCharIndices(', 'int, int, int[])', 'int[]'),
-  \ javaapi#method(0,'getLogicalBounds(', ')', 'Rectangle2D'),
-  \ javaapi#method(0,'getVisualBounds(', ')', 'Rectangle2D'),
-  \ javaapi#method(0,'getPixelBounds(', 'FontRenderContext, float, float)', 'Rectangle'),
-  \ javaapi#method(0,'getOutline(', ')', 'Shape'),
-  \ javaapi#method(0,'getOutline(', 'float, float)', 'Shape'),
-  \ javaapi#method(0,'getGlyphOutline(', 'int)', 'Shape'),
-  \ javaapi#method(0,'getGlyphOutline(', 'int, float, float)', 'Shape'),
-  \ javaapi#method(0,'getGlyphPosition(', 'int)', 'Point2D'),
-  \ javaapi#method(0,'setGlyphPosition(', 'int, Point2D)', 'void'),
-  \ javaapi#method(0,'getGlyphTransform(', 'int)', 'AffineTransform'),
-  \ javaapi#method(0,'setGlyphTransform(', 'int, AffineTransform)', 'void'),
-  \ javaapi#method(0,'getLayoutFlags(', ')', 'int'),
-  \ javaapi#method(0,'getGlyphPositions(', 'int, int, float[])', 'float[]'),
-  \ javaapi#method(0,'getGlyphLogicalBounds(', 'int)', 'Shape'),
-  \ javaapi#method(0,'getGlyphVisualBounds(', 'int)', 'Shape'),
-  \ javaapi#method(0,'getGlyphPixelBounds(', 'int, FontRenderContext, float, float)', 'Rectangle'),
-  \ javaapi#method(0,'getGlyphMetrics(', 'int)', 'GlyphMetrics'),
-  \ javaapi#method(0,'getGlyphJustificationInfo(', 'int)', 'GlyphJustificationInfo'),
-  \ javaapi#method(0,'equals(', 'GlyphVector)', 'boolean'),
-  \ ])
-
-
-call javaapi#class('LineMetrics', '', [
-  \ javaapi#method(0,'LineMetrics(', ')', 'public'),
-  \ javaapi#method(0,'getNumChars(', ')', 'int'),
-  \ javaapi#method(0,'getAscent(', ')', 'float'),
-  \ javaapi#method(0,'getDescent(', ')', 'float'),
-  \ javaapi#method(0,'getLeading(', ')', 'float'),
-  \ javaapi#method(0,'getHeight(', ')', 'float'),
-  \ javaapi#method(0,'getBaselineIndex(', ')', 'int'),
-  \ javaapi#method(0,'getBaselineOffsets(', ')', 'float[]'),
-  \ javaapi#method(0,'getStrikethroughOffset(', ')', 'float'),
-  \ javaapi#method(0,'getStrikethroughThickness(', ')', 'float'),
-  \ javaapi#method(0,'getUnderlineOffset(', ')', 'float'),
-  \ javaapi#method(0,'getUnderlineThickness(', ')', 'float'),
-  \ ])
-
-
 call javaapi#class('CharArrayIterator', 'CharacterIterator', [
   \ javaapi#method(0,'first(', ')', 'char'),
   \ javaapi#method(0,'last(', ')', 'char'),
@@ -200,7 +68,7 @@ call javaapi#class('GraphicAttribute', '', [
   \ javaapi#method(0,'getJustificationInfo(', ')', 'GlyphJustificationInfo'),
   \ ])
 
-call javaapi#class('ImageGraphicAttribute', '', [
+call javaapi#class('ImageGraphicAttribute', 'GraphicAttribute', [
   \ javaapi#method(0,'ImageGraphicAttribute(', 'Image, int)', 'public'),
   \ javaapi#method(0,'ImageGraphicAttribute(', 'Image, int, float, float)', 'public'),
   \ javaapi#method(0,'getAscent(', ')', 'float'),
@@ -246,10 +114,10 @@ call javaapi#class('1', 'Range>', [
   \ javaapi#method(0,'compare(', 'Object, Object)', 'int'),
   \ ])
 
-call javaapi#class('1', '', [
+call javaapi#class('1', 'Range', [
   \ ])
 
-call javaapi#class('Range', '', [
+call javaapi#class('Range', 'Range>', [
   \ javaapi#field(1,'EUROPEAN', 'Range'),
   \ javaapi#field(1,'ARABIC', 'Range'),
   \ javaapi#field(1,'EASTERN_ARABIC', 'Range'),
@@ -388,7 +256,7 @@ call javaapi#interface('OpenType', '', [
   \ javaapi#method(0,'getFontTableSize(', 'String)', 'int'),
   \ ])
 
-call javaapi#class('ShapeGraphicAttribute', '', [
+call javaapi#class('ShapeGraphicAttribute', 'GraphicAttribute', [
   \ javaapi#field(1,'STROKE', 'boolean'),
   \ javaapi#field(1,'FILL', 'boolean'),
   \ javaapi#method(0,'ShapeGraphicAttribute(', 'Shape, int, boolean)', 'public'),
@@ -489,16 +357,16 @@ call javaapi#class('TextLayout', 'Cloneable', [
   \ javaapi#method(0,'hitToPoint(', 'TextHitInfo, Point2D)', 'void'),
   \ ])
 
-call javaapi#class('1', '', [
+call javaapi#class('1', 'Function', [
   \ ])
 
-call javaapi#class('2', '', [
+call javaapi#class('2', 'Function', [
   \ ])
 
-call javaapi#class('3', '', [
+call javaapi#class('3', 'Function', [
   \ ])
 
-call javaapi#class('4', '', [
+call javaapi#class('4', 'Function', [
   \ ])
 
 call javaapi#class('Function', '', [
@@ -568,5 +436,141 @@ call javaapi#class('TransformAttribute', 'Serializable', [
   \ javaapi#method(0,'isIdentity(', ')', 'boolean'),
   \ javaapi#method(0,'hashCode(', ')', 'int'),
   \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
+  \ ])
+
+call javaapi#namespace('java.awt.font')
+
+call javaapi#class('LineMetrics', '', [
+  \ javaapi#method(0,'LineMetrics(', ')', 'public'),
+  \ javaapi#method(0,'getNumChars(', ')', 'int'),
+  \ javaapi#method(0,'getAscent(', ')', 'float'),
+  \ javaapi#method(0,'getDescent(', ')', 'float'),
+  \ javaapi#method(0,'getLeading(', ')', 'float'),
+  \ javaapi#method(0,'getHeight(', ')', 'float'),
+  \ javaapi#method(0,'getBaselineIndex(', ')', 'int'),
+  \ javaapi#method(0,'getBaselineOffsets(', ')', 'float[]'),
+  \ javaapi#method(0,'getStrikethroughOffset(', ')', 'float'),
+  \ javaapi#method(0,'getStrikethroughThickness(', ')', 'float'),
+  \ javaapi#method(0,'getUnderlineOffset(', ')', 'float'),
+  \ javaapi#method(0,'getUnderlineThickness(', ')', 'float'),
+  \ ])
+
+call javaapi#namespace('java.awt.font')
+
+call javaapi#class('GlyphVector', 'Cloneable', [
+  \ javaapi#field(1,'FLAG_HAS_TRANSFORMS', 'int'),
+  \ javaapi#field(1,'FLAG_HAS_POSITION_ADJUSTMENTS', 'int'),
+  \ javaapi#field(1,'FLAG_RUN_RTL', 'int'),
+  \ javaapi#field(1,'FLAG_COMPLEX_GLYPHS', 'int'),
+  \ javaapi#field(1,'FLAG_MASK', 'int'),
+  \ javaapi#method(0,'GlyphVector(', ')', 'public'),
+  \ javaapi#method(0,'getFont(', ')', 'Font'),
+  \ javaapi#method(0,'getFontRenderContext(', ')', 'FontRenderContext'),
+  \ javaapi#method(0,'performDefaultLayout(', ')', 'void'),
+  \ javaapi#method(0,'getNumGlyphs(', ')', 'int'),
+  \ javaapi#method(0,'getGlyphCode(', 'int)', 'int'),
+  \ javaapi#method(0,'getGlyphCodes(', 'int, int, int[])', 'int[]'),
+  \ javaapi#method(0,'getGlyphCharIndex(', 'int)', 'int'),
+  \ javaapi#method(0,'getGlyphCharIndices(', 'int, int, int[])', 'int[]'),
+  \ javaapi#method(0,'getLogicalBounds(', ')', 'Rectangle2D'),
+  \ javaapi#method(0,'getVisualBounds(', ')', 'Rectangle2D'),
+  \ javaapi#method(0,'getPixelBounds(', 'FontRenderContext, float, float)', 'Rectangle'),
+  \ javaapi#method(0,'getOutline(', ')', 'Shape'),
+  \ javaapi#method(0,'getOutline(', 'float, float)', 'Shape'),
+  \ javaapi#method(0,'getGlyphOutline(', 'int)', 'Shape'),
+  \ javaapi#method(0,'getGlyphOutline(', 'int, float, float)', 'Shape'),
+  \ javaapi#method(0,'getGlyphPosition(', 'int)', 'Point2D'),
+  \ javaapi#method(0,'setGlyphPosition(', 'int, Point2D)', 'void'),
+  \ javaapi#method(0,'getGlyphTransform(', 'int)', 'AffineTransform'),
+  \ javaapi#method(0,'setGlyphTransform(', 'int, AffineTransform)', 'void'),
+  \ javaapi#method(0,'getLayoutFlags(', ')', 'int'),
+  \ javaapi#method(0,'getGlyphPositions(', 'int, int, float[])', 'float[]'),
+  \ javaapi#method(0,'getGlyphLogicalBounds(', 'int)', 'Shape'),
+  \ javaapi#method(0,'getGlyphVisualBounds(', 'int)', 'Shape'),
+  \ javaapi#method(0,'getGlyphPixelBounds(', 'int, FontRenderContext, float, float)', 'Rectangle'),
+  \ javaapi#method(0,'getGlyphMetrics(', 'int)', 'GlyphMetrics'),
+  \ javaapi#method(0,'getGlyphJustificationInfo(', 'int)', 'GlyphJustificationInfo'),
+  \ javaapi#method(0,'equals(', 'GlyphVector)', 'boolean'),
+  \ ])
+
+call javaapi#namespace('java.awt.font')
+
+call javaapi#class('FontRenderContext', '', [
+  \ javaapi#method(0,'FontRenderContext(', 'AffineTransform, boolean, boolean)', 'public'),
+  \ javaapi#method(0,'FontRenderContext(', 'AffineTransform, Object, Object)', 'public'),
+  \ javaapi#method(0,'isTransformed(', ')', 'boolean'),
+  \ javaapi#method(0,'getTransformType(', ')', 'int'),
+  \ javaapi#method(0,'getTransform(', ')', 'AffineTransform'),
+  \ javaapi#method(0,'isAntiAliased(', ')', 'boolean'),
+  \ javaapi#method(0,'usesFractionalMetrics(', ')', 'boolean'),
+  \ javaapi#method(0,'getAntiAliasingHint(', ')', 'Object'),
+  \ javaapi#method(0,'getFractionalMetricsHint(', ')', 'Object'),
+  \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
+  \ javaapi#method(0,'equals(', 'FontRenderContext)', 'boolean'),
+  \ javaapi#method(0,'hashCode(', ')', 'int'),
+  \ ])
+
+call javaapi#namespace('java.awt.font')
+
+call javaapi#class('TextAttribute', 'Attribute', [
+  \ javaapi#field(1,'FAMILY', 'TextAttribute'),
+  \ javaapi#field(1,'WEIGHT', 'TextAttribute'),
+  \ javaapi#field(1,'WEIGHT_EXTRA_LIGHT', 'Float'),
+  \ javaapi#field(1,'WEIGHT_LIGHT', 'Float'),
+  \ javaapi#field(1,'WEIGHT_DEMILIGHT', 'Float'),
+  \ javaapi#field(1,'WEIGHT_REGULAR', 'Float'),
+  \ javaapi#field(1,'WEIGHT_SEMIBOLD', 'Float'),
+  \ javaapi#field(1,'WEIGHT_MEDIUM', 'Float'),
+  \ javaapi#field(1,'WEIGHT_DEMIBOLD', 'Float'),
+  \ javaapi#field(1,'WEIGHT_BOLD', 'Float'),
+  \ javaapi#field(1,'WEIGHT_HEAVY', 'Float'),
+  \ javaapi#field(1,'WEIGHT_EXTRABOLD', 'Float'),
+  \ javaapi#field(1,'WEIGHT_ULTRABOLD', 'Float'),
+  \ javaapi#field(1,'WIDTH', 'TextAttribute'),
+  \ javaapi#field(1,'WIDTH_CONDENSED', 'Float'),
+  \ javaapi#field(1,'WIDTH_SEMI_CONDENSED', 'Float'),
+  \ javaapi#field(1,'WIDTH_REGULAR', 'Float'),
+  \ javaapi#field(1,'WIDTH_SEMI_EXTENDED', 'Float'),
+  \ javaapi#field(1,'WIDTH_EXTENDED', 'Float'),
+  \ javaapi#field(1,'POSTURE', 'TextAttribute'),
+  \ javaapi#field(1,'POSTURE_REGULAR', 'Float'),
+  \ javaapi#field(1,'POSTURE_OBLIQUE', 'Float'),
+  \ javaapi#field(1,'SIZE', 'TextAttribute'),
+  \ javaapi#field(1,'TRANSFORM', 'TextAttribute'),
+  \ javaapi#field(1,'SUPERSCRIPT', 'TextAttribute'),
+  \ javaapi#field(1,'SUPERSCRIPT_SUPER', 'Integer'),
+  \ javaapi#field(1,'SUPERSCRIPT_SUB', 'Integer'),
+  \ javaapi#field(1,'FONT', 'TextAttribute'),
+  \ javaapi#field(1,'CHAR_REPLACEMENT', 'TextAttribute'),
+  \ javaapi#field(1,'FOREGROUND', 'TextAttribute'),
+  \ javaapi#field(1,'BACKGROUND', 'TextAttribute'),
+  \ javaapi#field(1,'UNDERLINE', 'TextAttribute'),
+  \ javaapi#field(1,'UNDERLINE_ON', 'Integer'),
+  \ javaapi#field(1,'STRIKETHROUGH', 'TextAttribute'),
+  \ javaapi#field(1,'STRIKETHROUGH_ON', 'Boolean'),
+  \ javaapi#field(1,'RUN_DIRECTION', 'TextAttribute'),
+  \ javaapi#field(1,'RUN_DIRECTION_LTR', 'Boolean'),
+  \ javaapi#field(1,'RUN_DIRECTION_RTL', 'Boolean'),
+  \ javaapi#field(1,'BIDI_EMBEDDING', 'TextAttribute'),
+  \ javaapi#field(1,'JUSTIFICATION', 'TextAttribute'),
+  \ javaapi#field(1,'JUSTIFICATION_FULL', 'Float'),
+  \ javaapi#field(1,'JUSTIFICATION_NONE', 'Float'),
+  \ javaapi#field(1,'INPUT_METHOD_HIGHLIGHT', 'TextAttribute'),
+  \ javaapi#field(1,'INPUT_METHOD_UNDERLINE', 'TextAttribute'),
+  \ javaapi#field(1,'UNDERLINE_LOW_ONE_PIXEL', 'Integer'),
+  \ javaapi#field(1,'UNDERLINE_LOW_TWO_PIXEL', 'Integer'),
+  \ javaapi#field(1,'UNDERLINE_LOW_DOTTED', 'Integer'),
+  \ javaapi#field(1,'UNDERLINE_LOW_GRAY', 'Integer'),
+  \ javaapi#field(1,'UNDERLINE_LOW_DASHED', 'Integer'),
+  \ javaapi#field(1,'SWAP_COLORS', 'TextAttribute'),
+  \ javaapi#field(1,'SWAP_COLORS_ON', 'Boolean'),
+  \ javaapi#field(1,'NUMERIC_SHAPING', 'TextAttribute'),
+  \ javaapi#field(1,'KERNING', 'TextAttribute'),
+  \ javaapi#field(1,'KERNING_ON', 'Integer'),
+  \ javaapi#field(1,'LIGATURES', 'TextAttribute'),
+  \ javaapi#field(1,'LIGATURES_ON', 'Integer'),
+  \ javaapi#field(1,'TRACKING', 'TextAttribute'),
+  \ javaapi#field(1,'TRACKING_TIGHT', 'Float'),
+  \ javaapi#field(1,'TRACKING_LOOSE', 'Float'),
   \ ])
 

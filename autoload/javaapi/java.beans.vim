@@ -1,276 +1,14 @@
 call javaapi#namespace('java.beans')
 
-call javaapi#class('PropertyChangeSupport', 'Serializable', [
-  \ javaapi#method(0,'PropertyChangeSupport(', 'Object)', 'public'),
-  \ javaapi#method(0,'addPropertyChangeListener(', 'PropertyChangeListener)', 'void'),
-  \ javaapi#method(0,'removePropertyChangeListener(', 'PropertyChangeListener)', 'void'),
-  \ javaapi#method(0,'getPropertyChangeListeners(', ')', 'PropertyChangeListener[]'),
-  \ javaapi#method(0,'addPropertyChangeListener(', 'String, PropertyChangeListener)', 'void'),
-  \ javaapi#method(0,'removePropertyChangeListener(', 'String, PropertyChangeListener)', 'void'),
-  \ javaapi#method(0,'getPropertyChangeListeners(', 'String)', 'PropertyChangeListener[]'),
-  \ javaapi#method(0,'firePropertyChange(', 'String, Object, Object)', 'void'),
-  \ javaapi#method(0,'firePropertyChange(', 'String, int, int)', 'void'),
-  \ javaapi#method(0,'firePropertyChange(', 'String, boolean, boolean)', 'void'),
-  \ javaapi#method(0,'firePropertyChange(', 'PropertyChangeEvent)', 'void'),
-  \ javaapi#method(0,'fireIndexedPropertyChange(', 'String, int, Object, Object)', 'void'),
-  \ javaapi#method(0,'fireIndexedPropertyChange(', 'String, int, int, int)', 'void'),
-  \ javaapi#method(0,'fireIndexedPropertyChange(', 'String, int, boolean, boolean)', 'void'),
-  \ javaapi#method(0,'hasListeners(', 'String)', 'boolean'),
-  \ ])
-
-
-call javaapi#class('PropertyChangeEvent', '', [
-  \ javaapi#method(0,'PropertyChangeEvent(', 'Object, String, Object, Object)', 'public'),
-  \ javaapi#method(0,'getPropertyName(', ')', 'String'),
-  \ javaapi#method(0,'getNewValue(', ')', 'Object'),
-  \ javaapi#method(0,'getOldValue(', ')', 'Object'),
-  \ javaapi#method(0,'setPropagationId(', 'Object)', 'void'),
-  \ javaapi#method(0,'getPropagationId(', ')', 'Object'),
-  \ javaapi#method(0,'toString(', ')', 'String'),
-  \ ])
-
-
-call javaapi#interface('PropertyChangeListener', '', [
-  \ javaapi#method(0,'propertyChange(', 'PropertyChangeEvent)', 'void'),
-  \ ])
-
-
-call javaapi#class('PropertyChangeListenerProxy', '', [
-  \ javaapi#method(0,'PropertyChangeListenerProxy(', 'String, PropertyChangeListener)', 'public'),
-  \ javaapi#method(0,'propertyChange(', 'PropertyChangeEvent)', 'void'),
-  \ javaapi#method(0,'getPropertyName(', ')', 'String'),
-  \ ])
-
-
-call javaapi#interface('VetoableChangeListener', '', [
-  \ javaapi#method(0,'vetoableChange(', 'PropertyChangeEvent) throws PropertyVetoException', 'void'),
-  \ ])
-
-
-call javaapi#class('PropertyVetoException', '', [
-  \ javaapi#method(0,'PropertyVetoException(', 'String, PropertyChangeEvent)', 'public'),
-  \ javaapi#method(0,'getPropertyChangeEvent(', ')', 'PropertyChangeEvent'),
-  \ ])
-
-
-call javaapi#class('java_awt_AWTKeyStroke_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_awt_BorderLayout_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_awt_CardLayout_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_awt_Choice_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_awt_Component_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_awt_Container_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_awt_Font_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_awt_GridBagLayout_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_awt_Insets_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_awt_List_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_awt_MenuBar_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_awt_MenuShortcut_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_awt_Menu_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_awt_SystemColor_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_awt_font_TextAttribute_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_beans_beancontext_BeanContextSupport_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_lang_Class_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_lang_String_PersistenceDelegate', '', [
-  \ javaapi#method(0,'writeObject(', 'Object, Encoder)', 'void'),
-  \ ])
-
-call javaapi#class('java_lang_reflect_Field_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_lang_reflect_Method_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_sql_Timestamp_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_util_AbstractCollection_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_util_AbstractList_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_util_AbstractMap_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_util_Collection_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('CheckedCollection_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('CheckedList_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('CheckedMap_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('CheckedRandomAccessList_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('CheckedSet_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('CheckedSortedMap_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('CheckedSortedSet_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('EmptyList_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('EmptyMap_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('EmptySet_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('SingletonList_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('SingletonMap_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('SingletonSet_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('SynchronizedCollection_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('SynchronizedList_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('SynchronizedMap_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('SynchronizedRandomAccessList_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('SynchronizedSet_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('SynchronizedSortedMap_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('SynchronizedSortedSet_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('UnmodifiableCollection_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('UnmodifiableList_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('UnmodifiableMap_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('UnmodifiableRandomAccessList_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('UnmodifiableSet_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('UnmodifiableSortedMap_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('UnmodifiableSortedSet_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_util_Collections', '', [
-  \ ])
-
-call javaapi#class('java_util_Date_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_util_EnumMap_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_util_EnumSet_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_util_Hashtable_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_util_List_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('java_util_Map_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('javax_swing_Box_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('javax_swing_DefaultComboBoxModel_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('javax_swing_DefaultListModel_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('javax_swing_JFrame_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('javax_swing_JMenu_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('javax_swing_JTabbedPane_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('javax_swing_ToolTipManager_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('javax_swing_border_MatteBorder_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('javax_swing_tree_DefaultMutableTreeNode_PersistenceDelegate', '', [
-  \ ])
-
-call javaapi#class('sun_swing_PrintColorUIResource_PersistenceDelegate', '', [
-  \ ])
-
-
 call javaapi#interface('AppletInitializer', '', [
   \ javaapi#method(0,'initialize(', 'Applet, BeanContext)', 'void'),
   \ javaapi#method(0,'activate(', 'Applet)', 'void'),
   \ ])
 
-call javaapi#class('ArrayPersistenceDelegate', '', [
+call javaapi#class('ArrayPersistenceDelegate', 'PersistenceDelegate', [
   \ ])
 
-call javaapi#class('BeanDescriptor', '', [
+call javaapi#class('BeanDescriptor', 'FeatureDescriptor', [
   \ javaapi#method(0,'BeanDescriptor(', 'Class<?>)', 'public'),
   \ javaapi#method(0,'BeanDescriptor(', 'Class<?>, Class<?>)', 'public'),
   \ javaapi#method(0,'getBeanClass(', ')', 'Class<?>'),
@@ -335,7 +73,7 @@ call javaapi#class('BeansAppletStub', 'AppletStub', [
   \ javaapi#method(0,'appletResize(', 'int, int)', 'void'),
   \ ])
 
-call javaapi#class('ChangeListenerMap<L', '', [
+call javaapi#class('ChangeListenerMap<L', 'EventListener>', [
   \ javaapi#method(0,'add(', 'String, L)', 'void'),
   \ javaapi#method(0,'remove(', 'String, L)', 'void'),
   \ javaapi#method(0,'get(', 'String)', 'L[]'),
@@ -347,7 +85,7 @@ call javaapi#class('ChangeListenerMap<L', '', [
   \ javaapi#method(0,'extract(', 'L)', 'L'),
   \ ])
 
-call javaapi#interface('ConstructorProperties', '', [
+call javaapi#interface('ConstructorProperties', 'Annotation', [
   \ javaapi#method(0,'value(', ')', 'String[]'),
   \ ])
 
@@ -357,7 +95,7 @@ call javaapi#interface('Customizer', '', [
   \ javaapi#method(0,'removePropertyChangeListener(', 'PropertyChangeListener)', 'void'),
   \ ])
 
-call javaapi#class('DefaultPersistenceDelegate', '', [
+call javaapi#class('DefaultPersistenceDelegate', 'PersistenceDelegate', [
   \ javaapi#method(0,'DefaultPersistenceDelegate(', ')', 'public'),
   \ javaapi#method(0,'DefaultPersistenceDelegate(', 'String[])', 'public'),
   \ ])
@@ -380,7 +118,7 @@ call javaapi#class('Encoder', '', [
   \ javaapi#method(0,'writeExpression(', 'Expression)', 'void'),
   \ ])
 
-call javaapi#class('EnumPersistenceDelegate', '', [
+call javaapi#class('EnumPersistenceDelegate', 'PersistenceDelegate', [
   \ ])
 
 call javaapi#class('1', 'Object>', [
@@ -399,7 +137,7 @@ call javaapi#class('EventHandler', 'InvocationHandler', [
   \ javaapi#method(1,'create(', 'Class<T>, Object, String, String, String)', 'T'),
   \ ])
 
-call javaapi#class('EventSetDescriptor', '', [
+call javaapi#class('EventSetDescriptor', 'FeatureDescriptor', [
   \ javaapi#method(0,'EventSetDescriptor(', 'Class<?>, String, Class<?>, String) throws IntrospectionException', 'public'),
   \ javaapi#method(0,'EventSetDescriptor(', 'Class<?>, String, Class<?>, String[], String, String) throws IntrospectionException', 'public'),
   \ javaapi#method(0,'EventSetDescriptor(', 'Class<?>, String, Class<?>, String[], String, String, String) throws IntrospectionException', 'public'),
@@ -422,7 +160,7 @@ call javaapi#interface('ExceptionListener', '', [
   \ javaapi#method(0,'exceptionThrown(', 'Exception)', 'void'),
   \ ])
 
-call javaapi#class('Expression', '', [
+call javaapi#class('Expression', 'Statement', [
   \ javaapi#method(0,'Expression(', 'Object, String, Object[])', 'public'),
   \ javaapi#method(0,'Expression(', 'Object, Object, String, Object[])', 'public'),
   \ javaapi#method(0,'execute(', ') throws Exception', 'void'),
@@ -451,7 +189,7 @@ call javaapi#class('FeatureDescriptor', '', [
   \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('GenericBeanInfo', '', [
+call javaapi#class('GenericBeanInfo', 'SimpleBeanInfo', [
   \ javaapi#method(0,'GenericBeanInfo(', 'BeanDescriptor, EventSetDescriptor[], int, PropertyDescriptor[], int, MethodDescriptor[], BeanInfo)', 'public'),
   \ javaapi#method(0,'getPropertyDescriptors(', ')', 'PropertyDescriptor[]'),
   \ javaapi#method(0,'getDefaultPropertyIndex(', ')', 'int'),
@@ -462,12 +200,12 @@ call javaapi#class('GenericBeanInfo', '', [
   \ javaapi#method(0,'getIcon(', 'int)', 'Image'),
   \ ])
 
-call javaapi#class('IndexedPropertyChangeEvent', '', [
+call javaapi#class('IndexedPropertyChangeEvent', 'PropertyChangeEvent', [
   \ javaapi#method(0,'IndexedPropertyChangeEvent(', 'Object, String, Object, Object, int)', 'public'),
   \ javaapi#method(0,'getIndex(', ')', 'int'),
   \ ])
 
-call javaapi#class('IndexedPropertyDescriptor', '', [
+call javaapi#class('IndexedPropertyDescriptor', 'PropertyDescriptor', [
   \ javaapi#method(0,'IndexedPropertyDescriptor(', 'String, Class<?>) throws IntrospectionException', 'public'),
   \ javaapi#method(0,'IndexedPropertyDescriptor(', 'String, Class<?>, String, String, String, String) throws IntrospectionException', 'public'),
   \ javaapi#method(0,'IndexedPropertyDescriptor(', 'String, Method, Method, Method, Method) throws IntrospectionException', 'public'),
@@ -480,7 +218,7 @@ call javaapi#class('IndexedPropertyDescriptor', '', [
   \ javaapi#method(0,'hashCode(', ')', 'int'),
   \ ])
 
-call javaapi#class('IntrospectionException', '', [
+call javaapi#class('IntrospectionException', 'Exception', [
   \ javaapi#method(0,'IntrospectionException(', 'String)', 'public'),
   \ ])
 
@@ -508,7 +246,7 @@ call javaapi#class('MetaData', '', [
   \ javaapi#method(1,'getPersistenceDelegate(', 'Class)', 'PersistenceDelegate'),
   \ ])
 
-call javaapi#class('MethodDescriptor', '', [
+call javaapi#class('MethodDescriptor', 'FeatureDescriptor', [
   \ javaapi#method(0,'MethodDescriptor(', 'Method)', 'public'),
   \ javaapi#method(0,'MethodDescriptor(', 'Method, ParameterDescriptor[])', 'public'),
   \ javaapi#method(0,'getMethod(', ')', 'Method'),
@@ -523,15 +261,15 @@ call javaapi#class('NameGenerator', '', [
   \ javaapi#method(0,'instanceName(', 'Object)', 'String'),
   \ ])
 
-call javaapi#class('NullPersistenceDelegate', '', [
+call javaapi#class('NullPersistenceDelegate', 'PersistenceDelegate', [
   \ javaapi#method(0,'writeObject(', 'Object, Encoder)', 'void'),
   \ ])
 
-call javaapi#class('ObjectInputStreamWithLoader', '', [
+call javaapi#class('ObjectInputStreamWithLoader', 'ObjectInputStream', [
   \ javaapi#method(0,'ObjectInputStreamWithLoader(', 'InputStream, ClassLoader) throws IOException, StreamCorruptedException', 'public'),
   \ ])
 
-call javaapi#class('ParameterDescriptor', '', [
+call javaapi#class('ParameterDescriptor', 'FeatureDescriptor', [
   \ javaapi#method(0,'ParameterDescriptor(', ')', 'public'),
   \ ])
 
@@ -540,16 +278,16 @@ call javaapi#class('PersistenceDelegate', '', [
   \ javaapi#method(0,'writeObject(', 'Object, Encoder)', 'void'),
   \ ])
 
-call javaapi#class('PrimitivePersistenceDelegate', '', [
+call javaapi#class('PrimitivePersistenceDelegate', 'PersistenceDelegate', [
   \ ])
 
 call javaapi#class('1', '', [
   \ ])
 
-call javaapi#class('PropertyChangeListenerMap', '', [
+call javaapi#class('PropertyChangeListenerMap', 'PropertyChangeListener>', [
   \ ])
 
-call javaapi#class('PropertyDescriptor', '', [
+call javaapi#class('PropertyDescriptor', 'FeatureDescriptor', [
   \ javaapi#method(0,'PropertyDescriptor(', 'String, Class<?>) throws IntrospectionException', 'public'),
   \ javaapi#method(0,'PropertyDescriptor(', 'String, Class<?>, String, String) throws IntrospectionException', 'public'),
   \ javaapi#method(0,'PropertyDescriptor(', 'String, Method, Method) throws IntrospectionException', 'public'),
@@ -612,7 +350,7 @@ call javaapi#class('PropertyEditorSupport', 'PropertyEditor', [
   \ javaapi#method(0,'firePropertyChange(', ')', 'void'),
   \ ])
 
-call javaapi#class('ProxyPersistenceDelegate', '', [
+call javaapi#class('ProxyPersistenceDelegate', 'PersistenceDelegate', [
   \ ])
 
 call javaapi#class('ReflectionUtils', '', [
@@ -655,18 +393,18 @@ call javaapi#class('Statement', '', [
   \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('StaticFieldsPersistenceDelegate', '', [
+call javaapi#class('StaticFieldsPersistenceDelegate', 'PersistenceDelegate', [
   \ javaapi#method(0,'writeObject(', 'Object, Encoder)', 'void'),
   \ ])
 
 call javaapi#class('ThreadGroupContext', '', [
   \ ])
 
-call javaapi#interface('Transient', '', [
+call javaapi#interface('Transient', 'Annotation', [
   \ javaapi#method(0,'value(', ')', 'boolean'),
   \ ])
 
-call javaapi#class('VetoableChangeListenerProxy', '', [
+call javaapi#class('VetoableChangeListenerProxy', 'VetoableChangeListener>', [
   \ javaapi#method(0,'VetoableChangeListenerProxy(', 'String, VetoableChangeListener)', 'public'),
   \ javaapi#method(0,'vetoableChange(', 'PropertyChangeEvent) throws PropertyVetoException', 'void'),
   \ javaapi#method(0,'getPropertyName(', ')', 'String'),
@@ -675,7 +413,7 @@ call javaapi#class('VetoableChangeListenerProxy', '', [
 call javaapi#class('1', '', [
   \ ])
 
-call javaapi#class('VetoableChangeListenerMap', '', [
+call javaapi#class('VetoableChangeListenerMap', 'VetoableChangeListener>', [
   \ ])
 
 call javaapi#class('VetoableChangeSupport', 'Serializable', [
@@ -725,7 +463,7 @@ call javaapi#class('ValueData', '', [
   \ javaapi#field(0,'exp', 'Expression'),
   \ ])
 
-call javaapi#class('XMLEncoder', '', [
+call javaapi#class('XMLEncoder', 'Encoder', [
   \ javaapi#method(0,'XMLEncoder(', 'OutputStream)', 'public'),
   \ javaapi#method(0,'XMLEncoder(', 'OutputStream, String, boolean, int)', 'public'),
   \ javaapi#method(0,'setOwner(', 'Object)', 'void'),
@@ -735,5 +473,274 @@ call javaapi#class('XMLEncoder', '', [
   \ javaapi#method(0,'writeExpression(', 'Expression)', 'void'),
   \ javaapi#method(0,'flush(', ')', 'void'),
   \ javaapi#method(0,'close(', ')', 'void'),
+  \ ])
+
+call javaapi#namespace('java.beans')
+
+call javaapi#class('java_awt_AWTKeyStroke_PersistenceDelegate', 'PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_awt_BorderLayout_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_awt_CardLayout_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_awt_Choice_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_awt_Component_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_awt_Container_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_awt_Font_PersistenceDelegate', 'PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_awt_GridBagLayout_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_awt_Insets_PersistenceDelegate', 'PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_awt_List_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_awt_MenuBar_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_awt_MenuShortcut_PersistenceDelegate', 'PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_awt_Menu_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_awt_SystemColor_PersistenceDelegate', 'StaticFieldsPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_awt_font_TextAttribute_PersistenceDelegate', 'StaticFieldsPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_beans_beancontext_BeanContextSupport_PersistenceDelegate', 'java_util_Collection_PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_lang_Class_PersistenceDelegate', 'PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_lang_String_PersistenceDelegate', 'PersistenceDelegate', [
+  \ javaapi#method(0,'writeObject(', 'Object, Encoder)', 'void'),
+  \ ])
+
+call javaapi#class('java_lang_reflect_Field_PersistenceDelegate', 'PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_lang_reflect_Method_PersistenceDelegate', 'PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_sql_Timestamp_PersistenceDelegate', 'java_util_Date_PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_util_AbstractCollection_PersistenceDelegate', 'java_util_Collection_PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_util_AbstractList_PersistenceDelegate', 'java_util_List_PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_util_AbstractMap_PersistenceDelegate', 'java_util_Map_PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_util_Collection_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('CheckedCollection_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('CheckedList_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('CheckedMap_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('CheckedRandomAccessList_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('CheckedSet_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('CheckedSortedMap_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('CheckedSortedSet_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('EmptyList_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('EmptyMap_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('EmptySet_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('SingletonList_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('SingletonMap_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('SingletonSet_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('SynchronizedCollection_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('SynchronizedList_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('SynchronizedMap_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('SynchronizedRandomAccessList_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('SynchronizedSet_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('SynchronizedSortedMap_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('SynchronizedSortedSet_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('UnmodifiableCollection_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('UnmodifiableList_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('UnmodifiableMap_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('UnmodifiableRandomAccessList_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('UnmodifiableSet_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('UnmodifiableSortedMap_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('UnmodifiableSortedSet_PersistenceDelegate', 'java_util_Collections', [
+  \ ])
+
+call javaapi#class('java_util_Collections', 'PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_util_Date_PersistenceDelegate', 'PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_util_EnumMap_PersistenceDelegate', 'PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_util_EnumSet_PersistenceDelegate', 'PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_util_Hashtable_PersistenceDelegate', 'java_util_Map_PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_util_List_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('java_util_Map_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('javax_swing_Box_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('javax_swing_DefaultComboBoxModel_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('javax_swing_DefaultListModel_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('javax_swing_JFrame_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('javax_swing_JMenu_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('javax_swing_JTabbedPane_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('javax_swing_ToolTipManager_PersistenceDelegate', 'PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('javax_swing_border_MatteBorder_PersistenceDelegate', 'PersistenceDelegate', [
+  \ ])
+
+call javaapi#class('javax_swing_tree_DefaultMutableTreeNode_PersistenceDelegate', 'DefaultPersistenceDelegate', [
+  \ ])
+
+call javaapi#class('sun_swing_PrintColorUIResource_PersistenceDelegate', 'PersistenceDelegate', [
+  \ ])
+
+call javaapi#namespace('java.beans')
+
+call javaapi#class('PropertyVetoException', 'Exception', [
+  \ javaapi#method(0,'PropertyVetoException(', 'String, PropertyChangeEvent)', 'public'),
+  \ javaapi#method(0,'getPropertyChangeEvent(', ')', 'PropertyChangeEvent'),
+  \ ])
+
+call javaapi#namespace('java.beans')
+
+call javaapi#interface('VetoableChangeListener', 'EventListener', [
+  \ javaapi#method(0,'vetoableChange(', 'PropertyChangeEvent) throws PropertyVetoException', 'void'),
+  \ ])
+
+call javaapi#namespace('java.beans')
+
+call javaapi#class('PropertyChangeListenerProxy', 'PropertyChangeListener>', [
+  \ javaapi#method(0,'PropertyChangeListenerProxy(', 'String, PropertyChangeListener)', 'public'),
+  \ javaapi#method(0,'propertyChange(', 'PropertyChangeEvent)', 'void'),
+  \ javaapi#method(0,'getPropertyName(', ')', 'String'),
+  \ ])
+
+call javaapi#namespace('java.beans')
+
+call javaapi#interface('PropertyChangeListener', 'EventListener', [
+  \ javaapi#method(0,'propertyChange(', 'PropertyChangeEvent)', 'void'),
+  \ ])
+
+call javaapi#namespace('java.beans')
+
+call javaapi#class('PropertyChangeEvent', 'EventObject', [
+  \ javaapi#method(0,'PropertyChangeEvent(', 'Object, String, Object, Object)', 'public'),
+  \ javaapi#method(0,'getPropertyName(', ')', 'String'),
+  \ javaapi#method(0,'getNewValue(', ')', 'Object'),
+  \ javaapi#method(0,'getOldValue(', ')', 'Object'),
+  \ javaapi#method(0,'setPropagationId(', 'Object)', 'void'),
+  \ javaapi#method(0,'getPropagationId(', ')', 'Object'),
+  \ javaapi#method(0,'toString(', ')', 'String'),
+  \ ])
+
+call javaapi#namespace('java.beans')
+
+call javaapi#class('PropertyChangeSupport', 'Serializable', [
+  \ javaapi#method(0,'PropertyChangeSupport(', 'Object)', 'public'),
+  \ javaapi#method(0,'addPropertyChangeListener(', 'PropertyChangeListener)', 'void'),
+  \ javaapi#method(0,'removePropertyChangeListener(', 'PropertyChangeListener)', 'void'),
+  \ javaapi#method(0,'getPropertyChangeListeners(', ')', 'PropertyChangeListener[]'),
+  \ javaapi#method(0,'addPropertyChangeListener(', 'String, PropertyChangeListener)', 'void'),
+  \ javaapi#method(0,'removePropertyChangeListener(', 'String, PropertyChangeListener)', 'void'),
+  \ javaapi#method(0,'getPropertyChangeListeners(', 'String)', 'PropertyChangeListener[]'),
+  \ javaapi#method(0,'firePropertyChange(', 'String, Object, Object)', 'void'),
+  \ javaapi#method(0,'firePropertyChange(', 'String, int, int)', 'void'),
+  \ javaapi#method(0,'firePropertyChange(', 'String, boolean, boolean)', 'void'),
+  \ javaapi#method(0,'firePropertyChange(', 'PropertyChangeEvent)', 'void'),
+  \ javaapi#method(0,'fireIndexedPropertyChange(', 'String, int, Object, Object)', 'void'),
+  \ javaapi#method(0,'fireIndexedPropertyChange(', 'String, int, int, int)', 'void'),
+  \ javaapi#method(0,'fireIndexedPropertyChange(', 'String, int, boolean, boolean)', 'void'),
+  \ javaapi#method(0,'hasListeners(', 'String)', 'boolean'),
   \ ])
 

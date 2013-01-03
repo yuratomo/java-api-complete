@@ -1,6 +1,6 @@
 call javaapi#namespace('java.rmi.activation')
 
-call javaapi#class('Activatable', '', [
+call javaapi#class('Activatable', 'RemoteServer', [
   \ javaapi#method(1,'register(', 'ActivationDesc) throws UnknownGroupException, ActivationException, RemoteException', 'Remote'),
   \ javaapi#method(1,'inactive(', 'ActivationID) throws UnknownObjectException, ActivationException, RemoteException', 'boolean'),
   \ javaapi#method(1,'unregister(', 'ActivationID) throws UnknownObjectException, ActivationException, RemoteException', 'void'),
@@ -11,7 +11,7 @@ call javaapi#class('Activatable', '', [
   \ javaapi#method(1,'unexportObject(', 'Remote, boolean) throws NoSuchObjectException', 'boolean'),
   \ ])
 
-call javaapi#class('ActivateFailedException', '', [
+call javaapi#class('ActivateFailedException', 'RemoteException', [
   \ javaapi#method(0,'ActivateFailedException(', 'String)', 'public'),
   \ javaapi#method(0,'ActivateFailedException(', 'String, Exception)', 'public'),
   \ ])
@@ -30,7 +30,7 @@ call javaapi#class('ActivationDesc', 'Serializable', [
   \ javaapi#method(0,'hashCode(', ')', 'int'),
   \ ])
 
-call javaapi#class('ActivationException', '', [
+call javaapi#class('ActivationException', 'Exception', [
   \ javaapi#field(0,'detail', 'Throwable'),
   \ javaapi#method(0,'ActivationException(', ')', 'public'),
   \ javaapi#method(0,'ActivationException(', 'String)', 'public'),
@@ -39,7 +39,7 @@ call javaapi#class('ActivationException', '', [
   \ javaapi#method(0,'getCause(', ')', 'Throwable'),
   \ ])
 
-call javaapi#class('ActivationGroup', '', [
+call javaapi#class('ActivationGroup', 'UnicastRemoteObject', [
   \ javaapi#method(0,'inactiveObject(', 'ActivationID) throws ActivationException, UnknownObjectException, RemoteException', 'boolean'),
   \ javaapi#method(0,'activeObject(', 'ActivationID, Remote) throws ActivationException, UnknownObjectException, RemoteException', 'void'),
   \ javaapi#method(1,'createGroup(', 'ActivationGroupID, ActivationGroupDesc, long) throws ActivationException', 'ActivationGroup'),
@@ -75,6 +75,10 @@ call javaapi#class('ActivationGroupID', 'Serializable', [
   \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
   \ ])
 
+call javaapi#java.rmi.activation.ActivationGroup_Stub(java.rmi.server.RemoteRef);('ActivationGroupID', '', [
+  \ javaapi#method(0,'newInstance(', 'ActivationID, ActivationDesc) throws RemoteException, ActivationException', 'MarshalledObject'),
+  \ ])
+
 call javaapi#class('ActivationID', 'Serializable', [
   \ javaapi#method(0,'ActivationID(', 'Activator)', 'public'),
   \ javaapi#method(0,'activate(', 'boolean) throws ActivationException, UnknownObjectException, RemoteException', 'Remote'),
@@ -82,17 +86,17 @@ call javaapi#class('ActivationID', 'Serializable', [
   \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
   \ ])
 
-call javaapi#interface('ActivationInstantiator', '', [
+call javaapi#interface('ActivationInstantiator', 'Remote', [
   \ javaapi#method(0,'newInstance(', 'ActivationID, ActivationDesc) throws ActivationException, RemoteException', 'Remote>'),
   \ ])
 
-call javaapi#interface('ActivationMonitor', '', [
+call javaapi#interface('ActivationMonitor', 'Remote', [
   \ javaapi#method(0,'inactiveObject(', 'ActivationID) throws UnknownObjectException, RemoteException', 'void'),
   \ javaapi#method(0,'activeObject(', 'ActivationID, MarshalledObject<? extends Remote>) throws UnknownObjectException, RemoteException', 'void'),
   \ javaapi#method(0,'inactiveGroup(', 'ActivationGroupID, long) throws UnknownGroupException, RemoteException', 'void'),
   \ ])
 
-call javaapi#interface('ActivationSystem', '', [
+call javaapi#interface('ActivationSystem', 'Remote', [
   \ javaapi#field(1,'SYSTEM_PORT', 'int'),
   \ javaapi#method(0,'registerObject(', 'ActivationDesc) throws ActivationException, UnknownGroupException, RemoteException', 'ActivationID'),
   \ javaapi#method(0,'unregisterObject(', 'ActivationID) throws ActivationException, UnknownObjectException, RemoteException', 'void'),
@@ -106,15 +110,15 @@ call javaapi#interface('ActivationSystem', '', [
   \ javaapi#method(0,'getActivationGroupDesc(', 'ActivationGroupID) throws ActivationException, UnknownGroupException, RemoteException', 'ActivationGroupDesc'),
   \ ])
 
-call javaapi#interface('Activator', '', [
+call javaapi#interface('Activator', 'Remote', [
   \ javaapi#method(0,'activate(', 'ActivationID, boolean) throws ActivationException, UnknownObjectException, RemoteException', 'Remote>'),
   \ ])
 
-call javaapi#class('UnknownGroupException', '', [
+call javaapi#class('UnknownGroupException', 'ActivationException', [
   \ javaapi#method(0,'UnknownGroupException(', 'String)', 'public'),
   \ ])
 
-call javaapi#class('UnknownObjectException', '', [
+call javaapi#class('UnknownObjectException', 'ActivationException', [
   \ javaapi#method(0,'UnknownObjectException(', 'String)', 'public'),
   \ ])
 

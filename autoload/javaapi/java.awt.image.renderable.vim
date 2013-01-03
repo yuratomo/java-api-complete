@@ -1,6 +1,6 @@
 call javaapi#namespace('java.awt.image.renderable')
 
-call javaapi#interface('ContextualRenderedImageFactory', '', [
+call javaapi#interface('ContextualRenderedImageFactory', 'RenderedImageFactory', [
   \ javaapi#method(0,'mapRenderContext(', 'int, RenderContext, ParameterBlock, RenderableImage)', 'RenderContext'),
   \ javaapi#method(0,'create(', 'RenderContext, ParameterBlock)', 'RenderedImage'),
   \ javaapi#method(0,'getBounds2D(', 'ParameterBlock)', 'Rectangle2D'),

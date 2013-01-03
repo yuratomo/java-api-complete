@@ -1,88 +1,6 @@
 call javaapi#namespace('java.math')
 
-call javaapi#class('RoundingMode', '', [
-  \ javaapi#field(1,'UP', 'RoundingMode'),
-  \ javaapi#field(1,'DOWN', 'RoundingMode'),
-  \ javaapi#field(1,'CEILING', 'RoundingMode'),
-  \ javaapi#field(1,'FLOOR', 'RoundingMode'),
-  \ javaapi#field(1,'HALF_UP', 'RoundingMode'),
-  \ javaapi#field(1,'HALF_DOWN', 'RoundingMode'),
-  \ javaapi#field(1,'HALF_EVEN', 'RoundingMode'),
-  \ javaapi#field(1,'UNNECESSARY', 'RoundingMode'),
-  \ javaapi#method(1,'values(', ')', 'RoundingMode[]'),
-  \ javaapi#method(1,'valueOf(', 'String)', 'RoundingMode'),
-  \ javaapi#method(1,'valueOf(', 'int)', 'RoundingMode'),
-  \ ])
-
-
-call javaapi#class('BigInteger', '', [
-  \ javaapi#field(1,'ZERO', 'BigInteger'),
-  \ javaapi#field(1,'ONE', 'BigInteger'),
-  \ javaapi#field(1,'TEN', 'BigInteger'),
-  \ javaapi#method(0,'BigInteger(', 'byte[])', 'public'),
-  \ javaapi#method(0,'BigInteger(', 'int, byte[])', 'public'),
-  \ javaapi#method(0,'BigInteger(', 'String, int)', 'public'),
-  \ javaapi#method(0,'BigInteger(', 'String)', 'public'),
-  \ javaapi#method(0,'BigInteger(', 'int, Random)', 'public'),
-  \ javaapi#method(0,'BigInteger(', 'int, int, Random)', 'public'),
-  \ javaapi#method(1,'probablePrime(', 'int, Random)', 'BigInteger'),
-  \ javaapi#method(0,'nextProbablePrime(', ')', 'BigInteger'),
-  \ javaapi#method(1,'valueOf(', 'long)', 'BigInteger'),
-  \ javaapi#method(0,'add(', 'BigInteger)', 'BigInteger'),
-  \ javaapi#method(0,'subtract(', 'BigInteger)', 'BigInteger'),
-  \ javaapi#method(0,'multiply(', 'BigInteger)', 'BigInteger'),
-  \ javaapi#method(0,'divide(', 'BigInteger)', 'BigInteger'),
-  \ javaapi#method(0,'divideAndRemainder(', 'BigInteger)', 'BigInteger[]'),
-  \ javaapi#method(0,'remainder(', 'BigInteger)', 'BigInteger'),
-  \ javaapi#method(0,'pow(', 'int)', 'BigInteger'),
-  \ javaapi#method(0,'gcd(', 'BigInteger)', 'BigInteger'),
-  \ javaapi#method(0,'abs(', ')', 'BigInteger'),
-  \ javaapi#method(0,'negate(', ')', 'BigInteger'),
-  \ javaapi#method(0,'signum(', ')', 'int'),
-  \ javaapi#method(0,'mod(', 'BigInteger)', 'BigInteger'),
-  \ javaapi#method(0,'modPow(', 'BigInteger, BigInteger)', 'BigInteger'),
-  \ javaapi#method(0,'modInverse(', 'BigInteger)', 'BigInteger'),
-  \ javaapi#method(0,'shiftLeft(', 'int)', 'BigInteger'),
-  \ javaapi#method(0,'shiftRight(', 'int)', 'BigInteger'),
-  \ javaapi#method(0,'and(', 'BigInteger)', 'BigInteger'),
-  \ javaapi#method(0,'or(', 'BigInteger)', 'BigInteger'),
-  \ javaapi#method(0,'xor(', 'BigInteger)', 'BigInteger'),
-  \ javaapi#method(0,'not(', ')', 'BigInteger'),
-  \ javaapi#method(0,'andNot(', 'BigInteger)', 'BigInteger'),
-  \ javaapi#method(0,'testBit(', 'int)', 'boolean'),
-  \ javaapi#method(0,'setBit(', 'int)', 'BigInteger'),
-  \ javaapi#method(0,'clearBit(', 'int)', 'BigInteger'),
-  \ javaapi#method(0,'flipBit(', 'int)', 'BigInteger'),
-  \ javaapi#method(0,'getLowestSetBit(', ')', 'int'),
-  \ javaapi#method(0,'bitLength(', ')', 'int'),
-  \ javaapi#method(0,'bitCount(', ')', 'int'),
-  \ javaapi#method(0,'isProbablePrime(', 'int)', 'boolean'),
-  \ javaapi#method(0,'compareTo(', 'BigInteger)', 'int'),
-  \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
-  \ javaapi#method(0,'min(', 'BigInteger)', 'BigInteger'),
-  \ javaapi#method(0,'max(', 'BigInteger)', 'BigInteger'),
-  \ javaapi#method(0,'hashCode(', ')', 'int'),
-  \ javaapi#method(0,'toString(', 'int)', 'String'),
-  \ javaapi#method(0,'toString(', ')', 'String'),
-  \ javaapi#method(0,'toByteArray(', ')', 'byte[]'),
-  \ javaapi#method(0,'intValue(', ')', 'int'),
-  \ javaapi#method(0,'longValue(', ')', 'long'),
-  \ javaapi#method(0,'floatValue(', ')', 'float'),
-  \ javaapi#method(0,'doubleValue(', ')', 'double'),
-  \ javaapi#method(0,'compareTo(', 'Object)', 'int'),
-  \ ])
-
-
-call javaapi#class('SignedMutableBigInteger', '', [
-  \ javaapi#method(0,'toString(', ')', 'String'),
-  \ ])
-
-call javaapi#class('MutableBigInteger', '', [
-  \ javaapi#method(0,'toString(', ')', 'String'),
-  \ ])
-
-
-call javaapi#class('1', '', [
+call javaapi#class('1', 'StringBuilderHelper>', [
   \ ])
 
 call javaapi#class('LongOverflow', '', [
@@ -92,7 +10,7 @@ call javaapi#class('LongOverflow', '', [
 call javaapi#class('StringBuilderHelper', '', [
   \ ])
 
-call javaapi#class('BigDecimal', '', [
+call javaapi#class('BigDecimal', 'Number', [
   \ javaapi#field(1,'ZERO', 'BigDecimal'),
   \ javaapi#field(1,'ONE', 'BigDecimal'),
   \ javaapi#field(1,'TEN', 'BigDecimal'),
@@ -199,5 +117,90 @@ call javaapi#class('MathContext', 'Serializable', [
   \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,'hashCode(', ')', 'int'),
   \ javaapi#method(0,'toString(', ')', 'String'),
+  \ ])
+
+call javaapi#namespace('java.math')
+
+call javaapi#class('SignedMutableBigInteger', 'MutableBigInteger', [
+  \ javaapi#method(0,'toString(', ')', 'String'),
+  \ ])
+
+call javaapi#class('MutableBigInteger', '', [
+  \ javaapi#method(0,'toString(', ')', 'String'),
+  \ ])
+
+call javaapi#namespace('java.math')
+
+call javaapi#class('BigInteger', 'Number', [
+  \ javaapi#field(1,'ZERO', 'BigInteger'),
+  \ javaapi#field(1,'ONE', 'BigInteger'),
+  \ javaapi#field(1,'TEN', 'BigInteger'),
+  \ javaapi#method(0,'BigInteger(', 'byte[])', 'public'),
+  \ javaapi#method(0,'BigInteger(', 'int, byte[])', 'public'),
+  \ javaapi#method(0,'BigInteger(', 'String, int)', 'public'),
+  \ javaapi#method(0,'BigInteger(', 'String)', 'public'),
+  \ javaapi#method(0,'BigInteger(', 'int, Random)', 'public'),
+  \ javaapi#method(0,'BigInteger(', 'int, int, Random)', 'public'),
+  \ javaapi#method(1,'probablePrime(', 'int, Random)', 'BigInteger'),
+  \ javaapi#method(0,'nextProbablePrime(', ')', 'BigInteger'),
+  \ javaapi#method(1,'valueOf(', 'long)', 'BigInteger'),
+  \ javaapi#method(0,'add(', 'BigInteger)', 'BigInteger'),
+  \ javaapi#method(0,'subtract(', 'BigInteger)', 'BigInteger'),
+  \ javaapi#method(0,'multiply(', 'BigInteger)', 'BigInteger'),
+  \ javaapi#method(0,'divide(', 'BigInteger)', 'BigInteger'),
+  \ javaapi#method(0,'divideAndRemainder(', 'BigInteger)', 'BigInteger[]'),
+  \ javaapi#method(0,'remainder(', 'BigInteger)', 'BigInteger'),
+  \ javaapi#method(0,'pow(', 'int)', 'BigInteger'),
+  \ javaapi#method(0,'gcd(', 'BigInteger)', 'BigInteger'),
+  \ javaapi#method(0,'abs(', ')', 'BigInteger'),
+  \ javaapi#method(0,'negate(', ')', 'BigInteger'),
+  \ javaapi#method(0,'signum(', ')', 'int'),
+  \ javaapi#method(0,'mod(', 'BigInteger)', 'BigInteger'),
+  \ javaapi#method(0,'modPow(', 'BigInteger, BigInteger)', 'BigInteger'),
+  \ javaapi#method(0,'modInverse(', 'BigInteger)', 'BigInteger'),
+  \ javaapi#method(0,'shiftLeft(', 'int)', 'BigInteger'),
+  \ javaapi#method(0,'shiftRight(', 'int)', 'BigInteger'),
+  \ javaapi#method(0,'and(', 'BigInteger)', 'BigInteger'),
+  \ javaapi#method(0,'or(', 'BigInteger)', 'BigInteger'),
+  \ javaapi#method(0,'xor(', 'BigInteger)', 'BigInteger'),
+  \ javaapi#method(0,'not(', ')', 'BigInteger'),
+  \ javaapi#method(0,'andNot(', 'BigInteger)', 'BigInteger'),
+  \ javaapi#method(0,'testBit(', 'int)', 'boolean'),
+  \ javaapi#method(0,'setBit(', 'int)', 'BigInteger'),
+  \ javaapi#method(0,'clearBit(', 'int)', 'BigInteger'),
+  \ javaapi#method(0,'flipBit(', 'int)', 'BigInteger'),
+  \ javaapi#method(0,'getLowestSetBit(', ')', 'int'),
+  \ javaapi#method(0,'bitLength(', ')', 'int'),
+  \ javaapi#method(0,'bitCount(', ')', 'int'),
+  \ javaapi#method(0,'isProbablePrime(', 'int)', 'boolean'),
+  \ javaapi#method(0,'compareTo(', 'BigInteger)', 'int'),
+  \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
+  \ javaapi#method(0,'min(', 'BigInteger)', 'BigInteger'),
+  \ javaapi#method(0,'max(', 'BigInteger)', 'BigInteger'),
+  \ javaapi#method(0,'hashCode(', ')', 'int'),
+  \ javaapi#method(0,'toString(', 'int)', 'String'),
+  \ javaapi#method(0,'toString(', ')', 'String'),
+  \ javaapi#method(0,'toByteArray(', ')', 'byte[]'),
+  \ javaapi#method(0,'intValue(', ')', 'int'),
+  \ javaapi#method(0,'longValue(', ')', 'long'),
+  \ javaapi#method(0,'floatValue(', ')', 'float'),
+  \ javaapi#method(0,'doubleValue(', ')', 'double'),
+  \ javaapi#method(0,'compareTo(', 'Object)', 'int'),
+  \ ])
+
+call javaapi#namespace('java.math')
+
+call javaapi#class('RoundingMode', 'RoundingMode>', [
+  \ javaapi#field(1,'UP', 'RoundingMode'),
+  \ javaapi#field(1,'DOWN', 'RoundingMode'),
+  \ javaapi#field(1,'CEILING', 'RoundingMode'),
+  \ javaapi#field(1,'FLOOR', 'RoundingMode'),
+  \ javaapi#field(1,'HALF_UP', 'RoundingMode'),
+  \ javaapi#field(1,'HALF_DOWN', 'RoundingMode'),
+  \ javaapi#field(1,'HALF_EVEN', 'RoundingMode'),
+  \ javaapi#field(1,'UNNECESSARY', 'RoundingMode'),
+  \ javaapi#method(1,'values(', ')', 'RoundingMode[]'),
+  \ javaapi#method(1,'valueOf(', 'String)', 'RoundingMode'),
+  \ javaapi#method(1,'valueOf(', 'int)', 'RoundingMode'),
   \ ])
 

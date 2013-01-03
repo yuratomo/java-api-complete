@@ -1,6 +1,36 @@
 call javaapi#namespace('java.awt.color')
 
-call javaapi#class('ICC_ColorSpace', '', [
+call javaapi#class('CMMException', 'RuntimeException', [
+  \ javaapi#method(0,'CMMException(', 'String)', 'public'),
+  \ ])
+
+call javaapi#class('2', 'PrivilegedAction', [
+  \ javaapi#method(0,'run(', ')', 'Object'),
+  \ ])
+
+call javaapi#class('3', 'FileInputStream>', [
+  \ javaapi#method(0,'run(', ')', 'FileInputStream'),
+  \ javaapi#method(0,'run(', ')', 'Object'),
+  \ ])
+
+call javaapi#class('4', 'Boolean>', [
+  \ javaapi#method(0,'run(', ')', 'Boolean'),
+  \ javaapi#method(0,'run(', ')', 'Object'),
+  \ ])
+
+call javaapi#class('ICC_ProfileGray', 'ICC_Profile', [
+  \ javaapi#method(0,'getMediaWhitePoint(', ')', 'float[]'),
+  \ javaapi#method(0,'getGamma(', ')', 'float'),
+  \ javaapi#method(0,'getTRC(', ')', 'short[]'),
+  \ ])
+
+call javaapi#class('ProfileDataException', 'RuntimeException', [
+  \ javaapi#method(0,'ProfileDataException(', 'String)', 'public'),
+  \ ])
+
+call javaapi#namespace('java.awt.color')
+
+call javaapi#class('ICC_ColorSpace', 'ColorSpace', [
   \ javaapi#method(0,'ICC_ColorSpace(', 'ICC_Profile)', 'public'),
   \ javaapi#method(0,'getProfile(', ')', 'ICC_Profile'),
   \ javaapi#method(0,'toRGB(', 'float[])', 'float[]'),
@@ -15,7 +45,7 @@ call javaapi#class('1', 'ProfileActivator', [
   \ javaapi#method(0,'activate(', ') throws ProfileDataException', 'void'),
   \ ])
 
-call javaapi#class('ICC_ProfileRGB', '', [
+call javaapi#class('ICC_ProfileRGB', 'ICC_Profile', [
   \ javaapi#field(1,'REDCOMPONENT', 'int'),
   \ javaapi#field(1,'GREENCOMPONENT', 'int'),
   \ javaapi#field(1,'BLUECOMPONENT', 'int'),
@@ -204,34 +234,5 @@ call javaapi#class('ColorSpace', 'Serializable', [
   \ javaapi#method(0,'getName(', 'int)', 'String'),
   \ javaapi#method(0,'getMinValue(', 'int)', 'float'),
   \ javaapi#method(0,'getMaxValue(', 'int)', 'float'),
-  \ ])
-
-
-call javaapi#class('CMMException', '', [
-  \ javaapi#method(0,'CMMException(', 'String)', 'public'),
-  \ ])
-
-call javaapi#class('2', 'PrivilegedAction', [
-  \ javaapi#method(0,'run(', ')', 'Object'),
-  \ ])
-
-call javaapi#class('3', 'FileInputStream>', [
-  \ javaapi#method(0,'run(', ')', 'FileInputStream'),
-  \ javaapi#method(0,'run(', ')', 'Object'),
-  \ ])
-
-call javaapi#class('4', 'Boolean>', [
-  \ javaapi#method(0,'run(', ')', 'Boolean'),
-  \ javaapi#method(0,'run(', ')', 'Object'),
-  \ ])
-
-call javaapi#class('ICC_ProfileGray', '', [
-  \ javaapi#method(0,'getMediaWhitePoint(', ')', 'float[]'),
-  \ javaapi#method(0,'getGamma(', ')', 'float'),
-  \ javaapi#method(0,'getTRC(', ')', 'short[]'),
-  \ ])
-
-call javaapi#class('ProfileDataException', '', [
-  \ javaapi#method(0,'ProfileDataException(', 'String)', 'public'),
   \ ])
 

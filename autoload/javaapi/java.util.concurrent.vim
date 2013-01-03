@@ -1,47 +1,5 @@
 call javaapi#namespace('java.util.concurrent')
 
-call javaapi#class('Segment<K,V>', '', [
-  \ ])
-
-call javaapi#interface('ConcurrentMap<K,V>', '', [
-  \ javaapi#method(0,'putIfAbsent(', 'K, V)', 'V'),
-  \ javaapi#method(0,'remove(', 'Object, Object)', 'boolean'),
-  \ javaapi#method(0,'replace(', 'K, V, V)', 'boolean'),
-  \ javaapi#method(0,'replace(', 'K, V)', 'V'),
-  \ ])
-
-call javaapi#class('ConcurrentHashMap<K,V>', '', [
-  \ javaapi#method(0,'ConcurrentHashMap(', 'int, float, int)', 'public'),
-  \ javaapi#method(0,'ConcurrentHashMap(', 'int, float)', 'public'),
-  \ javaapi#method(0,'ConcurrentHashMap(', 'int)', 'public'),
-  \ javaapi#method(0,'ConcurrentHashMap(', ')', 'public'),
-  \ javaapi#method(0,'ConcurrentHashMap(', 'Map<? extends K, ? extends V>)', 'public'),
-  \ javaapi#method(0,'isEmpty(', ')', 'boolean'),
-  \ javaapi#method(0,'size(', ')', 'int'),
-  \ javaapi#method(0,'get(', 'Object)', 'V'),
-  \ javaapi#method(0,'containsKey(', 'Object)', 'boolean'),
-  \ javaapi#method(0,'containsValue(', 'Object)', 'boolean'),
-  \ javaapi#method(0,'contains(', 'Object)', 'boolean'),
-  \ javaapi#method(0,'put(', 'K, V)', 'V'),
-  \ javaapi#method(0,'putIfAbsent(', 'K, V)', 'V'),
-  \ javaapi#method(0,'putAll(', 'Map<? extends K, ? extends V>)', 'void'),
-  \ javaapi#method(0,'remove(', 'Object)', 'V'),
-  \ javaapi#method(0,'remove(', 'Object, Object)', 'boolean'),
-  \ javaapi#method(0,'replace(', 'K, V, V)', 'boolean'),
-  \ javaapi#method(0,'replace(', 'K, V)', 'V'),
-  \ javaapi#method(0,'clear(', ')', 'void'),
-  \ javaapi#method(0,'keySet(', ')', 'Set<K>'),
-  \ javaapi#method(0,'values(', ')', 'Collection<V>'),
-  \ javaapi#method(0,'entrySet(', ')', 'V>>'),
-  \ javaapi#method(0,'keys(', ')', 'Enumeration<K>'),
-  \ javaapi#method(0,'elements(', ')', 'Enumeration<V>'),
-  \ ])
-
-
-call javaapi#class('HashEntry<K,V>', '', [
-  \ ])
-
-
 call javaapi#class('AbstractExecutorService', 'ExecutorService', [
   \ javaapi#method(0,'AbstractExecutorService(', ')', 'public'),
   \ javaapi#method(0,'submit(', 'Runnable)', 'Future<?>'),
@@ -59,7 +17,7 @@ call javaapi#class('Itr', 'Iterator<E>', [
   \ javaapi#method(0,'remove(', ')', 'void'),
   \ ])
 
-call javaapi#class('ArrayBlockingQueue<E>', '', [
+call javaapi#class('ArrayBlockingQueue<E>', 'AbstractQueue<E>', [
   \ javaapi#method(0,'ArrayBlockingQueue(', 'int)', 'public'),
   \ javaapi#method(0,'ArrayBlockingQueue(', 'int, boolean)', 'public'),
   \ javaapi#method(0,'ArrayBlockingQueue(', 'int, boolean, Collection<? extends E>)', 'public'),
@@ -84,7 +42,7 @@ call javaapi#class('ArrayBlockingQueue<E>', '', [
   \ javaapi#method(0,'iterator(', ')', 'Iterator<E>'),
   \ ])
 
-call javaapi#interface('BlockingDeque<E>', '', [
+call javaapi#interface('BlockingDeque<E>', 'Deque<E>', [
   \ javaapi#method(0,'addFirst(', 'E)', 'void'),
   \ javaapi#method(0,'addLast(', 'E)', 'void'),
   \ javaapi#method(0,'offerFirst(', 'E)', 'boolean'),
@@ -116,7 +74,7 @@ call javaapi#interface('BlockingDeque<E>', '', [
   \ javaapi#method(0,'push(', 'E)', 'void'),
   \ ])
 
-call javaapi#interface('BlockingQueue<E>', '', [
+call javaapi#interface('BlockingQueue<E>', 'Queue<E>', [
   \ javaapi#method(0,'add(', 'E)', 'boolean'),
   \ javaapi#method(0,'offer(', 'E)', 'boolean'),
   \ javaapi#method(0,'put(', 'E) throws InterruptedException', 'void'),
@@ -130,7 +88,7 @@ call javaapi#interface('BlockingQueue<E>', '', [
   \ javaapi#method(0,'drainTo(', 'Collection<? super E>, int)', 'int'),
   \ ])
 
-call javaapi#class('BrokenBarrierException', '', [
+call javaapi#class('BrokenBarrierException', 'Exception', [
   \ javaapi#method(0,'BrokenBarrierException(', ')', 'public'),
   \ javaapi#method(0,'BrokenBarrierException(', 'String)', 'public'),
   \ ])
@@ -139,7 +97,7 @@ call javaapi#interface('Callable<V>', '', [
   \ javaapi#method(0,'call(', ') throws Exception', 'V'),
   \ ])
 
-call javaapi#class('CancellationException', '', [
+call javaapi#class('CancellationException', 'IllegalStateException', [
   \ javaapi#method(0,'CancellationException(', ')', 'public'),
   \ javaapi#method(0,'CancellationException(', 'String)', 'public'),
   \ ])
@@ -152,12 +110,12 @@ call javaapi#interface('CompletionService<V>', '', [
   \ javaapi#method(0,'poll(', 'long, TimeUnit) throws InterruptedException', 'Future<V>'),
   \ ])
 
-call javaapi#class('EntryIterator', '', [
+call javaapi#class('EntryIterator', 'HashIterator', [
   \ javaapi#method(0,'next(', ')', 'V>'),
   \ javaapi#method(0,'next(', ')', 'Object'),
   \ ])
 
-call javaapi#class('EntrySet', '', [
+call javaapi#class('EntrySet', 'Entry<K,V>>', [
   \ javaapi#method(0,'iterator(', ')', 'V>>'),
   \ javaapi#method(0,'contains(', 'Object)', 'boolean'),
   \ javaapi#method(0,'remove(', 'Object)', 'boolean'),
@@ -172,12 +130,12 @@ call javaapi#class('HashIterator', '', [
   \ javaapi#method(0,'remove(', ')', 'void'),
   \ ])
 
-call javaapi#class('KeyIterator', '', [
+call javaapi#class('KeyIterator', 'HashIterator', [
   \ javaapi#method(0,'next(', ')', 'K'),
   \ javaapi#method(0,'nextElement(', ')', 'K'),
   \ ])
 
-call javaapi#class('KeySet', '', [
+call javaapi#class('KeySet', 'AbstractSet<K>', [
   \ javaapi#method(0,'iterator(', ')', 'Iterator<K>'),
   \ javaapi#method(0,'size(', ')', 'int'),
   \ javaapi#method(0,'isEmpty(', ')', 'boolean'),
@@ -186,12 +144,12 @@ call javaapi#class('KeySet', '', [
   \ javaapi#method(0,'clear(', ')', 'void'),
   \ ])
 
-call javaapi#class('ValueIterator', '', [
+call javaapi#class('ValueIterator', 'HashIterator', [
   \ javaapi#method(0,'next(', ')', 'V'),
   \ javaapi#method(0,'nextElement(', ')', 'V'),
   \ ])
 
-call javaapi#class('Values', '', [
+call javaapi#class('Values', 'AbstractCollection<V>', [
   \ javaapi#method(0,'iterator(', ')', 'Iterator<V>'),
   \ javaapi#method(0,'size(', ')', 'int'),
   \ javaapi#method(0,'isEmpty(', ')', 'boolean'),
@@ -199,7 +157,7 @@ call javaapi#class('Values', '', [
   \ javaapi#method(0,'clear(', ')', 'void'),
   \ ])
 
-call javaapi#class('WriteThroughEntry', '', [
+call javaapi#class('WriteThroughEntry', 'SimpleEntry<K,V>', [
   \ javaapi#method(0,'setValue(', 'V)', 'V'),
   \ ])
 
@@ -212,16 +170,16 @@ call javaapi#class('AbstractItr', 'Iterator<E>', [
   \ javaapi#method(0,'remove(', ')', 'void'),
   \ ])
 
-call javaapi#class('DescendingItr', '', [
+call javaapi#class('DescendingItr', 'AbstractItr', [
   \ ])
 
-call javaapi#class('Itr', '', [
+call javaapi#class('Itr', 'AbstractItr', [
   \ ])
 
 call javaapi#class('Node<E>', '', [
   \ ])
 
-call javaapi#class('ConcurrentLinkedDeque<E>', '', [
+call javaapi#class('ConcurrentLinkedDeque<E>', 'AbstractCollection<E>', [
   \ javaapi#method(0,'ConcurrentLinkedDeque(', ')', 'public'),
   \ javaapi#method(0,'ConcurrentLinkedDeque(', 'Collection<? extends E>)', 'public'),
   \ javaapi#method(0,'addFirst(', 'E)', 'void'),
@@ -267,7 +225,7 @@ call javaapi#class('Itr', 'Iterator<E>', [
 call javaapi#class('Node<E>', '', [
   \ ])
 
-call javaapi#class('ConcurrentLinkedQueue<E>', '', [
+call javaapi#class('ConcurrentLinkedQueue<E>', 'AbstractQueue<E>', [
   \ javaapi#method(0,'ConcurrentLinkedQueue(', ')', 'public'),
   \ javaapi#method(0,'ConcurrentLinkedQueue(', 'Collection<? extends E>)', 'public'),
   \ javaapi#method(0,'add(', 'E)', 'boolean'),
@@ -284,7 +242,7 @@ call javaapi#class('ConcurrentLinkedQueue<E>', '', [
   \ javaapi#method(0,'iterator(', ')', 'Iterator<E>'),
   \ ])
 
-call javaapi#interface('ConcurrentNavigableMap<K,V>', '', [
+call javaapi#interface('ConcurrentNavigableMap<K,V>', 'NavigableMap<K,V>', [
   \ javaapi#method(0,'subMap(', 'K, boolean, K, boolean)', 'V>'),
   \ javaapi#method(0,'headMap(', 'K, boolean)', 'V>'),
   \ javaapi#method(0,'tailMap(', 'K, boolean)', 'V>'),
@@ -301,12 +259,12 @@ call javaapi#class('ComparableUsingComparator<K>', 'Comparable<K>', [
   \ javaapi#method(0,'compareTo(', 'K)', 'int'),
   \ ])
 
-call javaapi#class('EntryIterator', '', [
+call javaapi#class('EntryIterator', 'Entry<K,V>>', [
   \ javaapi#method(0,'next(', ')', 'V>'),
   \ javaapi#method(0,'next(', ')', 'Object'),
   \ ])
 
-call javaapi#class('EntrySet<K1,V1>', '', [
+call javaapi#class('EntrySet<K1,V1>', 'Entry<K1,V1>>', [
   \ javaapi#method(0,'iterator(', ')', 'V1>>'),
   \ javaapi#method(0,'contains(', 'Object)', 'boolean'),
   \ javaapi#method(0,'remove(', 'Object)', 'boolean'),
@@ -318,7 +276,7 @@ call javaapi#class('EntrySet<K1,V1>', '', [
   \ javaapi#method(0,'toArray(', 'T[])', 'T[]'),
   \ ])
 
-call javaapi#class('HeadIndex<K,V>', '', [
+call javaapi#class('HeadIndex<K,V>', 'Index<K,V>', [
   \ ])
 
 call javaapi#class('Index<K,V>', '', [
@@ -329,11 +287,11 @@ call javaapi#class('Iter<T>', 'Iterator<T>', [
   \ javaapi#method(0,'remove(', ')', 'void'),
   \ ])
 
-call javaapi#class('KeyIterator', '', [
+call javaapi#class('KeyIterator', 'Iter<K>', [
   \ javaapi#method(0,'next(', ')', 'K'),
   \ ])
 
-call javaapi#class('KeySet<E>', '', [
+call javaapi#class('KeySet<E>', 'AbstractSet<E>', [
   \ javaapi#method(0,'size(', ')', 'int'),
   \ javaapi#method(0,'isEmpty(', ')', 'boolean'),
   \ javaapi#method(0,'contains(', 'Object)', 'boolean'),
@@ -368,7 +326,7 @@ call javaapi#class('KeySet<E>', '', [
 call javaapi#class('Node<K,V>', '', [
   \ ])
 
-call javaapi#class('SubMapEntryIterator', '', [
+call javaapi#class('SubMapEntryIterator', 'Entry<K,V>>', [
   \ javaapi#method(0,'next(', ')', 'V>'),
   \ javaapi#method(0,'next(', ')', 'Object'),
   \ ])
@@ -378,15 +336,15 @@ call javaapi#class('SubMapIter<T>', 'Iterator<T>', [
   \ javaapi#method(0,'remove(', ')', 'void'),
   \ ])
 
-call javaapi#class('SubMapKeyIterator', '', [
+call javaapi#class('SubMapKeyIterator', 'SubMapIter<K>', [
   \ javaapi#method(0,'next(', ')', 'K'),
   \ ])
 
-call javaapi#class('SubMapValueIterator', '', [
+call javaapi#class('SubMapValueIterator', 'SubMapIter<V>', [
   \ javaapi#method(0,'next(', ')', 'V'),
   \ ])
 
-call javaapi#class('SubMap<K,V>', '', [
+call javaapi#class('SubMap<K,V>', 'AbstractMap<K,V>', [
   \ javaapi#method(0,'containsKey(', 'Object)', 'boolean'),
   \ javaapi#method(0,'get(', 'Object)', 'V'),
   \ javaapi#method(0,'put(', 'K, V)', 'V'),
@@ -443,11 +401,11 @@ call javaapi#class('SubMap<K,V>', '', [
   \ javaapi#method(0,'descendingMap(', ')', 'NavigableMap'),
   \ ])
 
-call javaapi#class('ValueIterator', '', [
+call javaapi#class('ValueIterator', 'Iter<V>', [
   \ javaapi#method(0,'next(', ')', 'V'),
   \ ])
 
-call javaapi#class('Values<E>', '', [
+call javaapi#class('Values<E>', 'AbstractCollection<E>', [
   \ javaapi#method(0,'iterator(', ')', 'Iterator<E>'),
   \ javaapi#method(0,'isEmpty(', ')', 'boolean'),
   \ javaapi#method(0,'size(', ')', 'int'),
@@ -457,7 +415,7 @@ call javaapi#class('Values<E>', '', [
   \ javaapi#method(0,'toArray(', 'T[])', 'T[]'),
   \ ])
 
-call javaapi#class('ConcurrentSkipListMap<K,V>', '', [
+call javaapi#class('ConcurrentSkipListMap<K,V>', 'AbstractMap<K,V>', [
   \ javaapi#method(0,'ConcurrentSkipListMap(', ')', 'public'),
   \ javaapi#method(0,'ConcurrentSkipListMap(', 'Comparator<? super K>)', 'public'),
   \ javaapi#method(0,'ConcurrentSkipListMap(', 'Map<? extends K, ? extends V>)', 'public'),
@@ -514,7 +472,7 @@ call javaapi#class('ConcurrentSkipListMap<K,V>', '', [
   \ javaapi#method(0,'descendingMap(', ')', 'NavigableMap'),
   \ ])
 
-call javaapi#class('ConcurrentSkipListSet<E>', '', [
+call javaapi#class('ConcurrentSkipListSet<E>', 'AbstractSet<E>', [
   \ javaapi#method(0,'ConcurrentSkipListSet(', ')', 'public'),
   \ javaapi#method(0,'ConcurrentSkipListSet(', 'Comparator<? super E>)', 'public'),
   \ javaapi#method(0,'ConcurrentSkipListSet(', 'Collection<? extends E>)', 'public'),
@@ -567,7 +525,7 @@ call javaapi#class('COWIterator<E>', 'ListIterator<E>', [
   \ javaapi#method(0,'add(', 'E)', 'void'),
   \ ])
 
-call javaapi#class('COWSubList<E>', '', [
+call javaapi#class('COWSubList<E>', 'AbstractList<E>', [
   \ javaapi#method(0,'set(', 'int, E)', 'E'),
   \ javaapi#method(0,'get(', 'int)', 'E'),
   \ javaapi#method(0,'size(', ')', 'int'),
@@ -629,7 +587,7 @@ call javaapi#class('CopyOnWriteArrayList<E>', 'Serializable', [
   \ javaapi#method(0,'subList(', 'int, int)', 'List<E>'),
   \ ])
 
-call javaapi#class('CopyOnWriteArraySet<E>', '', [
+call javaapi#class('CopyOnWriteArraySet<E>', 'AbstractSet<E>', [
   \ javaapi#method(0,'CopyOnWriteArraySet(', ')', 'public'),
   \ javaapi#method(0,'CopyOnWriteArraySet(', 'Collection<? extends E>)', 'public'),
   \ javaapi#method(0,'size(', ')', 'int'),
@@ -648,7 +606,7 @@ call javaapi#class('CopyOnWriteArraySet<E>', '', [
   \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
   \ ])
 
-call javaapi#class('Sync', '', [
+call javaapi#class('Sync', 'AbstractQueuedSynchronizer', [
   \ ])
 
 call javaapi#class('CountDownLatch', '', [
@@ -684,7 +642,7 @@ call javaapi#class('Itr', 'Iterator<E>', [
   \ javaapi#method(0,'next(', ')', 'Object'),
   \ ])
 
-call javaapi#class('DelayQueue<E', '', [
+call javaapi#class('DelayQueue<E', 'Delayed>', [
   \ javaapi#method(0,'DelayQueue(', ')', 'public'),
   \ javaapi#method(0,'DelayQueue(', 'Collection<? extends E>)', 'public'),
   \ javaapi#method(0,'add(', 'E)', 'boolean'),
@@ -714,20 +672,20 @@ call javaapi#class('DelayQueue<E', '', [
   \ javaapi#method(0,'put(', 'Object) throws InterruptedException', 'void'),
   \ ])
 
-call javaapi#interface('Delayed', '', [
+call javaapi#interface('Delayed', 'Delayed>', [
   \ javaapi#method(0,'getDelay(', 'TimeUnit)', 'long'),
   \ ])
 
 call javaapi#class('1', '', [
   \ ])
 
-call javaapi#class('Node', '', [
+call javaapi#class('Node', 'Object>', [
   \ javaapi#field(0,'item', 'Object'),
   \ javaapi#field(0,'waiter', 'Thread'),
   \ javaapi#method(0,'Node(', 'Object)', 'public'),
   \ ])
 
-call javaapi#class('Slot', '', [
+call javaapi#class('Slot', 'Object>', [
   \ ])
 
 call javaapi#class('Exchanger<V>', '', [
@@ -736,7 +694,7 @@ call javaapi#class('Exchanger<V>', '', [
   \ javaapi#method(0,'exchange(', 'V, long, TimeUnit) throws InterruptedException, TimeoutException', 'V'),
   \ ])
 
-call javaapi#class('ExecutionException', '', [
+call javaapi#class('ExecutionException', 'Exception', [
   \ javaapi#method(0,'ExecutionException(', 'String, Throwable)', 'public'),
   \ javaapi#method(0,'ExecutionException(', 'Throwable)', 'public'),
   \ ])
@@ -745,7 +703,7 @@ call javaapi#interface('Executor', '', [
   \ javaapi#method(0,'execute(', 'Runnable)', 'void'),
   \ ])
 
-call javaapi#class('QueueingFuture', '', [
+call javaapi#class('QueueingFuture', 'Void>', [
   \ ])
 
 call javaapi#class('ExecutorCompletionService<V>', 'CompletionService<V>', [
@@ -758,7 +716,7 @@ call javaapi#class('ExecutorCompletionService<V>', 'CompletionService<V>', [
   \ javaapi#method(0,'poll(', 'long, TimeUnit) throws InterruptedException', 'Future<V>'),
   \ ])
 
-call javaapi#interface('ExecutorService', '', [
+call javaapi#interface('ExecutorService', 'Executor', [
   \ javaapi#method(0,'shutdown(', ')', 'void'),
   \ javaapi#method(0,'shutdownNow(', ')', 'Runnable>'),
   \ javaapi#method(0,'isShutdown(', ')', 'boolean'),
@@ -785,7 +743,7 @@ call javaapi#class('DefaultThreadFactory', 'ThreadFactory', [
   \ javaapi#method(0,'newThread(', 'Runnable)', 'Thread'),
   \ ])
 
-call javaapi#class('DelegatedExecutorService', '', [
+call javaapi#class('DelegatedExecutorService', 'AbstractExecutorService', [
   \ javaapi#method(0,'execute(', 'Runnable)', 'void'),
   \ javaapi#method(0,'shutdown(', ')', 'void'),
   \ javaapi#method(0,'shutdownNow(', ')', 'Runnable>'),
@@ -801,14 +759,14 @@ call javaapi#class('DelegatedExecutorService', '', [
   \ javaapi#method(0,'invokeAny(', 'Collection<? extends Callable<T>>, long, TimeUnit) throws InterruptedException, ExecutionException, TimeoutException', 'T'),
   \ ])
 
-call javaapi#class('DelegatedScheduledExecutorService', '', [
+call javaapi#class('DelegatedScheduledExecutorService', 'DelegatedExecutorService', [
   \ javaapi#method(0,'schedule(', 'Runnable, long, TimeUnit)', 'ScheduledFuture<?>'),
   \ javaapi#method(0,'schedule(', 'Callable<V>, long, TimeUnit)', 'ScheduledFuture<V>'),
   \ javaapi#method(0,'scheduleAtFixedRate(', 'Runnable, long, long, TimeUnit)', 'ScheduledFuture<?>'),
   \ javaapi#method(0,'scheduleWithFixedDelay(', 'Runnable, long, long, TimeUnit)', 'ScheduledFuture<?>'),
   \ ])
 
-call javaapi#class('FinalizableDelegatedExecutorService', '', [
+call javaapi#class('FinalizableDelegatedExecutorService', 'DelegatedExecutorService', [
   \ ])
 
 call javaapi#class('1', 'PrivilegedExceptionAction<T>', [
@@ -836,7 +794,7 @@ call javaapi#class('1', 'Runnable', [
   \ javaapi#method(0,'run(', ')', 'void'),
   \ ])
 
-call javaapi#class('PrivilegedThreadFactory', '', [
+call javaapi#class('PrivilegedThreadFactory', 'DefaultThreadFactory', [
   \ javaapi#method(0,'newThread(', 'Runnable)', 'Thread'),
   \ ])
 
@@ -875,7 +833,7 @@ call javaapi#interface('ForkJoinWorkerThreadFactory', '', [
   \ javaapi#method(0,'newThread(', 'ForkJoinPool)', 'ForkJoinWorkerThread'),
   \ ])
 
-call javaapi#class('InvokeAll<T>', '', [
+call javaapi#class('InvokeAll<T>', 'RecursiveAction', [
   \ javaapi#method(0,'compute(', ')', 'void'),
   \ ])
 
@@ -884,7 +842,7 @@ call javaapi#interface('ManagedBlocker', '', [
   \ javaapi#method(0,'isReleasable(', ')', 'boolean'),
   \ ])
 
-call javaapi#class('ForkJoinPool', '', [
+call javaapi#class('ForkJoinPool', 'AbstractExecutorService', [
   \ javaapi#field(1,'defaultForkJoinWorkerThreadFactory', 'ForkJoinWorkerThreadFactory'),
   \ javaapi#method(0,'ForkJoinPool(', ')', 'public'),
   \ javaapi#method(0,'ForkJoinPool(', 'int)', 'public'),
@@ -922,21 +880,21 @@ call javaapi#class('ForkJoinPool', '', [
   \ javaapi#method(0,'submit(', 'Runnable)', 'Future'),
   \ ])
 
-call javaapi#class('AdaptedCallable<T>', '', [
+call javaapi#class('AdaptedCallable<T>', 'ForkJoinTask<T>', [
   \ javaapi#method(0,'getRawResult(', ')', 'T'),
   \ javaapi#method(0,'setRawResult(', 'T)', 'void'),
   \ javaapi#method(0,'exec(', ')', 'boolean'),
   \ javaapi#method(0,'run(', ')', 'void'),
   \ ])
 
-call javaapi#class('AdaptedRunnable<T>', '', [
+call javaapi#class('AdaptedRunnable<T>', 'ForkJoinTask<T>', [
   \ javaapi#method(0,'getRawResult(', ')', 'T'),
   \ javaapi#method(0,'setRawResult(', 'T)', 'void'),
   \ javaapi#method(0,'exec(', ')', 'boolean'),
   \ javaapi#method(0,'run(', ')', 'void'),
   \ ])
 
-call javaapi#class('ExceptionNode', '', [
+call javaapi#class('ExceptionNode', 'ForkJoinTask<?>>', [
   \ ])
 
 call javaapi#class('ForkJoinTask<V>', 'Serializable', [
@@ -972,7 +930,7 @@ call javaapi#class('ForkJoinTask<V>', 'Serializable', [
   \ javaapi#method(1,'adapt(', 'Callable<? extends T>)', 'ForkJoinTask<T>'),
   \ ])
 
-call javaapi#class('ForkJoinWorkerThread', '', [
+call javaapi#class('ForkJoinWorkerThread', 'Thread', [
   \ javaapi#method(0,'getPool(', ')', 'ForkJoinPool'),
   \ javaapi#method(0,'getPoolIndex(', ')', 'int'),
   \ javaapi#method(0,'run(', ')', 'void'),
@@ -986,7 +944,7 @@ call javaapi#interface('Future<V>', '', [
   \ javaapi#method(0,'get(', 'long, TimeUnit) throws InterruptedException, ExecutionException, TimeoutException', 'V'),
   \ ])
 
-call javaapi#class('Sync', '', [
+call javaapi#class('Sync', 'AbstractQueuedSynchronizer', [
   \ ])
 
 call javaapi#class('FutureTask<V>', 'RunnableFuture<V>', [
@@ -1009,16 +967,16 @@ call javaapi#class('AbstractItr', 'Iterator<E>', [
   \ javaapi#method(0,'remove(', ')', 'void'),
   \ ])
 
-call javaapi#class('DescendingItr', '', [
+call javaapi#class('DescendingItr', 'AbstractItr', [
   \ ])
 
-call javaapi#class('Itr', '', [
+call javaapi#class('Itr', 'AbstractItr', [
   \ ])
 
 call javaapi#class('Node<E>', '', [
   \ ])
 
-call javaapi#class('LinkedBlockingDeque<E>', '', [
+call javaapi#class('LinkedBlockingDeque<E>', 'AbstractQueue<E>', [
   \ javaapi#method(0,'LinkedBlockingDeque(', ')', 'public'),
   \ javaapi#method(0,'LinkedBlockingDeque(', 'int)', 'public'),
   \ javaapi#method(0,'LinkedBlockingDeque(', 'Collection<? extends E>)', 'public'),
@@ -1079,7 +1037,7 @@ call javaapi#class('Itr', 'Iterator<E>', [
 call javaapi#class('Node<E>', '', [
   \ ])
 
-call javaapi#class('LinkedBlockingQueue<E>', '', [
+call javaapi#class('LinkedBlockingQueue<E>', 'AbstractQueue<E>', [
   \ javaapi#method(0,'LinkedBlockingQueue(', ')', 'public'),
   \ javaapi#method(0,'LinkedBlockingQueue(', 'int)', 'public'),
   \ javaapi#method(0,'LinkedBlockingQueue(', 'Collection<? extends E>)', 'public'),
@@ -1112,7 +1070,7 @@ call javaapi#class('Itr', 'Iterator<E>', [
 call javaapi#class('Node', '', [
   \ ])
 
-call javaapi#class('LinkedTransferQueue<E>', '', [
+call javaapi#class('LinkedTransferQueue<E>', 'AbstractQueue<E>', [
   \ javaapi#method(0,'LinkedTransferQueue(', ')', 'public'),
   \ javaapi#method(0,'LinkedTransferQueue(', 'Collection<? extends E>)', 'public'),
   \ javaapi#method(0,'put(', 'E)', 'void'),
@@ -1173,7 +1131,7 @@ call javaapi#class('Itr', 'Iterator<E>', [
   \ javaapi#method(0,'remove(', ')', 'void'),
   \ ])
 
-call javaapi#class('PriorityBlockingQueue<E>', '', [
+call javaapi#class('PriorityBlockingQueue<E>', 'AbstractQueue<E>', [
   \ javaapi#method(0,'PriorityBlockingQueue(', ')', 'public'),
   \ javaapi#method(0,'PriorityBlockingQueue(', 'int)', 'public'),
   \ javaapi#method(0,'PriorityBlockingQueue(', 'int, Comparator<? super E>)', 'public'),
@@ -1200,18 +1158,18 @@ call javaapi#class('PriorityBlockingQueue<E>', '', [
   \ javaapi#method(0,'iterator(', ')', 'Iterator<E>'),
   \ ])
 
-call javaapi#class('RecursiveAction', '', [
+call javaapi#class('RecursiveAction', 'Void>', [
   \ javaapi#method(0,'RecursiveAction(', ')', 'public'),
   \ javaapi#method(0,'getRawResult(', ')', 'Void'),
   \ javaapi#method(0,'getRawResult(', ')', 'Object'),
   \ ])
 
-call javaapi#class('RecursiveTask<V>', '', [
+call javaapi#class('RecursiveTask<V>', 'ForkJoinTask<V>', [
   \ javaapi#method(0,'RecursiveTask(', ')', 'public'),
   \ javaapi#method(0,'getRawResult(', ')', 'V'),
   \ ])
 
-call javaapi#class('RejectedExecutionException', '', [
+call javaapi#class('RejectedExecutionException', 'RuntimeException', [
   \ javaapi#method(0,'RejectedExecutionException(', ')', 'public'),
   \ javaapi#method(0,'RejectedExecutionException(', 'String)', 'public'),
   \ javaapi#method(0,'RejectedExecutionException(', 'String, Throwable)', 'public'),
@@ -1222,22 +1180,22 @@ call javaapi#interface('RejectedExecutionHandler', '', [
   \ javaapi#method(0,'rejectedExecution(', 'Runnable, ThreadPoolExecutor)', 'void'),
   \ ])
 
-call javaapi#interface('RunnableFuture<V>', '', [
+call javaapi#interface('RunnableFuture<V>', 'Future<V>', [
   \ javaapi#method(0,'run(', ')', 'void'),
   \ ])
 
-call javaapi#interface('RunnableScheduledFuture<V>', '', [
+call javaapi#interface('RunnableScheduledFuture<V>', 'ScheduledFuture<V>', [
   \ javaapi#method(0,'isPeriodic(', ')', 'boolean'),
   \ ])
 
-call javaapi#interface('ScheduledExecutorService', '', [
+call javaapi#interface('ScheduledExecutorService', 'ExecutorService', [
   \ javaapi#method(0,'schedule(', 'Runnable, long, TimeUnit)', 'ScheduledFuture<?>'),
   \ javaapi#method(0,'schedule(', 'Callable<V>, long, TimeUnit)', 'ScheduledFuture<V>'),
   \ javaapi#method(0,'scheduleAtFixedRate(', 'Runnable, long, long, TimeUnit)', 'ScheduledFuture<?>'),
   \ javaapi#method(0,'scheduleWithFixedDelay(', 'Runnable, long, long, TimeUnit)', 'ScheduledFuture<?>'),
   \ ])
 
-call javaapi#interface('ScheduledFuture<V>', '', [
+call javaapi#interface('ScheduledFuture<V>', 'Future<V>', [
   \ ])
 
 call javaapi#class('Itr', 'Runnable>', [
@@ -1247,7 +1205,7 @@ call javaapi#class('Itr', 'Runnable>', [
   \ javaapi#method(0,'next(', ')', 'Object'),
   \ ])
 
-call javaapi#class('DelayedWorkQueue', '', [
+call javaapi#class('DelayedWorkQueue', 'Runnable>', [
   \ javaapi#method(0,'contains(', 'Object)', 'boolean'),
   \ javaapi#method(0,'remove(', 'Object)', 'boolean'),
   \ javaapi#method(0,'size(', ')', 'int'),
@@ -1277,7 +1235,7 @@ call javaapi#class('DelayedWorkQueue', '', [
   \ javaapi#method(0,'put(', 'Object) throws InterruptedException', 'void'),
   \ ])
 
-call javaapi#class('ScheduledFutureTask<V>', '', [
+call javaapi#class('ScheduledFutureTask<V>', 'FutureTask<V>', [
   \ javaapi#method(0,'getDelay(', 'TimeUnit)', 'long'),
   \ javaapi#method(0,'compareTo(', 'Delayed)', 'int'),
   \ javaapi#method(0,'isPeriodic(', ')', 'boolean'),
@@ -1286,7 +1244,7 @@ call javaapi#class('ScheduledFutureTask<V>', '', [
   \ javaapi#method(0,'compareTo(', 'Object)', 'int'),
   \ ])
 
-call javaapi#class('ScheduledThreadPoolExecutor', '', [
+call javaapi#class('ScheduledThreadPoolExecutor', 'ThreadPoolExecutor', [
   \ javaapi#method(0,'ScheduledThreadPoolExecutor(', 'int)', 'public'),
   \ javaapi#method(0,'ScheduledThreadPoolExecutor(', 'int, ThreadFactory)', 'public'),
   \ javaapi#method(0,'ScheduledThreadPoolExecutor(', 'int, RejectedExecutionHandler)', 'public'),
@@ -1310,13 +1268,13 @@ call javaapi#class('ScheduledThreadPoolExecutor', '', [
   \ javaapi#method(0,'getQueue(', ')', 'Runnable>'),
   \ ])
 
-call javaapi#class('FairSync', '', [
+call javaapi#class('FairSync', 'Sync', [
   \ ])
 
-call javaapi#class('NonfairSync', '', [
+call javaapi#class('NonfairSync', 'Sync', [
   \ ])
 
-call javaapi#class('Sync', '', [
+call javaapi#class('Sync', 'AbstractQueuedSynchronizer', [
   \ ])
 
 call javaapi#class('Semaphore', 'Serializable', [
@@ -1340,22 +1298,22 @@ call javaapi#class('Semaphore', 'Serializable', [
   \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('FifoWaitQueue', '', [
+call javaapi#class('FifoWaitQueue', 'WaitQueue', [
   \ ])
 
-call javaapi#class('LifoWaitQueue', '', [
+call javaapi#class('LifoWaitQueue', 'WaitQueue', [
   \ ])
 
 call javaapi#class('QNode', '', [
   \ ])
 
-call javaapi#class('TransferQueue', '', [
+call javaapi#class('TransferQueue', 'Transferer', [
   \ ])
 
 call javaapi#class('SNode', '', [
   \ ])
 
-call javaapi#class('TransferStack', '', [
+call javaapi#class('TransferStack', 'Transferer', [
   \ ])
 
 call javaapi#class('Transferer', '', [
@@ -1364,7 +1322,7 @@ call javaapi#class('Transferer', '', [
 call javaapi#class('WaitQueue', 'Serializable', [
   \ ])
 
-call javaapi#class('SynchronousQueue<E>', '', [
+call javaapi#class('SynchronousQueue<E>', 'AbstractQueue<E>', [
   \ javaapi#method(0,'SynchronousQueue(', ')', 'public'),
   \ javaapi#method(0,'SynchronousQueue(', 'boolean)', 'public'),
   \ javaapi#method(0,'put(', 'E) throws InterruptedException', 'void'),
@@ -1394,10 +1352,10 @@ call javaapi#interface('ThreadFactory', '', [
   \ javaapi#method(0,'newThread(', 'Runnable)', 'Thread'),
   \ ])
 
-call javaapi#class('1', '', [
+call javaapi#class('1', 'ThreadLocalRandom>', [
   \ ])
 
-call javaapi#class('ThreadLocalRandom', '', [
+call javaapi#class('ThreadLocalRandom', 'Random', [
   \ javaapi#method(1,'current(', ')', 'ThreadLocalRandom'),
   \ javaapi#method(0,'setSeed(', 'long)', 'void'),
   \ javaapi#method(0,'nextInt(', 'int, int)', 'int'),
@@ -1427,7 +1385,7 @@ call javaapi#class('DiscardPolicy', 'RejectedExecutionHandler', [
   \ javaapi#method(0,'rejectedExecution(', 'Runnable, ThreadPoolExecutor)', 'void'),
   \ ])
 
-call javaapi#class('Worker', '', [
+call javaapi#class('Worker', 'AbstractQueuedSynchronizer', [
   \ javaapi#method(0,'run(', ')', 'void'),
   \ javaapi#method(0,'lock(', ')', 'void'),
   \ javaapi#method(0,'tryLock(', ')', 'boolean'),
@@ -1435,7 +1393,7 @@ call javaapi#class('Worker', '', [
   \ javaapi#method(0,'isLocked(', ')', 'boolean'),
   \ ])
 
-call javaapi#class('ThreadPoolExecutor', '', [
+call javaapi#class('ThreadPoolExecutor', 'AbstractExecutorService', [
   \ javaapi#method(0,'ThreadPoolExecutor(', 'int, int, long, TimeUnit, BlockingQueue<Runnable>)', 'public'),
   \ javaapi#method(0,'ThreadPoolExecutor(', 'int, int, long, TimeUnit, BlockingQueue<Runnable>, ThreadFactory)', 'public'),
   \ javaapi#method(0,'ThreadPoolExecutor(', 'int, int, long, TimeUnit, BlockingQueue<Runnable>, RejectedExecutionHandler)', 'public'),
@@ -1472,7 +1430,7 @@ call javaapi#class('ThreadPoolExecutor', '', [
   \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('1', '', [
+call javaapi#class('1', 'TimeUnit', [
   \ javaapi#method(0,'toNanos(', 'long)', 'long'),
   \ javaapi#method(0,'toMicros(', 'long)', 'long'),
   \ javaapi#method(0,'toMillis(', 'long)', 'long'),
@@ -1483,7 +1441,7 @@ call javaapi#class('1', '', [
   \ javaapi#method(0,'convert(', 'long, TimeUnit)', 'long'),
   \ ])
 
-call javaapi#class('2', '', [
+call javaapi#class('2', 'TimeUnit', [
   \ javaapi#method(0,'toNanos(', 'long)', 'long'),
   \ javaapi#method(0,'toMicros(', 'long)', 'long'),
   \ javaapi#method(0,'toMillis(', 'long)', 'long'),
@@ -1494,7 +1452,7 @@ call javaapi#class('2', '', [
   \ javaapi#method(0,'convert(', 'long, TimeUnit)', 'long'),
   \ ])
 
-call javaapi#class('3', '', [
+call javaapi#class('3', 'TimeUnit', [
   \ javaapi#method(0,'toNanos(', 'long)', 'long'),
   \ javaapi#method(0,'toMicros(', 'long)', 'long'),
   \ javaapi#method(0,'toMillis(', 'long)', 'long'),
@@ -1505,7 +1463,7 @@ call javaapi#class('3', '', [
   \ javaapi#method(0,'convert(', 'long, TimeUnit)', 'long'),
   \ ])
 
-call javaapi#class('4', '', [
+call javaapi#class('4', 'TimeUnit', [
   \ javaapi#method(0,'toNanos(', 'long)', 'long'),
   \ javaapi#method(0,'toMicros(', 'long)', 'long'),
   \ javaapi#method(0,'toMillis(', 'long)', 'long'),
@@ -1516,7 +1474,7 @@ call javaapi#class('4', '', [
   \ javaapi#method(0,'convert(', 'long, TimeUnit)', 'long'),
   \ ])
 
-call javaapi#class('5', '', [
+call javaapi#class('5', 'TimeUnit', [
   \ javaapi#method(0,'toNanos(', 'long)', 'long'),
   \ javaapi#method(0,'toMicros(', 'long)', 'long'),
   \ javaapi#method(0,'toMillis(', 'long)', 'long'),
@@ -1527,7 +1485,7 @@ call javaapi#class('5', '', [
   \ javaapi#method(0,'convert(', 'long, TimeUnit)', 'long'),
   \ ])
 
-call javaapi#class('6', '', [
+call javaapi#class('6', 'TimeUnit', [
   \ javaapi#method(0,'toNanos(', 'long)', 'long'),
   \ javaapi#method(0,'toMicros(', 'long)', 'long'),
   \ javaapi#method(0,'toMillis(', 'long)', 'long'),
@@ -1538,7 +1496,7 @@ call javaapi#class('6', '', [
   \ javaapi#method(0,'convert(', 'long, TimeUnit)', 'long'),
   \ ])
 
-call javaapi#class('7', '', [
+call javaapi#class('7', 'TimeUnit', [
   \ javaapi#method(0,'toNanos(', 'long)', 'long'),
   \ javaapi#method(0,'toMicros(', 'long)', 'long'),
   \ javaapi#method(0,'toMillis(', 'long)', 'long'),
@@ -1549,7 +1507,7 @@ call javaapi#class('7', '', [
   \ javaapi#method(0,'convert(', 'long, TimeUnit)', 'long'),
   \ ])
 
-call javaapi#class('TimeUnit', '', [
+call javaapi#class('TimeUnit', 'TimeUnit>', [
   \ javaapi#field(1,'NANOSECONDS', 'TimeUnit'),
   \ javaapi#field(1,'MICROSECONDS', 'TimeUnit'),
   \ javaapi#field(1,'MILLISECONDS', 'TimeUnit'),
@@ -1572,16 +1530,60 @@ call javaapi#class('TimeUnit', '', [
   \ javaapi#method(0,'sleep(', 'long) throws InterruptedException', 'void'),
   \ ])
 
-call javaapi#class('TimeoutException', '', [
+call javaapi#class('TimeoutException', 'Exception', [
   \ javaapi#method(0,'TimeoutException(', ')', 'public'),
   \ javaapi#method(0,'TimeoutException(', 'String)', 'public'),
   \ ])
 
-call javaapi#interface('TransferQueue<E>', '', [
+call javaapi#interface('TransferQueue<E>', 'BlockingQueue<E>', [
   \ javaapi#method(0,'tryTransfer(', 'E)', 'boolean'),
   \ javaapi#method(0,'transfer(', 'E) throws InterruptedException', 'void'),
   \ javaapi#method(0,'tryTransfer(', 'E, long, TimeUnit) throws InterruptedException', 'boolean'),
   \ javaapi#method(0,'hasWaitingConsumer(', ')', 'boolean'),
   \ javaapi#method(0,'getWaitingConsumerCount(', ')', 'int'),
+  \ ])
+
+call javaapi#namespace('java.util.concurrent')
+
+call javaapi#class('HashEntry<K,V>', '', [
+  \ ])
+
+call javaapi#namespace('java.util.concurrent')
+
+call javaapi#class('Segment<K,V>', 'ReentrantLock', [
+  \ ])
+
+call javaapi#interface('ConcurrentMap<K,V>', 'Map<K,V>', [
+  \ javaapi#method(0,'putIfAbsent(', 'K, V)', 'V'),
+  \ javaapi#method(0,'remove(', 'Object, Object)', 'boolean'),
+  \ javaapi#method(0,'replace(', 'K, V, V)', 'boolean'),
+  \ javaapi#method(0,'replace(', 'K, V)', 'V'),
+  \ ])
+
+call javaapi#class('ConcurrentHashMap<K,V>', 'AbstractMap<K,V>', [
+  \ javaapi#method(0,'ConcurrentHashMap(', 'int, float, int)', 'public'),
+  \ javaapi#method(0,'ConcurrentHashMap(', 'int, float)', 'public'),
+  \ javaapi#method(0,'ConcurrentHashMap(', 'int)', 'public'),
+  \ javaapi#method(0,'ConcurrentHashMap(', ')', 'public'),
+  \ javaapi#method(0,'ConcurrentHashMap(', 'Map<? extends K, ? extends V>)', 'public'),
+  \ javaapi#method(0,'isEmpty(', ')', 'boolean'),
+  \ javaapi#method(0,'size(', ')', 'int'),
+  \ javaapi#method(0,'get(', 'Object)', 'V'),
+  \ javaapi#method(0,'containsKey(', 'Object)', 'boolean'),
+  \ javaapi#method(0,'containsValue(', 'Object)', 'boolean'),
+  \ javaapi#method(0,'contains(', 'Object)', 'boolean'),
+  \ javaapi#method(0,'put(', 'K, V)', 'V'),
+  \ javaapi#method(0,'putIfAbsent(', 'K, V)', 'V'),
+  \ javaapi#method(0,'putAll(', 'Map<? extends K, ? extends V>)', 'void'),
+  \ javaapi#method(0,'remove(', 'Object)', 'V'),
+  \ javaapi#method(0,'remove(', 'Object, Object)', 'boolean'),
+  \ javaapi#method(0,'replace(', 'K, V, V)', 'boolean'),
+  \ javaapi#method(0,'replace(', 'K, V)', 'V'),
+  \ javaapi#method(0,'clear(', ')', 'void'),
+  \ javaapi#method(0,'keySet(', ')', 'Set<K>'),
+  \ javaapi#method(0,'values(', ')', 'Collection<V>'),
+  \ javaapi#method(0,'entrySet(', ')', 'V>>'),
+  \ javaapi#method(0,'keys(', ')', 'Enumeration<K>'),
+  \ javaapi#method(0,'elements(', ')', 'Enumeration<V>'),
   \ ])
 

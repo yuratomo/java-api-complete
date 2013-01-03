@@ -1,6 +1,6 @@
 call javaapi#namespace('java.beans.beancontext')
 
-call javaapi#interface('BeanContext', '', [
+call javaapi#interface('BeanContext', 'Visibility', [
   \ javaapi#field(1,'globalHierarchyLock', 'Object'),
   \ javaapi#method(0,'instantiateChild(', 'String) throws IOException, ClassNotFoundException', 'Object'),
   \ javaapi#method(0,'getResourceAsStream(', 'String, BeanContextChild) throws IllegalArgumentException', 'InputStream'),
@@ -45,14 +45,14 @@ call javaapi#interface('BeanContextContainerProxy', '', [
   \ javaapi#method(0,'getContainer(', ')', 'Container'),
   \ ])
 
-call javaapi#class('BeanContextEvent', '', [
+call javaapi#class('BeanContextEvent', 'EventObject', [
   \ javaapi#method(0,'getBeanContext(', ')', 'BeanContext'),
   \ javaapi#method(0,'setPropagatedFrom(', 'BeanContext)', 'void'),
   \ javaapi#method(0,'getPropagatedFrom(', ')', 'BeanContext'),
   \ javaapi#method(0,'isPropagated(', ')', 'boolean'),
   \ ])
 
-call javaapi#class('BeanContextMembershipEvent', '', [
+call javaapi#class('BeanContextMembershipEvent', 'BeanContextEvent', [
   \ javaapi#method(0,'BeanContextMembershipEvent(', 'BeanContext, Collection)', 'public'),
   \ javaapi#method(0,'BeanContextMembershipEvent(', 'BeanContext, Object[])', 'public'),
   \ javaapi#method(0,'size(', ')', 'int'),
@@ -61,7 +61,7 @@ call javaapi#class('BeanContextMembershipEvent', '', [
   \ javaapi#method(0,'iterator(', ')', 'Iterator'),
   \ ])
 
-call javaapi#interface('BeanContextMembershipListener', '', [
+call javaapi#interface('BeanContextMembershipListener', 'EventListener', [
   \ javaapi#method(0,'childrenAdded(', 'BeanContextMembershipEvent)', 'void'),
   \ javaapi#method(0,'childrenRemoved(', 'BeanContextMembershipEvent)', 'void'),
   \ ])
@@ -70,7 +70,7 @@ call javaapi#interface('BeanContextProxy', '', [
   \ javaapi#method(0,'getBeanContextProxy(', ')', 'BeanContextChild'),
   \ ])
 
-call javaapi#class('BeanContextServiceAvailableEvent', '', [
+call javaapi#class('BeanContextServiceAvailableEvent', 'BeanContextEvent', [
   \ javaapi#method(0,'BeanContextServiceAvailableEvent(', 'BeanContextServices, Class)', 'public'),
   \ javaapi#method(0,'getSourceAsBeanContextServices(', ')', 'BeanContextServices'),
   \ javaapi#method(0,'getServiceClass(', ')', 'Class'),
@@ -83,11 +83,11 @@ call javaapi#interface('BeanContextServiceProvider', '', [
   \ javaapi#method(0,'getCurrentServiceSelectors(', 'BeanContextServices, Class)', 'Iterator'),
   \ ])
 
-call javaapi#interface('BeanContextServiceProviderBeanInfo', '', [
+call javaapi#interface('BeanContextServiceProviderBeanInfo', 'BeanInfo', [
   \ javaapi#method(0,'getServicesBeanInfo(', ')', 'BeanInfo[]'),
   \ ])
 
-call javaapi#class('BeanContextServiceRevokedEvent', '', [
+call javaapi#class('BeanContextServiceRevokedEvent', 'BeanContextEvent', [
   \ javaapi#method(0,'BeanContextServiceRevokedEvent(', 'BeanContextServices, Class, boolean)', 'public'),
   \ javaapi#method(0,'getSourceAsBeanContextServices(', ')', 'BeanContextServices'),
   \ javaapi#method(0,'getServiceClass(', ')', 'Class'),
@@ -95,11 +95,11 @@ call javaapi#class('BeanContextServiceRevokedEvent', '', [
   \ javaapi#method(0,'isCurrentServiceInvalidNow(', ')', 'boolean'),
   \ ])
 
-call javaapi#interface('BeanContextServiceRevokedListener', '', [
+call javaapi#interface('BeanContextServiceRevokedListener', 'EventListener', [
   \ javaapi#method(0,'serviceRevoked(', 'BeanContextServiceRevokedEvent)', 'void'),
   \ ])
 
-call javaapi#interface('BeanContextServices', '', [
+call javaapi#interface('BeanContextServices', 'BeanContextServicesListener', [
   \ javaapi#method(0,'addService(', 'Class, BeanContextServiceProvider)', 'boolean'),
   \ javaapi#method(0,'revokeService(', 'Class, BeanContextServiceProvider, boolean)', 'void'),
   \ javaapi#method(0,'hasService(', 'Class)', 'boolean'),
@@ -111,7 +111,7 @@ call javaapi#interface('BeanContextServices', '', [
   \ javaapi#method(0,'removeBeanContextServicesListener(', 'BeanContextServicesListener)', 'void'),
   \ ])
 
-call javaapi#interface('BeanContextServicesListener', '', [
+call javaapi#interface('BeanContextServicesListener', 'BeanContextServiceRevokedListener', [
   \ javaapi#method(0,'serviceAvailable(', 'BeanContextServiceAvailableEvent)', 'void'),
   \ ])
 
@@ -121,7 +121,7 @@ call javaapi#class('BCSSCServiceClassRef', '', [
 call javaapi#class('BCSSCServiceRef', '', [
   \ ])
 
-call javaapi#class('BCSSChild', '', [
+call javaapi#class('BCSSChild', 'BCSChild', [
   \ ])
 
 call javaapi#class('BCSSProxyServiceProvider', 'BeanContextServiceRevokedListener', [
@@ -134,7 +134,7 @@ call javaapi#class('BCSSProxyServiceProvider', 'BeanContextServiceRevokedListene
 call javaapi#class('BCSSServiceProvider', 'Serializable', [
   \ ])
 
-call javaapi#class('BeanContextServicesSupport', '', [
+call javaapi#class('BeanContextServicesSupport', 'BeanContextSupport', [
   \ javaapi#method(0,'BeanContextServicesSupport(', 'BeanContextServices, Locale, boolean, boolean)', 'public'),
   \ javaapi#method(0,'BeanContextServicesSupport(', 'BeanContextServices, Locale, boolean)', 'public'),
   \ javaapi#method(0,'BeanContextServicesSupport(', 'BeanContextServices, Locale)', 'public'),
@@ -172,7 +172,7 @@ call javaapi#class('BCSIterator', 'Iterator', [
   \ javaapi#method(0,'remove(', ')', 'void'),
   \ ])
 
-call javaapi#class('BeanContextSupport', '', [
+call javaapi#class('BeanContextSupport', 'BeanContextChildSupport', [
   \ javaapi#method(0,'BeanContextSupport(', 'BeanContext, Locale, boolean, boolean)', 'public'),
   \ javaapi#method(0,'BeanContextSupport(', 'BeanContext, Locale, boolean)', 'public'),
   \ javaapi#method(0,'BeanContextSupport(', 'BeanContext, Locale)', 'public'),

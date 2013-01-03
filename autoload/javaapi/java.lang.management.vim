@@ -1,13 +1,13 @@
 call javaapi#namespace('java.lang.management')
 
-call javaapi#interface('BufferPoolMXBean', '', [
+call javaapi#interface('BufferPoolMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,'getName(', ')', 'String'),
   \ javaapi#method(0,'getCount(', ')', 'long'),
   \ javaapi#method(0,'getTotalCapacity(', ')', 'long'),
   \ javaapi#method(0,'getMemoryUsed(', ')', 'long'),
   \ ])
 
-call javaapi#interface('ClassLoadingMXBean', '', [
+call javaapi#interface('ClassLoadingMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,'getTotalLoadedClassCount(', ')', 'long'),
   \ javaapi#method(0,'getLoadedClassCount(', ')', 'int'),
   \ javaapi#method(0,'getUnloadedClassCount(', ')', 'long'),
@@ -15,13 +15,13 @@ call javaapi#interface('ClassLoadingMXBean', '', [
   \ javaapi#method(0,'setVerbose(', 'boolean)', 'void'),
   \ ])
 
-call javaapi#interface('CompilationMXBean', '', [
+call javaapi#interface('CompilationMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,'getName(', ')', 'String'),
   \ javaapi#method(0,'isCompilationTimeMonitoringSupported(', ')', 'boolean'),
   \ javaapi#method(0,'getTotalCompilationTime(', ')', 'long'),
   \ ])
 
-call javaapi#interface('GarbageCollectorMXBean', '', [
+call javaapi#interface('GarbageCollectorMXBean', 'MemoryManagerMXBean', [
   \ javaapi#method(0,'getCollectionCount(', ')', 'long'),
   \ javaapi#method(0,'getCollectionTime(', ')', 'long'),
   \ ])
@@ -71,12 +71,12 @@ call javaapi#class('ManagementFactory', '', [
   \ javaapi#method(1,'getPlatformManagementInterfaces(', ')', 'PlatformManagedObject>>'),
   \ ])
 
-call javaapi#class('ManagementPermission', '', [
+call javaapi#class('ManagementPermission', 'BasicPermission', [
   \ javaapi#method(0,'ManagementPermission(', 'String)', 'public'),
   \ javaapi#method(0,'ManagementPermission(', 'String, String) throws IllegalArgumentException', 'public'),
   \ ])
 
-call javaapi#interface('MemoryMXBean', '', [
+call javaapi#interface('MemoryMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,'getObjectPendingFinalizationCount(', ')', 'int'),
   \ javaapi#method(0,'getHeapMemoryUsage(', ')', 'MemoryUsage'),
   \ javaapi#method(0,'getNonHeapMemoryUsage(', ')', 'MemoryUsage'),
@@ -85,7 +85,7 @@ call javaapi#interface('MemoryMXBean', '', [
   \ javaapi#method(0,'gc(', ')', 'void'),
   \ ])
 
-call javaapi#interface('MemoryManagerMXBean', '', [
+call javaapi#interface('MemoryManagerMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,'getName(', ')', 'String'),
   \ javaapi#method(0,'isValid(', ')', 'boolean'),
   \ javaapi#method(0,'getMemoryPoolNames(', ')', 'String[]'),
@@ -101,7 +101,7 @@ call javaapi#class('MemoryNotificationInfo', '', [
   \ javaapi#method(1,'from(', 'CompositeData)', 'MemoryNotificationInfo'),
   \ ])
 
-call javaapi#interface('MemoryPoolMXBean', '', [
+call javaapi#interface('MemoryPoolMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,'getName(', ')', 'String'),
   \ javaapi#method(0,'getType(', ')', 'MemoryType'),
   \ javaapi#method(0,'getUsage(', ')', 'MemoryUsage'),
@@ -122,7 +122,7 @@ call javaapi#interface('MemoryPoolMXBean', '', [
   \ javaapi#method(0,'isCollectionUsageThresholdSupported(', ')', 'boolean'),
   \ ])
 
-call javaapi#class('MemoryType', '', [
+call javaapi#class('MemoryType', 'MemoryType>', [
   \ javaapi#field(1,'HEAP', 'MemoryType'),
   \ javaapi#field(1,'NON_HEAP', 'MemoryType'),
   \ javaapi#method(1,'values(', ')', 'MemoryType[]'),
@@ -140,14 +140,14 @@ call javaapi#class('MemoryUsage', '', [
   \ javaapi#method(1,'from(', 'CompositeData)', 'MemoryUsage'),
   \ ])
 
-call javaapi#class('MonitorInfo', '', [
+call javaapi#class('MonitorInfo', 'LockInfo', [
   \ javaapi#method(0,'MonitorInfo(', 'String, int, int, StackTraceElement)', 'public'),
   \ javaapi#method(0,'getLockedStackDepth(', ')', 'int'),
   \ javaapi#method(0,'getLockedStackFrame(', ')', 'StackTraceElement'),
   \ javaapi#method(1,'from(', 'CompositeData)', 'MonitorInfo'),
   \ ])
 
-call javaapi#interface('OperatingSystemMXBean', '', [
+call javaapi#interface('OperatingSystemMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,'getName(', ')', 'String'),
   \ javaapi#method(0,'getArch(', ')', 'String'),
   \ javaapi#method(0,'getVersion(', ')', 'String'),
@@ -215,11 +215,11 @@ call javaapi#class('9', 'ThreadMXBean>', [
   \ javaapi#method(0,'getMXBeans(', ')', 'ThreadMXBean>'),
   \ ])
 
-call javaapi#interface('MXBeanFetcher<T', '', [
+call javaapi#interface('MXBeanFetcher<T', 'PlatformManagedObject>', [
   \ javaapi#method(0,'getMXBeans(', ')', 'List<T>'),
   \ ])
 
-call javaapi#class('PlatformComponent', '', [
+call javaapi#class('PlatformComponent', 'PlatformComponent>', [
   \ javaapi#field(1,'CLASS_LOADING', 'PlatformComponent'),
   \ javaapi#field(1,'COMPILATION', 'PlatformComponent'),
   \ javaapi#field(1,'MEMORY', 'PlatformComponent'),
@@ -239,7 +239,7 @@ call javaapi#class('PlatformComponent', '', [
   \ javaapi#method(1,'valueOf(', 'String)', 'PlatformComponent'),
   \ ])
 
-call javaapi#interface('PlatformLoggingMXBean', '', [
+call javaapi#interface('PlatformLoggingMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,'getLoggerNames(', ')', 'String>'),
   \ javaapi#method(0,'getLoggerLevel(', 'String)', 'String'),
   \ javaapi#method(0,'setLoggerLevel(', 'String, String)', 'void'),
@@ -250,7 +250,7 @@ call javaapi#interface('PlatformManagedObject', '', [
   \ javaapi#method(0,'getObjectName(', ')', 'ObjectName'),
   \ ])
 
-call javaapi#interface('RuntimeMXBean', '', [
+call javaapi#interface('RuntimeMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,'getName(', ')', 'String'),
   \ javaapi#method(0,'getVmName(', ')', 'String'),
   \ javaapi#method(0,'getVmVendor(', ')', 'String'),
@@ -293,7 +293,7 @@ call javaapi#class('ThreadInfo', '', [
   \ javaapi#method(0,'getLockedSynchronizers(', ')', 'LockInfo[]'),
   \ ])
 
-call javaapi#interface('ThreadMXBean', '', [
+call javaapi#interface('ThreadMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,'getThreadCount(', ')', 'int'),
   \ javaapi#method(0,'getPeakThreadCount(', ')', 'int'),
   \ javaapi#method(0,'getTotalStartedThreadCount(', ')', 'long'),

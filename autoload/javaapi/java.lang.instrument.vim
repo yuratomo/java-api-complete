@@ -10,7 +10,7 @@ call javaapi#interface('ClassFileTransformer', '', [
   \ javaapi#method(0,'transform(', 'ClassLoader, String, Class<?>, ProtectionDomain, byte[]) throws IllegalClassFormatException', 'byte[]'),
   \ ])
 
-call javaapi#class('IllegalClassFormatException', '', [
+call javaapi#class('IllegalClassFormatException', 'Exception', [
   \ javaapi#method(0,'IllegalClassFormatException(', ')', 'public'),
   \ javaapi#method(0,'IllegalClassFormatException(', 'String)', 'public'),
   \ ])
@@ -33,7 +33,7 @@ call javaapi#interface('Instrumentation', '', [
   \ javaapi#method(0,'setNativeMethodPrefix(', 'ClassFileTransformer, String)', 'void'),
   \ ])
 
-call javaapi#class('UnmodifiableClassException', '', [
+call javaapi#class('UnmodifiableClassException', 'Exception', [
   \ javaapi#method(0,'UnmodifiableClassException(', ')', 'public'),
   \ javaapi#method(0,'UnmodifiableClassException(', 'String)', 'public'),
   \ ])

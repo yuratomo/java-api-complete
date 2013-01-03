@@ -1,83 +1,5 @@
 call javaapi#namespace('java.util.concurrent.atomic')
 
-call javaapi#class('AtomicReferenceFieldUpdaterImpl<T,V>', '', [
-  \ javaapi#method(0,'compareAndSet(', 'T, V, V)', 'boolean'),
-  \ javaapi#method(0,'weakCompareAndSet(', 'T, V, V)', 'boolean'),
-  \ javaapi#method(0,'set(', 'T, V)', 'void'),
-  \ javaapi#method(0,'lazySet(', 'T, V)', 'void'),
-  \ javaapi#method(0,'get(', 'T)', 'V'),
-  \ ])
-
-call javaapi#class('AtomicReferenceFieldUpdater<T,V>', '', [
-  \ javaapi#method(1,'newUpdater(', 'Class<U>, Class<W>, String)', 'W>'),
-  \ javaapi#method(0,'compareAndSet(', 'T, V, V)', 'boolean'),
-  \ javaapi#method(0,'weakCompareAndSet(', 'T, V, V)', 'boolean'),
-  \ javaapi#method(0,'set(', 'T, V)', 'void'),
-  \ javaapi#method(0,'lazySet(', 'T, V)', 'void'),
-  \ javaapi#method(0,'get(', 'T)', 'V'),
-  \ javaapi#method(0,'getAndSet(', 'T, V)', 'V'),
-  \ ])
-
-
-call javaapi#class('AtomicInteger', '', [
-  \ javaapi#method(0,'AtomicInteger(', 'int)', 'public'),
-  \ javaapi#method(0,'AtomicInteger(', ')', 'public'),
-  \ javaapi#method(0,'get(', ')', 'int'),
-  \ javaapi#method(0,'set(', 'int)', 'void'),
-  \ javaapi#method(0,'lazySet(', 'int)', 'void'),
-  \ javaapi#method(0,'getAndSet(', 'int)', 'int'),
-  \ javaapi#method(0,'compareAndSet(', 'int, int)', 'boolean'),
-  \ javaapi#method(0,'weakCompareAndSet(', 'int, int)', 'boolean'),
-  \ javaapi#method(0,'getAndIncrement(', ')', 'int'),
-  \ javaapi#method(0,'getAndDecrement(', ')', 'int'),
-  \ javaapi#method(0,'getAndAdd(', 'int)', 'int'),
-  \ javaapi#method(0,'incrementAndGet(', ')', 'int'),
-  \ javaapi#method(0,'decrementAndGet(', ')', 'int'),
-  \ javaapi#method(0,'addAndGet(', 'int)', 'int'),
-  \ javaapi#method(0,'toString(', ')', 'String'),
-  \ javaapi#method(0,'intValue(', ')', 'int'),
-  \ javaapi#method(0,'longValue(', ')', 'long'),
-  \ javaapi#method(0,'floatValue(', ')', 'float'),
-  \ javaapi#method(0,'doubleValue(', ')', 'double'),
-  \ ])
-
-
-call javaapi#class('AtomicBoolean', 'Serializable', [
-  \ javaapi#method(0,'AtomicBoolean(', 'boolean)', 'public'),
-  \ javaapi#method(0,'AtomicBoolean(', ')', 'public'),
-  \ javaapi#method(0,'get(', ')', 'boolean'),
-  \ javaapi#method(0,'compareAndSet(', 'boolean, boolean)', 'boolean'),
-  \ javaapi#method(0,'weakCompareAndSet(', 'boolean, boolean)', 'boolean'),
-  \ javaapi#method(0,'set(', 'boolean)', 'void'),
-  \ javaapi#method(0,'lazySet(', 'boolean)', 'void'),
-  \ javaapi#method(0,'getAndSet(', 'boolean)', 'boolean'),
-  \ javaapi#method(0,'toString(', ')', 'String'),
-  \ ])
-
-
-call javaapi#class('AtomicLong', '', [
-  \ javaapi#method(0,'AtomicLong(', 'long)', 'public'),
-  \ javaapi#method(0,'AtomicLong(', ')', 'public'),
-  \ javaapi#method(0,'get(', ')', 'long'),
-  \ javaapi#method(0,'set(', 'long)', 'void'),
-  \ javaapi#method(0,'lazySet(', 'long)', 'void'),
-  \ javaapi#method(0,'getAndSet(', 'long)', 'long'),
-  \ javaapi#method(0,'compareAndSet(', 'long, long)', 'boolean'),
-  \ javaapi#method(0,'weakCompareAndSet(', 'long, long)', 'boolean'),
-  \ javaapi#method(0,'getAndIncrement(', ')', 'long'),
-  \ javaapi#method(0,'getAndDecrement(', ')', 'long'),
-  \ javaapi#method(0,'getAndAdd(', 'long)', 'long'),
-  \ javaapi#method(0,'incrementAndGet(', ')', 'long'),
-  \ javaapi#method(0,'decrementAndGet(', ')', 'long'),
-  \ javaapi#method(0,'addAndGet(', 'long)', 'long'),
-  \ javaapi#method(0,'toString(', ')', 'String'),
-  \ javaapi#method(0,'intValue(', ')', 'int'),
-  \ javaapi#method(0,'longValue(', ')', 'long'),
-  \ javaapi#method(0,'floatValue(', ')', 'float'),
-  \ javaapi#method(0,'doubleValue(', ')', 'double'),
-  \ ])
-
-
 call javaapi#class('AtomicIntegerArray', 'Serializable', [
   \ javaapi#method(0,'AtomicIntegerArray(', 'int)', 'public'),
   \ javaapi#method(0,'AtomicIntegerArray(', 'int[])', 'public'),
@@ -97,7 +19,7 @@ call javaapi#class('AtomicIntegerArray', 'Serializable', [
   \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('AtomicIntegerFieldUpdaterImpl<T>', '', [
+call javaapi#class('AtomicIntegerFieldUpdaterImpl<T>', 'AtomicIntegerFieldUpdater<T>', [
   \ javaapi#method(0,'compareAndSet(', 'T, int, int)', 'boolean'),
   \ javaapi#method(0,'weakCompareAndSet(', 'T, int, int)', 'boolean'),
   \ javaapi#method(0,'set(', 'T, int)', 'void'),
@@ -140,7 +62,7 @@ call javaapi#class('AtomicLongArray', 'Serializable', [
   \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('CASUpdater<T>', '', [
+call javaapi#class('CASUpdater<T>', 'AtomicLongFieldUpdater<T>', [
   \ javaapi#method(0,'compareAndSet(', 'T, long, long)', 'boolean'),
   \ javaapi#method(0,'weakCompareAndSet(', 'T, long, long)', 'boolean'),
   \ javaapi#method(0,'set(', 'T, long)', 'void'),
@@ -148,7 +70,7 @@ call javaapi#class('CASUpdater<T>', '', [
   \ javaapi#method(0,'get(', 'T)', 'long'),
   \ ])
 
-call javaapi#class('LockedUpdater<T>', '', [
+call javaapi#class('LockedUpdater<T>', 'AtomicLongFieldUpdater<T>', [
   \ javaapi#method(0,'compareAndSet(', 'T, long, long)', 'boolean'),
   \ javaapi#method(0,'weakCompareAndSet(', 'T, long, long)', 'boolean'),
   \ javaapi#method(0,'set(', 'T, long)', 'void'),
@@ -223,5 +145,87 @@ call javaapi#class('AtomicStampedReference<V>', '', [
   \ javaapi#method(0,'compareAndSet(', 'V, V, int, int)', 'boolean'),
   \ javaapi#method(0,'set(', 'V, int)', 'void'),
   \ javaapi#method(0,'attemptStamp(', 'V, int)', 'boolean'),
+  \ ])
+
+call javaapi#namespace('java.util.concurrent.atomic')
+
+call javaapi#class('AtomicLong', 'Number', [
+  \ javaapi#method(0,'AtomicLong(', 'long)', 'public'),
+  \ javaapi#method(0,'AtomicLong(', ')', 'public'),
+  \ javaapi#method(0,'get(', ')', 'long'),
+  \ javaapi#method(0,'set(', 'long)', 'void'),
+  \ javaapi#method(0,'lazySet(', 'long)', 'void'),
+  \ javaapi#method(0,'getAndSet(', 'long)', 'long'),
+  \ javaapi#method(0,'compareAndSet(', 'long, long)', 'boolean'),
+  \ javaapi#method(0,'weakCompareAndSet(', 'long, long)', 'boolean'),
+  \ javaapi#method(0,'getAndIncrement(', ')', 'long'),
+  \ javaapi#method(0,'getAndDecrement(', ')', 'long'),
+  \ javaapi#method(0,'getAndAdd(', 'long)', 'long'),
+  \ javaapi#method(0,'incrementAndGet(', ')', 'long'),
+  \ javaapi#method(0,'decrementAndGet(', ')', 'long'),
+  \ javaapi#method(0,'addAndGet(', 'long)', 'long'),
+  \ javaapi#method(0,'toString(', ')', 'String'),
+  \ javaapi#method(0,'intValue(', ')', 'int'),
+  \ javaapi#method(0,'longValue(', ')', 'long'),
+  \ javaapi#method(0,'floatValue(', ')', 'float'),
+  \ javaapi#method(0,'doubleValue(', ')', 'double'),
+  \ ])
+
+call javaapi#namespace('java.util.concurrent.atomic')
+
+call javaapi#class('AtomicBoolean', 'Serializable', [
+  \ javaapi#method(0,'AtomicBoolean(', 'boolean)', 'public'),
+  \ javaapi#method(0,'AtomicBoolean(', ')', 'public'),
+  \ javaapi#method(0,'get(', ')', 'boolean'),
+  \ javaapi#method(0,'compareAndSet(', 'boolean, boolean)', 'boolean'),
+  \ javaapi#method(0,'weakCompareAndSet(', 'boolean, boolean)', 'boolean'),
+  \ javaapi#method(0,'set(', 'boolean)', 'void'),
+  \ javaapi#method(0,'lazySet(', 'boolean)', 'void'),
+  \ javaapi#method(0,'getAndSet(', 'boolean)', 'boolean'),
+  \ javaapi#method(0,'toString(', ')', 'String'),
+  \ ])
+
+call javaapi#namespace('java.util.concurrent.atomic')
+
+call javaapi#class('AtomicInteger', 'Number', [
+  \ javaapi#method(0,'AtomicInteger(', 'int)', 'public'),
+  \ javaapi#method(0,'AtomicInteger(', ')', 'public'),
+  \ javaapi#method(0,'get(', ')', 'int'),
+  \ javaapi#method(0,'set(', 'int)', 'void'),
+  \ javaapi#method(0,'lazySet(', 'int)', 'void'),
+  \ javaapi#method(0,'getAndSet(', 'int)', 'int'),
+  \ javaapi#method(0,'compareAndSet(', 'int, int)', 'boolean'),
+  \ javaapi#method(0,'weakCompareAndSet(', 'int, int)', 'boolean'),
+  \ javaapi#method(0,'getAndIncrement(', ')', 'int'),
+  \ javaapi#method(0,'getAndDecrement(', ')', 'int'),
+  \ javaapi#method(0,'getAndAdd(', 'int)', 'int'),
+  \ javaapi#method(0,'incrementAndGet(', ')', 'int'),
+  \ javaapi#method(0,'decrementAndGet(', ')', 'int'),
+  \ javaapi#method(0,'addAndGet(', 'int)', 'int'),
+  \ javaapi#method(0,'toString(', ')', 'String'),
+  \ javaapi#method(0,'intValue(', ')', 'int'),
+  \ javaapi#method(0,'longValue(', ')', 'long'),
+  \ javaapi#method(0,'floatValue(', ')', 'float'),
+  \ javaapi#method(0,'doubleValue(', ')', 'double'),
+  \ ])
+
+call javaapi#namespace('java.util.concurrent.atomic')
+
+call javaapi#class('AtomicReferenceFieldUpdaterImpl<T,V>', 'AtomicReferenceFieldUpdater<T,V>', [
+  \ javaapi#method(0,'compareAndSet(', 'T, V, V)', 'boolean'),
+  \ javaapi#method(0,'weakCompareAndSet(', 'T, V, V)', 'boolean'),
+  \ javaapi#method(0,'set(', 'T, V)', 'void'),
+  \ javaapi#method(0,'lazySet(', 'T, V)', 'void'),
+  \ javaapi#method(0,'get(', 'T)', 'V'),
+  \ ])
+
+call javaapi#class('AtomicReferenceFieldUpdater<T,V>', '', [
+  \ javaapi#method(1,'newUpdater(', 'Class<U>, Class<W>, String)', 'W>'),
+  \ javaapi#method(0,'compareAndSet(', 'T, V, V)', 'boolean'),
+  \ javaapi#method(0,'weakCompareAndSet(', 'T, V, V)', 'boolean'),
+  \ javaapi#method(0,'set(', 'T, V)', 'void'),
+  \ javaapi#method(0,'lazySet(', 'T, V)', 'void'),
+  \ javaapi#method(0,'get(', 'T)', 'V'),
+  \ javaapi#method(0,'getAndSet(', 'T, V)', 'V'),
   \ ])
 

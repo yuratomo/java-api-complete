@@ -789,6 +789,17 @@ function! javaapi#jar2vim(jar, output_dir)
 
     " regist namespace
     if last_namespace != ns
+      " output
+      if last_namespace != ''
+        let opath = a:output_dir . last_namespace . '.vim'
+        if file_readable(opath)
+          call writefile(extend(readfile(opath), outputs), opath)
+        else
+          call writefile(outputs, opath)
+        endif
+        let outputs = []
+      endif
+
       call add(outputs, "call javaapi#namespace('" . ns . "')")
       call add(outputs, "")
       let last_namespace = ns
@@ -807,9 +818,9 @@ function! javaapi#jar2vim(jar, output_dir)
 
     " resolve super class
     let super = ''
-    if len(class_parts) > 2 && class_parts[2] == 'implements'
+    if len(class_parts) > 2 && ( class_parts[2] == 'implements' || class_parts[2] == 'extends')
       let super = s:class_name(class_parts[3])
-    elseif len(class_parts) < 1
+    elseif len(class_parts) < 2
       continue
     endif
 
@@ -840,7 +851,15 @@ function! javaapi#jar2vim(jar, output_dir)
     call add(outputs, "")
   endfor
 
-  call writefile(outputs, a:output_dir . substitute(substitute(a:jar, "jar$", "vim", ""), ".*[\\/]", "", "") )
+  "call writefile(outputs, a:output_dir . substitute(substitute(a:jar, "jar$", "vim", ""), ".*[\\/]", "", "") )
+  if last_namespace != ''
+    let opath = a:output_dir . last_namespace . '.vim'
+    if file_readable(opath)
+      call writefile(extend(readfile(opath), outputs), opath)
+    else
+      call writefile(outputs, opath)
+    endif
+  endif
 endfunction
 
 function! s:class_name(path)

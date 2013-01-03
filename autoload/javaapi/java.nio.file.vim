@@ -1,11 +1,11 @@
 call javaapi#namespace('java.nio.file')
 
-call javaapi#class('AccessDeniedException', '', [
+call javaapi#class('AccessDeniedException', 'FileSystemException', [
   \ javaapi#method(0,'AccessDeniedException(', 'String)', 'public'),
   \ javaapi#method(0,'AccessDeniedException(', 'String, String, String)', 'public'),
   \ ])
 
-call javaapi#class('AccessMode', '', [
+call javaapi#class('AccessMode', 'AccessMode>', [
   \ javaapi#field(1,'READ', 'AccessMode'),
   \ javaapi#field(1,'WRITE', 'AccessMode'),
   \ javaapi#field(1,'EXECUTE', 'AccessMode'),
@@ -13,19 +13,19 @@ call javaapi#class('AccessMode', '', [
   \ javaapi#method(1,'valueOf(', 'String)', 'AccessMode'),
   \ ])
 
-call javaapi#class('AtomicMoveNotSupportedException', '', [
+call javaapi#class('AtomicMoveNotSupportedException', 'FileSystemException', [
   \ javaapi#method(0,'AtomicMoveNotSupportedException(', 'String, String, String)', 'public'),
   \ ])
 
-call javaapi#class('ClosedDirectoryStreamException', '', [
+call javaapi#class('ClosedDirectoryStreamException', 'IllegalStateException', [
   \ javaapi#method(0,'ClosedDirectoryStreamException(', ')', 'public'),
   \ ])
 
-call javaapi#class('ClosedFileSystemException', '', [
+call javaapi#class('ClosedFileSystemException', 'IllegalStateException', [
   \ javaapi#method(0,'ClosedFileSystemException(', ')', 'public'),
   \ ])
 
-call javaapi#class('ClosedWatchServiceException', '', [
+call javaapi#class('ClosedWatchServiceException', 'IllegalStateException', [
   \ javaapi#method(0,'ClosedWatchServiceException(', ')', 'public'),
   \ ])
 
@@ -38,13 +38,13 @@ call javaapi#class('CopyMoveHelper', '', [
 call javaapi#interface('CopyOption', '', [
   \ ])
 
-call javaapi#class('DirectoryIteratorException', '', [
+call javaapi#class('DirectoryIteratorException', 'ConcurrentModificationException', [
   \ javaapi#method(0,'DirectoryIteratorException(', 'IOException)', 'public'),
   \ javaapi#method(0,'getCause(', ')', 'IOException'),
   \ javaapi#method(0,'getCause(', ')', 'Throwable'),
   \ ])
 
-call javaapi#class('DirectoryNotEmptyException', '', [
+call javaapi#class('DirectoryNotEmptyException', 'FileSystemException', [
   \ javaapi#method(0,'DirectoryNotEmptyException(', 'String)', 'public'),
   \ ])
 
@@ -52,11 +52,11 @@ call javaapi#interface('Filter<T>', '', [
   \ javaapi#method(0,'accept(', 'T) throws IOException', 'boolean'),
   \ ])
 
-call javaapi#interface('DirectoryStream<T>', '', [
+call javaapi#interface('DirectoryStream<T>', 'Iterable<T>', [
   \ javaapi#method(0,'iterator(', ')', 'Iterator<T>'),
   \ ])
 
-call javaapi#class('FileAlreadyExistsException', '', [
+call javaapi#class('FileAlreadyExistsException', 'FileSystemException', [
   \ javaapi#method(0,'FileAlreadyExistsException(', 'String)', 'public'),
   \ javaapi#method(0,'FileAlreadyExistsException(', 'String, String, String)', 'public'),
   \ ])
@@ -89,12 +89,12 @@ call javaapi#class('FileSystem', 'Closeable', [
   \ javaapi#method(0,'newWatchService(', ') throws IOException', 'WatchService'),
   \ ])
 
-call javaapi#class('FileSystemAlreadyExistsException', '', [
+call javaapi#class('FileSystemAlreadyExistsException', 'RuntimeException', [
   \ javaapi#method(0,'FileSystemAlreadyExistsException(', ')', 'public'),
   \ javaapi#method(0,'FileSystemAlreadyExistsException(', 'String)', 'public'),
   \ ])
 
-call javaapi#class('FileSystemException', '', [
+call javaapi#class('FileSystemException', 'IOException', [
   \ javaapi#method(0,'FileSystemException(', 'String)', 'public'),
   \ javaapi#method(0,'FileSystemException(', 'String, String, String)', 'public'),
   \ javaapi#method(0,'getFile(', ')', 'String'),
@@ -103,11 +103,11 @@ call javaapi#class('FileSystemException', '', [
   \ javaapi#method(0,'getMessage(', ')', 'String'),
   \ ])
 
-call javaapi#class('FileSystemLoopException', '', [
+call javaapi#class('FileSystemLoopException', 'FileSystemException', [
   \ javaapi#method(0,'FileSystemLoopException(', 'String)', 'public'),
   \ ])
 
-call javaapi#class('FileSystemNotFoundException', '', [
+call javaapi#class('FileSystemNotFoundException', 'RuntimeException', [
   \ javaapi#method(0,'FileSystemNotFoundException(', ')', 'public'),
   \ javaapi#method(0,'FileSystemNotFoundException(', 'String)', 'public'),
   \ ])
@@ -137,13 +137,13 @@ call javaapi#class('AncestorDirectory', '', [
 call javaapi#class('FileTreeWalker', '', [
   \ ])
 
-call javaapi#class('FileVisitOption', '', [
+call javaapi#class('FileVisitOption', 'FileVisitOption>', [
   \ javaapi#field(1,'FOLLOW_LINKS', 'FileVisitOption'),
   \ javaapi#method(1,'values(', ')', 'FileVisitOption[]'),
   \ javaapi#method(1,'valueOf(', 'String)', 'FileVisitOption'),
   \ ])
 
-call javaapi#class('FileVisitResult', '', [
+call javaapi#class('FileVisitResult', 'FileVisitResult>', [
   \ javaapi#field(1,'CONTINUE', 'FileVisitResult'),
   \ javaapi#field(1,'TERMINATE', 'FileVisitResult'),
   \ javaapi#field(1,'SKIP_SUBTREE', 'FileVisitResult'),
@@ -235,7 +235,7 @@ call javaapi#class('Files', '', [
   \ javaapi#method(1,'write(', 'Path, Iterable<? extends CharSequence>, Charset, ) throws IOException', 'Path'),
   \ ])
 
-call javaapi#class('InvalidPathException', '', [
+call javaapi#class('InvalidPathException', 'IllegalArgumentException', [
   \ javaapi#method(0,'InvalidPathException(', 'String, String, int)', 'public'),
   \ javaapi#method(0,'InvalidPathException(', 'String, String)', 'public'),
   \ javaapi#method(0,'getInput(', ')', 'String'),
@@ -244,27 +244,27 @@ call javaapi#class('InvalidPathException', '', [
   \ javaapi#method(0,'getMessage(', ')', 'String'),
   \ ])
 
-call javaapi#class('LinkOption', '', [
+call javaapi#class('LinkOption', 'LinkOption>', [
   \ javaapi#field(1,'NOFOLLOW_LINKS', 'LinkOption'),
   \ javaapi#method(1,'values(', ')', 'LinkOption[]'),
   \ javaapi#method(1,'valueOf(', 'String)', 'LinkOption'),
   \ ])
 
-call javaapi#class('LinkPermission', '', [
+call javaapi#class('LinkPermission', 'BasicPermission', [
   \ javaapi#method(0,'LinkPermission(', 'String)', 'public'),
   \ javaapi#method(0,'LinkPermission(', 'String, String)', 'public'),
   \ ])
 
-call javaapi#class('NoSuchFileException', '', [
+call javaapi#class('NoSuchFileException', 'FileSystemException', [
   \ javaapi#method(0,'NoSuchFileException(', 'String)', 'public'),
   \ javaapi#method(0,'NoSuchFileException(', 'String, String, String)', 'public'),
   \ ])
 
-call javaapi#class('NotDirectoryException', '', [
+call javaapi#class('NotDirectoryException', 'FileSystemException', [
   \ javaapi#method(0,'NotDirectoryException(', 'String)', 'public'),
   \ ])
 
-call javaapi#class('NotLinkException', '', [
+call javaapi#class('NotLinkException', 'FileSystemException', [
   \ javaapi#method(0,'NotLinkException(', 'String)', 'public'),
   \ javaapi#method(0,'NotLinkException(', 'String, String, String)', 'public'),
   \ ])
@@ -272,7 +272,7 @@ call javaapi#class('NotLinkException', '', [
 call javaapi#interface('OpenOption', '', [
   \ ])
 
-call javaapi#interface('Path', '', [
+call javaapi#interface('Path', 'Watchable', [
   \ javaapi#method(0,'getFileSystem(', ')', 'FileSystem'),
   \ javaapi#method(0,'isAbsolute(', ')', 'boolean'),
   \ javaapi#method(0,'getRoot(', ')', 'Path'),
@@ -313,21 +313,21 @@ call javaapi#class('Paths', '', [
   \ javaapi#method(1,'get(', 'URI)', 'Path'),
   \ ])
 
-call javaapi#class('ProviderMismatchException', '', [
+call javaapi#class('ProviderMismatchException', 'IllegalArgumentException', [
   \ javaapi#method(0,'ProviderMismatchException(', ')', 'public'),
   \ javaapi#method(0,'ProviderMismatchException(', 'String)', 'public'),
   \ ])
 
-call javaapi#class('ProviderNotFoundException', '', [
+call javaapi#class('ProviderNotFoundException', 'RuntimeException', [
   \ javaapi#method(0,'ProviderNotFoundException(', ')', 'public'),
   \ javaapi#method(0,'ProviderNotFoundException(', 'String)', 'public'),
   \ ])
 
-call javaapi#class('ReadOnlyFileSystemException', '', [
+call javaapi#class('ReadOnlyFileSystemException', 'UnsupportedOperationException', [
   \ javaapi#method(0,'ReadOnlyFileSystemException(', ')', 'public'),
   \ ])
 
-call javaapi#interface('SecureDirectoryStream<T>', '', [
+call javaapi#interface('SecureDirectoryStream<T>', 'DirectoryStream<T>', [
   \ javaapi#method(0,'newDirectoryStream(', 'T, ) throws IOException', 'SecureDirectoryStream<T>'),
   \ javaapi#method(0,'newByteChannel(', 'T, Set<? extends OpenOption>, FileAttribute<?>) throws IOException', 'SeekableByteChannel'),
   \ javaapi#method(0,'deleteFile(', 'T) throws IOException', 'void'),
@@ -344,7 +344,7 @@ call javaapi#class('SimpleFileVisitor<T>', 'FileVisitor<T>', [
   \ javaapi#method(0,'postVisitDirectory(', 'T, IOException) throws IOException', 'FileVisitResult'),
   \ ])
 
-call javaapi#class('StandardCopyOption', '', [
+call javaapi#class('StandardCopyOption', 'StandardCopyOption>', [
   \ javaapi#field(1,'REPLACE_EXISTING', 'StandardCopyOption'),
   \ javaapi#field(1,'COPY_ATTRIBUTES', 'StandardCopyOption'),
   \ javaapi#field(1,'ATOMIC_MOVE', 'StandardCopyOption'),
@@ -352,7 +352,7 @@ call javaapi#class('StandardCopyOption', '', [
   \ javaapi#method(1,'valueOf(', 'String)', 'StandardCopyOption'),
   \ ])
 
-call javaapi#class('StandardOpenOption', '', [
+call javaapi#class('StandardOpenOption', 'StandardOpenOption>', [
   \ javaapi#field(1,'READ', 'StandardOpenOption'),
   \ javaapi#field(1,'WRITE', 'StandardOpenOption'),
   \ javaapi#field(1,'APPEND', 'StandardOpenOption'),
@@ -409,7 +409,7 @@ call javaapi#interface('WatchKey', '', [
   \ javaapi#method(0,'watchable(', ')', 'Watchable'),
   \ ])
 
-call javaapi#interface('WatchService', '', [
+call javaapi#interface('WatchService', 'Closeable', [
   \ javaapi#method(0,'close(', ') throws IOException', 'void'),
   \ javaapi#method(0,'poll(', ')', 'WatchKey'),
   \ javaapi#method(0,'poll(', 'long, TimeUnit) throws InterruptedException', 'WatchKey'),

@@ -1,31 +1,19 @@
 call javaapi#namespace('java.security.cert')
 
-call javaapi#class('Certificate', 'Serializable', [
-  \ javaapi#method(0,'getType(', ')', 'String'),
-  \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
-  \ javaapi#method(0,'hashCode(', ')', 'int'),
-  \ javaapi#method(0,'getEncoded(', ') throws CertificateEncodingException', 'byte[]'),
-  \ javaapi#method(0,'verify(', 'PublicKey) throws CertificateException, NoSuchAlgorithmException, InvalidKeyException, NoSuchProviderException, SignatureException', 'void'),
-  \ javaapi#method(0,'verify(', 'PublicKey, String) throws CertificateException, NoSuchAlgorithmException, InvalidKeyException, NoSuchProviderException, SignatureException', 'void'),
-  \ javaapi#method(0,'toString(', ')', 'String'),
-  \ javaapi#method(0,'getPublicKey(', ')', 'PublicKey'),
-  \ ])
-
-
 call javaapi#class('CRL', '', [
   \ javaapi#method(0,'getType(', ')', 'String'),
   \ javaapi#method(0,'toString(', ')', 'String'),
   \ javaapi#method(0,'isRevoked(', 'Certificate)', 'boolean'),
   \ ])
 
-call javaapi#class('CRLException', '', [
+call javaapi#class('CRLException', 'GeneralSecurityException', [
   \ javaapi#method(0,'CRLException(', ')', 'public'),
   \ javaapi#method(0,'CRLException(', 'String)', 'public'),
   \ javaapi#method(0,'CRLException(', 'String, Throwable)', 'public'),
   \ javaapi#method(0,'CRLException(', 'Throwable)', 'public'),
   \ ])
 
-call javaapi#class('CRLReason', '', [
+call javaapi#class('CRLReason', 'CRLReason>', [
   \ javaapi#field(1,'UNSPECIFIED', 'CRLReason'),
   \ javaapi#field(1,'KEY_COMPROMISE', 'CRLReason'),
   \ javaapi#field(1,'CA_COMPROMISE', 'CRLReason'),
@@ -41,7 +29,7 @@ call javaapi#class('CRLReason', '', [
   \ javaapi#method(1,'valueOf(', 'String)', 'CRLReason'),
   \ ])
 
-call javaapi#interface('CRLSelector', '', [
+call javaapi#interface('CRLSelector', 'Cloneable', [
   \ javaapi#method(0,'match(', 'CRL)', 'boolean'),
   \ javaapi#method(0,'clone(', ')', 'Object'),
   \ ])
@@ -75,14 +63,14 @@ call javaapi#class('CertPathBuilder', '', [
   \ javaapi#method(1,'getDefaultType(', ')', 'String'),
   \ ])
 
-call javaapi#class('CertPathBuilderException', '', [
+call javaapi#class('CertPathBuilderException', 'GeneralSecurityException', [
   \ javaapi#method(0,'CertPathBuilderException(', ')', 'public'),
   \ javaapi#method(0,'CertPathBuilderException(', 'String)', 'public'),
   \ javaapi#method(0,'CertPathBuilderException(', 'Throwable)', 'public'),
   \ javaapi#method(0,'CertPathBuilderException(', 'String, Throwable)', 'public'),
   \ ])
 
-call javaapi#interface('CertPathBuilderResult', '', [
+call javaapi#interface('CertPathBuilderResult', 'Cloneable', [
   \ javaapi#method(0,'getCertPath(', ')', 'CertPath'),
   \ javaapi#method(0,'clone(', ')', 'Object'),
   \ ])
@@ -92,10 +80,10 @@ call javaapi#class('CertPathBuilderSpi', '', [
   \ javaapi#method(0,'engineBuild(', 'CertPathParameters) throws CertPathBuilderException, InvalidAlgorithmParameterException', 'CertPathBuilderResult'),
   \ ])
 
-call javaapi#class('CertPathHelperImpl', '', [
+call javaapi#class('CertPathHelperImpl', 'CertPathHelper', [
   \ ])
 
-call javaapi#interface('CertPathParameters', '', [
+call javaapi#interface('CertPathParameters', 'Cloneable', [
   \ javaapi#method(0,'clone(', ')', 'Object'),
   \ ])
 
@@ -114,7 +102,7 @@ call javaapi#class('CertPathValidator', '', [
   \ javaapi#method(1,'getDefaultType(', ')', 'String'),
   \ ])
 
-call javaapi#class('BasicReason', '', [
+call javaapi#class('BasicReason', 'BasicReason>', [
   \ javaapi#field(1,'UNSPECIFIED', 'BasicReason'),
   \ javaapi#field(1,'EXPIRED', 'BasicReason'),
   \ javaapi#field(1,'NOT_YET_VALID', 'BasicReason'),
@@ -126,10 +114,10 @@ call javaapi#class('BasicReason', '', [
   \ javaapi#method(1,'valueOf(', 'String)', 'BasicReason'),
   \ ])
 
-call javaapi#interface('Reason', '', [
+call javaapi#interface('Reason', 'Serializable', [
   \ ])
 
-call javaapi#class('CertPathValidatorException', '', [
+call javaapi#class('CertPathValidatorException', 'GeneralSecurityException', [
   \ javaapi#method(0,'CertPathValidatorException(', ')', 'public'),
   \ javaapi#method(0,'CertPathValidatorException(', 'String)', 'public'),
   \ javaapi#method(0,'CertPathValidatorException(', 'Throwable)', 'public'),
@@ -141,7 +129,7 @@ call javaapi#class('CertPathValidatorException', '', [
   \ javaapi#method(0,'getReason(', ')', 'Reason'),
   \ ])
 
-call javaapi#interface('CertPathValidatorResult', '', [
+call javaapi#interface('CertPathValidatorResult', 'Cloneable', [
   \ javaapi#method(0,'clone(', ')', 'Object'),
   \ ])
 
@@ -150,7 +138,7 @@ call javaapi#class('CertPathValidatorSpi', '', [
   \ javaapi#method(0,'engineValidate(', 'CertPath, CertPathParameters) throws CertPathValidatorException, InvalidAlgorithmParameterException', 'CertPathValidatorResult'),
   \ ])
 
-call javaapi#interface('CertSelector', '', [
+call javaapi#interface('CertSelector', 'Cloneable', [
   \ javaapi#method(0,'match(', 'Certificate)', 'boolean'),
   \ javaapi#method(0,'clone(', ')', 'Object'),
   \ ])
@@ -172,14 +160,14 @@ call javaapi#class('CertStore', '', [
   \ javaapi#method(1,'getDefaultType(', ')', 'String'),
   \ ])
 
-call javaapi#class('CertStoreException', '', [
+call javaapi#class('CertStoreException', 'GeneralSecurityException', [
   \ javaapi#method(0,'CertStoreException(', ')', 'public'),
   \ javaapi#method(0,'CertStoreException(', 'String)', 'public'),
   \ javaapi#method(0,'CertStoreException(', 'Throwable)', 'public'),
   \ javaapi#method(0,'CertStoreException(', 'String, Throwable)', 'public'),
   \ ])
 
-call javaapi#interface('CertStoreParameters', '', [
+call javaapi#interface('CertStoreParameters', 'Cloneable', [
   \ javaapi#method(0,'clone(', ')', 'Object'),
   \ ])
 
@@ -192,21 +180,21 @@ call javaapi#class('CertStoreSpi', '', [
 call javaapi#class('CertificateRep', 'Serializable', [
   \ ])
 
-call javaapi#class('CertificateEncodingException', '', [
+call javaapi#class('CertificateEncodingException', 'CertificateException', [
   \ javaapi#method(0,'CertificateEncodingException(', ')', 'public'),
   \ javaapi#method(0,'CertificateEncodingException(', 'String)', 'public'),
   \ javaapi#method(0,'CertificateEncodingException(', 'String, Throwable)', 'public'),
   \ javaapi#method(0,'CertificateEncodingException(', 'Throwable)', 'public'),
   \ ])
 
-call javaapi#class('CertificateException', '', [
+call javaapi#class('CertificateException', 'GeneralSecurityException', [
   \ javaapi#method(0,'CertificateException(', ')', 'public'),
   \ javaapi#method(0,'CertificateException(', 'String)', 'public'),
   \ javaapi#method(0,'CertificateException(', 'String, Throwable)', 'public'),
   \ javaapi#method(0,'CertificateException(', 'Throwable)', 'public'),
   \ ])
 
-call javaapi#class('CertificateExpiredException', '', [
+call javaapi#class('CertificateExpiredException', 'CertificateException', [
   \ javaapi#method(0,'CertificateExpiredException(', ')', 'public'),
   \ javaapi#method(0,'CertificateExpiredException(', 'String)', 'public'),
   \ ])
@@ -239,19 +227,19 @@ call javaapi#class('CertificateFactorySpi', '', [
   \ javaapi#method(0,'engineGenerateCRLs(', 'InputStream) throws CRLException', 'CRL>'),
   \ ])
 
-call javaapi#class('CertificateNotYetValidException', '', [
+call javaapi#class('CertificateNotYetValidException', 'CertificateException', [
   \ javaapi#method(0,'CertificateNotYetValidException(', ')', 'public'),
   \ javaapi#method(0,'CertificateNotYetValidException(', 'String)', 'public'),
   \ ])
 
-call javaapi#class('CertificateParsingException', '', [
+call javaapi#class('CertificateParsingException', 'CertificateException', [
   \ javaapi#method(0,'CertificateParsingException(', ')', 'public'),
   \ javaapi#method(0,'CertificateParsingException(', 'String)', 'public'),
   \ javaapi#method(0,'CertificateParsingException(', 'String, Throwable)', 'public'),
   \ javaapi#method(0,'CertificateParsingException(', 'Throwable)', 'public'),
   \ ])
 
-call javaapi#class('CertificateRevokedException', '', [
+call javaapi#class('CertificateRevokedException', 'CertificateException', [
   \ javaapi#method(0,'CertificateRevokedException(', 'Date, CRLReason, X500Principal, Map<String, Extension>)', 'public'),
   \ javaapi#method(0,'getRevocationDate(', ')', 'Date'),
   \ javaapi#method(0,'getRevocationReason(', ')', 'CRLReason'),
@@ -286,7 +274,7 @@ call javaapi#class('LDAPCertStoreParameters', 'CertStoreParameters', [
   \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('PKIXBuilderParameters', '', [
+call javaapi#class('PKIXBuilderParameters', 'PKIXParameters', [
   \ javaapi#method(0,'PKIXBuilderParameters(', 'Set<TrustAnchor>, CertSelector) throws InvalidAlgorithmParameterException', 'public'),
   \ javaapi#method(0,'PKIXBuilderParameters(', 'KeyStore, CertSelector) throws KeyStoreException, InvalidAlgorithmParameterException', 'public'),
   \ javaapi#method(0,'setMaxPathLength(', 'int)', 'void'),
@@ -294,7 +282,7 @@ call javaapi#class('PKIXBuilderParameters', '', [
   \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('PKIXCertPathBuilderResult', '', [
+call javaapi#class('PKIXCertPathBuilderResult', 'PKIXCertPathValidatorResult', [
   \ javaapi#method(0,'PKIXCertPathBuilderResult(', 'CertPath, TrustAnchor, PolicyNode, PublicKey)', 'public'),
   \ javaapi#method(0,'getCertPath(', ')', 'CertPath'),
   \ javaapi#method(0,'toString(', ')', 'String'),
@@ -350,7 +338,7 @@ call javaapi#class('PKIXParameters', 'CertPathParameters', [
   \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('PKIXReason', '', [
+call javaapi#class('PKIXReason', 'PKIXReason>', [
   \ javaapi#field(1,'NAME_CHAINING', 'PKIXReason'),
   \ javaapi#field(1,'INVALID_KEY_USAGE', 'PKIXReason'),
   \ javaapi#field(1,'INVALID_POLICY', 'PKIXReason'),
@@ -393,7 +381,7 @@ call javaapi#class('TrustAnchor', '', [
   \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('X509CRL', '', [
+call javaapi#class('X509CRL', 'CRL', [
   \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,'hashCode(', ')', 'int'),
   \ javaapi#method(0,'getEncoded(', ') throws CRLException', 'byte[]'),
@@ -505,7 +493,7 @@ call javaapi#class('X509CertSelector', 'CertSelector', [
   \ javaapi#method(0,'clone(', ')', 'Object'),
   \ ])
 
-call javaapi#class('X509Certificate', '', [
+call javaapi#class('X509Certificate', 'Certificate', [
   \ javaapi#method(0,'checkValidity(', ') throws CertificateExpiredException, CertificateNotYetValidException', 'void'),
   \ javaapi#method(0,'checkValidity(', 'Date) throws CertificateExpiredException, CertificateNotYetValidException', 'void'),
   \ javaapi#method(0,'getVersion(', ')', 'int'),
@@ -535,5 +523,18 @@ call javaapi#interface('X509Extension', '', [
   \ javaapi#method(0,'getCriticalExtensionOIDs(', ')', 'String>'),
   \ javaapi#method(0,'getNonCriticalExtensionOIDs(', ')', 'String>'),
   \ javaapi#method(0,'getExtensionValue(', 'String)', 'byte[]'),
+  \ ])
+
+call javaapi#namespace('java.security.cert')
+
+call javaapi#class('Certificate', 'Serializable', [
+  \ javaapi#method(0,'getType(', ')', 'String'),
+  \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
+  \ javaapi#method(0,'hashCode(', ')', 'int'),
+  \ javaapi#method(0,'getEncoded(', ') throws CertificateEncodingException', 'byte[]'),
+  \ javaapi#method(0,'verify(', 'PublicKey) throws CertificateException, NoSuchAlgorithmException, InvalidKeyException, NoSuchProviderException, SignatureException', 'void'),
+  \ javaapi#method(0,'verify(', 'PublicKey, String) throws CertificateException, NoSuchAlgorithmException, InvalidKeyException, NoSuchProviderException, SignatureException', 'void'),
+  \ javaapi#method(0,'toString(', ')', 'String'),
+  \ javaapi#method(0,'getPublicKey(', ')', 'PublicKey'),
   \ ])
 

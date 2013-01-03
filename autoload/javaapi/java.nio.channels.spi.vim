@@ -1,28 +1,6 @@
 call javaapi#namespace('java.nio.channels.spi')
 
-call javaapi#class('AbstractInterruptibleChannel', 'InterruptibleChannel', [
-  \ javaapi#method(0,'close(', ') throws IOException', 'void'),
-  \ javaapi#method(0,'isOpen(', ')', 'boolean'),
-  \ ])
-
-
-call javaapi#class('1', 'Interruptible', [
-  \ javaapi#method(0,'interrupt(', 'Thread)', 'void'),
-  \ ])
-
-
-call javaapi#class('AbstractSelectableChannel', '', [
-  \ javaapi#method(0,'provider(', ')', 'SelectorProvider'),
-  \ javaapi#method(0,'isRegistered(', ')', 'boolean'),
-  \ javaapi#method(0,'keyFor(', 'Selector)', 'SelectionKey'),
-  \ javaapi#method(0,'register(', 'Selector, int, Object) throws ClosedChannelException', 'SelectionKey'),
-  \ javaapi#method(0,'isBlocking(', ')', 'boolean'),
-  \ javaapi#method(0,'blockingLock(', ')', 'Object'),
-  \ javaapi#method(0,'configureBlocking(', 'boolean) throws IOException', 'SelectableChannel'),
-  \ ])
-
-
-call javaapi#class('AbstractSelectionKey', '', [
+call javaapi#class('AbstractSelectionKey', 'SelectionKey', [
   \ javaapi#method(0,'isValid(', ')', 'boolean'),
   \ javaapi#method(0,'cancel(', ')', 'void'),
   \ ])
@@ -31,7 +9,7 @@ call javaapi#class('1', 'Interruptible', [
   \ javaapi#method(0,'interrupt(', 'Thread)', 'void'),
   \ ])
 
-call javaapi#class('AbstractSelector', '', [
+call javaapi#class('AbstractSelector', 'Selector', [
   \ javaapi#method(0,'close(', ') throws IOException', 'void'),
   \ javaapi#method(0,'isOpen(', ')', 'boolean'),
   \ javaapi#method(0,'provider(', ')', 'SelectorProvider'),
@@ -67,5 +45,30 @@ call javaapi#class('SelectorProvider', '', [
   \ javaapi#method(0,'openServerSocketChannel(', ') throws IOException', 'ServerSocketChannel'),
   \ javaapi#method(0,'openSocketChannel(', ') throws IOException', 'SocketChannel'),
   \ javaapi#method(0,'inheritedChannel(', ') throws IOException', 'Channel'),
+  \ ])
+
+call javaapi#namespace('java.nio.channels.spi')
+
+call javaapi#class('AbstractSelectableChannel', 'SelectableChannel', [
+  \ javaapi#method(0,'provider(', ')', 'SelectorProvider'),
+  \ javaapi#method(0,'isRegistered(', ')', 'boolean'),
+  \ javaapi#method(0,'keyFor(', 'Selector)', 'SelectionKey'),
+  \ javaapi#method(0,'register(', 'Selector, int, Object) throws ClosedChannelException', 'SelectionKey'),
+  \ javaapi#method(0,'isBlocking(', ')', 'boolean'),
+  \ javaapi#method(0,'blockingLock(', ')', 'Object'),
+  \ javaapi#method(0,'configureBlocking(', 'boolean) throws IOException', 'SelectableChannel'),
+  \ ])
+
+call javaapi#namespace('java.nio.channels.spi')
+
+call javaapi#class('1', 'Interruptible', [
+  \ javaapi#method(0,'interrupt(', 'Thread)', 'void'),
+  \ ])
+
+call javaapi#namespace('java.nio.channels.spi')
+
+call javaapi#class('AbstractInterruptibleChannel', 'InterruptibleChannel', [
+  \ javaapi#method(0,'close(', ') throws IOException', 'void'),
+  \ javaapi#method(0,'isOpen(', ')', 'boolean'),
   \ ])
 

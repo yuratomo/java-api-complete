@@ -1,66 +1,373 @@
 call javaapi#namespace('java.awt.event')
 
-call javaapi#interface('AWTEventListener', '', [
-  \ javaapi#method(0,'eventDispatched(', 'AWTEvent)', 'void'),
-  \ ])
-
-
-call javaapi#interface('ContainerListener', '', [
+call javaapi#class('ContainerAdapter', 'ContainerListener', [
+  \ javaapi#method(0,'ContainerAdapter(', ')', 'public'),
   \ javaapi#method(0,'componentAdded(', 'ContainerEvent)', 'void'),
   \ javaapi#method(0,'componentRemoved(', 'ContainerEvent)', 'void'),
   \ ])
 
-call javaapi#interface('InputMethodListener', '', [
-  \ javaapi#method(0,'inputMethodTextChanged(', 'InputMethodEvent)', 'void'),
-  \ javaapi#method(0,'caretPositionChanged(', 'InputMethodEvent)', 'void'),
-  \ ])
-
-call javaapi#interface('MouseWheelListener', '', [
-  \ javaapi#method(0,'mouseWheelMoved(', 'MouseWheelEvent)', 'void'),
-  \ ])
-
-call javaapi#interface('MouseMotionListener', '', [
-  \ javaapi#method(0,'mouseDragged(', 'MouseEvent)', 'void'),
-  \ javaapi#method(0,'mouseMoved(', 'MouseEvent)', 'void'),
-  \ ])
-
-call javaapi#interface('MouseListener', '', [
-  \ javaapi#method(0,'mouseClicked(', 'MouseEvent)', 'void'),
-  \ javaapi#method(0,'mousePressed(', 'MouseEvent)', 'void'),
-  \ javaapi#method(0,'mouseReleased(', 'MouseEvent)', 'void'),
-  \ javaapi#method(0,'mouseEntered(', 'MouseEvent)', 'void'),
-  \ javaapi#method(0,'mouseExited(', 'MouseEvent)', 'void'),
-  \ ])
-
-call javaapi#interface('KeyListener', '', [
-  \ javaapi#method(0,'keyTyped(', 'KeyEvent)', 'void'),
-  \ javaapi#method(0,'keyPressed(', 'KeyEvent)', 'void'),
-  \ javaapi#method(0,'keyReleased(', 'KeyEvent)', 'void'),
-  \ ])
-
-call javaapi#interface('HierarchyBoundsListener', '', [
+call javaapi#class('HierarchyBoundsAdapter', 'HierarchyBoundsListener', [
+  \ javaapi#method(0,'HierarchyBoundsAdapter(', ')', 'public'),
   \ javaapi#method(0,'ancestorMoved(', 'HierarchyEvent)', 'void'),
   \ javaapi#method(0,'ancestorResized(', 'HierarchyEvent)', 'void'),
   \ ])
 
-call javaapi#interface('HierarchyListener', '', [
-  \ javaapi#method(0,'hierarchyChanged(', 'HierarchyEvent)', 'void'),
+call javaapi#class('1', 'InputEventAccessor', [
+  \ javaapi#method(0,'getButtonDownMasks(', ')', 'int[]'),
   \ ])
 
-call javaapi#interface('FocusListener', '', [
-  \ javaapi#method(0,'focusGained(', 'FocusEvent)', 'void'),
-  \ javaapi#method(0,'focusLost(', 'FocusEvent)', 'void'),
+call javaapi#class('TextEvent', 'AWTEvent', [
+  \ javaapi#field(1,'TEXT_FIRST', 'int'),
+  \ javaapi#field(1,'TEXT_LAST', 'int'),
+  \ javaapi#field(1,'TEXT_VALUE_CHANGED', 'int'),
+  \ javaapi#method(0,'TextEvent(', 'Object, int)', 'public'),
+  \ javaapi#method(0,'paramString(', ')', 'String'),
   \ ])
 
-call javaapi#interface('ComponentListener', '', [
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('ItemEvent', 'AWTEvent', [
+  \ javaapi#field(1,'ITEM_FIRST', 'int'),
+  \ javaapi#field(1,'ITEM_LAST', 'int'),
+  \ javaapi#field(1,'ITEM_STATE_CHANGED', 'int'),
+  \ javaapi#field(1,'SELECTED', 'int'),
+  \ javaapi#field(1,'DESELECTED', 'int'),
+  \ javaapi#method(0,'ItemEvent(', 'ItemSelectable, int, Object, int)', 'public'),
+  \ javaapi#method(0,'getItemSelectable(', ')', 'ItemSelectable'),
+  \ javaapi#method(0,'getItem(', ')', 'Object'),
+  \ javaapi#method(0,'getStateChange(', ')', 'int'),
+  \ javaapi#method(0,'paramString(', ')', 'String'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('AdjustmentEvent', 'AWTEvent', [
+  \ javaapi#field(1,'ADJUSTMENT_FIRST', 'int'),
+  \ javaapi#field(1,'ADJUSTMENT_LAST', 'int'),
+  \ javaapi#field(1,'ADJUSTMENT_VALUE_CHANGED', 'int'),
+  \ javaapi#field(1,'UNIT_INCREMENT', 'int'),
+  \ javaapi#field(1,'UNIT_DECREMENT', 'int'),
+  \ javaapi#field(1,'BLOCK_DECREMENT', 'int'),
+  \ javaapi#field(1,'BLOCK_INCREMENT', 'int'),
+  \ javaapi#field(1,'TRACK', 'int'),
+  \ javaapi#method(0,'AdjustmentEvent(', 'Adjustable, int, int, int)', 'public'),
+  \ javaapi#method(0,'AdjustmentEvent(', 'Adjustable, int, int, int, boolean)', 'public'),
+  \ javaapi#method(0,'getAdjustable(', ')', 'Adjustable'),
+  \ javaapi#method(0,'getValue(', ')', 'int'),
+  \ javaapi#method(0,'getAdjustmentType(', ')', 'int'),
+  \ javaapi#method(0,'getValueIsAdjusting(', ')', 'boolean'),
+  \ javaapi#method(0,'paramString(', ')', 'String'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('ComponentAdapter', 'ComponentListener', [
+  \ javaapi#method(0,'ComponentAdapter(', ')', 'public'),
   \ javaapi#method(0,'componentResized(', 'ComponentEvent)', 'void'),
   \ javaapi#method(0,'componentMoved(', 'ComponentEvent)', 'void'),
   \ javaapi#method(0,'componentShown(', 'ComponentEvent)', 'void'),
   \ javaapi#method(0,'componentHidden(', 'ComponentEvent)', 'void'),
   \ ])
 
+call javaapi#namespace('java.awt.event')
 
-call javaapi#class('ComponentEvent', '', [
+call javaapi#class('WindowAdapter', 'WindowFocusListener', [
+  \ javaapi#method(0,'WindowAdapter(', ')', 'public'),
+  \ javaapi#method(0,'windowOpened(', 'WindowEvent)', 'void'),
+  \ javaapi#method(0,'windowClosing(', 'WindowEvent)', 'void'),
+  \ javaapi#method(0,'windowClosed(', 'WindowEvent)', 'void'),
+  \ javaapi#method(0,'windowIconified(', 'WindowEvent)', 'void'),
+  \ javaapi#method(0,'windowDeiconified(', 'WindowEvent)', 'void'),
+  \ javaapi#method(0,'windowActivated(', 'WindowEvent)', 'void'),
+  \ javaapi#method(0,'windowDeactivated(', 'WindowEvent)', 'void'),
+  \ javaapi#method(0,'windowStateChanged(', 'WindowEvent)', 'void'),
+  \ javaapi#method(0,'windowGainedFocus(', 'WindowEvent)', 'void'),
+  \ javaapi#method(0,'windowLostFocus(', 'WindowEvent)', 'void'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('FocusAdapter', 'FocusListener', [
+  \ javaapi#method(0,'FocusAdapter(', ')', 'public'),
+  \ javaapi#method(0,'focusGained(', 'FocusEvent)', 'void'),
+  \ javaapi#method(0,'focusLost(', 'FocusEvent)', 'void'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('AWTEventListenerProxy', 'AWTEventListener>', [
+  \ javaapi#method(0,'AWTEventListenerProxy(', 'long, AWTEventListener)', 'public'),
+  \ javaapi#method(0,'eventDispatched(', 'AWTEvent)', 'void'),
+  \ javaapi#method(0,'getEventMask(', ')', 'long'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('ContainerEvent', 'ComponentEvent', [
+  \ javaapi#field(1,'CONTAINER_FIRST', 'int'),
+  \ javaapi#field(1,'CONTAINER_LAST', 'int'),
+  \ javaapi#field(1,'COMPONENT_ADDED', 'int'),
+  \ javaapi#field(1,'COMPONENT_REMOVED', 'int'),
+  \ javaapi#method(0,'ContainerEvent(', 'Component, int, Component)', 'public'),
+  \ javaapi#method(0,'getContainer(', ')', 'Container'),
+  \ javaapi#method(0,'getChild(', ')', 'Component'),
+  \ javaapi#method(0,'paramString(', ')', 'String'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#interface('TextListener', 'EventListener', [
+  \ javaapi#method(0,'textValueChanged(', 'TextEvent)', 'void'),
+  \ ])
+
+call javaapi#interface('AdjustmentListener', 'EventListener', [
+  \ javaapi#method(0,'adjustmentValueChanged(', 'AdjustmentEvent)', 'void'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#interface('ItemListener', 'EventListener', [
+  \ javaapi#method(0,'itemStateChanged(', 'ItemEvent)', 'void'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('MouseMotionAdapter', 'MouseMotionListener', [
+  \ javaapi#method(0,'MouseMotionAdapter(', ')', 'public'),
+  \ javaapi#method(0,'mouseDragged(', 'MouseEvent)', 'void'),
+  \ javaapi#method(0,'mouseMoved(', 'MouseEvent)', 'void'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('MouseAdapter', 'MouseMotionListener', [
+  \ javaapi#method(0,'MouseAdapter(', ')', 'public'),
+  \ javaapi#method(0,'mouseClicked(', 'MouseEvent)', 'void'),
+  \ javaapi#method(0,'mousePressed(', 'MouseEvent)', 'void'),
+  \ javaapi#method(0,'mouseReleased(', 'MouseEvent)', 'void'),
+  \ javaapi#method(0,'mouseEntered(', 'MouseEvent)', 'void'),
+  \ javaapi#method(0,'mouseExited(', 'MouseEvent)', 'void'),
+  \ javaapi#method(0,'mouseWheelMoved(', 'MouseWheelEvent)', 'void'),
+  \ javaapi#method(0,'mouseDragged(', 'MouseEvent)', 'void'),
+  \ javaapi#method(0,'mouseMoved(', 'MouseEvent)', 'void'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#interface('ActionListener', 'EventListener', [
+  \ javaapi#method(0,'actionPerformed(', 'ActionEvent)', 'void'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('KeyAdapter', 'KeyListener', [
+  \ javaapi#method(0,'KeyAdapter(', ')', 'public'),
+  \ javaapi#method(0,'keyTyped(', 'KeyEvent)', 'void'),
+  \ javaapi#method(0,'keyPressed(', 'KeyEvent)', 'void'),
+  \ javaapi#method(0,'keyReleased(', 'KeyEvent)', 'void'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('HierarchyEvent', 'AWTEvent', [
+  \ javaapi#field(1,'HIERARCHY_FIRST', 'int'),
+  \ javaapi#field(1,'HIERARCHY_CHANGED', 'int'),
+  \ javaapi#field(1,'ANCESTOR_MOVED', 'int'),
+  \ javaapi#field(1,'ANCESTOR_RESIZED', 'int'),
+  \ javaapi#field(1,'HIERARCHY_LAST', 'int'),
+  \ javaapi#field(1,'PARENT_CHANGED', 'int'),
+  \ javaapi#field(1,'DISPLAYABILITY_CHANGED', 'int'),
+  \ javaapi#field(1,'SHOWING_CHANGED', 'int'),
+  \ javaapi#method(0,'HierarchyEvent(', 'Component, int, Component, Container)', 'public'),
+  \ javaapi#method(0,'HierarchyEvent(', 'Component, int, Component, Container, long)', 'public'),
+  \ javaapi#method(0,'getComponent(', ')', 'Component'),
+  \ javaapi#method(0,'getChanged(', ')', 'Component'),
+  \ javaapi#method(0,'getChangedParent(', ')', 'Container'),
+  \ javaapi#method(0,'getChangeFlags(', ')', 'long'),
+  \ javaapi#method(0,'paramString(', ')', 'String'),
+  \ ])
+
+call javaapi#class('FocusEvent', 'ComponentEvent', [
+  \ javaapi#field(1,'FOCUS_FIRST', 'int'),
+  \ javaapi#field(1,'FOCUS_LAST', 'int'),
+  \ javaapi#field(1,'FOCUS_GAINED', 'int'),
+  \ javaapi#field(1,'FOCUS_LOST', 'int'),
+  \ javaapi#method(0,'FocusEvent(', 'Component, int, boolean, Component)', 'public'),
+  \ javaapi#method(0,'FocusEvent(', 'Component, int, boolean)', 'public'),
+  \ javaapi#method(0,'FocusEvent(', 'Component, int)', 'public'),
+  \ javaapi#method(0,'isTemporary(', ')', 'boolean'),
+  \ javaapi#method(0,'getOppositeComponent(', ')', 'Component'),
+  \ javaapi#method(0,'paramString(', ')', 'String'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('ActionEvent', 'AWTEvent', [
+  \ javaapi#field(1,'SHIFT_MASK', 'int'),
+  \ javaapi#field(1,'CTRL_MASK', 'int'),
+  \ javaapi#field(1,'META_MASK', 'int'),
+  \ javaapi#field(1,'ALT_MASK', 'int'),
+  \ javaapi#field(1,'ACTION_FIRST', 'int'),
+  \ javaapi#field(1,'ACTION_LAST', 'int'),
+  \ javaapi#field(1,'ACTION_PERFORMED', 'int'),
+  \ javaapi#method(0,'ActionEvent(', 'Object, int, String)', 'public'),
+  \ javaapi#method(0,'ActionEvent(', 'Object, int, String, int)', 'public'),
+  \ javaapi#method(0,'ActionEvent(', 'Object, int, String, long, int)', 'public'),
+  \ javaapi#method(0,'getActionCommand(', ')', 'String'),
+  \ javaapi#method(0,'getWhen(', ')', 'long'),
+  \ javaapi#method(0,'getModifiers(', ')', 'int'),
+  \ javaapi#method(0,'paramString(', ')', 'String'),
+  \ ])
+
+call javaapi#class('InputMethodEvent', 'AWTEvent', [
+  \ javaapi#field(1,'INPUT_METHOD_FIRST', 'int'),
+  \ javaapi#field(1,'INPUT_METHOD_TEXT_CHANGED', 'int'),
+  \ javaapi#field(1,'CARET_POSITION_CHANGED', 'int'),
+  \ javaapi#field(1,'INPUT_METHOD_LAST', 'int'),
+  \ javaapi#method(0,'InputMethodEvent(', 'Component, int, long, AttributedCharacterIterator, int, TextHitInfo, TextHitInfo)', 'public'),
+  \ javaapi#method(0,'InputMethodEvent(', 'Component, int, AttributedCharacterIterator, int, TextHitInfo, TextHitInfo)', 'public'),
+  \ javaapi#method(0,'InputMethodEvent(', 'Component, int, TextHitInfo, TextHitInfo)', 'public'),
+  \ javaapi#method(0,'getText(', ')', 'AttributedCharacterIterator'),
+  \ javaapi#method(0,'getCommittedCharacterCount(', ')', 'int'),
+  \ javaapi#method(0,'getCaret(', ')', 'TextHitInfo'),
+  \ javaapi#method(0,'getVisiblePosition(', ')', 'TextHitInfo'),
+  \ javaapi#method(0,'consume(', ')', 'void'),
+  \ javaapi#method(0,'isConsumed(', ')', 'boolean'),
+  \ javaapi#method(0,'getWhen(', ')', 'long'),
+  \ javaapi#method(0,'paramString(', ')', 'String'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('PaintEvent', 'ComponentEvent', [
+  \ javaapi#field(1,'PAINT_FIRST', 'int'),
+  \ javaapi#field(1,'PAINT_LAST', 'int'),
+  \ javaapi#field(1,'PAINT', 'int'),
+  \ javaapi#field(1,'UPDATE', 'int'),
+  \ javaapi#method(0,'PaintEvent(', 'Component, int, Rectangle)', 'public'),
+  \ javaapi#method(0,'getUpdateRect(', ')', 'Rectangle'),
+  \ javaapi#method(0,'setUpdateRect(', 'Rectangle)', 'void'),
+  \ javaapi#method(0,'paramString(', ')', 'String'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('InvocationEvent', 'AWTEvent', [
+  \ javaapi#field(1,'INVOCATION_FIRST', 'int'),
+  \ javaapi#field(1,'INVOCATION_DEFAULT', 'int'),
+  \ javaapi#field(1,'INVOCATION_LAST', 'int'),
+  \ javaapi#method(0,'InvocationEvent(', 'Object, Runnable)', 'public'),
+  \ javaapi#method(0,'InvocationEvent(', 'Object, Runnable, Object, boolean)', 'public'),
+  \ javaapi#method(0,'dispatch(', ')', 'void'),
+  \ javaapi#method(0,'getException(', ')', 'Exception'),
+  \ javaapi#method(0,'getThrowable(', ')', 'Throwable'),
+  \ javaapi#method(0,'getWhen(', ')', 'long'),
+  \ javaapi#method(0,'isDispatched(', ')', 'boolean'),
+  \ javaapi#method(0,'paramString(', ')', 'String'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('NativeLibLoader', '', [
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('MouseEvent', 'InputEvent', [
+  \ javaapi#field(1,'MOUSE_FIRST', 'int'),
+  \ javaapi#field(1,'MOUSE_LAST', 'int'),
+  \ javaapi#field(1,'MOUSE_CLICKED', 'int'),
+  \ javaapi#field(1,'MOUSE_PRESSED', 'int'),
+  \ javaapi#field(1,'MOUSE_RELEASED', 'int'),
+  \ javaapi#field(1,'MOUSE_MOVED', 'int'),
+  \ javaapi#field(1,'MOUSE_ENTERED', 'int'),
+  \ javaapi#field(1,'MOUSE_EXITED', 'int'),
+  \ javaapi#field(1,'MOUSE_DRAGGED', 'int'),
+  \ javaapi#field(1,'MOUSE_WHEEL', 'int'),
+  \ javaapi#field(1,'NOBUTTON', 'int'),
+  \ javaapi#field(1,'BUTTON1', 'int'),
+  \ javaapi#field(1,'BUTTON2', 'int'),
+  \ javaapi#field(1,'BUTTON3', 'int'),
+  \ javaapi#method(0,'getLocationOnScreen(', ')', 'Point'),
+  \ javaapi#method(0,'getXOnScreen(', ')', 'int'),
+  \ javaapi#method(0,'getYOnScreen(', ')', 'int'),
+  \ javaapi#method(0,'MouseEvent(', 'Component, int, long, int, int, int, int, boolean, int)', 'public'),
+  \ javaapi#method(0,'MouseEvent(', 'Component, int, long, int, int, int, int, boolean)', 'public'),
+  \ javaapi#method(0,'getModifiersEx(', ')', 'int'),
+  \ javaapi#method(0,'MouseEvent(', 'Component, int, long, int, int, int, int, int, int, boolean, int)', 'public'),
+  \ javaapi#method(0,'getX(', ')', 'int'),
+  \ javaapi#method(0,'getY(', ')', 'int'),
+  \ javaapi#method(0,'getPoint(', ')', 'Point'),
+  \ javaapi#method(0,'translatePoint(', 'int, int)', 'void'),
+  \ javaapi#method(0,'getClickCount(', ')', 'int'),
+  \ javaapi#method(0,'getButton(', ')', 'int'),
+  \ javaapi#method(0,'isPopupTrigger(', ')', 'boolean'),
+  \ javaapi#method(1,'getMouseModifiersText(', 'int)', 'String'),
+  \ javaapi#method(0,'paramString(', ')', 'String'),
+  \ ])
+
+call javaapi#class('MouseWheelEvent', 'MouseEvent', [
+  \ javaapi#field(1,'WHEEL_UNIT_SCROLL', 'int'),
+  \ javaapi#field(1,'WHEEL_BLOCK_SCROLL', 'int'),
+  \ javaapi#method(0,'MouseWheelEvent(', 'Component, int, long, int, int, int, int, boolean, int, int, int)', 'public'),
+  \ javaapi#method(0,'MouseWheelEvent(', 'Component, int, long, int, int, int, int, int, int, boolean, int, int, int)', 'public'),
+  \ javaapi#method(0,'MouseWheelEvent(', 'Component, int, long, int, int, int, int, int, int, boolean, int, int, int, double)', 'public'),
+  \ javaapi#method(0,'getScrollType(', ')', 'int'),
+  \ javaapi#method(0,'getScrollAmount(', ')', 'int'),
+  \ javaapi#method(0,'getWheelRotation(', ')', 'int'),
+  \ javaapi#method(0,'getPreciseWheelRotation(', ')', 'double'),
+  \ javaapi#method(0,'getUnitsToScroll(', ')', 'int'),
+  \ javaapi#method(0,'paramString(', ')', 'String'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('WindowEvent', 'ComponentEvent', [
+  \ javaapi#field(1,'WINDOW_FIRST', 'int'),
+  \ javaapi#field(1,'WINDOW_OPENED', 'int'),
+  \ javaapi#field(1,'WINDOW_CLOSING', 'int'),
+  \ javaapi#field(1,'WINDOW_CLOSED', 'int'),
+  \ javaapi#field(1,'WINDOW_ICONIFIED', 'int'),
+  \ javaapi#field(1,'WINDOW_DEICONIFIED', 'int'),
+  \ javaapi#field(1,'WINDOW_ACTIVATED', 'int'),
+  \ javaapi#field(1,'WINDOW_DEACTIVATED', 'int'),
+  \ javaapi#field(1,'WINDOW_GAINED_FOCUS', 'int'),
+  \ javaapi#field(1,'WINDOW_LOST_FOCUS', 'int'),
+  \ javaapi#field(1,'WINDOW_STATE_CHANGED', 'int'),
+  \ javaapi#field(1,'WINDOW_LAST', 'int'),
+  \ javaapi#method(0,'WindowEvent(', 'Window, int, Window, int, int)', 'public'),
+  \ javaapi#method(0,'WindowEvent(', 'Window, int, Window)', 'public'),
+  \ javaapi#method(0,'WindowEvent(', 'Window, int, int, int)', 'public'),
+  \ javaapi#method(0,'WindowEvent(', 'Window, int)', 'public'),
+  \ javaapi#method(0,'getWindow(', ')', 'Window'),
+  \ javaapi#method(0,'getOppositeWindow(', ')', 'Window'),
+  \ javaapi#method(0,'getOldState(', ')', 'int'),
+  \ javaapi#method(0,'getNewState(', ')', 'int'),
+  \ javaapi#method(0,'paramString(', ')', 'String'),
+  \ ])
+
+call javaapi#interface('WindowFocusListener', 'EventListener', [
+  \ javaapi#method(0,'windowGainedFocus(', 'WindowEvent)', 'void'),
+  \ javaapi#method(0,'windowLostFocus(', 'WindowEvent)', 'void'),
+  \ ])
+
+call javaapi#interface('WindowStateListener', 'EventListener', [
+  \ javaapi#method(0,'windowStateChanged(', 'WindowEvent)', 'void'),
+  \ ])
+
+call javaapi#interface('WindowListener', 'EventListener', [
+  \ javaapi#method(0,'windowOpened(', 'WindowEvent)', 'void'),
+  \ javaapi#method(0,'windowClosing(', 'WindowEvent)', 'void'),
+  \ javaapi#method(0,'windowClosed(', 'WindowEvent)', 'void'),
+  \ javaapi#method(0,'windowIconified(', 'WindowEvent)', 'void'),
+  \ javaapi#method(0,'windowDeiconified(', 'WindowEvent)', 'void'),
+  \ javaapi#method(0,'windowActivated(', 'WindowEvent)', 'void'),
+  \ javaapi#method(0,'windowDeactivated(', 'WindowEvent)', 'void'),
+  \ ])
+
+call javaapi#namespace('java.awt.event')
+
+call javaapi#class('ComponentEvent', 'AWTEvent', [
   \ javaapi#field(1,'COMPONENT_FIRST', 'int'),
   \ javaapi#field(1,'COMPONENT_LAST', 'int'),
   \ javaapi#field(1,'COMPONENT_MOVED', 'int'),
@@ -72,7 +379,7 @@ call javaapi#class('ComponentEvent', '', [
   \ javaapi#method(0,'paramString(', ')', 'String'),
   \ ])
 
-call javaapi#class('InputEvent', '', [
+call javaapi#class('InputEvent', 'ComponentEvent', [
   \ javaapi#field(1,'SHIFT_MASK', 'int'),
   \ javaapi#field(1,'CTRL_MASK', 'int'),
   \ javaapi#field(1,'META_MASK', 'int'),
@@ -103,7 +410,7 @@ call javaapi#class('InputEvent', '', [
   \ javaapi#method(1,'getModifiersExText(', 'int)', 'String'),
   \ ])
 
-call javaapi#class('KeyEvent', '', [
+call javaapi#class('KeyEvent', 'InputEvent', [
   \ javaapi#field(1,'KEY_FIRST', 'int'),
   \ javaapi#field(1,'KEY_LAST', 'int'),
   \ javaapi#field(1,'KEY_TYPED', 'int'),
@@ -321,349 +628,65 @@ call javaapi#class('KeyEvent', '', [
   \ javaapi#method(1,'getExtendedKeyCodeForChar(', 'int)', 'int'),
   \ ])
 
+call javaapi#namespace('java.awt.event')
 
-call javaapi#class('WindowEvent', '', [
-  \ javaapi#field(1,'WINDOW_FIRST', 'int'),
-  \ javaapi#field(1,'WINDOW_OPENED', 'int'),
-  \ javaapi#field(1,'WINDOW_CLOSING', 'int'),
-  \ javaapi#field(1,'WINDOW_CLOSED', 'int'),
-  \ javaapi#field(1,'WINDOW_ICONIFIED', 'int'),
-  \ javaapi#field(1,'WINDOW_DEICONIFIED', 'int'),
-  \ javaapi#field(1,'WINDOW_ACTIVATED', 'int'),
-  \ javaapi#field(1,'WINDOW_DEACTIVATED', 'int'),
-  \ javaapi#field(1,'WINDOW_GAINED_FOCUS', 'int'),
-  \ javaapi#field(1,'WINDOW_LOST_FOCUS', 'int'),
-  \ javaapi#field(1,'WINDOW_STATE_CHANGED', 'int'),
-  \ javaapi#field(1,'WINDOW_LAST', 'int'),
-  \ javaapi#method(0,'WindowEvent(', 'Window, int, Window, int, int)', 'public'),
-  \ javaapi#method(0,'WindowEvent(', 'Window, int, Window)', 'public'),
-  \ javaapi#method(0,'WindowEvent(', 'Window, int, int, int)', 'public'),
-  \ javaapi#method(0,'WindowEvent(', 'Window, int)', 'public'),
-  \ javaapi#method(0,'getWindow(', ')', 'Window'),
-  \ javaapi#method(0,'getOppositeWindow(', ')', 'Window'),
-  \ javaapi#method(0,'getOldState(', ')', 'int'),
-  \ javaapi#method(0,'getNewState(', ')', 'int'),
-  \ javaapi#method(0,'paramString(', ')', 'String'),
+call javaapi#interface('ContainerListener', 'EventListener', [
+  \ javaapi#method(0,'componentAdded(', 'ContainerEvent)', 'void'),
+  \ javaapi#method(0,'componentRemoved(', 'ContainerEvent)', 'void'),
   \ ])
 
-call javaapi#interface('WindowFocusListener', '', [
-  \ javaapi#method(0,'windowGainedFocus(', 'WindowEvent)', 'void'),
-  \ javaapi#method(0,'windowLostFocus(', 'WindowEvent)', 'void'),
+call javaapi#interface('InputMethodListener', 'EventListener', [
+  \ javaapi#method(0,'inputMethodTextChanged(', 'InputMethodEvent)', 'void'),
+  \ javaapi#method(0,'caretPositionChanged(', 'InputMethodEvent)', 'void'),
   \ ])
 
-call javaapi#interface('WindowStateListener', '', [
-  \ javaapi#method(0,'windowStateChanged(', 'WindowEvent)', 'void'),
+call javaapi#interface('MouseWheelListener', 'EventListener', [
+  \ javaapi#method(0,'mouseWheelMoved(', 'MouseWheelEvent)', 'void'),
   \ ])
 
-call javaapi#interface('WindowListener', '', [
-  \ javaapi#method(0,'windowOpened(', 'WindowEvent)', 'void'),
-  \ javaapi#method(0,'windowClosing(', 'WindowEvent)', 'void'),
-  \ javaapi#method(0,'windowClosed(', 'WindowEvent)', 'void'),
-  \ javaapi#method(0,'windowIconified(', 'WindowEvent)', 'void'),
-  \ javaapi#method(0,'windowDeiconified(', 'WindowEvent)', 'void'),
-  \ javaapi#method(0,'windowActivated(', 'WindowEvent)', 'void'),
-  \ javaapi#method(0,'windowDeactivated(', 'WindowEvent)', 'void'),
+call javaapi#interface('MouseMotionListener', 'EventListener', [
+  \ javaapi#method(0,'mouseDragged(', 'MouseEvent)', 'void'),
+  \ javaapi#method(0,'mouseMoved(', 'MouseEvent)', 'void'),
   \ ])
 
-
-call javaapi#class('MouseEvent', '', [
-  \ javaapi#field(1,'MOUSE_FIRST', 'int'),
-  \ javaapi#field(1,'MOUSE_LAST', 'int'),
-  \ javaapi#field(1,'MOUSE_CLICKED', 'int'),
-  \ javaapi#field(1,'MOUSE_PRESSED', 'int'),
-  \ javaapi#field(1,'MOUSE_RELEASED', 'int'),
-  \ javaapi#field(1,'MOUSE_MOVED', 'int'),
-  \ javaapi#field(1,'MOUSE_ENTERED', 'int'),
-  \ javaapi#field(1,'MOUSE_EXITED', 'int'),
-  \ javaapi#field(1,'MOUSE_DRAGGED', 'int'),
-  \ javaapi#field(1,'MOUSE_WHEEL', 'int'),
-  \ javaapi#field(1,'NOBUTTON', 'int'),
-  \ javaapi#field(1,'BUTTON1', 'int'),
-  \ javaapi#field(1,'BUTTON2', 'int'),
-  \ javaapi#field(1,'BUTTON3', 'int'),
-  \ javaapi#method(0,'getLocationOnScreen(', ')', 'Point'),
-  \ javaapi#method(0,'getXOnScreen(', ')', 'int'),
-  \ javaapi#method(0,'getYOnScreen(', ')', 'int'),
-  \ javaapi#method(0,'MouseEvent(', 'Component, int, long, int, int, int, int, boolean, int)', 'public'),
-  \ javaapi#method(0,'MouseEvent(', 'Component, int, long, int, int, int, int, boolean)', 'public'),
-  \ javaapi#method(0,'getModifiersEx(', ')', 'int'),
-  \ javaapi#method(0,'MouseEvent(', 'Component, int, long, int, int, int, int, int, int, boolean, int)', 'public'),
-  \ javaapi#method(0,'getX(', ')', 'int'),
-  \ javaapi#method(0,'getY(', ')', 'int'),
-  \ javaapi#method(0,'getPoint(', ')', 'Point'),
-  \ javaapi#method(0,'translatePoint(', 'int, int)', 'void'),
-  \ javaapi#method(0,'getClickCount(', ')', 'int'),
-  \ javaapi#method(0,'getButton(', ')', 'int'),
-  \ javaapi#method(0,'isPopupTrigger(', ')', 'boolean'),
-  \ javaapi#method(1,'getMouseModifiersText(', 'int)', 'String'),
-  \ javaapi#method(0,'paramString(', ')', 'String'),
-  \ ])
-
-call javaapi#class('MouseWheelEvent', '', [
-  \ javaapi#field(1,'WHEEL_UNIT_SCROLL', 'int'),
-  \ javaapi#field(1,'WHEEL_BLOCK_SCROLL', 'int'),
-  \ javaapi#method(0,'MouseWheelEvent(', 'Component, int, long, int, int, int, int, boolean, int, int, int)', 'public'),
-  \ javaapi#method(0,'MouseWheelEvent(', 'Component, int, long, int, int, int, int, int, int, boolean, int, int, int)', 'public'),
-  \ javaapi#method(0,'MouseWheelEvent(', 'Component, int, long, int, int, int, int, int, int, boolean, int, int, int, double)', 'public'),
-  \ javaapi#method(0,'getScrollType(', ')', 'int'),
-  \ javaapi#method(0,'getScrollAmount(', ')', 'int'),
-  \ javaapi#method(0,'getWheelRotation(', ')', 'int'),
-  \ javaapi#method(0,'getPreciseWheelRotation(', ')', 'double'),
-  \ javaapi#method(0,'getUnitsToScroll(', ')', 'int'),
-  \ javaapi#method(0,'paramString(', ')', 'String'),
-  \ ])
-
-
-call javaapi#class('NativeLibLoader', '', [
-  \ ])
-
-
-call javaapi#class('InvocationEvent', '', [
-  \ javaapi#field(1,'INVOCATION_FIRST', 'int'),
-  \ javaapi#field(1,'INVOCATION_DEFAULT', 'int'),
-  \ javaapi#field(1,'INVOCATION_LAST', 'int'),
-  \ javaapi#method(0,'InvocationEvent(', 'Object, Runnable)', 'public'),
-  \ javaapi#method(0,'InvocationEvent(', 'Object, Runnable, Object, boolean)', 'public'),
-  \ javaapi#method(0,'dispatch(', ')', 'void'),
-  \ javaapi#method(0,'getException(', ')', 'Exception'),
-  \ javaapi#method(0,'getThrowable(', ')', 'Throwable'),
-  \ javaapi#method(0,'getWhen(', ')', 'long'),
-  \ javaapi#method(0,'isDispatched(', ')', 'boolean'),
-  \ javaapi#method(0,'paramString(', ')', 'String'),
-  \ ])
-
-
-call javaapi#class('PaintEvent', '', [
-  \ javaapi#field(1,'PAINT_FIRST', 'int'),
-  \ javaapi#field(1,'PAINT_LAST', 'int'),
-  \ javaapi#field(1,'PAINT', 'int'),
-  \ javaapi#field(1,'UPDATE', 'int'),
-  \ javaapi#method(0,'PaintEvent(', 'Component, int, Rectangle)', 'public'),
-  \ javaapi#method(0,'getUpdateRect(', ')', 'Rectangle'),
-  \ javaapi#method(0,'setUpdateRect(', 'Rectangle)', 'void'),
-  \ javaapi#method(0,'paramString(', ')', 'String'),
-  \ ])
-
-
-call javaapi#class('ActionEvent', '', [
-  \ javaapi#field(1,'SHIFT_MASK', 'int'),
-  \ javaapi#field(1,'CTRL_MASK', 'int'),
-  \ javaapi#field(1,'META_MASK', 'int'),
-  \ javaapi#field(1,'ALT_MASK', 'int'),
-  \ javaapi#field(1,'ACTION_FIRST', 'int'),
-  \ javaapi#field(1,'ACTION_LAST', 'int'),
-  \ javaapi#field(1,'ACTION_PERFORMED', 'int'),
-  \ javaapi#method(0,'ActionEvent(', 'Object, int, String)', 'public'),
-  \ javaapi#method(0,'ActionEvent(', 'Object, int, String, int)', 'public'),
-  \ javaapi#method(0,'ActionEvent(', 'Object, int, String, long, int)', 'public'),
-  \ javaapi#method(0,'getActionCommand(', ')', 'String'),
-  \ javaapi#method(0,'getWhen(', ')', 'long'),
-  \ javaapi#method(0,'getModifiers(', ')', 'int'),
-  \ javaapi#method(0,'paramString(', ')', 'String'),
-  \ ])
-
-call javaapi#class('InputMethodEvent', '', [
-  \ javaapi#field(1,'INPUT_METHOD_FIRST', 'int'),
-  \ javaapi#field(1,'INPUT_METHOD_TEXT_CHANGED', 'int'),
-  \ javaapi#field(1,'CARET_POSITION_CHANGED', 'int'),
-  \ javaapi#field(1,'INPUT_METHOD_LAST', 'int'),
-  \ javaapi#method(0,'InputMethodEvent(', 'Component, int, long, AttributedCharacterIterator, int, TextHitInfo, TextHitInfo)', 'public'),
-  \ javaapi#method(0,'InputMethodEvent(', 'Component, int, AttributedCharacterIterator, int, TextHitInfo, TextHitInfo)', 'public'),
-  \ javaapi#method(0,'InputMethodEvent(', 'Component, int, TextHitInfo, TextHitInfo)', 'public'),
-  \ javaapi#method(0,'getText(', ')', 'AttributedCharacterIterator'),
-  \ javaapi#method(0,'getCommittedCharacterCount(', ')', 'int'),
-  \ javaapi#method(0,'getCaret(', ')', 'TextHitInfo'),
-  \ javaapi#method(0,'getVisiblePosition(', ')', 'TextHitInfo'),
-  \ javaapi#method(0,'consume(', ')', 'void'),
-  \ javaapi#method(0,'isConsumed(', ')', 'boolean'),
-  \ javaapi#method(0,'getWhen(', ')', 'long'),
-  \ javaapi#method(0,'paramString(', ')', 'String'),
-  \ ])
-
-
-call javaapi#class('HierarchyEvent', '', [
-  \ javaapi#field(1,'HIERARCHY_FIRST', 'int'),
-  \ javaapi#field(1,'HIERARCHY_CHANGED', 'int'),
-  \ javaapi#field(1,'ANCESTOR_MOVED', 'int'),
-  \ javaapi#field(1,'ANCESTOR_RESIZED', 'int'),
-  \ javaapi#field(1,'HIERARCHY_LAST', 'int'),
-  \ javaapi#field(1,'PARENT_CHANGED', 'int'),
-  \ javaapi#field(1,'DISPLAYABILITY_CHANGED', 'int'),
-  \ javaapi#field(1,'SHOWING_CHANGED', 'int'),
-  \ javaapi#method(0,'HierarchyEvent(', 'Component, int, Component, Container)', 'public'),
-  \ javaapi#method(0,'HierarchyEvent(', 'Component, int, Component, Container, long)', 'public'),
-  \ javaapi#method(0,'getComponent(', ')', 'Component'),
-  \ javaapi#method(0,'getChanged(', ')', 'Component'),
-  \ javaapi#method(0,'getChangedParent(', ')', 'Container'),
-  \ javaapi#method(0,'getChangeFlags(', ')', 'long'),
-  \ javaapi#method(0,'paramString(', ')', 'String'),
-  \ ])
-
-call javaapi#class('FocusEvent', '', [
-  \ javaapi#field(1,'FOCUS_FIRST', 'int'),
-  \ javaapi#field(1,'FOCUS_LAST', 'int'),
-  \ javaapi#field(1,'FOCUS_GAINED', 'int'),
-  \ javaapi#field(1,'FOCUS_LOST', 'int'),
-  \ javaapi#method(0,'FocusEvent(', 'Component, int, boolean, Component)', 'public'),
-  \ javaapi#method(0,'FocusEvent(', 'Component, int, boolean)', 'public'),
-  \ javaapi#method(0,'FocusEvent(', 'Component, int)', 'public'),
-  \ javaapi#method(0,'isTemporary(', ')', 'boolean'),
-  \ javaapi#method(0,'getOppositeComponent(', ')', 'Component'),
-  \ javaapi#method(0,'paramString(', ')', 'String'),
-  \ ])
-
-
-call javaapi#class('KeyAdapter', 'KeyListener', [
-  \ javaapi#method(0,'KeyAdapter(', ')', 'public'),
-  \ javaapi#method(0,'keyTyped(', 'KeyEvent)', 'void'),
-  \ javaapi#method(0,'keyPressed(', 'KeyEvent)', 'void'),
-  \ javaapi#method(0,'keyReleased(', 'KeyEvent)', 'void'),
-  \ ])
-
-
-call javaapi#interface('ActionListener', '', [
-  \ javaapi#method(0,'actionPerformed(', 'ActionEvent)', 'void'),
-  \ ])
-
-
-call javaapi#class('MouseAdapter', 'MouseMotionListener', [
-  \ javaapi#method(0,'MouseAdapter(', ')', 'public'),
+call javaapi#interface('MouseListener', 'EventListener', [
   \ javaapi#method(0,'mouseClicked(', 'MouseEvent)', 'void'),
   \ javaapi#method(0,'mousePressed(', 'MouseEvent)', 'void'),
   \ javaapi#method(0,'mouseReleased(', 'MouseEvent)', 'void'),
   \ javaapi#method(0,'mouseEntered(', 'MouseEvent)', 'void'),
   \ javaapi#method(0,'mouseExited(', 'MouseEvent)', 'void'),
-  \ javaapi#method(0,'mouseWheelMoved(', 'MouseWheelEvent)', 'void'),
-  \ javaapi#method(0,'mouseDragged(', 'MouseEvent)', 'void'),
-  \ javaapi#method(0,'mouseMoved(', 'MouseEvent)', 'void'),
   \ ])
 
-
-call javaapi#class('MouseMotionAdapter', 'MouseMotionListener', [
-  \ javaapi#method(0,'MouseMotionAdapter(', ')', 'public'),
-  \ javaapi#method(0,'mouseDragged(', 'MouseEvent)', 'void'),
-  \ javaapi#method(0,'mouseMoved(', 'MouseEvent)', 'void'),
+call javaapi#interface('KeyListener', 'EventListener', [
+  \ javaapi#method(0,'keyTyped(', 'KeyEvent)', 'void'),
+  \ javaapi#method(0,'keyPressed(', 'KeyEvent)', 'void'),
+  \ javaapi#method(0,'keyReleased(', 'KeyEvent)', 'void'),
   \ ])
 
-
-call javaapi#interface('ItemListener', '', [
-  \ javaapi#method(0,'itemStateChanged(', 'ItemEvent)', 'void'),
+call javaapi#interface('HierarchyBoundsListener', 'EventListener', [
+  \ javaapi#method(0,'ancestorMoved(', 'HierarchyEvent)', 'void'),
+  \ javaapi#method(0,'ancestorResized(', 'HierarchyEvent)', 'void'),
   \ ])
 
-
-call javaapi#interface('TextListener', '', [
-  \ javaapi#method(0,'textValueChanged(', 'TextEvent)', 'void'),
+call javaapi#interface('HierarchyListener', 'EventListener', [
+  \ javaapi#method(0,'hierarchyChanged(', 'HierarchyEvent)', 'void'),
   \ ])
 
-call javaapi#interface('AdjustmentListener', '', [
-  \ javaapi#method(0,'adjustmentValueChanged(', 'AdjustmentEvent)', 'void'),
-  \ ])
-
-
-call javaapi#class('ContainerEvent', '', [
-  \ javaapi#field(1,'CONTAINER_FIRST', 'int'),
-  \ javaapi#field(1,'CONTAINER_LAST', 'int'),
-  \ javaapi#field(1,'COMPONENT_ADDED', 'int'),
-  \ javaapi#field(1,'COMPONENT_REMOVED', 'int'),
-  \ javaapi#method(0,'ContainerEvent(', 'Component, int, Component)', 'public'),
-  \ javaapi#method(0,'getContainer(', ')', 'Container'),
-  \ javaapi#method(0,'getChild(', ')', 'Component'),
-  \ javaapi#method(0,'paramString(', ')', 'String'),
-  \ ])
-
-
-call javaapi#class('AWTEventListenerProxy', '', [
-  \ javaapi#method(0,'AWTEventListenerProxy(', 'long, AWTEventListener)', 'public'),
-  \ javaapi#method(0,'eventDispatched(', 'AWTEvent)', 'void'),
-  \ javaapi#method(0,'getEventMask(', ')', 'long'),
-  \ ])
-
-
-call javaapi#class('FocusAdapter', 'FocusListener', [
-  \ javaapi#method(0,'FocusAdapter(', ')', 'public'),
+call javaapi#interface('FocusListener', 'EventListener', [
   \ javaapi#method(0,'focusGained(', 'FocusEvent)', 'void'),
   \ javaapi#method(0,'focusLost(', 'FocusEvent)', 'void'),
   \ ])
 
-
-call javaapi#class('WindowAdapter', 'WindowFocusListener', [
-  \ javaapi#method(0,'WindowAdapter(', ')', 'public'),
-  \ javaapi#method(0,'windowOpened(', 'WindowEvent)', 'void'),
-  \ javaapi#method(0,'windowClosing(', 'WindowEvent)', 'void'),
-  \ javaapi#method(0,'windowClosed(', 'WindowEvent)', 'void'),
-  \ javaapi#method(0,'windowIconified(', 'WindowEvent)', 'void'),
-  \ javaapi#method(0,'windowDeiconified(', 'WindowEvent)', 'void'),
-  \ javaapi#method(0,'windowActivated(', 'WindowEvent)', 'void'),
-  \ javaapi#method(0,'windowDeactivated(', 'WindowEvent)', 'void'),
-  \ javaapi#method(0,'windowStateChanged(', 'WindowEvent)', 'void'),
-  \ javaapi#method(0,'windowGainedFocus(', 'WindowEvent)', 'void'),
-  \ javaapi#method(0,'windowLostFocus(', 'WindowEvent)', 'void'),
-  \ ])
-
-
-call javaapi#class('ComponentAdapter', 'ComponentListener', [
-  \ javaapi#method(0,'ComponentAdapter(', ')', 'public'),
+call javaapi#interface('ComponentListener', 'EventListener', [
   \ javaapi#method(0,'componentResized(', 'ComponentEvent)', 'void'),
   \ javaapi#method(0,'componentMoved(', 'ComponentEvent)', 'void'),
   \ javaapi#method(0,'componentShown(', 'ComponentEvent)', 'void'),
   \ javaapi#method(0,'componentHidden(', 'ComponentEvent)', 'void'),
   \ ])
 
+call javaapi#namespace('java.awt.event')
 
-call javaapi#class('AdjustmentEvent', '', [
-  \ javaapi#field(1,'ADJUSTMENT_FIRST', 'int'),
-  \ javaapi#field(1,'ADJUSTMENT_LAST', 'int'),
-  \ javaapi#field(1,'ADJUSTMENT_VALUE_CHANGED', 'int'),
-  \ javaapi#field(1,'UNIT_INCREMENT', 'int'),
-  \ javaapi#field(1,'UNIT_DECREMENT', 'int'),
-  \ javaapi#field(1,'BLOCK_DECREMENT', 'int'),
-  \ javaapi#field(1,'BLOCK_INCREMENT', 'int'),
-  \ javaapi#field(1,'TRACK', 'int'),
-  \ javaapi#method(0,'AdjustmentEvent(', 'Adjustable, int, int, int)', 'public'),
-  \ javaapi#method(0,'AdjustmentEvent(', 'Adjustable, int, int, int, boolean)', 'public'),
-  \ javaapi#method(0,'getAdjustable(', ')', 'Adjustable'),
-  \ javaapi#method(0,'getValue(', ')', 'int'),
-  \ javaapi#method(0,'getAdjustmentType(', ')', 'int'),
-  \ javaapi#method(0,'getValueIsAdjusting(', ')', 'boolean'),
-  \ javaapi#method(0,'paramString(', ')', 'String'),
-  \ ])
-
-
-call javaapi#class('ItemEvent', '', [
-  \ javaapi#field(1,'ITEM_FIRST', 'int'),
-  \ javaapi#field(1,'ITEM_LAST', 'int'),
-  \ javaapi#field(1,'ITEM_STATE_CHANGED', 'int'),
-  \ javaapi#field(1,'SELECTED', 'int'),
-  \ javaapi#field(1,'DESELECTED', 'int'),
-  \ javaapi#method(0,'ItemEvent(', 'ItemSelectable, int, Object, int)', 'public'),
-  \ javaapi#method(0,'getItemSelectable(', ')', 'ItemSelectable'),
-  \ javaapi#method(0,'getItem(', ')', 'Object'),
-  \ javaapi#method(0,'getStateChange(', ')', 'int'),
-  \ javaapi#method(0,'paramString(', ')', 'String'),
-  \ ])
-
-
-call javaapi#class('ContainerAdapter', 'ContainerListener', [
-  \ javaapi#method(0,'ContainerAdapter(', ')', 'public'),
-  \ javaapi#method(0,'componentAdded(', 'ContainerEvent)', 'void'),
-  \ javaapi#method(0,'componentRemoved(', 'ContainerEvent)', 'void'),
-  \ ])
-
-call javaapi#class('HierarchyBoundsAdapter', 'HierarchyBoundsListener', [
-  \ javaapi#method(0,'HierarchyBoundsAdapter(', ')', 'public'),
-  \ javaapi#method(0,'ancestorMoved(', 'HierarchyEvent)', 'void'),
-  \ javaapi#method(0,'ancestorResized(', 'HierarchyEvent)', 'void'),
-  \ ])
-
-call javaapi#class('1', 'InputEventAccessor', [
-  \ javaapi#method(0,'getButtonDownMasks(', ')', 'int[]'),
-  \ ])
-
-call javaapi#class('TextEvent', '', [
-  \ javaapi#field(1,'TEXT_FIRST', 'int'),
-  \ javaapi#field(1,'TEXT_LAST', 'int'),
-  \ javaapi#field(1,'TEXT_VALUE_CHANGED', 'int'),
-  \ javaapi#method(0,'TextEvent(', 'Object, int)', 'public'),
-  \ javaapi#method(0,'paramString(', ')', 'String'),
+call javaapi#interface('AWTEventListener', 'EventListener', [
+  \ javaapi#method(0,'eventDispatched(', 'AWTEvent)', 'void'),
   \ ])
 

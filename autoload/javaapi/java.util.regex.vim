@@ -1,158 +1,264 @@
 call javaapi#namespace('java.util.regex')
 
-call javaapi#class('TreeInfo', '', [
+call javaapi#class('1', 'CharProperty', [
   \ ])
 
-call javaapi#class('Start', '', [
+call javaapi#class('2', 'CharProperty', [
   \ ])
 
-call javaapi#class('First', '', [
+call javaapi#class('3', 'CharProperty', [
   \ ])
 
-call javaapi#class('Begin', '', [
+call javaapi#class('4', 'Node', [
   \ ])
 
-call javaapi#class('Slice', '', [
+call javaapi#class('7', 'CharProperty', [
   \ ])
 
-call javaapi#class('6', '', [
+call javaapi#class('All', 'CharProperty', [
   \ ])
 
-call javaapi#class('Curly', '', [
+call javaapi#class('BackRef', 'Node', [
   \ ])
 
-call javaapi#class('Ctype', '', [
+call javaapi#class('Behind', 'Node', [
   \ ])
 
-call javaapi#class('21', '', [
+call javaapi#class('BehindS', 'Behind', [
   \ ])
 
-call javaapi#class('20', '', [
+call javaapi#class('Block', 'CharProperty', [
   \ ])
 
-call javaapi#class('19', '', [
+call javaapi#class('BnM', 'Node', [
   \ ])
 
-call javaapi#class('18', '', [
+call javaapi#class('BnMS', 'BnM', [
   \ ])
 
-call javaapi#class('17', '', [
+call javaapi#class('Bound', 'Node', [
   \ ])
 
-call javaapi#class('16', '', [
+call javaapi#class('CIBackRef', 'Node', [
   \ ])
 
-call javaapi#class('15', '', [
+call javaapi#class('Caret', 'Node', [
   \ ])
 
-call javaapi#class('14', '', [
+call javaapi#class('Category', 'CharProperty', [
   \ ])
 
-call javaapi#class('13', '', [
+call javaapi#class('1', 'CharProperty', [
   \ ])
 
-call javaapi#class('12', '', [
+call javaapi#class('22', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('11', '', [
+call javaapi#class('23', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('10', '', [
+call javaapi#class('Conditional', 'Node', [
   \ ])
 
-call javaapi#class('9', '', [
+call javaapi#class('Dollar', 'Node', [
   \ ])
 
-call javaapi#class('8', '', [
+call javaapi#class('Dot', 'CharProperty', [
   \ ])
 
-call javaapi#class('7', '', [
+call javaapi#class('End', 'Node', [
   \ ])
 
-call javaapi#class('4', '', [
+call javaapi#class('GroupRef', 'Node', [
   \ ])
 
-call javaapi#class('CloneableProperty', '', [
-  \ javaapi#method(0,'clone(', ')', 'CloneableProperty'),
-  \ javaapi#method(0,'clone(', ') throws CloneNotSupportedException', 'Object'),
+call javaapi#class('LastMatch', 'Node', [
   \ ])
 
-call javaapi#class('6', '', [
+call javaapi#class('LazyLoop', 'Loop', [
   \ ])
 
-call javaapi#class('3', '', [
+call javaapi#class('Loop', 'Node', [
   \ ])
 
-call javaapi#class('5', '', [
+call javaapi#class('Neg', 'Node', [
   \ ])
 
-call javaapi#class('2', '', [
+call javaapi#class('NotBehind', 'Node', [
   \ ])
 
-call javaapi#class('CharPropertyFactory', '', [
+call javaapi#class('NotBehindS', 'NotBehind', [
   \ ])
 
-call javaapi#class('1', '', [
+call javaapi#class('Pos', 'Node', [
   \ ])
 
-call javaapi#class('CharPropertyNames', '', [
+call javaapi#class('Prolog', 'Node', [
   \ ])
 
-call javaapi#class('5', '', [
+call javaapi#class('Script', 'CharProperty', [
   \ ])
 
-call javaapi#class('Branch', '', [
+call javaapi#class('Single', 'BmpCharProperty', [
   \ ])
 
-call javaapi#class('BranchConn', '', [
+call javaapi#class('SingleI', 'BmpCharProperty', [
   \ ])
 
-call javaapi#class('Ques', '', [
+call javaapi#class('SingleS', 'CharProperty', [
   \ ])
 
-call javaapi#class('CharProperty', '', [
+call javaapi#class('SingleU', 'CharProperty', [
   \ ])
 
-call javaapi#class('BmpCharProperty', '', [
+call javaapi#class('SliceI', 'SliceNode', [
   \ ])
 
-call javaapi#class('BitClass', '', [
+call javaapi#class('SliceIS', 'SliceNode', [
   \ ])
 
-call javaapi#class('GroupTail', '', [
+call javaapi#class('SliceNode', 'Node', [
   \ ])
 
-call javaapi#class('GroupHead', '', [
+call javaapi#class('SliceS', 'SliceNode', [
   \ ])
 
-call javaapi#class('LastNode', '', [
+call javaapi#class('SliceU', 'SliceNode', [
   \ ])
 
-call javaapi#class('Node', '', [
+call javaapi#class('SliceUS', 'SliceIS', [
   \ ])
 
-call javaapi#class('Pattern', 'Serializable', [
-  \ javaapi#field(1,'UNIX_LINES', 'int'),
-  \ javaapi#field(1,'CASE_INSENSITIVE', 'int'),
-  \ javaapi#field(1,'COMMENTS', 'int'),
-  \ javaapi#field(1,'MULTILINE', 'int'),
-  \ javaapi#field(1,'LITERAL', 'int'),
-  \ javaapi#field(1,'DOTALL', 'int'),
-  \ javaapi#field(1,'UNICODE_CASE', 'int'),
-  \ javaapi#field(1,'CANON_EQ', 'int'),
-  \ javaapi#field(1,'UNICODE_CHARACTER_CLASS', 'int'),
-  \ javaapi#method(1,'compile(', 'String)', 'Pattern'),
-  \ javaapi#method(1,'compile(', 'String, int)', 'Pattern'),
-  \ javaapi#method(0,'pattern(', ')', 'String'),
-  \ javaapi#method(0,'toString(', ')', 'String'),
-  \ javaapi#method(0,'matcher(', 'CharSequence)', 'Matcher'),
-  \ javaapi#method(0,'flags(', ')', 'int'),
-  \ javaapi#method(1,'matches(', 'String, CharSequence)', 'boolean'),
-  \ javaapi#method(0,'split(', 'CharSequence, int)', 'String[]'),
-  \ javaapi#method(0,'split(', 'CharSequence)', 'String[]'),
-  \ javaapi#method(1,'quote(', 'String)', 'String'),
+call javaapi#class('StartS', 'Start', [
   \ ])
 
+call javaapi#class('UnixCaret', 'Node', [
+  \ ])
+
+call javaapi#class('UnixDollar', 'Node', [
+  \ ])
+
+call javaapi#class('UnixDot', 'CharProperty', [
+  \ ])
+
+call javaapi#class('Utype', 'CharProperty', [
+  \ ])
+
+call javaapi#class('PatternSyntaxException', 'IllegalArgumentException', [
+  \ javaapi#method(0,'PatternSyntaxException(', 'String, String, int)', 'public'),
+  \ javaapi#method(0,'getIndex(', ')', 'int'),
+  \ javaapi#method(0,'getDescription(', ')', 'String'),
+  \ javaapi#method(0,'getPattern(', ')', 'String'),
+  \ javaapi#method(0,'getMessage(', ')', 'String'),
+  \ ])
+
+call javaapi#class('1', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('10', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('11', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('12', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('13', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('14', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('15', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('16', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('17', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('18', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('2', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('3', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('4', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('5', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('6', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('7', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('8', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('9', 'UnicodeProp', [
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#class('UnicodeProp', 'UnicodeProp>', [
+  \ javaapi#field(1,'ALPHABETIC', 'UnicodeProp'),
+  \ javaapi#field(1,'LETTER', 'UnicodeProp'),
+  \ javaapi#field(1,'IDEOGRAPHIC', 'UnicodeProp'),
+  \ javaapi#field(1,'LOWERCASE', 'UnicodeProp'),
+  \ javaapi#field(1,'UPPERCASE', 'UnicodeProp'),
+  \ javaapi#field(1,'TITLECASE', 'UnicodeProp'),
+  \ javaapi#field(1,'WHITE_SPACE', 'UnicodeProp'),
+  \ javaapi#field(1,'CONTROL', 'UnicodeProp'),
+  \ javaapi#field(1,'PUNCTUATION', 'UnicodeProp'),
+  \ javaapi#field(1,'HEX_DIGIT', 'UnicodeProp'),
+  \ javaapi#field(1,'ASSIGNED', 'UnicodeProp'),
+  \ javaapi#field(1,'NONCHARACTER_CODE_POINT', 'UnicodeProp'),
+  \ javaapi#field(1,'DIGIT', 'UnicodeProp'),
+  \ javaapi#field(1,'ALNUM', 'UnicodeProp'),
+  \ javaapi#field(1,'BLANK', 'UnicodeProp'),
+  \ javaapi#field(1,'GRAPH', 'UnicodeProp'),
+  \ javaapi#field(1,'PRINT', 'UnicodeProp'),
+  \ javaapi#field(1,'WORD', 'UnicodeProp'),
+  \ javaapi#method(1,'values(', ')', 'UnicodeProp[]'),
+  \ javaapi#method(1,'valueOf(', 'String)', 'UnicodeProp'),
+  \ javaapi#method(1,'forName(', 'String)', 'UnicodeProp'),
+  \ javaapi#method(1,'forPOSIXName(', 'String)', 'UnicodeProp'),
+  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+  \ ])
+
+call javaapi#namespace('java.util.regex')
+
+call javaapi#class('GroupCurly', 'Node', [
+  \ ])
+
+call javaapi#class('ASCII', '', [
+  \ ])
+
+call javaapi#namespace('java.util.regex')
 
 call javaapi#interface('MatchResult', '', [
   \ javaapi#method(0,'start(', ')', 'int'),
@@ -199,261 +305,158 @@ call javaapi#class('Matcher', 'MatchResult', [
   \ javaapi#method(0,'requireEnd(', ')', 'boolean'),
   \ ])
 
+call javaapi#namespace('java.util.regex')
 
-call javaapi#class('GroupCurly', '', [
+call javaapi#class('TreeInfo', '', [
   \ ])
 
-call javaapi#class('ASCII', '', [
+call javaapi#class('Start', 'Node', [
   \ ])
 
-
-call javaapi#class('1', '', [
-  \ ])
-
-call javaapi#class('2', '', [
-  \ ])
-
-call javaapi#class('3', '', [
-  \ ])
-
-call javaapi#class('4', '', [
-  \ ])
-
-call javaapi#class('7', '', [
-  \ ])
-
-call javaapi#class('All', '', [
-  \ ])
-
-call javaapi#class('BackRef', '', [
-  \ ])
-
-call javaapi#class('Behind', '', [
-  \ ])
-
-call javaapi#class('BehindS', '', [
-  \ ])
-
-call javaapi#class('Block', '', [
-  \ ])
-
-call javaapi#class('BnM', '', [
-  \ ])
-
-call javaapi#class('BnMS', '', [
-  \ ])
-
-call javaapi#class('Bound', '', [
-  \ ])
-
-call javaapi#class('CIBackRef', '', [
-  \ ])
-
-call javaapi#class('Caret', '', [
-  \ ])
-
-call javaapi#class('Category', '', [
-  \ ])
-
-call javaapi#class('1', '', [
-  \ ])
-
-call javaapi#class('22', '', [
-  \ ])
-
-call javaapi#class('23', '', [
-  \ ])
-
-call javaapi#class('Conditional', '', [
-  \ ])
-
-call javaapi#class('Dollar', '', [
-  \ ])
-
-call javaapi#class('Dot', '', [
-  \ ])
-
-call javaapi#class('End', '', [
-  \ ])
-
-call javaapi#class('GroupRef', '', [
-  \ ])
-
-call javaapi#class('LastMatch', '', [
-  \ ])
-
-call javaapi#class('LazyLoop', '', [
-  \ ])
-
-call javaapi#class('Loop', '', [
+call javaapi#class('First', 'Node', [
   \ ])
 
-call javaapi#class('Neg', '', [
+call javaapi#class('Begin', 'Node', [
   \ ])
 
-call javaapi#class('NotBehind', '', [
+call javaapi#class('Slice', 'SliceNode', [
   \ ])
 
-call javaapi#class('NotBehindS', '', [
+call javaapi#class('6', 'CharProperty', [
   \ ])
 
-call javaapi#class('Pos', '', [
+call javaapi#class('Curly', 'Node', [
   \ ])
 
-call javaapi#class('Prolog', '', [
+call javaapi#class('Ctype', 'BmpCharProperty', [
   \ ])
 
-call javaapi#class('Script', '', [
+call javaapi#class('21', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('Single', '', [
+call javaapi#class('20', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('SingleI', '', [
+call javaapi#class('19', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('SingleS', '', [
+call javaapi#class('18', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('SingleU', '', [
+call javaapi#class('17', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('SliceI', '', [
+call javaapi#class('16', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('SliceIS', '', [
+call javaapi#class('15', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('SliceNode', '', [
+call javaapi#class('14', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('SliceS', '', [
+call javaapi#class('13', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('SliceU', '', [
+call javaapi#class('12', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('SliceUS', '', [
+call javaapi#class('11', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('StartS', '', [
+call javaapi#class('10', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('UnixCaret', '', [
+call javaapi#class('9', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('UnixDollar', '', [
+call javaapi#class('8', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('UnixDot', '', [
+call javaapi#class('7', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('Utype', '', [
+call javaapi#class('4', 'CharPropertyFactory', [
   \ ])
 
-call javaapi#class('PatternSyntaxException', '', [
-  \ javaapi#method(0,'PatternSyntaxException(', 'String, String, int)', 'public'),
-  \ javaapi#method(0,'getIndex(', ')', 'int'),
-  \ javaapi#method(0,'getDescription(', ')', 'String'),
-  \ javaapi#method(0,'getPattern(', ')', 'String'),
-  \ javaapi#method(0,'getMessage(', ')', 'String'),
+call javaapi#class('CloneableProperty', 'CharProperty', [
+  \ javaapi#method(0,'clone(', ')', 'CloneableProperty'),
+  \ javaapi#method(0,'clone(', ') throws CloneNotSupportedException', 'Object'),
   \ ])
 
-call javaapi#class('1', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('6', 'CloneableProperty', [
   \ ])
 
-call javaapi#class('10', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('3', 'CharPropertyFactory', [
   \ ])
 
-call javaapi#class('11', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('5', 'CharPropertyFactory', [
   \ ])
 
-call javaapi#class('12', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('2', 'CharPropertyFactory', [
   \ ])
 
-call javaapi#class('13', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('CharPropertyFactory', '', [
   \ ])
 
-call javaapi#class('14', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('1', 'CharPropertyFactory', [
   \ ])
 
-call javaapi#class('15', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('CharPropertyNames', '', [
   \ ])
 
-call javaapi#class('16', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('5', 'CharProperty', [
   \ ])
 
-call javaapi#class('17', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('Branch', 'Node', [
   \ ])
 
-call javaapi#class('18', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('BranchConn', 'Node', [
   \ ])
 
-call javaapi#class('2', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('Ques', 'Node', [
   \ ])
 
-call javaapi#class('3', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('CharProperty', 'Node', [
   \ ])
 
-call javaapi#class('4', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('BmpCharProperty', 'CharProperty', [
   \ ])
 
-call javaapi#class('5', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('BitClass', 'BmpCharProperty', [
   \ ])
 
-call javaapi#class('6', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('GroupTail', 'Node', [
   \ ])
 
-call javaapi#class('7', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('GroupHead', 'Node', [
   \ ])
 
-call javaapi#class('8', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('LastNode', 'Node', [
   \ ])
 
-call javaapi#class('9', '', [
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('Node', '', [
   \ ])
 
-call javaapi#class('UnicodeProp', '', [
-  \ javaapi#field(1,'ALPHABETIC', 'UnicodeProp'),
-  \ javaapi#field(1,'LETTER', 'UnicodeProp'),
-  \ javaapi#field(1,'IDEOGRAPHIC', 'UnicodeProp'),
-  \ javaapi#field(1,'LOWERCASE', 'UnicodeProp'),
-  \ javaapi#field(1,'UPPERCASE', 'UnicodeProp'),
-  \ javaapi#field(1,'TITLECASE', 'UnicodeProp'),
-  \ javaapi#field(1,'WHITE_SPACE', 'UnicodeProp'),
-  \ javaapi#field(1,'CONTROL', 'UnicodeProp'),
-  \ javaapi#field(1,'PUNCTUATION', 'UnicodeProp'),
-  \ javaapi#field(1,'HEX_DIGIT', 'UnicodeProp'),
-  \ javaapi#field(1,'ASSIGNED', 'UnicodeProp'),
-  \ javaapi#field(1,'NONCHARACTER_CODE_POINT', 'UnicodeProp'),
-  \ javaapi#field(1,'DIGIT', 'UnicodeProp'),
-  \ javaapi#field(1,'ALNUM', 'UnicodeProp'),
-  \ javaapi#field(1,'BLANK', 'UnicodeProp'),
-  \ javaapi#field(1,'GRAPH', 'UnicodeProp'),
-  \ javaapi#field(1,'PRINT', 'UnicodeProp'),
-  \ javaapi#field(1,'WORD', 'UnicodeProp'),
-  \ javaapi#method(1,'values(', ')', 'UnicodeProp[]'),
-  \ javaapi#method(1,'valueOf(', 'String)', 'UnicodeProp'),
-  \ javaapi#method(1,'forName(', 'String)', 'UnicodeProp'),
-  \ javaapi#method(1,'forPOSIXName(', 'String)', 'UnicodeProp'),
-  \ javaapi#method(0,'is(', 'int)', 'boolean'),
+call javaapi#class('Pattern', 'Serializable', [
+  \ javaapi#field(1,'UNIX_LINES', 'int'),
+  \ javaapi#field(1,'CASE_INSENSITIVE', 'int'),
+  \ javaapi#field(1,'COMMENTS', 'int'),
+  \ javaapi#field(1,'MULTILINE', 'int'),
+  \ javaapi#field(1,'LITERAL', 'int'),
+  \ javaapi#field(1,'DOTALL', 'int'),
+  \ javaapi#field(1,'UNICODE_CASE', 'int'),
+  \ javaapi#field(1,'CANON_EQ', 'int'),
+  \ javaapi#field(1,'UNICODE_CHARACTER_CLASS', 'int'),
+  \ javaapi#method(1,'compile(', 'String)', 'Pattern'),
+  \ javaapi#method(1,'compile(', 'String, int)', 'Pattern'),
+  \ javaapi#method(0,'pattern(', ')', 'String'),
+  \ javaapi#method(0,'toString(', ')', 'String'),
+  \ javaapi#method(0,'matcher(', 'CharSequence)', 'Matcher'),
+  \ javaapi#method(0,'flags(', ')', 'int'),
+  \ javaapi#method(1,'matches(', 'String, CharSequence)', 'boolean'),
+  \ javaapi#method(0,'split(', 'CharSequence, int)', 'String[]'),
+  \ javaapi#method(0,'split(', 'CharSequence)', 'String[]'),
+  \ javaapi#method(1,'quote(', 'String)', 'String'),
   \ ])
 

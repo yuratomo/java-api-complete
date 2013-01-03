@@ -1,17 +1,5 @@
 call javaapi#namespace('java.security.spec')
 
-call javaapi#class('DSAParameterSpec', 'DSAParams', [
-  \ javaapi#method(0,'DSAParameterSpec(', 'BigInteger, BigInteger, BigInteger)', 'public'),
-  \ javaapi#method(0,'getP(', ')', 'BigInteger'),
-  \ javaapi#method(0,'getQ(', ')', 'BigInteger'),
-  \ javaapi#method(0,'getG(', ')', 'BigInteger'),
-  \ ])
-
-
-call javaapi#interface('AlgorithmParameterSpec', '', [
-  \ ])
-
-
 call javaapi#class('DSAPrivateKeySpec', 'KeySpec', [
   \ javaapi#method(0,'DSAPrivateKeySpec(', 'BigInteger, BigInteger, BigInteger, BigInteger)', 'public'),
   \ javaapi#method(0,'getX(', ')', 'BigInteger'),
@@ -103,14 +91,14 @@ call javaapi#class('EncodedKeySpec', 'KeySpec', [
   \ javaapi#method(0,'getFormat(', ')', 'String'),
   \ ])
 
-call javaapi#class('InvalidKeySpecException', '', [
+call javaapi#class('InvalidKeySpecException', 'GeneralSecurityException', [
   \ javaapi#method(0,'InvalidKeySpecException(', ')', 'public'),
   \ javaapi#method(0,'InvalidKeySpecException(', 'String)', 'public'),
   \ javaapi#method(0,'InvalidKeySpecException(', 'String, Throwable)', 'public'),
   \ javaapi#method(0,'InvalidKeySpecException(', 'Throwable)', 'public'),
   \ ])
 
-call javaapi#class('InvalidParameterSpecException', '', [
+call javaapi#class('InvalidParameterSpecException', 'GeneralSecurityException', [
   \ javaapi#method(0,'InvalidParameterSpecException(', ')', 'public'),
   \ javaapi#method(0,'InvalidParameterSpecException(', 'String)', 'public'),
   \ ])
@@ -127,7 +115,7 @@ call javaapi#class('MGF1ParameterSpec', 'AlgorithmParameterSpec', [
   \ javaapi#method(0,'getDigestAlgorithm(', ')', 'String'),
   \ ])
 
-call javaapi#class('PKCS8EncodedKeySpec', '', [
+call javaapi#class('PKCS8EncodedKeySpec', 'EncodedKeySpec', [
   \ javaapi#method(0,'PKCS8EncodedKeySpec(', 'byte[])', 'public'),
   \ javaapi#method(0,'getEncoded(', ')', 'byte[]'),
   \ javaapi#method(0,'getFormat(', ')', 'String'),
@@ -152,7 +140,7 @@ call javaapi#class('RSAKeyGenParameterSpec', 'AlgorithmParameterSpec', [
   \ javaapi#method(0,'getPublicExponent(', ')', 'BigInteger'),
   \ ])
 
-call javaapi#class('RSAMultiPrimePrivateCrtKeySpec', '', [
+call javaapi#class('RSAMultiPrimePrivateCrtKeySpec', 'RSAPrivateKeySpec', [
   \ javaapi#method(0,'RSAMultiPrimePrivateCrtKeySpec(', 'BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, RSAOtherPrimeInfo[])', 'public'),
   \ javaapi#method(0,'getPublicExponent(', ')', 'BigInteger'),
   \ javaapi#method(0,'getPrimeP(', ')', 'BigInteger'),
@@ -170,7 +158,7 @@ call javaapi#class('RSAOtherPrimeInfo', '', [
   \ javaapi#method(0,'getCrtCoefficient(', ')', 'BigInteger'),
   \ ])
 
-call javaapi#class('RSAPrivateCrtKeySpec', '', [
+call javaapi#class('RSAPrivateCrtKeySpec', 'RSAPrivateKeySpec', [
   \ javaapi#method(0,'RSAPrivateCrtKeySpec(', 'BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger)', 'public'),
   \ javaapi#method(0,'getPublicExponent(', ')', 'BigInteger'),
   \ javaapi#method(0,'getPrimeP(', ')', 'BigInteger'),
@@ -192,9 +180,23 @@ call javaapi#class('RSAPublicKeySpec', 'KeySpec', [
   \ javaapi#method(0,'getPublicExponent(', ')', 'BigInteger'),
   \ ])
 
-call javaapi#class('X509EncodedKeySpec', '', [
+call javaapi#class('X509EncodedKeySpec', 'EncodedKeySpec', [
   \ javaapi#method(0,'X509EncodedKeySpec(', 'byte[])', 'public'),
   \ javaapi#method(0,'getEncoded(', ')', 'byte[]'),
   \ javaapi#method(0,'getFormat(', ')', 'String'),
+  \ ])
+
+call javaapi#namespace('java.security.spec')
+
+call javaapi#interface('AlgorithmParameterSpec', '', [
+  \ ])
+
+call javaapi#namespace('java.security.spec')
+
+call javaapi#class('DSAParameterSpec', 'DSAParams', [
+  \ javaapi#method(0,'DSAParameterSpec(', 'BigInteger, BigInteger, BigInteger)', 'public'),
+  \ javaapi#method(0,'getP(', ')', 'BigInteger'),
+  \ javaapi#method(0,'getQ(', ')', 'BigInteger'),
+  \ javaapi#method(0,'getG(', ')', 'BigInteger'),
   \ ])
 

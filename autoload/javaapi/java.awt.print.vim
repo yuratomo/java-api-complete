@@ -1,17 +1,5 @@
 call javaapi#namespace('java.awt.print')
 
-call javaapi#interface('PrinterGraphics', '', [
-  \ javaapi#method(0,'getPrinterJob(', ')', 'PrinterJob'),
-  \ ])
-
-
-call javaapi#interface('Printable', '', [
-  \ javaapi#field(1,'PAGE_EXISTS', 'int'),
-  \ javaapi#field(1,'NO_SUCH_PAGE', 'int'),
-  \ javaapi#method(0,'print(', 'Graphics, PageFormat, int) throws PrinterException', 'int'),
-  \ ])
-
-
 call javaapi#class('BookPage', '', [
   \ ])
 
@@ -64,17 +52,17 @@ call javaapi#class('Paper', 'Cloneable', [
   \ javaapi#method(0,'getImageableHeight(', ')', 'double'),
   \ ])
 
-call javaapi#class('PrinterAbortException', '', [
+call javaapi#class('PrinterAbortException', 'PrinterException', [
   \ javaapi#method(0,'PrinterAbortException(', ')', 'public'),
   \ javaapi#method(0,'PrinterAbortException(', 'String)', 'public'),
   \ ])
 
-call javaapi#class('PrinterException', '', [
+call javaapi#class('PrinterException', 'Exception', [
   \ javaapi#method(0,'PrinterException(', ')', 'public'),
   \ javaapi#method(0,'PrinterException(', 'String)', 'public'),
   \ ])
 
-call javaapi#class('PrinterIOException', '', [
+call javaapi#class('PrinterIOException', 'PrinterException', [
   \ javaapi#method(0,'PrinterIOException(', 'IOException)', 'public'),
   \ javaapi#method(0,'getIOException(', ')', 'IOException'),
   \ javaapi#method(0,'getCause(', ')', 'Throwable'),
@@ -111,5 +99,19 @@ call javaapi#class('PrinterJob', '', [
   \ javaapi#method(0,'getJobName(', ')', 'String'),
   \ javaapi#method(0,'cancel(', ')', 'void'),
   \ javaapi#method(0,'isCancelled(', ')', 'boolean'),
+  \ ])
+
+call javaapi#namespace('java.awt.print')
+
+call javaapi#interface('Printable', '', [
+  \ javaapi#field(1,'PAGE_EXISTS', 'int'),
+  \ javaapi#field(1,'NO_SUCH_PAGE', 'int'),
+  \ javaapi#method(0,'print(', 'Graphics, PageFormat, int) throws PrinterException', 'int'),
+  \ ])
+
+call javaapi#namespace('java.awt.print')
+
+call javaapi#interface('PrinterGraphics', '', [
+  \ javaapi#method(0,'getPrinterJob(', ')', 'PrinterJob'),
   \ ])
 

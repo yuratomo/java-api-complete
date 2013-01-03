@@ -1,49 +1,5 @@
 call javaapi#namespace('java.awt.dnd')
 
-call javaapi#interface('DropTargetListener', '', [
-  \ javaapi#method(0,'dragEnter(', 'DropTargetDragEvent)', 'void'),
-  \ javaapi#method(0,'dragOver(', 'DropTargetDragEvent)', 'void'),
-  \ javaapi#method(0,'dropActionChanged(', 'DropTargetDragEvent)', 'void'),
-  \ javaapi#method(0,'dragExit(', 'DropTargetEvent)', 'void'),
-  \ javaapi#method(0,'drop(', 'DropTargetDropEvent)', 'void'),
-  \ ])
-
-call javaapi#class('DropTarget', 'Serializable', [
-  \ javaapi#method(0,'DropTarget(', 'Component, int, DropTargetListener, boolean, FlavorMap) throws HeadlessException', 'public'),
-  \ javaapi#method(0,'DropTarget(', 'Component, int, DropTargetListener, boolean) throws HeadlessException', 'public'),
-  \ javaapi#method(0,'DropTarget(', ') throws HeadlessException', 'public'),
-  \ javaapi#method(0,'DropTarget(', 'Component, DropTargetListener) throws HeadlessException', 'public'),
-  \ javaapi#method(0,'DropTarget(', 'Component, int, DropTargetListener) throws HeadlessException', 'public'),
-  \ javaapi#method(0,'setComponent(', 'Component)', 'void'),
-  \ javaapi#method(0,'getComponent(', ')', 'Component'),
-  \ javaapi#method(0,'setDefaultActions(', 'int)', 'void'),
-  \ javaapi#method(0,'getDefaultActions(', ')', 'int'),
-  \ javaapi#method(0,'setActive(', 'boolean)', 'void'),
-  \ javaapi#method(0,'isActive(', ')', 'boolean'),
-  \ javaapi#method(0,'addDropTargetListener(', 'DropTargetListener) throws TooManyListenersException', 'void'),
-  \ javaapi#method(0,'removeDropTargetListener(', 'DropTargetListener)', 'void'),
-  \ javaapi#method(0,'dragEnter(', 'DropTargetDragEvent)', 'void'),
-  \ javaapi#method(0,'dragOver(', 'DropTargetDragEvent)', 'void'),
-  \ javaapi#method(0,'dropActionChanged(', 'DropTargetDragEvent)', 'void'),
-  \ javaapi#method(0,'dragExit(', 'DropTargetEvent)', 'void'),
-  \ javaapi#method(0,'drop(', 'DropTargetDropEvent)', 'void'),
-  \ javaapi#method(0,'getFlavorMap(', ')', 'FlavorMap'),
-  \ javaapi#method(0,'setFlavorMap(', 'FlavorMap)', 'void'),
-  \ javaapi#method(0,'addNotify(', 'ComponentPeer)', 'void'),
-  \ javaapi#method(0,'removeNotify(', 'ComponentPeer)', 'void'),
-  \ javaapi#method(0,'getDropTargetContext(', ')', 'DropTargetContext'),
-  \ ])
-
-
-call javaapi#class('DropTargetContext', 'Serializable', [
-  \ javaapi#method(0,'getDropTarget(', ')', 'DropTarget'),
-  \ javaapi#method(0,'getComponent(', ')', 'Component'),
-  \ javaapi#method(0,'addNotify(', 'DropTargetContextPeer)', 'void'),
-  \ javaapi#method(0,'removeNotify(', ')', 'void'),
-  \ javaapi#method(0,'dropComplete(', 'boolean) throws InvalidDnDOperationException', 'void'),
-  \ ])
-
-
 call javaapi#interface('Autoscroll', '', [
   \ javaapi#method(0,'getAutoscrollInsets(', ')', 'Insets'),
   \ javaapi#method(0,'autoscroll(', 'Point)', 'void'),
@@ -58,7 +14,7 @@ call javaapi#class('DnDConstants', '', [
   \ javaapi#field(1,'ACTION_REFERENCE', 'int'),
   \ ])
 
-call javaapi#class('DnDEventMulticaster', '', [
+call javaapi#class('DnDEventMulticaster', 'AWTEventMulticaster', [
   \ javaapi#method(0,'dragEnter(', 'DragSourceDragEvent)', 'void'),
   \ javaapi#method(0,'dragOver(', 'DragSourceDragEvent)', 'void'),
   \ javaapi#method(0,'dropActionChanged(', 'DragSourceDragEvent)', 'void'),
@@ -71,7 +27,7 @@ call javaapi#class('DnDEventMulticaster', '', [
   \ javaapi#method(1,'remove(', 'DragSourceMotionListener, DragSourceMotionListener)', 'DragSourceMotionListener'),
   \ ])
 
-call javaapi#class('DragGestureEvent', '', [
+call javaapi#class('DragGestureEvent', 'EventObject', [
   \ javaapi#method(0,'DragGestureEvent(', 'DragGestureRecognizer, int, Point, List<? extends InputEvent>)', 'public'),
   \ javaapi#method(0,'getSourceAsDragGestureRecognizer(', ')', 'DragGestureRecognizer'),
   \ javaapi#method(0,'getComponent(', ')', 'Component'),
@@ -87,7 +43,7 @@ call javaapi#class('DragGestureEvent', '', [
   \ javaapi#method(0,'startDrag(', 'Cursor, Image, Point, Transferable, DragSourceListener) throws InvalidDnDOperationException', 'void'),
   \ ])
 
-call javaapi#interface('DragGestureListener', '', [
+call javaapi#interface('DragGestureListener', 'EventListener', [
   \ javaapi#method(0,'dragGestureRecognized(', 'DragGestureEvent)', 'void'),
   \ ])
 
@@ -166,7 +122,7 @@ call javaapi#class('DragSourceContext', 'Serializable', [
   \ javaapi#method(0,'getTransferable(', ')', 'Transferable'),
   \ ])
 
-call javaapi#class('DragSourceDragEvent', '', [
+call javaapi#class('DragSourceDragEvent', 'DragSourceEvent', [
   \ javaapi#method(0,'DragSourceDragEvent(', 'DragSourceContext, int, int, int)', 'public'),
   \ javaapi#method(0,'DragSourceDragEvent(', 'DragSourceContext, int, int, int, int, int)', 'public'),
   \ javaapi#method(0,'getTargetActions(', ')', 'int'),
@@ -176,7 +132,7 @@ call javaapi#class('DragSourceDragEvent', '', [
   \ javaapi#method(0,'getDropAction(', ')', 'int'),
   \ ])
 
-call javaapi#class('DragSourceDropEvent', '', [
+call javaapi#class('DragSourceDropEvent', 'DragSourceEvent', [
   \ javaapi#method(0,'DragSourceDropEvent(', 'DragSourceContext, int, boolean)', 'public'),
   \ javaapi#method(0,'DragSourceDropEvent(', 'DragSourceContext, int, boolean, int, int)', 'public'),
   \ javaapi#method(0,'DragSourceDropEvent(', 'DragSourceContext)', 'public'),
@@ -184,7 +140,7 @@ call javaapi#class('DragSourceDropEvent', '', [
   \ javaapi#method(0,'getDropAction(', ')', 'int'),
   \ ])
 
-call javaapi#class('DragSourceEvent', '', [
+call javaapi#class('DragSourceEvent', 'EventObject', [
   \ javaapi#method(0,'DragSourceEvent(', 'DragSourceContext)', 'public'),
   \ javaapi#method(0,'DragSourceEvent(', 'DragSourceContext, int, int)', 'public'),
   \ javaapi#method(0,'getDragSourceContext(', ')', 'DragSourceContext'),
@@ -193,7 +149,7 @@ call javaapi#class('DragSourceEvent', '', [
   \ javaapi#method(0,'getY(', ')', 'int'),
   \ ])
 
-call javaapi#interface('DragSourceListener', '', [
+call javaapi#interface('DragSourceListener', 'EventListener', [
   \ javaapi#method(0,'dragEnter(', 'DragSourceDragEvent)', 'void'),
   \ javaapi#method(0,'dragOver(', 'DragSourceDragEvent)', 'void'),
   \ javaapi#method(0,'dropActionChanged(', 'DragSourceDragEvent)', 'void'),
@@ -201,7 +157,7 @@ call javaapi#interface('DragSourceListener', '', [
   \ javaapi#method(0,'dragDropEnd(', 'DragSourceDropEvent)', 'void'),
   \ ])
 
-call javaapi#interface('DragSourceMotionListener', '', [
+call javaapi#interface('DragSourceMotionListener', 'EventListener', [
   \ javaapi#method(0,'dragMouseMoved(', 'DragSourceDragEvent)', 'void'),
   \ ])
 
@@ -223,7 +179,7 @@ call javaapi#class('TransferableProxy', 'Transferable', [
   \ javaapi#method(0,'getTransferData(', 'DataFlavor) throws UnsupportedFlavorException, IOException', 'Object'),
   \ ])
 
-call javaapi#class('DropTargetDragEvent', '', [
+call javaapi#class('DropTargetDragEvent', 'DropTargetEvent', [
   \ javaapi#method(0,'DropTargetDragEvent(', 'DropTargetContext, Point, int, int)', 'public'),
   \ javaapi#method(0,'getLocation(', ')', 'Point'),
   \ javaapi#method(0,'getCurrentDataFlavors(', ')', 'DataFlavor[]'),
@@ -236,7 +192,7 @@ call javaapi#class('DropTargetDragEvent', '', [
   \ javaapi#method(0,'rejectDrag(', ')', 'void'),
   \ ])
 
-call javaapi#class('DropTargetDropEvent', '', [
+call javaapi#class('DropTargetDropEvent', 'DropTargetEvent', [
   \ javaapi#method(0,'DropTargetDropEvent(', 'DropTargetContext, Point, int, int)', 'public'),
   \ javaapi#method(0,'DropTargetDropEvent(', 'DropTargetContext, Point, int, int, boolean)', 'public'),
   \ javaapi#method(0,'getLocation(', ')', 'Point'),
@@ -252,17 +208,17 @@ call javaapi#class('DropTargetDropEvent', '', [
   \ javaapi#method(0,'isLocalTransfer(', ')', 'boolean'),
   \ ])
 
-call javaapi#class('DropTargetEvent', '', [
+call javaapi#class('DropTargetEvent', 'EventObject', [
   \ javaapi#method(0,'DropTargetEvent(', 'DropTargetContext)', 'public'),
   \ javaapi#method(0,'getDropTargetContext(', ')', 'DropTargetContext'),
   \ ])
 
-call javaapi#class('InvalidDnDOperationException', '', [
+call javaapi#class('InvalidDnDOperationException', 'IllegalStateException', [
   \ javaapi#method(0,'InvalidDnDOperationException(', ')', 'public'),
   \ javaapi#method(0,'InvalidDnDOperationException(', 'String)', 'public'),
   \ ])
 
-call javaapi#class('MouseDragGestureRecognizer', '', [
+call javaapi#class('MouseDragGestureRecognizer', 'DragGestureRecognizer', [
   \ javaapi#method(0,'mouseClicked(', 'MouseEvent)', 'void'),
   \ javaapi#method(0,'mousePressed(', 'MouseEvent)', 'void'),
   \ javaapi#method(0,'mouseReleased(', 'MouseEvent)', 'void'),
@@ -272,10 +228,56 @@ call javaapi#class('MouseDragGestureRecognizer', '', [
   \ javaapi#method(0,'mouseMoved(', 'MouseEvent)', 'void'),
   \ ])
 
-call javaapi#class('1', '', [
+call javaapi#class('1', 'OutputStream', [
   \ javaapi#method(0,'write(', 'int)', 'void'),
   \ ])
 
 call javaapi#class('SerializationTester', '', [
+  \ ])
+
+call javaapi#namespace('java.awt.dnd')
+
+call javaapi#class('DropTargetContext', 'Serializable', [
+  \ javaapi#method(0,'getDropTarget(', ')', 'DropTarget'),
+  \ javaapi#method(0,'getComponent(', ')', 'Component'),
+  \ javaapi#method(0,'addNotify(', 'DropTargetContextPeer)', 'void'),
+  \ javaapi#method(0,'removeNotify(', ')', 'void'),
+  \ javaapi#method(0,'dropComplete(', 'boolean) throws InvalidDnDOperationException', 'void'),
+  \ ])
+
+call javaapi#namespace('java.awt.dnd')
+
+call javaapi#interface('DropTargetListener', 'EventListener', [
+  \ javaapi#method(0,'dragEnter(', 'DropTargetDragEvent)', 'void'),
+  \ javaapi#method(0,'dragOver(', 'DropTargetDragEvent)', 'void'),
+  \ javaapi#method(0,'dropActionChanged(', 'DropTargetDragEvent)', 'void'),
+  \ javaapi#method(0,'dragExit(', 'DropTargetEvent)', 'void'),
+  \ javaapi#method(0,'drop(', 'DropTargetDropEvent)', 'void'),
+  \ ])
+
+call javaapi#class('DropTarget', 'Serializable', [
+  \ javaapi#method(0,'DropTarget(', 'Component, int, DropTargetListener, boolean, FlavorMap) throws HeadlessException', 'public'),
+  \ javaapi#method(0,'DropTarget(', 'Component, int, DropTargetListener, boolean) throws HeadlessException', 'public'),
+  \ javaapi#method(0,'DropTarget(', ') throws HeadlessException', 'public'),
+  \ javaapi#method(0,'DropTarget(', 'Component, DropTargetListener) throws HeadlessException', 'public'),
+  \ javaapi#method(0,'DropTarget(', 'Component, int, DropTargetListener) throws HeadlessException', 'public'),
+  \ javaapi#method(0,'setComponent(', 'Component)', 'void'),
+  \ javaapi#method(0,'getComponent(', ')', 'Component'),
+  \ javaapi#method(0,'setDefaultActions(', 'int)', 'void'),
+  \ javaapi#method(0,'getDefaultActions(', ')', 'int'),
+  \ javaapi#method(0,'setActive(', 'boolean)', 'void'),
+  \ javaapi#method(0,'isActive(', ')', 'boolean'),
+  \ javaapi#method(0,'addDropTargetListener(', 'DropTargetListener) throws TooManyListenersException', 'void'),
+  \ javaapi#method(0,'removeDropTargetListener(', 'DropTargetListener)', 'void'),
+  \ javaapi#method(0,'dragEnter(', 'DropTargetDragEvent)', 'void'),
+  \ javaapi#method(0,'dragOver(', 'DropTargetDragEvent)', 'void'),
+  \ javaapi#method(0,'dropActionChanged(', 'DropTargetDragEvent)', 'void'),
+  \ javaapi#method(0,'dragExit(', 'DropTargetEvent)', 'void'),
+  \ javaapi#method(0,'drop(', 'DropTargetDropEvent)', 'void'),
+  \ javaapi#method(0,'getFlavorMap(', ')', 'FlavorMap'),
+  \ javaapi#method(0,'setFlavorMap(', 'FlavorMap)', 'void'),
+  \ javaapi#method(0,'addNotify(', 'ComponentPeer)', 'void'),
+  \ javaapi#method(0,'removeNotify(', 'ComponentPeer)', 'void'),
+  \ javaapi#method(0,'getDropTargetContext(', ')', 'DropTargetContext'),
   \ ])
 

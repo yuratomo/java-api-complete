@@ -1,5 +1,202 @@
 call javaapi#namespace('java.util.logging')
 
+call javaapi#class('ConsoleHandler', 'StreamHandler', [
+  \ javaapi#method(0,'ConsoleHandler(', ')', 'public'),
+  \ javaapi#method(0,'publish(', 'LogRecord)', 'void'),
+  \ javaapi#method(0,'close(', ')', 'void'),
+  \ ])
+
+call javaapi#class('ErrorManager', '', [
+  \ javaapi#field(1,'GENERIC_FAILURE', 'int'),
+  \ javaapi#field(1,'WRITE_FAILURE', 'int'),
+  \ javaapi#field(1,'FLUSH_FAILURE', 'int'),
+  \ javaapi#field(1,'CLOSE_FAILURE', 'int'),
+  \ javaapi#field(1,'OPEN_FAILURE', 'int'),
+  \ javaapi#field(1,'FORMAT_FAILURE', 'int'),
+  \ javaapi#method(0,'ErrorManager(', ')', 'public'),
+  \ javaapi#method(0,'error(', 'String, Exception, int)', 'void'),
+  \ ])
+
+call javaapi#class('1', 'Object>', [
+  \ javaapi#method(0,'run(', ')', 'Object'),
+  \ ])
+
+call javaapi#class('InitializationErrorManager', 'ErrorManager', [
+  \ javaapi#method(0,'error(', 'String, Exception, int)', 'void'),
+  \ ])
+
+call javaapi#class('MeteredStream', 'OutputStream', [
+  \ javaapi#method(0,'write(', 'int) throws IOException', 'void'),
+  \ javaapi#method(0,'write(', 'byte[]) throws IOException', 'void'),
+  \ javaapi#method(0,'write(', 'byte[], int, int) throws IOException', 'void'),
+  \ javaapi#method(0,'flush(', ') throws IOException', 'void'),
+  \ javaapi#method(0,'close(', ') throws IOException', 'void'),
+  \ ])
+
+call javaapi#class('FileHandler', 'StreamHandler', [
+  \ javaapi#method(0,'FileHandler(', ') throws IOException, SecurityException', 'public'),
+  \ javaapi#method(0,'FileHandler(', 'String) throws IOException, SecurityException', 'public'),
+  \ javaapi#method(0,'FileHandler(', 'String, boolean) throws IOException, SecurityException', 'public'),
+  \ javaapi#method(0,'FileHandler(', 'String, int, int) throws IOException, SecurityException', 'public'),
+  \ javaapi#method(0,'FileHandler(', 'String, int, int, boolean) throws IOException, SecurityException', 'public'),
+  \ javaapi#method(0,'publish(', 'LogRecord)', 'void'),
+  \ javaapi#method(0,'close(', ') throws SecurityException', 'void'),
+  \ ])
+
+call javaapi#interface('Filter', '', [
+  \ javaapi#method(0,'isLoggable(', 'LogRecord)', 'boolean'),
+  \ ])
+
+call javaapi#class('Formatter', '', [
+  \ javaapi#method(0,'format(', 'LogRecord)', 'String'),
+  \ javaapi#method(0,'getHead(', 'Handler)', 'String'),
+  \ javaapi#method(0,'getTail(', 'Handler)', 'String'),
+  \ javaapi#method(0,'formatMessage(', 'LogRecord)', 'String'),
+  \ ])
+
+call javaapi#class('3', 'Object>', [
+  \ javaapi#method(0,'run(', ')', 'Object'),
+  \ ])
+
+call javaapi#class('4', 'Object>', [
+  \ javaapi#method(0,'run(', ')', 'Object'),
+  \ ])
+
+call javaapi#class('LoggerWeakRef', 'Logger>', [
+  \ ])
+
+call javaapi#class('LogRecord', 'Serializable', [
+  \ javaapi#method(0,'LogRecord(', 'Level, String)', 'public'),
+  \ javaapi#method(0,'getLoggerName(', ')', 'String'),
+  \ javaapi#method(0,'setLoggerName(', 'String)', 'void'),
+  \ javaapi#method(0,'getResourceBundle(', ')', 'ResourceBundle'),
+  \ javaapi#method(0,'setResourceBundle(', 'ResourceBundle)', 'void'),
+  \ javaapi#method(0,'getResourceBundleName(', ')', 'String'),
+  \ javaapi#method(0,'setResourceBundleName(', 'String)', 'void'),
+  \ javaapi#method(0,'getLevel(', ')', 'Level'),
+  \ javaapi#method(0,'setLevel(', 'Level)', 'void'),
+  \ javaapi#method(0,'getSequenceNumber(', ')', 'long'),
+  \ javaapi#method(0,'setSequenceNumber(', 'long)', 'void'),
+  \ javaapi#method(0,'getSourceClassName(', ')', 'String'),
+  \ javaapi#method(0,'setSourceClassName(', 'String)', 'void'),
+  \ javaapi#method(0,'getSourceMethodName(', ')', 'String'),
+  \ javaapi#method(0,'setSourceMethodName(', 'String)', 'void'),
+  \ javaapi#method(0,'getMessage(', ')', 'String'),
+  \ javaapi#method(0,'setMessage(', 'String)', 'void'),
+  \ javaapi#method(0,'getParameters(', ')', 'Object[]'),
+  \ javaapi#method(0,'setParameters(', 'Object[])', 'void'),
+  \ javaapi#method(0,'getThreadID(', ')', 'int'),
+  \ javaapi#method(0,'setThreadID(', 'int)', 'void'),
+  \ javaapi#method(0,'getMillis(', ')', 'long'),
+  \ javaapi#method(0,'setMillis(', 'long)', 'void'),
+  \ javaapi#method(0,'getThrown(', ')', 'Throwable'),
+  \ javaapi#method(0,'setThrown(', 'Throwable)', 'void'),
+  \ ])
+
+call javaapi#class('Logging', 'LoggingMXBean', [
+  \ javaapi#method(0,'getLoggerNames(', ')', 'String>'),
+  \ javaapi#method(0,'getLoggerLevel(', 'String)', 'String'),
+  \ javaapi#method(0,'setLoggerLevel(', 'String, String)', 'void'),
+  \ javaapi#method(0,'getParentLoggerName(', 'String)', 'String'),
+  \ ])
+
+call javaapi#interface('LoggingMXBean', '', [
+  \ javaapi#method(0,'getLoggerNames(', ')', 'String>'),
+  \ javaapi#method(0,'getLoggerLevel(', 'String)', 'String'),
+  \ javaapi#method(0,'setLoggerLevel(', 'String, String)', 'void'),
+  \ javaapi#method(0,'getParentLoggerName(', 'String)', 'String'),
+  \ ])
+
+call javaapi#class('LoggingProxyImpl', 'LoggingProxy', [
+  \ javaapi#method(0,'getLogger(', 'String)', 'Object'),
+  \ javaapi#method(0,'getLevel(', 'Object)', 'Object'),
+  \ javaapi#method(0,'setLevel(', 'Object, Object)', 'void'),
+  \ javaapi#method(0,'isLoggable(', 'Object, Object)', 'boolean'),
+  \ javaapi#method(0,'log(', 'Object, Object, String)', 'void'),
+  \ javaapi#method(0,'log(', 'Object, Object, String, Throwable)', 'void'),
+  \ javaapi#method(0,'log(', 'Object, Object, String, )', 'void'),
+  \ javaapi#method(0,'getLoggerNames(', ')', 'String>'),
+  \ javaapi#method(0,'getLoggerLevel(', 'String)', 'String'),
+  \ javaapi#method(0,'setLoggerLevel(', 'String, String)', 'void'),
+  \ javaapi#method(0,'getParentLoggerName(', 'String)', 'String'),
+  \ javaapi#method(0,'parseLevel(', 'String)', 'Object'),
+  \ javaapi#method(0,'getLevelName(', 'Object)', 'String'),
+  \ javaapi#method(0,'getProperty(', 'String)', 'String'),
+  \ ])
+
+call javaapi#class('MemoryHandler', 'Handler', [
+  \ javaapi#method(0,'MemoryHandler(', ')', 'public'),
+  \ javaapi#method(0,'MemoryHandler(', 'Handler, int, Level)', 'public'),
+  \ javaapi#method(0,'publish(', 'LogRecord)', 'void'),
+  \ javaapi#method(0,'push(', ')', 'void'),
+  \ javaapi#method(0,'flush(', ')', 'void'),
+  \ javaapi#method(0,'close(', ') throws SecurityException', 'void'),
+  \ javaapi#method(0,'setPushLevel(', 'Level) throws SecurityException', 'void'),
+  \ javaapi#method(0,'getPushLevel(', ')', 'Level'),
+  \ javaapi#method(0,'isLoggable(', 'LogRecord)', 'boolean'),
+  \ ])
+
+call javaapi#class('SimpleFormatter', 'Formatter', [
+  \ javaapi#method(0,'SimpleFormatter(', ')', 'public'),
+  \ javaapi#method(0,'format(', 'LogRecord)', 'String'),
+  \ ])
+
+call javaapi#class('SocketHandler', 'StreamHandler', [
+  \ javaapi#method(0,'SocketHandler(', ') throws IOException', 'public'),
+  \ javaapi#method(0,'SocketHandler(', 'String, int) throws IOException', 'public'),
+  \ javaapi#method(0,'close(', ') throws SecurityException', 'void'),
+  \ javaapi#method(0,'publish(', 'LogRecord)', 'void'),
+  \ ])
+
+call javaapi#class('StreamHandler', 'Handler', [
+  \ javaapi#method(0,'StreamHandler(', ')', 'public'),
+  \ javaapi#method(0,'StreamHandler(', 'OutputStream, Formatter)', 'public'),
+  \ javaapi#method(0,'setEncoding(', 'String) throws SecurityException, UnsupportedEncodingException', 'void'),
+  \ javaapi#method(0,'publish(', 'LogRecord)', 'void'),
+  \ javaapi#method(0,'isLoggable(', 'LogRecord)', 'boolean'),
+  \ javaapi#method(0,'flush(', ')', 'void'),
+  \ javaapi#method(0,'close(', ') throws SecurityException', 'void'),
+  \ ])
+
+call javaapi#class('XMLFormatter', 'Formatter', [
+  \ javaapi#method(0,'XMLFormatter(', ')', 'public'),
+  \ javaapi#method(0,'format(', 'LogRecord)', 'String'),
+  \ javaapi#method(0,'getHead(', 'Handler)', 'String'),
+  \ javaapi#method(0,'getTail(', 'Handler)', 'String'),
+  \ ])
+
+call javaapi#namespace('java.util.logging')
+
+call javaapi#class('5', 'Object>', [
+  \ javaapi#method(0,'run(', ')', 'Object'),
+  \ ])
+
+call javaapi#namespace('java.util.logging')
+
+call javaapi#class('2', 'Object>', [
+  \ javaapi#method(0,'run(', ') throws Exception', 'Object'),
+  \ ])
+
+call javaapi#class('RootLogger', 'Logger', [
+  \ javaapi#method(0,'log(', 'LogRecord)', 'void'),
+  \ javaapi#method(0,'addHandler(', 'Handler)', 'void'),
+  \ javaapi#method(0,'removeHandler(', 'Handler)', 'void'),
+  \ javaapi#method(0,'getHandlers(', ')', 'Handler[]'),
+  \ ])
+
+call javaapi#class('Cleaner', 'Thread', [
+  \ javaapi#method(0,'run(', ')', 'void'),
+  \ ])
+
+call javaapi#class('LoggingPermission', 'BasicPermission', [
+  \ javaapi#method(0,'LoggingPermission(', 'String, String) throws IllegalArgumentException', 'public'),
+  \ ])
+
+call javaapi#class('LogNode', '', [
+  \ ])
+
+call javaapi#namespace('java.util.logging')
+
 call javaapi#class('1', 'Object>', [
   \ javaapi#method(0,'run(', ')', 'Object'),
   \ ])
@@ -106,199 +303,5 @@ call javaapi#class('Logger', '', [
   \ javaapi#method(0,'getUseParentHandlers(', ')', 'boolean'),
   \ javaapi#method(0,'getParent(', ')', 'Logger'),
   \ javaapi#method(0,'setParent(', 'Logger)', 'void'),
-  \ ])
-
-
-call javaapi#class('2', 'Object>', [
-  \ javaapi#method(0,'run(', ') throws Exception', 'Object'),
-  \ ])
-
-call javaapi#class('RootLogger', '', [
-  \ javaapi#method(0,'log(', 'LogRecord)', 'void'),
-  \ javaapi#method(0,'addHandler(', 'Handler)', 'void'),
-  \ javaapi#method(0,'removeHandler(', 'Handler)', 'void'),
-  \ javaapi#method(0,'getHandlers(', ')', 'Handler[]'),
-  \ ])
-
-call javaapi#class('Cleaner', '', [
-  \ javaapi#method(0,'run(', ')', 'void'),
-  \ ])
-
-call javaapi#class('LoggingPermission', '', [
-  \ javaapi#method(0,'LoggingPermission(', 'String, String) throws IllegalArgumentException', 'public'),
-  \ ])
-
-call javaapi#class('LogNode', '', [
-  \ ])
-
-
-call javaapi#class('5', 'Object>', [
-  \ javaapi#method(0,'run(', ')', 'Object'),
-  \ ])
-
-
-call javaapi#class('ConsoleHandler', '', [
-  \ javaapi#method(0,'ConsoleHandler(', ')', 'public'),
-  \ javaapi#method(0,'publish(', 'LogRecord)', 'void'),
-  \ javaapi#method(0,'close(', ')', 'void'),
-  \ ])
-
-call javaapi#class('ErrorManager', '', [
-  \ javaapi#field(1,'GENERIC_FAILURE', 'int'),
-  \ javaapi#field(1,'WRITE_FAILURE', 'int'),
-  \ javaapi#field(1,'FLUSH_FAILURE', 'int'),
-  \ javaapi#field(1,'CLOSE_FAILURE', 'int'),
-  \ javaapi#field(1,'OPEN_FAILURE', 'int'),
-  \ javaapi#field(1,'FORMAT_FAILURE', 'int'),
-  \ javaapi#method(0,'ErrorManager(', ')', 'public'),
-  \ javaapi#method(0,'error(', 'String, Exception, int)', 'void'),
-  \ ])
-
-call javaapi#class('1', 'Object>', [
-  \ javaapi#method(0,'run(', ')', 'Object'),
-  \ ])
-
-call javaapi#class('InitializationErrorManager', '', [
-  \ javaapi#method(0,'error(', 'String, Exception, int)', 'void'),
-  \ ])
-
-call javaapi#class('MeteredStream', '', [
-  \ javaapi#method(0,'write(', 'int) throws IOException', 'void'),
-  \ javaapi#method(0,'write(', 'byte[]) throws IOException', 'void'),
-  \ javaapi#method(0,'write(', 'byte[], int, int) throws IOException', 'void'),
-  \ javaapi#method(0,'flush(', ') throws IOException', 'void'),
-  \ javaapi#method(0,'close(', ') throws IOException', 'void'),
-  \ ])
-
-call javaapi#class('FileHandler', '', [
-  \ javaapi#method(0,'FileHandler(', ') throws IOException, SecurityException', 'public'),
-  \ javaapi#method(0,'FileHandler(', 'String) throws IOException, SecurityException', 'public'),
-  \ javaapi#method(0,'FileHandler(', 'String, boolean) throws IOException, SecurityException', 'public'),
-  \ javaapi#method(0,'FileHandler(', 'String, int, int) throws IOException, SecurityException', 'public'),
-  \ javaapi#method(0,'FileHandler(', 'String, int, int, boolean) throws IOException, SecurityException', 'public'),
-  \ javaapi#method(0,'publish(', 'LogRecord)', 'void'),
-  \ javaapi#method(0,'close(', ') throws SecurityException', 'void'),
-  \ ])
-
-call javaapi#interface('Filter', '', [
-  \ javaapi#method(0,'isLoggable(', 'LogRecord)', 'boolean'),
-  \ ])
-
-call javaapi#class('Formatter', '', [
-  \ javaapi#method(0,'format(', 'LogRecord)', 'String'),
-  \ javaapi#method(0,'getHead(', 'Handler)', 'String'),
-  \ javaapi#method(0,'getTail(', 'Handler)', 'String'),
-  \ javaapi#method(0,'formatMessage(', 'LogRecord)', 'String'),
-  \ ])
-
-call javaapi#class('3', 'Object>', [
-  \ javaapi#method(0,'run(', ')', 'Object'),
-  \ ])
-
-call javaapi#class('4', 'Object>', [
-  \ javaapi#method(0,'run(', ')', 'Object'),
-  \ ])
-
-call javaapi#class('LoggerWeakRef', '', [
-  \ ])
-
-call javaapi#class('LogRecord', 'Serializable', [
-  \ javaapi#method(0,'LogRecord(', 'Level, String)', 'public'),
-  \ javaapi#method(0,'getLoggerName(', ')', 'String'),
-  \ javaapi#method(0,'setLoggerName(', 'String)', 'void'),
-  \ javaapi#method(0,'getResourceBundle(', ')', 'ResourceBundle'),
-  \ javaapi#method(0,'setResourceBundle(', 'ResourceBundle)', 'void'),
-  \ javaapi#method(0,'getResourceBundleName(', ')', 'String'),
-  \ javaapi#method(0,'setResourceBundleName(', 'String)', 'void'),
-  \ javaapi#method(0,'getLevel(', ')', 'Level'),
-  \ javaapi#method(0,'setLevel(', 'Level)', 'void'),
-  \ javaapi#method(0,'getSequenceNumber(', ')', 'long'),
-  \ javaapi#method(0,'setSequenceNumber(', 'long)', 'void'),
-  \ javaapi#method(0,'getSourceClassName(', ')', 'String'),
-  \ javaapi#method(0,'setSourceClassName(', 'String)', 'void'),
-  \ javaapi#method(0,'getSourceMethodName(', ')', 'String'),
-  \ javaapi#method(0,'setSourceMethodName(', 'String)', 'void'),
-  \ javaapi#method(0,'getMessage(', ')', 'String'),
-  \ javaapi#method(0,'setMessage(', 'String)', 'void'),
-  \ javaapi#method(0,'getParameters(', ')', 'Object[]'),
-  \ javaapi#method(0,'setParameters(', 'Object[])', 'void'),
-  \ javaapi#method(0,'getThreadID(', ')', 'int'),
-  \ javaapi#method(0,'setThreadID(', 'int)', 'void'),
-  \ javaapi#method(0,'getMillis(', ')', 'long'),
-  \ javaapi#method(0,'setMillis(', 'long)', 'void'),
-  \ javaapi#method(0,'getThrown(', ')', 'Throwable'),
-  \ javaapi#method(0,'setThrown(', 'Throwable)', 'void'),
-  \ ])
-
-call javaapi#class('Logging', 'LoggingMXBean', [
-  \ javaapi#method(0,'getLoggerNames(', ')', 'String>'),
-  \ javaapi#method(0,'getLoggerLevel(', 'String)', 'String'),
-  \ javaapi#method(0,'setLoggerLevel(', 'String, String)', 'void'),
-  \ javaapi#method(0,'getParentLoggerName(', 'String)', 'String'),
-  \ ])
-
-call javaapi#interface('LoggingMXBean', '', [
-  \ javaapi#method(0,'getLoggerNames(', ')', 'String>'),
-  \ javaapi#method(0,'getLoggerLevel(', 'String)', 'String'),
-  \ javaapi#method(0,'setLoggerLevel(', 'String, String)', 'void'),
-  \ javaapi#method(0,'getParentLoggerName(', 'String)', 'String'),
-  \ ])
-
-call javaapi#class('LoggingProxyImpl', 'LoggingProxy', [
-  \ javaapi#method(0,'getLogger(', 'String)', 'Object'),
-  \ javaapi#method(0,'getLevel(', 'Object)', 'Object'),
-  \ javaapi#method(0,'setLevel(', 'Object, Object)', 'void'),
-  \ javaapi#method(0,'isLoggable(', 'Object, Object)', 'boolean'),
-  \ javaapi#method(0,'log(', 'Object, Object, String)', 'void'),
-  \ javaapi#method(0,'log(', 'Object, Object, String, Throwable)', 'void'),
-  \ javaapi#method(0,'log(', 'Object, Object, String, )', 'void'),
-  \ javaapi#method(0,'getLoggerNames(', ')', 'String>'),
-  \ javaapi#method(0,'getLoggerLevel(', 'String)', 'String'),
-  \ javaapi#method(0,'setLoggerLevel(', 'String, String)', 'void'),
-  \ javaapi#method(0,'getParentLoggerName(', 'String)', 'String'),
-  \ javaapi#method(0,'parseLevel(', 'String)', 'Object'),
-  \ javaapi#method(0,'getLevelName(', 'Object)', 'String'),
-  \ javaapi#method(0,'getProperty(', 'String)', 'String'),
-  \ ])
-
-call javaapi#class('MemoryHandler', '', [
-  \ javaapi#method(0,'MemoryHandler(', ')', 'public'),
-  \ javaapi#method(0,'MemoryHandler(', 'Handler, int, Level)', 'public'),
-  \ javaapi#method(0,'publish(', 'LogRecord)', 'void'),
-  \ javaapi#method(0,'push(', ')', 'void'),
-  \ javaapi#method(0,'flush(', ')', 'void'),
-  \ javaapi#method(0,'close(', ') throws SecurityException', 'void'),
-  \ javaapi#method(0,'setPushLevel(', 'Level) throws SecurityException', 'void'),
-  \ javaapi#method(0,'getPushLevel(', ')', 'Level'),
-  \ javaapi#method(0,'isLoggable(', 'LogRecord)', 'boolean'),
-  \ ])
-
-call javaapi#class('SimpleFormatter', '', [
-  \ javaapi#method(0,'SimpleFormatter(', ')', 'public'),
-  \ javaapi#method(0,'format(', 'LogRecord)', 'String'),
-  \ ])
-
-call javaapi#class('SocketHandler', '', [
-  \ javaapi#method(0,'SocketHandler(', ') throws IOException', 'public'),
-  \ javaapi#method(0,'SocketHandler(', 'String, int) throws IOException', 'public'),
-  \ javaapi#method(0,'close(', ') throws SecurityException', 'void'),
-  \ javaapi#method(0,'publish(', 'LogRecord)', 'void'),
-  \ ])
-
-call javaapi#class('StreamHandler', '', [
-  \ javaapi#method(0,'StreamHandler(', ')', 'public'),
-  \ javaapi#method(0,'StreamHandler(', 'OutputStream, Formatter)', 'public'),
-  \ javaapi#method(0,'setEncoding(', 'String) throws SecurityException, UnsupportedEncodingException', 'void'),
-  \ javaapi#method(0,'publish(', 'LogRecord)', 'void'),
-  \ javaapi#method(0,'isLoggable(', 'LogRecord)', 'boolean'),
-  \ javaapi#method(0,'flush(', ')', 'void'),
-  \ javaapi#method(0,'close(', ') throws SecurityException', 'void'),
-  \ ])
-
-call javaapi#class('XMLFormatter', '', [
-  \ javaapi#method(0,'XMLFormatter(', ')', 'public'),
-  \ javaapi#method(0,'format(', 'LogRecord)', 'String'),
-  \ javaapi#method(0,'getHead(', 'Handler)', 'String'),
-  \ javaapi#method(0,'getTail(', 'Handler)', 'String'),
   \ ])
 

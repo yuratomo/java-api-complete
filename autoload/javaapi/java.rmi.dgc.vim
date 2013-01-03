@@ -1,6 +1,6 @@
 call javaapi#namespace('java.rmi.dgc')
 
-call javaapi#interface('DGC', '', [
+call javaapi#interface('DGC', 'Remote', [
   \ javaapi#method(0,'dirty(', 'ObjID[], long, Lease) throws RemoteException', 'Lease'),
   \ javaapi#method(0,'clean(', 'ObjID[], long, VMID, boolean) throws RemoteException', 'void'),
   \ ])

@@ -3,16 +3,16 @@ call javaapi#namespace('java.lang.invoke')
 call javaapi#class('1', '', [
   \ ])
 
-call javaapi#class('AsVarargsCollector', '', [
+call javaapi#class('AsVarargsCollector', 'AdapterMethodHandle', [
   \ javaapi#method(0,'isVarargsCollector(', ')', 'boolean'),
   \ javaapi#method(0,'asFixedArity(', ')', 'MethodHandle'),
   \ javaapi#method(0,'asType(', 'MethodType)', 'MethodHandle'),
   \ ])
 
-call javaapi#class('AdapterMethodHandle', '', [
+call javaapi#class('AdapterMethodHandle', 'BoundMethodHandle', [
   \ ])
 
-call javaapi#class('BoundMethodHandle', '', [
+call javaapi#class('BoundMethodHandle', 'MethodHandle', [
   \ ])
 
 call javaapi#class('CallSite', '', [
@@ -22,89 +22,89 @@ call javaapi#class('CallSite', '', [
   \ javaapi#method(0,'dynamicInvoker(', ')', 'MethodHandle'),
   \ ])
 
-call javaapi#class('ConstantCallSite', '', [
+call javaapi#class('ConstantCallSite', 'CallSite', [
   \ javaapi#method(0,'ConstantCallSite(', 'MethodHandle)', 'public'),
   \ javaapi#method(0,'getTarget(', ')', 'MethodHandle'),
   \ javaapi#method(0,'setTarget(', 'MethodHandle)', 'void'),
   \ javaapi#method(0,'dynamicInvoker(', ')', 'MethodHandle'),
   \ ])
 
-call javaapi#class('CountingMethodHandle', '', [
+call javaapi#class('CountingMethodHandle', 'AdapterMethodHandle', [
   \ ])
 
-call javaapi#class('DirectMethodHandle', '', [
+call javaapi#class('DirectMethodHandle', 'MethodHandle', [
   \ ])
 
 call javaapi#class('1', '', [
   \ ])
 
-call javaapi#class('Adapter', '', [
+call javaapi#class('Adapter', 'BoundMethodHandle', [
   \ ])
 
-call javaapi#class('F0', '', [
+call javaapi#class('F0', 'Adapter', [
   \ ])
 
-call javaapi#class('F1', '', [
+call javaapi#class('F1', 'Adapter', [
   \ ])
 
-call javaapi#class('F10', '', [
+call javaapi#class('F10', 'Adapter', [
   \ ])
 
-call javaapi#class('F11', '', [
+call javaapi#class('F11', 'Adapter', [
   \ ])
 
-call javaapi#class('F12', '', [
+call javaapi#class('F12', 'Adapter', [
   \ ])
 
-call javaapi#class('F13', '', [
+call javaapi#class('F13', 'Adapter', [
   \ ])
 
-call javaapi#class('F14', '', [
+call javaapi#class('F14', 'Adapter', [
   \ ])
 
-call javaapi#class('F15', '', [
+call javaapi#class('F15', 'Adapter', [
   \ ])
 
-call javaapi#class('F16', '', [
+call javaapi#class('F16', 'Adapter', [
   \ ])
 
-call javaapi#class('F17', '', [
+call javaapi#class('F17', 'Adapter', [
   \ ])
 
-call javaapi#class('F18', '', [
+call javaapi#class('F18', 'Adapter', [
   \ ])
 
-call javaapi#class('F19', '', [
+call javaapi#class('F19', 'Adapter', [
   \ ])
 
-call javaapi#class('F2', '', [
+call javaapi#class('F2', 'Adapter', [
   \ ])
 
-call javaapi#class('F20', '', [
+call javaapi#class('F20', 'Adapter', [
   \ ])
 
-call javaapi#class('F3', '', [
+call javaapi#class('F3', 'Adapter', [
   \ ])
 
-call javaapi#class('F4', '', [
+call javaapi#class('F4', 'Adapter', [
   \ ])
 
-call javaapi#class('F5', '', [
+call javaapi#class('F5', 'Adapter', [
   \ ])
 
-call javaapi#class('F6', '', [
+call javaapi#class('F6', 'Adapter', [
   \ ])
 
-call javaapi#class('F7', '', [
+call javaapi#class('F7', 'Adapter', [
   \ ])
 
-call javaapi#class('F8', '', [
+call javaapi#class('F8', 'Adapter', [
   \ ])
 
-call javaapi#class('F9', '', [
+call javaapi#class('F9', 'Adapter', [
   \ ])
 
-call javaapi#class('Kind', '', [
+call javaapi#class('Kind', 'Kind>', [
   \ javaapi#field(1,'value', 'Kind'),
   \ javaapi#field(1,'fold', 'Kind'),
   \ javaapi#field(1,'collect', 'Kind'),
@@ -122,44 +122,44 @@ call javaapi#class('FilterGeneric', '', [
   \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('FilterOneArgument', '', [
+call javaapi#class('FilterOneArgument', 'BoundMethodHandle', [
   \ javaapi#method(1,'make(', 'MethodHandle, MethodHandle)', 'MethodHandle'),
   \ ])
 
-call javaapi#class('A0', '', [
+call javaapi#class('A0', 'Adapter', [
   \ ])
 
-call javaapi#class('A1', '', [
+call javaapi#class('A1', 'Adapter', [
   \ ])
 
-call javaapi#class('A10', '', [
+call javaapi#class('A10', 'Adapter', [
   \ ])
 
-call javaapi#class('A2', '', [
+call javaapi#class('A2', 'Adapter', [
   \ ])
 
-call javaapi#class('A3', '', [
+call javaapi#class('A3', 'Adapter', [
   \ ])
 
-call javaapi#class('A4', '', [
+call javaapi#class('A4', 'Adapter', [
   \ ])
 
-call javaapi#class('A5', '', [
+call javaapi#class('A5', 'Adapter', [
   \ ])
 
-call javaapi#class('A6', '', [
+call javaapi#class('A6', 'Adapter', [
   \ ])
 
-call javaapi#class('A7', '', [
+call javaapi#class('A7', 'Adapter', [
   \ ])
 
-call javaapi#class('A8', '', [
+call javaapi#class('A8', 'Adapter', [
   \ ])
 
-call javaapi#class('A9', '', [
+call javaapi#class('A9', 'Adapter', [
   \ ])
 
-call javaapi#class('Adapter', '', [
+call javaapi#class('Adapter', 'BoundMethodHandle', [
   \ ])
 
 call javaapi#class('FromGeneric', '', [
@@ -232,7 +232,7 @@ call javaapi#class('MemberName', 'Cloneable', [
   \ javaapi#method(0,'makeAccessException(', ')', 'ReflectiveOperationException'),
   \ ])
 
-call javaapi#interface('PolymorphicSignature', '', [
+call javaapi#interface('PolymorphicSignature', 'Annotation', [
   \ ])
 
 call javaapi#class('MethodHandle', '', [
@@ -254,20 +254,20 @@ call javaapi#class('MethodHandle', '', [
 call javaapi#class('1', '', [
   \ ])
 
-call javaapi#class('AllocateObject<C>', '', [
+call javaapi#class('AllocateObject<C>', 'BoundMethodHandle', [
   \ ])
 
 call javaapi#class('1', 'Object>', [
   \ javaapi#method(0,'run(', ')', 'Object'),
   \ ])
 
-call javaapi#class('FieldAccessor<C,V>', '', [
+call javaapi#class('FieldAccessor<C,V>', 'BoundMethodHandle', [
   \ ])
 
-call javaapi#class('GuardWithCatch', '', [
+call javaapi#class('GuardWithCatch', 'BoundMethodHandle', [
   \ ])
 
-call javaapi#class('GuardWithTest', '', [
+call javaapi#class('GuardWithTest', 'BoundMethodHandle', [
   \ ])
 
 call javaapi#class('MethodHandleImpl', '', [
@@ -412,7 +412,7 @@ call javaapi#class('MethodTypeForm', '', [
   \ javaapi#method(0,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('MutableCallSite', '', [
+call javaapi#class('MutableCallSite', 'CallSite', [
   \ javaapi#method(0,'MutableCallSite(', 'MethodType)', 'public'),
   \ javaapi#method(0,'MutableCallSite(', 'MethodHandle)', 'public'),
   \ javaapi#method(0,'getTarget(', ')', 'MethodHandle'),
@@ -421,40 +421,40 @@ call javaapi#class('MutableCallSite', '', [
   \ javaapi#method(1,'syncAll(', 'MutableCallSite[])', 'void'),
   \ ])
 
-call javaapi#class('Adapter', '', [
+call javaapi#class('Adapter', 'BoundMethodHandle', [
   \ ])
 
-call javaapi#class('S0', '', [
+call javaapi#class('S0', 'Adapter', [
   \ ])
 
-call javaapi#class('S1', '', [
+call javaapi#class('S1', 'Adapter', [
   \ ])
 
-call javaapi#class('S10', '', [
+call javaapi#class('S10', 'Adapter', [
   \ ])
 
-call javaapi#class('S2', '', [
+call javaapi#class('S2', 'Adapter', [
   \ ])
 
-call javaapi#class('S3', '', [
+call javaapi#class('S3', 'Adapter', [
   \ ])
 
-call javaapi#class('S4', '', [
+call javaapi#class('S4', 'Adapter', [
   \ ])
 
-call javaapi#class('S5', '', [
+call javaapi#class('S5', 'Adapter', [
   \ ])
 
-call javaapi#class('S6', '', [
+call javaapi#class('S6', 'Adapter', [
   \ ])
 
-call javaapi#class('S7', '', [
+call javaapi#class('S7', 'Adapter', [
   \ ])
 
-call javaapi#class('S8', '', [
+call javaapi#class('S8', 'Adapter', [
   \ ])
 
-call javaapi#class('S9', '', [
+call javaapi#class('S9', 'Adapter', [
   \ ])
 
 call javaapi#class('SpreadGeneric', '', [
@@ -468,47 +468,47 @@ call javaapi#class('SwitchPoint', '', [
   \ javaapi#method(1,'invalidateAll(', 'SwitchPoint[])', 'void'),
   \ ])
 
-call javaapi#class('A0', '', [
+call javaapi#class('A0', 'Adapter', [
   \ ])
 
-call javaapi#class('A1', '', [
+call javaapi#class('A1', 'Adapter', [
   \ ])
 
-call javaapi#class('A10', '', [
+call javaapi#class('A10', 'Adapter', [
   \ ])
 
-call javaapi#class('A2', '', [
+call javaapi#class('A2', 'Adapter', [
   \ ])
 
-call javaapi#class('A3', '', [
+call javaapi#class('A3', 'Adapter', [
   \ ])
 
-call javaapi#class('A4', '', [
+call javaapi#class('A4', 'Adapter', [
   \ ])
 
-call javaapi#class('A5', '', [
+call javaapi#class('A5', 'Adapter', [
   \ ])
 
-call javaapi#class('A6', '', [
+call javaapi#class('A6', 'Adapter', [
   \ ])
 
-call javaapi#class('A7', '', [
+call javaapi#class('A7', 'Adapter', [
   \ ])
 
-call javaapi#class('A8', '', [
+call javaapi#class('A8', 'Adapter', [
   \ ])
 
-call javaapi#class('A9', '', [
+call javaapi#class('A9', 'Adapter', [
   \ ])
 
-call javaapi#class('Adapter', '', [
+call javaapi#class('Adapter', 'BoundMethodHandle', [
   \ ])
 
 call javaapi#class('ToGeneric', '', [
   \ javaapi#method(1,'make(', 'MethodType, MethodHandle)', 'MethodHandle'),
   \ ])
 
-call javaapi#class('VolatileCallSite', '', [
+call javaapi#class('VolatileCallSite', 'CallSite', [
   \ javaapi#method(0,'VolatileCallSite(', 'MethodType)', 'public'),
   \ javaapi#method(0,'VolatileCallSite(', 'MethodHandle)', 'public'),
   \ javaapi#method(0,'getTarget(', ')', 'MethodHandle'),
@@ -516,7 +516,7 @@ call javaapi#class('VolatileCallSite', '', [
   \ javaapi#method(0,'dynamicInvoker(', ')', 'MethodHandle'),
   \ ])
 
-call javaapi#class('WrongMethodTypeException', '', [
+call javaapi#class('WrongMethodTypeException', 'RuntimeException', [
   \ javaapi#method(0,'WrongMethodTypeException(', ')', 'public'),
   \ javaapi#method(0,'WrongMethodTypeException(', 'String)', 'public'),
   \ ])
