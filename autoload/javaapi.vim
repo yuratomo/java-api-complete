@@ -36,7 +36,16 @@ function! s:analize(line, cur)
   " namespace?
   if line[0:10] =~ '\<import\>\s'
     let pstart = matchend(line, '\<import\>\s\+')
-    return [ pstart, s:MODE_NAMESPACE, '', [] ]
+    let exist = 0
+    for ns in s:namespace
+      if ns =~ '^' . line[ pstart : ]
+        let exist = 1
+        break
+      endif
+    endfor
+    if exist == 1
+      return [ pstart, s:MODE_NAMESPACE, '', [] ]
+    endif
   endif
 
   " resolve complete mode [CLASS/MEMBER]
