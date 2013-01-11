@@ -1,5 +1,6 @@
 let [ s:TYPE_NAMESPACE, s:TYPE_CLASS, s:TYPE_ENUM , s:TYPE_METHOD, s:TYPE_FIELD, s:MODE_NEW_CLASS ] = range(6)
-let [ s:MODE_NAMESPACE, s:MODE_CLASS, s:MODE_MEMBER, s:MODE_ENUM, s:MODE_NEW_CLASS, s:MODE_EQUAL ] = range(6)
+let [ s:MODE_NAMESPACE, s:MODE_CLASS, s:MODE_MEMBER, s:MODE_ENUM, s:MODE_NEW_CLASS, s:MODE_EQUAL, s:MODE_STATIC ] = range(7)
+let [ s:ROOT_IS_CLASS, s:ROOT_IS_VAR ] = range(2)
 
 let g:java_complete_item_len = 30
 let s:complete_mode = s:MODE_CLASS
@@ -86,13 +87,16 @@ function! s:analize(line, cur)
   let variable = substitute(line[ vstart : cur ], '([^()]*)', '(', 'g')
 
   " separate variable by dot and resolve type.
-  let type = ''
+  let type = { 'class' : '' }
   let parts = split(s:normalize_prop(variable), '\.')
   if !empty(parts)
     if line[cur-1] == '.'
       call add(parts, '')
     endif
     let type = s:find_type(a:line, parts[0])
+    if type.mode == s:ROOT_IS_CLASS
+      let compmode = s:MODE_STATIC
+    endif
   else
     " value complete
     let idx = cur - 1
@@ -139,7 +143,7 @@ function! s:analize(line, cur)
       let compmode = s:MODE_NEW_CLASS
     endif
   endif
-  return [ pstart, compmode, type, parts ]
+  return [ pstart, compmode, type.class, parts ]
 endfunction
 
 function! javaapi#complete(findstart, base)
@@ -162,6 +166,9 @@ function! javaapi#complete(findstart, base)
 
     elseif s:complete_mode == s:MODE_EQUAL
       call s:class_member_completion(a:base, res, 1)
+
+    elseif s:complete_mode == s:MODE_STATIC
+      call s:class_member_completion(a:base, res, 2)
 
     else
       if len(s:parts) >= 1 
@@ -302,13 +309,15 @@ function! s:class_member_completion(base, res, type)
 
   if exists('item')
     if a:type == 0
-      call s:attr_completion(item.name, a:base, a:res)
+      call s:attr_completion(item.name, a:base, a:res, 0)
       call s:enum_member_completion(item.name, a:base, a:res)
-    else
+    elseif a:type == 1
       call s:enum_member_completion(item.name, a:base, a:res)
       if !has_key(s:primitive_dict, item.name)
         call add(a:res, javaapi#member_to_compitem('new ' . item.name, {}))
       endif
+    else
+      call s:attr_completion(item.name, a:base, a:res, 1)
     endif
   endif
 endfunction
@@ -344,6 +353,8 @@ function! s:normalize_prop(prop)
 endfunction
 
 function! s:find_type(start_line, var)
+  let result = { 'class' :  a:var , 'mode' : s:ROOT_IS_VAR}
+
   " find current function start
   let s = a:start_line
   while s >= 0
@@ -363,7 +374,9 @@ function! s:find_type(start_line, var)
         let pre = ''
         for p in parts
           if p ==# a:var && index(g:java_access_modifier, pre) < 0
-            return s:conv_primitive(pre)
+            let result.class = s:conv_primitive(pre)
+            let result.mode = s:ROOT_IS_VAR
+            return result
           endif
           let pre = p
         endfor
@@ -372,7 +385,11 @@ function! s:find_type(start_line, var)
     endwhile
   endfor
 
-  return a:var
+  if javaapi#isClassExist(result.class)
+    let result.mode = s:ROOT_IS_CLASS
+  endif
+
+  return result
 endfunction
 
 function! s:this_class(start_line)
@@ -406,20 +423,23 @@ function! s:conv_primitive(str)
   endif
 endfunction
 
-function! s:attr_completion(tag, base, res)
+function! s:attr_completion(tag, base, res, static)
   if !javaapi#isClassExist(a:tag)
     return
   endif
 
   let item = javaapi#getClass(a:tag)
   for member in item.members
+    if a:static == 1 && member.static == 0
+      continue
+    endif
     if member.name =~ '^' . a:base
       call add(a:res, javaapi#member_to_compitem(item.name, member))
     endif
   endfor
   " find super class member
   if item.extend != '' && item.extend != '-'
-    call s:attr_completion(item.extend, a:base, a:res)
+    call s:attr_completion(item.extend, a:base, a:res, a:static)
   endif
 endfunction
 
