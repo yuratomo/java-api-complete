@@ -31,7 +31,7 @@ Set your .vimrc as follows.
       au BufNewFile,BufRead *.java  setl ballooneval
     endif
     
-### delay load class data
+### delay load class defines
     let g:javaapi#delay_dirs = [
       \ 'java-api-javax',
       \ 'java-api-org',
@@ -50,6 +50,7 @@ Command
 namespaces
 ----------
 Support namespaces
+
     java.applet
     java.awt.color
     java.awt.datatransfer
@@ -109,3 +110,17 @@ Support namespaces
     java.util
     java.util.zip
     
+ScreenShots
+----------
+![image1](http://yuratomo.up.d.seesaa.net/yuratomo/image/javaapi01.PNG "image1")
+
+![image2](http://yuratomo.up.d.seesaa.net/yuratomo/image/javaapi02.PNG "image1")
+
+![image3](http://yuratomo.up.d.seesaa.net/yuratomo/image/javaapi03.PNG "image1")
+
+![image4](http://yuratomo.up.d.seesaa.net/yuratomo/image/javaapi04.PNG "image1")
+
+![image5](http://yuratomo.up.d.seesaa.net/yuratomo/image/javaapi05.PNG "image1")
+
+![image6](http://yuratomo.up.d.seesaa.net/yuratomo/image/javaapi06.PNG "image1")
+
