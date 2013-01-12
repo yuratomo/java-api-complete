@@ -1,21 +1,55 @@
 java-api-complete
-=============
-This plugin is a completion for java api.
+=================
+Vim omnifunc for java api.
+
+Install
+-------
+Set your .vimrc as follows.
+
+    " Vundle
+    Bundle 'git://github.com:yuratomo/java-api-complete.git'
+    Bundle 'git://github.com:yuratomo/java-api-javax.git'
+    Bundle 'git://github.com:yuratomo/java-api-org.git'
+    Bundle 'git://github.com:yuratomo/java-api-sun.git'
+    Bundle 'git://github.com:yuratomo/java-api-servlet2.3.git'
+    Bundle 'git://github.com:yuratomo/java-api-android.git'
 
 Settings
 --------
-
+Set your .vimrc as follows.
+### autoload java-api-complete
     au BufNewFile,BufRead *.java    setl omnifunc=javaapi#complete
+    
+### show status refarence
     au CompleteDone *.java          call javaapi#showRef()
+    inoremap <expr> <c-down> javaapi#nextRef()
+    inoremap <expr> <c-up>   javaapi#prevRef()
+
+### balloon help
     if has("balloon_eval") && has("balloon_multiline") 
       au BufNewFile,BufRead *.java  setl bexpr=javaapi#balloon()
       au BufNewFile,BufRead *.java  setl ballooneval
     endif
-    inoremap <expr> <c-down> javaapi#nextRef()
-    inoremap <expr> <c-up>   javaapi#prevRef()
+    
+### delay load class data
+    let g:javaapi#delay_dirs = [
+      \ 'java-api-javax',
+      \ 'java-api-org',
+      \ 'java-api-sun',
+      \ 'java-api-servlet2.3',
+      \ 'java-api-android',
+      \ ]
+
+Command
+-------
+###:JavaApiLoad
+
+    :JavaApiLoad [ java-api-javax | java-api-org | java-api-sun | java-api-servlet2.3 | java-api-android ]
+
 
 namespaces
 ----------
+Support namespaces
     java.applet
     java.awt.color
     java.awt.datatransfer

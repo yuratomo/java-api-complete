@@ -904,15 +904,55 @@ function! s:normalize_class(path)
   return substitute(substitute(a:path, "[a-zA-Z0-9_.]*[.$]", "", "g"), ";", "", "")
 endfunction
 
-" load
-if !exists('s:dictionary_loaded')
-  let files = split(globpath(&runtimepath, 'autoload/javaapi/*.vim'), '\n')
+" delay load
+command! -nargs=1 -complete=customlist,javaapi#load_list JavaApiLoad :call javaapi#load(<f-args>)
+function! javaapi#load_list(A, L, P)
+  let items = []
+  for item in g:javaapi#delay_dirs
+    if item =~ '^'.a:A
+      call add(items, item)
+    endif
+  endfor
+  return items
+endfunction
+
+function! javaapi#load(sub)
+  let rtp = filter(split(&runtimepath, ','), 'v:val =~ a:sub')
+  let files = split(globpath(join(rtp, ','), 'autoload/javaapi/*.vim'), '\n')
   for file in files
+    if file
+      continue
+    endif
     exe 'echo "[java-complete] load ' . substitute(file, '^.*\','','') . '"'
     redraw
     exe 'so ' . file
-    echo '[java-complete] loaded!'
   endfor
+  echo '[java-complete] loaded!'
+  call remove(g:javaapi#delay_dirs, a:sub)
+endfunction
+
+" load
+if !exists('s:dictionary_loaded')
+
+  " delay directories
+  if !exists('g:javaapi#delay_dirs')
+    let g:javaapi#delay_dirs = []
+  end
+  let rtp = split(&runtimepath, ',')
+  for dir in g:javaapi#delay_dirs
+    let rtp = filter(rtp, 'v:val !~ dir')
+  endfor
+
+  let files = split(globpath(join(rtp, ','), 'autoload/javaapi/*.vim'), '\n')
+  for file in files
+    if file
+      continue
+    endif
+    exe 'echo "[java-complete] load ' . substitute(file, '^.*\','','') . '"'
+    redraw
+    exe 'so ' . file
+  endfor
+  echo '[java-complete] loaded!'
   let s:dictionary_loaded = 1
 endif
 
