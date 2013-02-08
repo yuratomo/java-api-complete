@@ -22,8 +22,8 @@ Set your .vimrc as follows.
     
 ### show status refarence
     au CompleteDone *.java          call javaapi#showRef()
-    inoremap <expr> <c-down> javaapi#nextRef()
-    inoremap <expr> <c-up>   javaapi#prevRef()
+    au BufNewFile,BufRead *.java    inoremap <expr> <c-down> javaapi#nextRef()
+    au BufNewFile,BufRead *.java    inoremap <expr> <c-up>   javaapi#prevRef()
 
 ### balloon help
     if has("balloon_eval") && has("balloon_multiline") 

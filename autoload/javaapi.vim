@@ -243,10 +243,20 @@ function! s:class_member_completion(base, res, type)
   let parts = s:parts
   let type  = s:type
 
-  " this member ?
-  if parts[0] == 'this'
-    let type = s:this_class(line('.'))
+  " this or super class member ?
+  if parts[0] == 'this' || parts[0] == 'super'
+    let [ type, super ] = s:this_class(line('.'))
+    if parts[0] == 'super'
+      let type = super
+    else
+      let t = javaapi#getTag(type)
+      if empty(t)
+        let type = super
+      endif
+      let item = t
+    endif
   endif
+
 
   " std .net class member ?
   let class = s:conv_primitive(s:normalize_type(type))
@@ -314,7 +324,7 @@ function! s:class_member_completion(base, res, type)
     elseif a:type == 1
       call s:enum_member_completion(item.name, a:base, a:res)
       if !has_key(s:primitive_dict, item.name)
-        call add(a:res, javaapi#member_to_compitem('new ' . item.name, {}))
+        call add(a:res, javaapi#member_to_compitem('new ' . item.name . '(', {}))
       endif
     else
       call s:attr_completion(item.name, a:base, a:res, 1)
@@ -393,15 +403,27 @@ function! s:find_type(start_line, var)
 endfunction
 
 function! s:this_class(start_line)
+  let _class = ''
+  let _super = ''
+  let finded_class = 0
   let s = a:start_line
   while s >= 0
     let line = getline(s)
-    if line =~ '.*\s\+class\s\+' && line !~ "^\s*\/\/"
-      return substitute(substitute(line, '.*class\s\+', '', ''), '\s\+.*$', '', '')
+    if line =~ '.*\<class\s\+' && line !~ "^\s*\/\/"
+      let finded_class = 1
+      let _class = substitute(substitute(line, '.*\<class\s\+', '', ''), '\s\+.*$', '', '')
+    endif
+    if finded_class == 1
+      if line =~ '.*\s\+extends\s\+' && line !~ "^\s*\/\/"
+        let _super = substitute(substitute(line, '.*\<extends\s\+', '', ''), '\s\+.*$', '', '')
+      endif
+      if line =~ '{'
+        break
+      endif
     endif
     let s -= 1
   endwhile
-  return ''
+  return [ _class , _super]
 endfunction
 
 let s:primitive_dict = {
