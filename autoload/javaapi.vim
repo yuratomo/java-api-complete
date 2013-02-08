@@ -258,7 +258,7 @@ function! s:class_member_completion(base, res, type)
   endif
 
 
-  " std .net class member ?
+  " java class member ?
   let class = s:conv_primitive(s:normalize_type(type))
   for part in parts
     if idx == 0
@@ -325,6 +325,9 @@ function! s:class_member_completion(base, res, type)
       call s:enum_member_completion(item.name, a:base, a:res)
       if !has_key(s:primitive_dict, item.name)
         call add(a:res, javaapi#member_to_compitem('new ' . item.name . '(', {}))
+      endif
+      if empty(a:res)
+        call s:class_completion(a:base, a:res)
       endif
     else
       call s:attr_completion(item.name, a:base, a:res, 1)
@@ -482,10 +485,14 @@ function! javaapi#member_to_compitem(class, member)
       \ 'dup'  : 1,
       \}
   else
+    let static = ''
+    if a:member.static == 1
+      let static = '<static> '
+    endif
     return {
       \ 'word' : a:member.name,
       \ 'abbr' : s:abbr(a:member.name),
-      \ 'menu' : '[' . a:class . '] ' . a:member.class . ' ' . a:member.name . a:member.detail,
+      \ 'menu' : '[' . a:class . '] ' . static . a:member.class . ' ' . a:member.name . a:member.detail,
       \ 'kind' : a:member.kind,
       \ 'dup'  : 1,
       \}
@@ -504,7 +511,7 @@ function! s:class_to_compitem(member)
   return {
     \ 'word' : a:member.name,
     \ 'abbr' : s:abbr(a:member.name),
-    \ 'menu' : ':' . a:member.extend,
+    \ 'menu' : '[class] extends ' . a:member.extend,
     \ 'kind' : a:member.kind,
     \}
 endfunction
@@ -752,7 +759,10 @@ function! s:prevNextRef(adjust)
       let b:ref.index = len(b:ref.items) - 1
     endif
     let idx = b:ref.index + 1
-    let &l:statusline = '(' . idx . '/' . len(b:ref.items) . ') %#Function#' . s:toStatusLineString(b:ref.items[ b:ref.index ])
+    let def = s:toStatusLineString(b:ref.items[ b:ref.index ])
+    if def != ''
+      let &l:statusline = '(' . idx . '/' . len(b:ref.items) . ') %#Function#' . def
+    endif
   endif
   return ""
 endfunction
@@ -797,9 +807,6 @@ function! s:ref(word, lnum, col)
       if !javaapi#isClassExist(s:parts[0])
         return [ "" ]
       endif
-"     call javaapi#getSuperClassList(s:parts[0], res)
-"     call insert(res, s:parts[0], 0)
-"     return [ join(res, ' -> ') ]
       let item = javaapi#getClass(s:parts[0])
       let menus = []
       for member in item.members
