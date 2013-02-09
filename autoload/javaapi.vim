@@ -765,7 +765,7 @@ function! s:toStatusLineString(str)
         \ substitute(
         \ a:str, 
         \ '[', '%#Title#[', ''), 
-        \ ']', ']%Function#', ''), 
+        \ ']', ']%#Function#', ''), 
         \ '(', '%#Normal#(', ''),
         \ '//','%#Comment#//', '')
 endfunction
