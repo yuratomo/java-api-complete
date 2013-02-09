@@ -1,4 +1,4 @@
-let [ s:TYPE_NAMESPACE, s:TYPE_CLASS, s:TYPE_ENUM , s:TYPE_METHOD, s:TYPE_FIELD, s:MODE_NEW_CLASS ] = range(6)
+let [ s:TYPE_NAMESPACE, s:TYPE_CLASS, s:TYPE_ENUM , s:TYPE_METHOD, s:TYPE_FIELD, s:MODE_NEW_CLASS, s:TYPE_KEYWORD ] = range(7)
 let [ s:MODE_NAMESPACE, s:MODE_CLASS, s:MODE_MEMBER, s:MODE_ENUM, s:MODE_NEW_CLASS, s:MODE_EQUAL, s:MODE_STATIC ] = range(7)
 let [ s:ROOT_IS_CLASS, s:ROOT_IS_VAR ] = range(2)
 
@@ -159,6 +159,7 @@ function! javaapi#complete(findstart, base)
       call s:ns_completion(a:base, res)
 
     elseif s:complete_mode == s:MODE_CLASS
+      call s:keyword_completion(a:base, res)
       call s:class_completion(a:base, res)
 
     elseif s:complete_mode == s:MODE_NEW_CLASS
@@ -206,6 +207,13 @@ function! javaapi#complete(findstart, base)
   endif
 endfunction
 
+function! s:keyword_completion(base, res)
+  for fun in s:keyword
+    if fun.name =~ '^' . a:base
+      call add(a:res, s:keyword_to_compitem(fun))
+    endif
+  endfor
+endfunction
 
 function! s:ns_completion(base, res)
   for ns in s:namespace
@@ -516,6 +524,14 @@ function! s:class_to_compitem(member)
     \}
 endfunction
 
+function! s:keyword_to_compitem(func)
+  return {
+    \ 'word' : a:func.name, 
+    \ 'menu' : a:func.detail,
+    \ 'kind' : 't',
+    \}
+endfunction
+
 let s:class = {}
 function! javaapi#class(name, extend, members)
   let s:class[ a:name ] = {
@@ -565,6 +581,16 @@ function! javaapi#namespace(ns)
     " last namespace (for javaapi#class)
     let s:parent = javaapi#getClass(part)
   endfor
+endfunction
+
+let s:keyword = []
+function! javaapi#keyword(name, detail)
+  call add(s:keyword, 
+    \ {
+    \ 'type'      : s:TYPE_KEYWORD,
+    \ 'name'      : a:name,
+    \ 'detail'    : a:detail
+    \ })
 endfunction
 
 function! s:def_class(name, extend, members)
@@ -739,7 +765,7 @@ function! s:toStatusLineString(str)
         \ substitute(
         \ a:str, 
         \ '[', '%#Title#[', ''), 
-        \ ']', ']%#Function#', ''), 
+        \ ']', ']%Function#', ''), 
         \ '(', '%#Normal#(', ''),
         \ '//','%#Comment#//', '')
 endfunction
