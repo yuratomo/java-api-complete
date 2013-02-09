@@ -1,32 +1,25 @@
 call javaapi#namespace('java.lang.invoke')
 
-call javaapi#class('1', '', [
-  \ ])
-
-call javaapi#class('AsVarargsCollector', 'AdapterMethodHandle', [
-  \ javaapi#method(0,'isVarargsCollector(', ')', 'boolean'),
-  \ javaapi#method(0,'asFixedArity(', ')', 'MethodHandle'),
-  \ javaapi#method(0,'asType(', 'MethodType)', 'MethodHandle'),
-  \ ])
-
 call javaapi#class('AdapterMethodHandle', 'BoundMethodHandle', [
   \ ])
 
 call javaapi#class('BoundMethodHandle', 'MethodHandle', [
+  \ javaapi#method(0,0,'baseName(', ')', 'String'),
   \ ])
 
 call javaapi#class('CallSite', '', [
-  \ javaapi#method(0,'type(', ')', 'MethodType'),
-  \ javaapi#method(0,'getTarget(', ')', 'MethodHandle'),
-  \ javaapi#method(0,'setTarget(', 'MethodHandle)', 'void'),
-  \ javaapi#method(0,'dynamicInvoker(', ')', 'MethodHandle'),
+  \ javaapi#method(0,1,'type(', ')', 'MethodType'),
+  \ javaapi#method(0,1,'getTarget(', ')', 'MethodHandle'),
+  \ javaapi#method(0,1,'setTarget(', 'MethodHandle)', 'void'),
+  \ javaapi#method(0,1,'dynamicInvoker(', ')', 'MethodHandle'),
   \ ])
 
 call javaapi#class('ConstantCallSite', 'CallSite', [
-  \ javaapi#method(0,'ConstantCallSite(', 'MethodHandle)', 'public'),
-  \ javaapi#method(0,'getTarget(', ')', 'MethodHandle'),
-  \ javaapi#method(0,'setTarget(', 'MethodHandle)', 'void'),
-  \ javaapi#method(0,'dynamicInvoker(', ')', 'MethodHandle'),
+  \ javaapi#method(0,1,'ConstantCallSite(', 'MethodHandle)', ''),
+  \ javaapi#method(0,0,'ConstantCallSite(', 'MethodType, MethodHandle) throws Throwable', ''),
+  \ javaapi#method(0,1,'getTarget(', ')', 'MethodHandle'),
+  \ javaapi#method(0,1,'setTarget(', 'MethodHandle)', 'void'),
+  \ javaapi#method(0,1,'dynamicInvoker(', ')', 'MethodHandle'),
   \ ])
 
 call javaapi#class('CountingMethodHandle', 'AdapterMethodHandle', [
@@ -35,489 +28,241 @@ call javaapi#class('CountingMethodHandle', 'AdapterMethodHandle', [
 call javaapi#class('DirectMethodHandle', 'MethodHandle', [
   \ ])
 
-call javaapi#class('1', '', [
-  \ ])
-
-call javaapi#class('Adapter', 'BoundMethodHandle', [
-  \ ])
-
-call javaapi#class('F0', 'Adapter', [
-  \ ])
-
-call javaapi#class('F1', 'Adapter', [
-  \ ])
-
-call javaapi#class('F10', 'Adapter', [
-  \ ])
-
-call javaapi#class('F11', 'Adapter', [
-  \ ])
-
-call javaapi#class('F12', 'Adapter', [
-  \ ])
-
-call javaapi#class('F13', 'Adapter', [
-  \ ])
-
-call javaapi#class('F14', 'Adapter', [
-  \ ])
-
-call javaapi#class('F15', 'Adapter', [
-  \ ])
-
-call javaapi#class('F16', 'Adapter', [
-  \ ])
-
-call javaapi#class('F17', 'Adapter', [
-  \ ])
-
-call javaapi#class('F18', 'Adapter', [
-  \ ])
-
-call javaapi#class('F19', 'Adapter', [
-  \ ])
-
-call javaapi#class('F2', 'Adapter', [
-  \ ])
-
-call javaapi#class('F20', 'Adapter', [
-  \ ])
-
-call javaapi#class('F3', 'Adapter', [
-  \ ])
-
-call javaapi#class('F4', 'Adapter', [
-  \ ])
-
-call javaapi#class('F5', 'Adapter', [
-  \ ])
-
-call javaapi#class('F6', 'Adapter', [
-  \ ])
-
-call javaapi#class('F7', 'Adapter', [
-  \ ])
-
-call javaapi#class('F8', 'Adapter', [
-  \ ])
-
-call javaapi#class('F9', 'Adapter', [
-  \ ])
-
-call javaapi#class('Kind', 'Kind>', [
-  \ javaapi#field(1,'value', 'Kind'),
-  \ javaapi#field(1,'fold', 'Kind'),
-  \ javaapi#field(1,'collect', 'Kind'),
-  \ javaapi#field(1,'flyby', 'Kind'),
-  \ javaapi#field(1,'LIMIT', 'Kind'),
-  \ javaapi#method(1,'values(', ')', 'Kind[]'),
-  \ javaapi#method(1,'valueOf(', 'String)', 'Kind'),
-  \ ])
-
 call javaapi#class('FilterGeneric', '', [
-  \ javaapi#method(1,'makeArgumentFilter(', 'int, MethodHandle, MethodHandle)', 'MethodHandle'),
-  \ javaapi#method(1,'makeArgumentFolder(', 'MethodHandle, MethodHandle)', 'MethodHandle'),
-  \ javaapi#method(1,'makeFlyby(', 'MethodHandle, MethodHandle)', 'MethodHandle'),
-  \ javaapi#method(1,'makeArgumentCollector(', 'MethodHandle, MethodHandle)', 'MethodHandle'),
-  \ javaapi#method(0,'toString(', ')', 'String'),
+  \ javaapi#method(1,1,'makeArgumentFilter(', 'int, MethodHandle, MethodHandle)', 'MethodHandle'),
+  \ javaapi#method(1,1,'makeArgumentFolder(', 'MethodHandle, MethodHandle)', 'MethodHandle'),
+  \ javaapi#method(1,1,'makeFlyby(', 'MethodHandle, MethodHandle)', 'MethodHandle'),
+  \ javaapi#method(1,1,'makeArgumentCollector(', 'MethodHandle, MethodHandle)', 'MethodHandle'),
+  \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
 call javaapi#class('FilterOneArgument', 'BoundMethodHandle', [
-  \ javaapi#method(1,'make(', 'MethodHandle, MethodHandle)', 'MethodHandle'),
-  \ ])
-
-call javaapi#class('A0', 'Adapter', [
-  \ ])
-
-call javaapi#class('A1', 'Adapter', [
-  \ ])
-
-call javaapi#class('A10', 'Adapter', [
-  \ ])
-
-call javaapi#class('A2', 'Adapter', [
-  \ ])
-
-call javaapi#class('A3', 'Adapter', [
-  \ ])
-
-call javaapi#class('A4', 'Adapter', [
-  \ ])
-
-call javaapi#class('A5', 'Adapter', [
-  \ ])
-
-call javaapi#class('A6', 'Adapter', [
-  \ ])
-
-call javaapi#class('A7', 'Adapter', [
-  \ ])
-
-call javaapi#class('A8', 'Adapter', [
-  \ ])
-
-call javaapi#class('A9', 'Adapter', [
-  \ ])
-
-call javaapi#class('Adapter', 'BoundMethodHandle', [
+  \ javaapi#field(0,0,'filter', 'MethodHandle'),
+  \ javaapi#field(0,0,'target', 'MethodHandle'),
+  \ javaapi#method(0,0,'invoke(', 'Object) throws Throwable', 'Object'),
+  \ javaapi#method(0,0,'FilterOneArgument(', 'MethodHandle, MethodHandle)', ''),
+  \ javaapi#method(1,1,'make(', 'MethodHandle, MethodHandle)', 'MethodHandle'),
   \ ])
 
 call javaapi#class('FromGeneric', '', [
-  \ javaapi#method(1,'make(', 'MethodHandle)', 'MethodHandle'),
-  \ javaapi#method(0,'toString(', ')', 'String'),
+  \ javaapi#method(1,1,'make(', 'MethodHandle)', 'MethodHandle'),
+  \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
 call javaapi#class('InvokeDynamic', '', [
   \ ])
 
 call javaapi#class('InvokeGeneric', '', [
-  \ javaapi#method(0,'toString(', ')', 'String'),
+  \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
 call javaapi#class('Invokers', '', [
-  \ javaapi#method(0,'toString(', ')', 'String'),
-  \ ])
-
-call javaapi#class('Factory', '', [
-  \ javaapi#method(0,'resolveOrNull(', 'MemberName, boolean, Class<?>)', 'MemberName'),
-  \ javaapi#method(0,'resolveOrFail(', 'MemberName, boolean, Class<?>, Class<NoSuchMemberException>) throws java/lang/IllegalAccessException, NoSuchMemberException', 'MemberName'),
-  \ javaapi#method(0,'getMethods(', 'Class<?>, boolean, Class<?>)', 'MemberName>'),
-  \ javaapi#method(0,'getMethods(', 'Class<?>, boolean, String, MethodType, Class<?>)', 'MemberName>'),
-  \ javaapi#method(0,'getConstructors(', 'Class<?>, Class<?>)', 'MemberName>'),
-  \ javaapi#method(0,'getFields(', 'Class<?>, boolean, Class<?>)', 'MemberName>'),
-  \ javaapi#method(0,'getFields(', 'Class<?>, boolean, String, Class<?>, Class<?>)', 'MemberName>'),
-  \ javaapi#method(0,'getNestedTypes(', 'Class<?>, boolean, Class<?>)', 'MemberName>'),
+  \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
 call javaapi#class('MemberName', 'Cloneable', [
-  \ javaapi#method(0,'getDeclaringClass(', ')', 'Class<?>'),
-  \ javaapi#method(0,'getClassLoader(', ')', 'ClassLoader'),
-  \ javaapi#method(0,'getName(', ')', 'String'),
-  \ javaapi#method(0,'getMethodType(', ')', 'MethodType'),
-  \ javaapi#method(0,'getInvocationType(', ')', 'MethodType'),
-  \ javaapi#method(0,'getParameterTypes(', ')', 'Class<?>[]'),
-  \ javaapi#method(0,'getReturnType(', ')', 'Class<?>'),
-  \ javaapi#method(0,'getFieldType(', ')', 'Class<?>'),
-  \ javaapi#method(0,'getType(', ')', 'Object'),
-  \ javaapi#method(0,'getSignature(', ')', 'String'),
-  \ javaapi#method(0,'getModifiers(', ')', 'int'),
-  \ javaapi#method(0,'isStatic(', ')', 'boolean'),
-  \ javaapi#method(0,'isPublic(', ')', 'boolean'),
-  \ javaapi#method(0,'isPrivate(', ')', 'boolean'),
-  \ javaapi#method(0,'isProtected(', ')', 'boolean'),
-  \ javaapi#method(0,'isFinal(', ')', 'boolean'),
-  \ javaapi#method(0,'isAbstract(', ')', 'boolean'),
-  \ javaapi#method(0,'isBridge(', ')', 'boolean'),
-  \ javaapi#method(0,'isVarargs(', ')', 'boolean'),
-  \ javaapi#method(0,'isSynthetic(', ')', 'boolean'),
-  \ javaapi#method(0,'isInvocable(', ')', 'boolean'),
-  \ javaapi#method(0,'isFieldOrMethod(', ')', 'boolean'),
-  \ javaapi#method(0,'isMethod(', ')', 'boolean'),
-  \ javaapi#method(0,'isConstructor(', ')', 'boolean'),
-  \ javaapi#method(0,'isField(', ')', 'boolean'),
-  \ javaapi#method(0,'isType(', ')', 'boolean'),
-  \ javaapi#method(0,'isPackage(', ')', 'boolean'),
-  \ javaapi#method(0,'MemberName(', 'Method)', 'public'),
-  \ javaapi#method(0,'MemberName(', 'Constructor)', 'public'),
-  \ javaapi#method(0,'MemberName(', 'Field)', 'public'),
-  \ javaapi#method(0,'MemberName(', 'Class<?>)', 'public'),
-  \ javaapi#method(0,'MemberName(', 'Class<?>, String, Class<?>, int)', 'public'),
-  \ javaapi#method(0,'MemberName(', 'Class<?>, String, Class<?>)', 'public'),
-  \ javaapi#method(0,'MemberName(', 'Class<?>, String, MethodType, int)', 'public'),
-  \ javaapi#method(0,'MemberName(', 'Class<?>, String, MethodType)', 'public'),
-  \ javaapi#method(0,'isResolved(', ')', 'boolean'),
-  \ javaapi#method(0,'hasReceiverTypeDispatch(', ')', 'boolean'),
-  \ javaapi#method(0,'toString(', ')', 'String'),
-  \ javaapi#method(0,'makeAccessException(', 'String, Object)', 'IllegalAccessException'),
-  \ javaapi#method(0,'makeAccessException(', ')', 'ReflectiveOperationException'),
-  \ ])
-
-call javaapi#interface('PolymorphicSignature', 'Annotation', [
+  \ javaapi#method(0,1,'getDeclaringClass(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'getClassLoader(', ')', 'ClassLoader'),
+  \ javaapi#method(0,1,'getName(', ')', 'String'),
+  \ javaapi#method(0,1,'getMethodType(', ')', 'MethodType'),
+  \ javaapi#method(0,1,'getInvocationType(', ')', 'MethodType'),
+  \ javaapi#method(0,1,'getParameterTypes(', ')', 'Class<?>[]'),
+  \ javaapi#method(0,1,'getReturnType(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'getFieldType(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'getType(', ')', 'Object'),
+  \ javaapi#method(0,1,'getSignature(', ')', 'String'),
+  \ javaapi#method(0,1,'getModifiers(', ')', 'int'),
+  \ javaapi#method(0,1,'isStatic(', ')', 'boolean'),
+  \ javaapi#method(0,1,'isPublic(', ')', 'boolean'),
+  \ javaapi#method(0,1,'isPrivate(', ')', 'boolean'),
+  \ javaapi#method(0,1,'isProtected(', ')', 'boolean'),
+  \ javaapi#method(0,1,'isFinal(', ')', 'boolean'),
+  \ javaapi#method(0,1,'isAbstract(', ')', 'boolean'),
+  \ javaapi#method(0,1,'isBridge(', ')', 'boolean'),
+  \ javaapi#method(0,1,'isVarargs(', ')', 'boolean'),
+  \ javaapi#method(0,1,'isSynthetic(', ')', 'boolean'),
+  \ javaapi#method(0,1,'isInvocable(', ')', 'boolean'),
+  \ javaapi#method(0,1,'isFieldOrMethod(', ')', 'boolean'),
+  \ javaapi#method(0,1,'isMethod(', ')', 'boolean'),
+  \ javaapi#method(0,1,'isConstructor(', ')', 'boolean'),
+  \ javaapi#method(0,1,'isField(', ')', 'boolean'),
+  \ javaapi#method(0,1,'isType(', ')', 'boolean'),
+  \ javaapi#method(0,1,'isPackage(', ')', 'boolean'),
+  \ javaapi#method(0,1,'MemberName(', 'Method)', ''),
+  \ javaapi#method(0,1,'MemberName(', 'Constructor)', ''),
+  \ javaapi#method(0,1,'MemberName(', 'Field)', ''),
+  \ javaapi#method(0,1,'MemberName(', 'Class<?>)', ''),
+  \ javaapi#method(0,0,'clone(', ')', 'MemberName'),
+  \ javaapi#method(0,1,'MemberName(', 'Class<?>, String, Class<?>, int)', ''),
+  \ javaapi#method(0,1,'MemberName(', 'Class<?>, String, Class<?>)', ''),
+  \ javaapi#method(0,1,'MemberName(', 'Class<?>, String, MethodType, int)', ''),
+  \ javaapi#method(0,1,'MemberName(', 'Class<?>, String, MethodType)', ''),
+  \ javaapi#method(0,1,'isResolved(', ')', 'boolean'),
+  \ javaapi#method(0,1,'hasReceiverTypeDispatch(', ')', 'boolean'),
+  \ javaapi#method(0,1,'toString(', ')', 'String'),
+  \ javaapi#method(0,1,'makeAccessException(', 'String, Object)', 'IllegalAccessException'),
+  \ javaapi#method(0,1,'makeAccessException(', ')', 'ReflectiveOperationException'),
+  \ javaapi#method(0,0,'clone(', ') throws CloneNotSupportedException', 'Object'),
   \ ])
 
 call javaapi#class('MethodHandle', '', [
-  \ javaapi#method(0,'type(', ')', 'MethodType'),
-  \ javaapi#method(0,'invokeExact(', ') throws Throwable', 'Object'),
-  \ javaapi#method(0,'invoke(', ') throws Throwable', 'Object'),
-  \ javaapi#method(0,'invokeWithArguments(', ') throws Throwable', 'Object'),
-  \ javaapi#method(0,'invokeWithArguments(', 'List<?>) throws Throwable', 'Object'),
-  \ javaapi#method(0,'asType(', 'MethodType)', 'MethodHandle'),
-  \ javaapi#method(0,'asSpreader(', 'Class<?>, int)', 'MethodHandle'),
-  \ javaapi#method(0,'asCollector(', 'Class<?>, int)', 'MethodHandle'),
-  \ javaapi#method(0,'asVarargsCollector(', 'Class<?>)', 'MethodHandle'),
-  \ javaapi#method(0,'isVarargsCollector(', ')', 'boolean'),
-  \ javaapi#method(0,'asFixedArity(', ')', 'MethodHandle'),
-  \ javaapi#method(0,'bindTo(', 'Object)', 'MethodHandle'),
-  \ javaapi#method(0,'toString(', ')', 'String'),
-  \ ])
-
-call javaapi#class('1', '', [
-  \ ])
-
-call javaapi#class('AllocateObject<C>', 'BoundMethodHandle', [
-  \ ])
-
-call javaapi#class('1', 'Object>', [
-  \ javaapi#method(0,'run(', ')', 'Object'),
-  \ ])
-
-call javaapi#class('FieldAccessor<C,V>', 'BoundMethodHandle', [
-  \ ])
-
-call javaapi#class('GuardWithCatch', 'BoundMethodHandle', [
-  \ ])
-
-call javaapi#class('GuardWithTest', 'BoundMethodHandle', [
+  \ javaapi#method(0,1,'type(', ')', 'MethodType'),
+  \ javaapi#method(0,1,'invokeExact(', ') throws Throwable', 'Object'),
+  \ javaapi#method(0,1,'invoke(', ') throws Throwable', 'Object'),
+  \ javaapi#method(0,1,'invokeWithArguments(', ') throws Throwable', 'Object'),
+  \ javaapi#method(0,1,'invokeWithArguments(', 'List<?>) throws Throwable', 'Object'),
+  \ javaapi#method(0,1,'asType(', 'MethodType)', 'MethodHandle'),
+  \ javaapi#method(0,1,'asSpreader(', 'Class<?>, int)', 'MethodHandle'),
+  \ javaapi#method(0,1,'asCollector(', 'Class<?>, int)', 'MethodHandle'),
+  \ javaapi#method(0,1,'asVarargsCollector(', 'Class<?>)', 'MethodHandle'),
+  \ javaapi#method(0,1,'isVarargsCollector(', ')', 'boolean'),
+  \ javaapi#method(0,1,'asFixedArity(', ')', 'MethodHandle'),
+  \ javaapi#method(0,1,'bindTo(', 'Object)', 'MethodHandle'),
+  \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
 call javaapi#class('MethodHandleImpl', '', [
   \ ])
 
-call javaapi#class('Constants', '', [
-  \ ])
-
 call javaapi#class('MethodHandleNatives', '', [
   \ ])
 
-call javaapi#class('1', 'InvocationHandler', [
-  \ javaapi#method(0,'invoke(', 'Object, Method, Object[]) throws Throwable', 'Object'),
-  \ ])
-
 call javaapi#class('MethodHandleProxies', '', [
-  \ javaapi#method(1,'asInterfaceInstance(', 'Class<T>, MethodHandle)', 'T'),
-  \ javaapi#method(1,'isWrapperInstance(', 'Object)', 'boolean'),
-  \ javaapi#method(1,'wrapperInstanceTarget(', 'Object)', 'MethodHandle'),
-  \ javaapi#method(1,'wrapperInstanceType(', 'Object)', 'Class<?>'),
-  \ ])
-
-call javaapi#class('1', 'Void>', [
-  \ javaapi#method(0,'run(', ')', 'Void'),
-  \ javaapi#method(0,'run(', ')', 'Object'),
+  \ javaapi#method(1,1,'asInterfaceInstance(', 'Class<T>, MethodHandle)', 'T'),
+  \ javaapi#method(1,1,'isWrapperInstance(', 'Object)', 'boolean'),
+  \ javaapi#method(1,1,'wrapperInstanceTarget(', 'Object)', 'MethodHandle'),
+  \ javaapi#method(1,1,'wrapperInstanceType(', 'Object)', 'Class<?>'),
   \ ])
 
 call javaapi#class('MethodHandleStatics', '', [
   \ ])
 
-call javaapi#class('Lookup', '', [
-  \ javaapi#field(1,'PUBLIC', 'int'),
-  \ javaapi#field(1,'PRIVATE', 'int'),
-  \ javaapi#field(1,'PROTECTED', 'int'),
-  \ javaapi#field(1,'PACKAGE', 'int'),
-  \ javaapi#method(0,'lookupClass(', ')', 'Class<?>'),
-  \ javaapi#method(0,'lookupModes(', ')', 'int'),
-  \ javaapi#method(0,'in(', 'Class<?>)', 'Lookup'),
-  \ javaapi#method(0,'toString(', ')', 'String'),
-  \ javaapi#method(0,'findStatic(', 'Class<?>, String, MethodType) throws NoSuchMethodException, IllegalAccessException', 'MethodHandle'),
-  \ javaapi#method(0,'findVirtual(', 'Class<?>, String, MethodType) throws NoSuchMethodException, IllegalAccessException', 'MethodHandle'),
-  \ javaapi#method(0,'findConstructor(', 'Class<?>, MethodType) throws NoSuchMethodException, IllegalAccessException', 'MethodHandle'),
-  \ javaapi#method(0,'findSpecial(', 'Class<?>, String, MethodType, Class<?>) throws NoSuchMethodException, IllegalAccessException', 'MethodHandle'),
-  \ javaapi#method(0,'findGetter(', 'Class<?>, String, Class<?>) throws NoSuchFieldException, IllegalAccessException', 'MethodHandle'),
-  \ javaapi#method(0,'findSetter(', 'Class<?>, String, Class<?>) throws NoSuchFieldException, IllegalAccessException', 'MethodHandle'),
-  \ javaapi#method(0,'findStaticGetter(', 'Class<?>, String, Class<?>) throws NoSuchFieldException, IllegalAccessException', 'MethodHandle'),
-  \ javaapi#method(0,'findStaticSetter(', 'Class<?>, String, Class<?>) throws NoSuchFieldException, IllegalAccessException', 'MethodHandle'),
-  \ javaapi#method(0,'bind(', 'Object, String, MethodType) throws NoSuchMethodException, IllegalAccessException', 'MethodHandle'),
-  \ javaapi#method(0,'unreflect(', 'Method) throws IllegalAccessException', 'MethodHandle'),
-  \ javaapi#method(0,'unreflectSpecial(', 'Method, Class<?>) throws IllegalAccessException', 'MethodHandle'),
-  \ javaapi#method(0,'unreflectConstructor(', 'Constructor) throws IllegalAccessException', 'MethodHandle'),
-  \ javaapi#method(0,'unreflectGetter(', 'Field) throws IllegalAccessException', 'MethodHandle'),
-  \ javaapi#method(0,'unreflectSetter(', 'Field) throws IllegalAccessException', 'MethodHandle'),
-  \ ])
-
 call javaapi#class('MethodHandles', '', [
-  \ javaapi#method(1,'lookup(', ')', 'Lookup'),
-  \ javaapi#method(1,'publicLookup(', ')', 'Lookup'),
-  \ javaapi#method(1,'arrayElementGetter(', 'Class<?>) throws IllegalArgumentException', 'MethodHandle'),
-  \ javaapi#method(1,'arrayElementSetter(', 'Class<?>) throws IllegalArgumentException', 'MethodHandle'),
-  \ javaapi#method(1,'spreadInvoker(', 'MethodType, int)', 'MethodHandle'),
-  \ javaapi#method(1,'exactInvoker(', 'MethodType)', 'MethodHandle'),
-  \ javaapi#method(1,'invoker(', 'MethodType)', 'MethodHandle'),
-  \ javaapi#method(1,'explicitCastArguments(', 'MethodHandle, MethodType)', 'MethodHandle'),
-  \ javaapi#method(1,'permuteArguments(', 'MethodHandle, MethodType, )', 'MethodHandle'),
-  \ javaapi#method(1,'constant(', 'Class<?>, Object)', 'MethodHandle'),
-  \ javaapi#method(1,'identity(', 'Class<?>)', 'MethodHandle'),
-  \ javaapi#method(1,'insertArguments(', 'MethodHandle, int, )', 'MethodHandle'),
-  \ javaapi#method(1,'dropArguments(', 'MethodHandle, int, List<Class<?>>)', 'MethodHandle'),
-  \ javaapi#method(1,'dropArguments(', 'MethodHandle, int, Class<?>)', 'MethodHandle'),
-  \ javaapi#method(1,'filterArguments(', 'MethodHandle, int, )', 'MethodHandle'),
-  \ javaapi#method(1,'filterReturnValue(', 'MethodHandle, MethodHandle)', 'MethodHandle'),
-  \ javaapi#method(1,'foldArguments(', 'MethodHandle, MethodHandle)', 'MethodHandle'),
-  \ javaapi#method(1,'guardWithTest(', 'MethodHandle, MethodHandle, MethodHandle)', 'MethodHandle'),
-  \ javaapi#method(1,'catchException(', 'MethodHandle, Class<? extends Throwable>, MethodHandle)', 'MethodHandle'),
-  \ javaapi#method(1,'throwException(', 'Class<?>, Class<? extends Throwable>)', 'MethodHandle'),
+  \ javaapi#method(1,1,'lookup(', ')', 'Lookup'),
+  \ javaapi#method(1,1,'publicLookup(', ')', 'Lookup'),
+  \ javaapi#method(1,1,'arrayElementGetter(', 'Class<?>) throws IllegalArgumentException', 'MethodHandle'),
+  \ javaapi#method(1,1,'arrayElementSetter(', 'Class<?>) throws IllegalArgumentException', 'MethodHandle'),
+  \ javaapi#method(1,1,'spreadInvoker(', 'MethodType, int)', 'MethodHandle'),
+  \ javaapi#method(1,1,'exactInvoker(', 'MethodType)', 'MethodHandle'),
+  \ javaapi#method(1,1,'invoker(', 'MethodType)', 'MethodHandle'),
+  \ javaapi#method(1,1,'explicitCastArguments(', 'MethodHandle, MethodType)', 'MethodHandle'),
+  \ javaapi#method(1,1,'permuteArguments(', 'MethodHandle, MethodType, )', 'MethodHandle'),
+  \ javaapi#method(1,1,'constant(', 'Class<?>, Object)', 'MethodHandle'),
+  \ javaapi#method(1,1,'identity(', 'Class<?>)', 'MethodHandle'),
+  \ javaapi#method(1,1,'insertArguments(', 'MethodHandle, int, )', 'MethodHandle'),
+  \ javaapi#method(1,1,'dropArguments(', 'MethodHandle, int, List<Class<?>>)', 'MethodHandle'),
+  \ javaapi#method(1,1,'dropArguments(', 'MethodHandle, int, Class<?>)', 'MethodHandle'),
+  \ javaapi#method(1,1,'filterArguments(', 'MethodHandle, int, )', 'MethodHandle'),
+  \ javaapi#method(1,1,'filterReturnValue(', 'MethodHandle, MethodHandle)', 'MethodHandle'),
+  \ javaapi#method(1,1,'foldArguments(', 'MethodHandle, MethodHandle)', 'MethodHandle'),
+  \ javaapi#method(1,1,'guardWithTest(', 'MethodHandle, MethodHandle, MethodHandle)', 'MethodHandle'),
+  \ javaapi#method(1,1,'catchException(', 'MethodHandle, Class<? extends Throwable>, MethodHandle)', 'MethodHandle'),
+  \ javaapi#method(1,1,'throwException(', 'Class<?>, Class<? extends Throwable>)', 'MethodHandle'),
   \ ])
 
 call javaapi#class('MethodType', 'Serializable', [
-  \ javaapi#method(1,'methodType(', 'Class<?>, Class<?>[])', 'MethodType'),
-  \ javaapi#method(1,'methodType(', 'Class<?>, List<Class<?>>)', 'MethodType'),
-  \ javaapi#method(1,'methodType(', 'Class<?>, Class<?>, Class<?>)', 'MethodType'),
-  \ javaapi#method(1,'methodType(', 'Class<?>)', 'MethodType'),
-  \ javaapi#method(1,'methodType(', 'Class<?>, Class<?>)', 'MethodType'),
-  \ javaapi#method(1,'methodType(', 'Class<?>, MethodType)', 'MethodType'),
-  \ javaapi#method(1,'genericMethodType(', 'int, boolean)', 'MethodType'),
-  \ javaapi#method(1,'genericMethodType(', 'int)', 'MethodType'),
-  \ javaapi#method(0,'changeParameterType(', 'int, Class<?>)', 'MethodType'),
-  \ javaapi#method(0,'insertParameterTypes(', 'int, Class<?>)', 'MethodType'),
-  \ javaapi#method(0,'appendParameterTypes(', 'Class<?>)', 'MethodType'),
-  \ javaapi#method(0,'insertParameterTypes(', 'int, List<Class<?>>)', 'MethodType'),
-  \ javaapi#method(0,'appendParameterTypes(', 'List<Class<?>>)', 'MethodType'),
-  \ javaapi#method(0,'dropParameterTypes(', 'int, int)', 'MethodType'),
-  \ javaapi#method(0,'changeReturnType(', 'Class<?>)', 'MethodType'),
-  \ javaapi#method(0,'hasPrimitives(', ')', 'boolean'),
-  \ javaapi#method(0,'hasWrappers(', ')', 'boolean'),
-  \ javaapi#method(0,'erase(', ')', 'MethodType'),
-  \ javaapi#method(0,'generic(', ')', 'MethodType'),
-  \ javaapi#method(0,'wrap(', ')', 'MethodType'),
-  \ javaapi#method(0,'unwrap(', ')', 'MethodType'),
-  \ javaapi#method(0,'parameterType(', 'int)', 'Class<?>'),
-  \ javaapi#method(0,'parameterCount(', ')', 'int'),
-  \ javaapi#method(0,'returnType(', ')', 'Class<?>'),
-  \ javaapi#method(0,'parameterList(', ')', 'Class<?>>'),
-  \ javaapi#method(0,'parameterArray(', ')', 'Class<?>[]'),
-  \ javaapi#method(0,'equals(', 'Object)', 'boolean'),
-  \ javaapi#method(0,'hashCode(', ')', 'int'),
-  \ javaapi#method(0,'toString(', ')', 'String'),
-  \ javaapi#method(1,'fromMethodDescriptorString(', 'String, ClassLoader) throws IllegalArgumentException, TypeNotPresentException', 'MethodType'),
-  \ javaapi#method(0,'toMethodDescriptorString(', ')', 'String'),
+  \ javaapi#method(1,1,'methodType(', 'Class<?>, Class<?>[])', 'MethodType'),
+  \ javaapi#method(1,1,'methodType(', 'Class<?>, List<Class<?>>)', 'MethodType'),
+  \ javaapi#method(1,1,'methodType(', 'Class<?>, Class<?>, Class<?>)', 'MethodType'),
+  \ javaapi#method(1,1,'methodType(', 'Class<?>)', 'MethodType'),
+  \ javaapi#method(1,1,'methodType(', 'Class<?>, Class<?>)', 'MethodType'),
+  \ javaapi#method(1,1,'methodType(', 'Class<?>, MethodType)', 'MethodType'),
+  \ javaapi#method(1,1,'genericMethodType(', 'int, boolean)', 'MethodType'),
+  \ javaapi#method(1,1,'genericMethodType(', 'int)', 'MethodType'),
+  \ javaapi#method(0,1,'changeParameterType(', 'int, Class<?>)', 'MethodType'),
+  \ javaapi#method(0,1,'insertParameterTypes(', 'int, Class<?>)', 'MethodType'),
+  \ javaapi#method(0,1,'appendParameterTypes(', 'Class<?>)', 'MethodType'),
+  \ javaapi#method(0,1,'insertParameterTypes(', 'int, List<Class<?>>)', 'MethodType'),
+  \ javaapi#method(0,1,'appendParameterTypes(', 'List<Class<?>>)', 'MethodType'),
+  \ javaapi#method(0,1,'dropParameterTypes(', 'int, int)', 'MethodType'),
+  \ javaapi#method(0,1,'changeReturnType(', 'Class<?>)', 'MethodType'),
+  \ javaapi#method(0,1,'hasPrimitives(', ')', 'boolean'),
+  \ javaapi#method(0,1,'hasWrappers(', ')', 'boolean'),
+  \ javaapi#method(0,1,'erase(', ')', 'MethodType'),
+  \ javaapi#method(0,1,'generic(', ')', 'MethodType'),
+  \ javaapi#method(0,1,'wrap(', ')', 'MethodType'),
+  \ javaapi#method(0,1,'unwrap(', ')', 'MethodType'),
+  \ javaapi#method(0,1,'parameterType(', 'int)', 'Class<?>'),
+  \ javaapi#method(0,1,'parameterCount(', ')', 'int'),
+  \ javaapi#method(0,1,'returnType(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'parameterList(', ')', 'Class<?>>'),
+  \ javaapi#method(0,1,'parameterArray(', ')', 'Class<?>[]'),
+  \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
+  \ javaapi#method(0,1,'hashCode(', ')', 'int'),
+  \ javaapi#method(0,1,'toString(', ')', 'String'),
+  \ javaapi#method(1,1,'fromMethodDescriptorString(', 'String, ClassLoader) throws IllegalArgumentException, TypeNotPresentException', 'MethodType'),
+  \ javaapi#method(0,1,'toMethodDescriptorString(', ')', 'String'),
   \ ])
 
 call javaapi#class('MethodTypeForm', '', [
-  \ javaapi#field(1,'NO_CHANGE', 'int'),
-  \ javaapi#field(1,'ERASE', 'int'),
-  \ javaapi#field(1,'WRAP', 'int'),
-  \ javaapi#field(1,'UNWRAP', 'int'),
-  \ javaapi#field(1,'INTS', 'int'),
-  \ javaapi#field(1,'LONGS', 'int'),
-  \ javaapi#field(1,'RAW_RETURN', 'int'),
-  \ javaapi#method(0,'erasedType(', ')', 'MethodType'),
-  \ javaapi#method(0,'primsAsBoxes(', ')', 'MethodType'),
-  \ javaapi#method(0,'primArgsAsBoxes(', ')', 'MethodType'),
-  \ javaapi#method(0,'primsAsInts(', ')', 'MethodType'),
-  \ javaapi#method(0,'primsAsLongs(', ')', 'MethodType'),
-  \ javaapi#method(0,'primsAtEnd(', ')', 'MethodType'),
-  \ javaapi#method(1,'primsAtEndOrder(', 'MethodType)', 'int[]'),
-  \ javaapi#method(1,'reorderParameters(', 'MethodType, int[], Class<?>[])', 'MethodType'),
-  \ javaapi#method(0,'parameterCount(', ')', 'int'),
-  \ javaapi#method(0,'parameterSlotCount(', ')', 'int'),
-  \ javaapi#method(0,'returnCount(', ')', 'int'),
-  \ javaapi#method(0,'returnSlotCount(', ')', 'int'),
-  \ javaapi#method(0,'primitiveParameterCount(', ')', 'int'),
-  \ javaapi#method(0,'longPrimitiveParameterCount(', ')', 'int'),
-  \ javaapi#method(0,'primitiveReturnCount(', ')', 'int'),
-  \ javaapi#method(0,'longPrimitiveReturnCount(', ')', 'int'),
-  \ javaapi#method(0,'hasPrimitives(', ')', 'boolean'),
-  \ javaapi#method(0,'hasLongPrimitives(', ')', 'boolean'),
-  \ javaapi#method(0,'parameterToArgSlot(', 'int)', 'int'),
-  \ javaapi#method(0,'argSlotToParameter(', 'int)', 'int'),
-  \ javaapi#method(1,'canonicalize(', 'MethodType, int, int)', 'MethodType'),
-  \ javaapi#method(0,'toString(', ')', 'String'),
+  \ javaapi#field(1,1,'NO_CHANGE', 'int'),
+  \ javaapi#field(1,1,'ERASE', 'int'),
+  \ javaapi#field(1,1,'WRAP', 'int'),
+  \ javaapi#field(1,1,'UNWRAP', 'int'),
+  \ javaapi#field(1,1,'INTS', 'int'),
+  \ javaapi#field(1,1,'LONGS', 'int'),
+  \ javaapi#field(1,1,'RAW_RETURN', 'int'),
+  \ javaapi#method(0,1,'erasedType(', ')', 'MethodType'),
+  \ javaapi#method(0,0,'MethodTypeForm(', 'MethodType)', ''),
+  \ javaapi#method(0,1,'primsAsBoxes(', ')', 'MethodType'),
+  \ javaapi#method(0,1,'primArgsAsBoxes(', ')', 'MethodType'),
+  \ javaapi#method(0,1,'primsAsInts(', ')', 'MethodType'),
+  \ javaapi#method(0,1,'primsAsLongs(', ')', 'MethodType'),
+  \ javaapi#method(0,1,'primsAtEnd(', ')', 'MethodType'),
+  \ javaapi#method(1,1,'primsAtEndOrder(', 'MethodType)', 'int[]'),
+  \ javaapi#method(1,1,'reorderParameters(', 'MethodType, int[], Class<?>[])', 'MethodType'),
+  \ javaapi#method(0,1,'parameterCount(', ')', 'int'),
+  \ javaapi#method(0,1,'parameterSlotCount(', ')', 'int'),
+  \ javaapi#method(0,1,'returnCount(', ')', 'int'),
+  \ javaapi#method(0,1,'returnSlotCount(', ')', 'int'),
+  \ javaapi#method(0,1,'primitiveParameterCount(', ')', 'int'),
+  \ javaapi#method(0,1,'longPrimitiveParameterCount(', ')', 'int'),
+  \ javaapi#method(0,1,'primitiveReturnCount(', ')', 'int'),
+  \ javaapi#method(0,1,'longPrimitiveReturnCount(', ')', 'int'),
+  \ javaapi#method(0,1,'hasPrimitives(', ')', 'boolean'),
+  \ javaapi#method(0,1,'hasLongPrimitives(', ')', 'boolean'),
+  \ javaapi#method(0,1,'parameterToArgSlot(', 'int)', 'int'),
+  \ javaapi#method(0,1,'argSlotToParameter(', 'int)', 'int'),
+  \ javaapi#method(1,1,'canonicalize(', 'MethodType, int, int)', 'MethodType'),
+  \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
 call javaapi#class('MutableCallSite', 'CallSite', [
-  \ javaapi#method(0,'MutableCallSite(', 'MethodType)', 'public'),
-  \ javaapi#method(0,'MutableCallSite(', 'MethodHandle)', 'public'),
-  \ javaapi#method(0,'getTarget(', ')', 'MethodHandle'),
-  \ javaapi#method(0,'setTarget(', 'MethodHandle)', 'void'),
-  \ javaapi#method(0,'dynamicInvoker(', ')', 'MethodHandle'),
-  \ javaapi#method(1,'syncAll(', 'MutableCallSite[])', 'void'),
-  \ ])
-
-call javaapi#class('Adapter', 'BoundMethodHandle', [
-  \ ])
-
-call javaapi#class('S0', 'Adapter', [
-  \ ])
-
-call javaapi#class('S1', 'Adapter', [
-  \ ])
-
-call javaapi#class('S10', 'Adapter', [
-  \ ])
-
-call javaapi#class('S2', 'Adapter', [
-  \ ])
-
-call javaapi#class('S3', 'Adapter', [
-  \ ])
-
-call javaapi#class('S4', 'Adapter', [
-  \ ])
-
-call javaapi#class('S5', 'Adapter', [
-  \ ])
-
-call javaapi#class('S6', 'Adapter', [
-  \ ])
-
-call javaapi#class('S7', 'Adapter', [
-  \ ])
-
-call javaapi#class('S8', 'Adapter', [
-  \ ])
-
-call javaapi#class('S9', 'Adapter', [
+  \ javaapi#method(0,1,'MutableCallSite(', 'MethodType)', ''),
+  \ javaapi#method(0,1,'MutableCallSite(', 'MethodHandle)', ''),
+  \ javaapi#method(0,1,'getTarget(', ')', 'MethodHandle'),
+  \ javaapi#method(0,1,'setTarget(', 'MethodHandle)', 'void'),
+  \ javaapi#method(0,1,'dynamicInvoker(', ')', 'MethodHandle'),
+  \ javaapi#method(1,1,'syncAll(', 'MutableCallSite[])', 'void'),
   \ ])
 
 call javaapi#class('SpreadGeneric', '', [
-  \ javaapi#method(1,'make(', 'MethodHandle, int)', 'MethodHandle'),
+  \ javaapi#method(1,1,'make(', 'MethodHandle, int)', 'MethodHandle'),
+  \ javaapi#method(0,0,'check(', 'Object, int)', 'Object'),
+  \ javaapi#method(0,0,'select(', 'Object, int)', 'Object'),
   \ ])
 
 call javaapi#class('SwitchPoint', '', [
-  \ javaapi#method(0,'SwitchPoint(', ')', 'public'),
-  \ javaapi#method(0,'hasBeenInvalidated(', ')', 'boolean'),
-  \ javaapi#method(0,'guardWithTest(', 'MethodHandle, MethodHandle)', 'MethodHandle'),
-  \ javaapi#method(1,'invalidateAll(', 'SwitchPoint[])', 'void'),
-  \ ])
-
-call javaapi#class('A0', 'Adapter', [
-  \ ])
-
-call javaapi#class('A1', 'Adapter', [
-  \ ])
-
-call javaapi#class('A10', 'Adapter', [
-  \ ])
-
-call javaapi#class('A2', 'Adapter', [
-  \ ])
-
-call javaapi#class('A3', 'Adapter', [
-  \ ])
-
-call javaapi#class('A4', 'Adapter', [
-  \ ])
-
-call javaapi#class('A5', 'Adapter', [
-  \ ])
-
-call javaapi#class('A6', 'Adapter', [
-  \ ])
-
-call javaapi#class('A7', 'Adapter', [
-  \ ])
-
-call javaapi#class('A8', 'Adapter', [
-  \ ])
-
-call javaapi#class('A9', 'Adapter', [
-  \ ])
-
-call javaapi#class('Adapter', 'BoundMethodHandle', [
+  \ javaapi#method(0,1,'SwitchPoint(', ')', ''),
+  \ javaapi#method(0,1,'hasBeenInvalidated(', ')', 'boolean'),
+  \ javaapi#method(0,1,'guardWithTest(', 'MethodHandle, MethodHandle)', 'MethodHandle'),
+  \ javaapi#method(1,1,'invalidateAll(', 'SwitchPoint[])', 'void'),
   \ ])
 
 call javaapi#class('ToGeneric', '', [
-  \ javaapi#method(1,'make(', 'MethodType, MethodHandle)', 'MethodHandle'),
+  \ javaapi#method(1,1,'make(', 'MethodType, MethodHandle)', 'MethodHandle'),
   \ ])
 
 call javaapi#class('VolatileCallSite', 'CallSite', [
-  \ javaapi#method(0,'VolatileCallSite(', 'MethodType)', 'public'),
-  \ javaapi#method(0,'VolatileCallSite(', 'MethodHandle)', 'public'),
-  \ javaapi#method(0,'getTarget(', ')', 'MethodHandle'),
-  \ javaapi#method(0,'setTarget(', 'MethodHandle)', 'void'),
-  \ javaapi#method(0,'dynamicInvoker(', ')', 'MethodHandle'),
+  \ javaapi#method(0,1,'VolatileCallSite(', 'MethodType)', ''),
+  \ javaapi#method(0,1,'VolatileCallSite(', 'MethodHandle)', ''),
+  \ javaapi#method(0,1,'getTarget(', ')', 'MethodHandle'),
+  \ javaapi#method(0,1,'setTarget(', 'MethodHandle)', 'void'),
+  \ javaapi#method(0,1,'dynamicInvoker(', ')', 'MethodHandle'),
   \ ])
 
 call javaapi#class('WrongMethodTypeException', 'RuntimeException', [
-  \ javaapi#method(0,'WrongMethodTypeException(', ')', 'public'),
-  \ javaapi#method(0,'WrongMethodTypeException(', 'String)', 'public'),
+  \ javaapi#method(0,1,'WrongMethodTypeException(', ')', ''),
+  \ javaapi#method(0,1,'WrongMethodTypeException(', 'String)', ''),
   \ ])
 

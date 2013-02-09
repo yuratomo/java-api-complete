@@ -160,6 +160,7 @@ function! javaapi#complete(findstart, base)
 
     elseif s:complete_mode == s:MODE_CLASS
       call s:keyword_completion(a:base, res)
+      call s:this_member_completion(a:base, res)
       call s:class_completion(a:base, res)
 
     elseif s:complete_mode == s:MODE_NEW_CLASS
@@ -221,6 +222,16 @@ function! s:ns_completion(base, res)
       call add(a:res, s:ns_to_compitem(ns))
     endif
   endfor
+endfunction
+
+function! s:this_member_completion(base, res)
+    let type = s:type
+    let parts = s:parts
+    let s:type = 'this'
+    let s:parts = [ 'this', '' ]
+    call s:class_member_completion(a:base, a:res, 0)
+    let s:type = type
+    let s:parts = parts
 endfunction
 
 function! s:class_completion(base, res)
@@ -498,14 +509,17 @@ function! javaapi#member_to_compitem(class, member)
       \ 'dup'  : 1,
       \}
   else
-    let static = ''
+    let modfier = ''
     if a:member.static == 1
-      let static = '<static> '
+      let modfier .= '<static> '
+    endif
+    if a:member.public == 1
+      let modfier .= '<public> '
     endif
     return {
       \ 'word' : a:member.name,
       \ 'abbr' : s:abbr(a:member.name),
-      \ 'menu' : '[' . a:class . '] ' . static . a:member.class . ' ' . a:member.name . a:member.detail,
+      \ 'menu' : '[' . a:class . '] ' . modfier . a:member.class . ' ' . a:member.name . a:member.detail,
       \ 'kind' : a:member.kind,
       \ 'dup'  : 1,
       \}
@@ -521,10 +535,14 @@ function! s:ns_to_compitem(ns)
 endfunction
 
 function! s:class_to_compitem(member)
+  let extends = ''
+  if a:member.extend != ''
+    let extends = ' extends ' . a:member.extend
+  endif
   return {
     \ 'word' : a:member.name,
     \ 'abbr' : s:abbr(a:member.name),
-    \ 'menu' : '[class] extends ' . a:member.extend,
+    \ 'menu' : '[class]' . extends,
     \ 'kind' : a:member.kind,
     \}
 endfunction
@@ -546,7 +564,7 @@ function! javaapi#class(name, extend, members)
     \ 'members': a:members,
     \ }
   if exists('s:parent') && index(s:parent.members, a:name) == -1
-    call add(s:parent.members, javaapi#field(0, a:name, a:name))
+    call add(s:parent.members, javaapi#field(0, 1, a:name, a:name))
   endif
 endfunction
 function! javaapi#interface(name, extend, members)
@@ -608,24 +626,26 @@ function! s:def_class(name, extend, members)
     \ }
 endfunction
 
-function! javaapi#method(static, name, detail, class)
+function! javaapi#method(static, public, name, detail, class)
   return {
     \ 'type'   : s:TYPE_METHOD,
     \ 'kind'   : 'f', 
     \ 'name'   : a:name,
     \ 'class'  : a:class,
     \ 'static' : a:static,
+    \ 'public' : a:public,
     \ 'detail' : a:detail,
     \ }
 endfunction
 
-function! javaapi#field(static, name, class)
+function! javaapi#field(static, public, name, class)
   return {
     \ 'type'   : s:TYPE_FIELD,
     \ 'kind'   : 'v', 
     \ 'name'   : a:name,
     \ 'class'  : a:class,
     \ 'static' : a:static,
+    \ 'public' : a:public,
     \ 'detail' : '',
     \ }
 endfunction
@@ -702,7 +722,7 @@ function! javaapi#getTag(name)
     if index(g:java_access_modifier, ttype) >= 0
       let ttype = name
     endif
-    call add(class.members, javaapi#field(name, ttype))
+    call add(class.members, javaapi#field(0, 1, name, ttype))
   endfor
   return class
 endfunction
@@ -868,9 +888,14 @@ function! javaapi#jar2vim(jar, output_dir)
   let list = filter(split(system('jar -tf ' . a:jar), "\n"), 'v:val =~ ".*\.class"')
 
   for item in list
+    " neglect $class
+    if stridx(item, '$') >= 0
+      continue
+    endif
+
     let target = substitute(item, "\.class$", "", "")
     let ns     = substitute(substitute(target, "\/[^/]*$", "", ""), "\/", ".", "g")
-    let def    = system('javap -public -classpath ' . a:jar . ' ' . target)
+    let def    = system('javap -protected -classpath ' . a:jar . ' ' . target)
     let defs   = split(def, "\n")[1:-2]
     if len(defs) < 1
       continue
@@ -919,21 +944,27 @@ function! javaapi#jar2vim(jar, output_dir)
     " output defines
     call add(outputs, "call javaapi#" . class_parts[0] . "('" . class . "', '" . super . "', [")
     for member in defs[1:]
+      let class_modifier = 0
       let bracket_start = stridx(member, '(')
       if bracket_start == -1
         let bracket_start = len(member)-1
         let parts = split(member[0 : bracket_start], ' ')
         let part1 = s:class_name(parts[-1])
         let part2 = s:class_name(parts[-2])
+        let is_public = index(parts, 'public') >= 0
         let is_static = index(parts, 'static') >= 0
-        call add(outputs, "  \\ javaapi#field(" . is_static . ",'" . part1 . "', '" . part2 . "'),")
+        call add(outputs, "  \\ javaapi#field(" . is_static . "," . is_public . ",'" . part1 . "', '" . part2 . "'),")
       else
         let parts = split(member[0 : bracket_start], ' ')
         let part1 = s:class_name(parts[-1])
         let part2 = s:class_name(parts[-2])
+        if len(parts) == 2
+          let part2 = ''
+        endif
         let part3 = s:normalize_class(member[bracket_start+1:])
+        let is_public = index(parts, 'public') >= 0
         let is_static = index(parts, 'static') >= 0
-        call add(outputs, "  \\ javaapi#method(" . is_static . ",'" . part1 . "', '" . part3 . "', '" . part2 . "'),")
+        call add(outputs, "  \\ javaapi#method(" . is_static . ',' . is_public . ",'" . part1 . "', '" . part3 . "', '" . part2 . "'),")
       endif
     endfor
     call add(outputs, "  \\ ])")
