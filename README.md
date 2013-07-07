@@ -7,12 +7,12 @@ Install
 Set your .vimrc as follows.
 
     " Vundle
-    Bundle 'git://github.com:yuratomo/java-api-complete.git'
-    Bundle 'git://github.com:yuratomo/java-api-javax.git'
-    Bundle 'git://github.com:yuratomo/java-api-org.git'
-    Bundle 'git://github.com:yuratomo/java-api-sun.git'
-    Bundle 'git://github.com:yuratomo/java-api-servlet2.3.git'
-    Bundle 'git://github.com:yuratomo/java-api-android.git'
+    Bundle 'yuratomo/java-api-complete'
+    Bundle 'yuratomo/java-api-javax'
+    Bundle 'yuratomo/java-api-org'
+    Bundle 'yuratomo/java-api-sun'
+    Bundle 'yuratomo/java-api-servlet2.3'
+    Bundle 'yuratomo/java-api-android'
 
 Settings
 --------
