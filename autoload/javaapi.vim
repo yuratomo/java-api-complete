@@ -6,6 +6,7 @@ let g:java_complete_item_len = 30
 let s:complete_mode = s:MODE_CLASS
 let s:type = ''
 let s:parts = []
+let s:last_list = []
 
 let g:java_access_modifier = [
   \ 'public',
@@ -203,6 +204,7 @@ function! javaapi#complete(findstart, base)
       endif
       call s:class_member_completion(a:base, res, 0)
     endif
+    let s:last_list = res
     return res
 
   endif
@@ -268,11 +270,9 @@ function! s:class_member_completion(base, res, type)
     if parts[0] == 'super'
       let type = super
     else
-      let t = javaapi#getTag(type)
-      if empty(t)
+      if !javaapi#isClassExist(type)
         let type = super
       endif
-      let item = t
     endif
   endif
 
@@ -286,13 +286,14 @@ function! s:class_member_completion(base, res, type)
     endif
     if !javaapi#isClassExist(class)
       if !javaapi#isEnumExist(class)
-        let item = javaapi#getTag(class)
-        if empty(item)
-          if exists('item')
-            unlet item
-          endif
-          break
-        endif
+"       let item = javaapi#getTag(class)
+"       if empty(item)
+"         if exists('item')
+"           unlet item
+"         endif
+"         break
+"       endif
+        return
       else
         let item = javaapi#getEnum(class)
       endif
@@ -322,11 +323,11 @@ function! s:class_member_completion(base, res, type)
         if javaapi#isClassExist(item.extend)
           let item = javaapi#getClass(item.extend)
         else
-          let item = javaapi#getTag(item.extend)
-          if empty(item)
-            unlet item
+"         let item = javaapi#getTag(item.extend)
+"         if empty(item)
+"           unlet item
             break
-          endif
+"         endif
         endif
       else
         return
@@ -479,13 +480,15 @@ function! s:attr_completion(tag, base, res, static)
 
   let item = javaapi#getClass(a:tag)
   for member in item.members
-    if a:static == 1 && member.static == 0
+    if a:static == 1 && has_key(member, 'static') && member.static == 0
       continue
     endif
+
     if member.name =~ '^' . a:base
       call add(a:res, javaapi#member_to_compitem(item.name, member))
     endif
   endfor
+
   " find super class member
   if item.extend != '' && item.extend != '-'
     call s:attr_completion(item.extend, a:base, a:res, a:static)
@@ -567,6 +570,7 @@ function! javaapi#class(name, extend, members)
     call add(s:parent.members, javaapi#field(0, 1, a:name, a:name))
   endif
 endfunction
+
 function! javaapi#interface(name, extend, members)
   call javaapi#class(a:name, a:extend, a:members)
 endfunction
@@ -699,33 +703,35 @@ function! javaapi#getSuperClassList(name, list)
   endif
 endfunction
 
-function! javaapi#getTag(name)
-  let types = filter(taglist('^.*.' . a:name . '\>'), 'v:val.kind == "c"')
-  if empty(types)
-    return {}
-  endif
-  let type = types[0]
-  let extend = ''
-  if has_key(type, 'inherits')
-    let extend = type.inherits
-  endif
-
-  let tags = taglist('^.*\.' . a:name . '\..*$')
-  if empty(tags)
-    return {}
-  endif
-
-  let class = s:def_class(a:name, extend, [])
-  for tag in tags
-    let name = substitute(tag.name, '.*' . a:name . '\.', '', '')
-    let ttype = split(substitute(tag.cmd, '\s*\<' . name . '\>.*$', '', ''), '\s\+')[-1]
-    if index(g:java_access_modifier, ttype) >= 0
-      let ttype = name
-    endif
-    call add(class.members, javaapi#field(0, 1, name, ttype))
-  endfor
-  return class
-endfunction
+" その都度tagsからロードしていると遅いので、
+" タグ → s:class にロードして使うようにする
+" function! javaapi#getTag(name)
+"   let types = filter(taglist('^.*.' . a:name . '\>'), 'v:val.kind == "c"')
+"   if empty(types)
+"     return {}
+"   endif
+"   let type = types[0]
+"   let extend = ''
+"   if has_key(type, 'inherits')
+"     let extend = type.inherits
+"   endif
+" 
+"   let tags = taglist('^.*\.' . a:name . '\..*$')
+"   if empty(tags)
+"     return {}
+"   endif
+" 
+"   let class = s:def_class(a:name, extend, [])
+"   for tag in tags
+"     let name = substitute(tag.name, '.*' . a:name . '\.', '', '')
+"     let ttype = split(substitute(tag.cmd, '\s*\<' . name . '\>.*$', '', ''), '\s\+')[-1]
+"     if index(g:java_access_modifier, ttype) >= 0
+"       let ttype = name
+"     endif
+"     call add(class.members, javaapi#field(0, 1, name, ttype))
+"   endfor
+"   return class
+" endfunction
 
 function! javaapi#isEnumExist(name)
   return has_key(s:enum, a:name)
@@ -847,37 +853,20 @@ function! s:ref(word, lnum, col)
   endif
 
   let [ pstart, complete_mode, s:type, s:parts ] = s:analize(a:lnum, cc)
-  if !empty(s:parts)
-    if a:word == ''
-      let s:parts[-1] = line[ pstart : cc]
-    else
-      let s:parts[-1] = substitute(a:word, '.*\.', '', '')
+  let menus = []
+  let l = line[ pstart : cc]
+  for member in s:last_list
+   if member.word =~ '^' . l
+      call add(menus, member.menu)
     endif
-    let res = []
-    if len(s:parts) == 1
-      if !javaapi#isClassExist(s:parts[0])
-        return [ "" ]
-      endif
-      let item = javaapi#getClass(s:parts[0])
-      let menus = []
-      for member in item.members
-       if member.name =~ '^' . s:parts[0]
-          call add(menus, 
-            \ '[' . s:parts[0] . '] ' . member.name . member.detail)
-        endif
-      endfor
-      return menus
-    else
-      call add(s:parts, '')
-      call s:class_member_completion(s:parts[-2], res, 0)
-      let menus = []
-      for member in res
-        call add(menus, member.menu)
-      endfor
-      return menus
-    endif
-  endif
-  return [ "" ]
+  endfor
+  return menus
+endfunction
+
+function! s:msg(msg)
+  redraw
+  let msg = strpart( a:msg, 0, winwidth(0) - &numberwidth - 10)
+  echo 'javaapi: ' . msg
 endfunction
 
 " jar2vim
@@ -888,7 +877,8 @@ function! javaapi#jar2vim(jar, output_dir)
   let list = filter(split(system('jar -tf ' . a:jar), "\n"), 'v:val =~ ".*\.class"')
 
   for item in list
-    " neglect $class
+    " neglect $class (exclude android.R.*)
+    "if stridx(item, '$') >= 0 && stridx(item, 'android/R$') == -1
     if stridx(item, '$') >= 0
       continue
     endif
@@ -995,6 +985,96 @@ function! s:normalize_class(path)
   return substitute(substitute(a:path, "[a-zA-Z0-9_.]*[.$]", "", "g"), ";", "", "")
 endfunction
 
+" load from tags
+function! javaapi#loadFromTags()
+  call s:msg("tag load start ... ")
+
+  let idx = char2nr('a')
+  let end = char2nr('z')
+  let defs = {}
+  while idx <= end
+    let ptn = nr2char(idx)
+    let idx += 1
+
+    call s:msg('tag load [' . ptn . ']. Please wait ... ')
+    let tlist = taglist('^' . ptn . '.*')
+
+    " classes
+    for titem in tlist
+      if titem.kind == 'c'
+        let class = titem
+        let cname = substitute(class.name, '.*\.', '', '')
+        let extend = ''
+        if has_key(class, 'inherits')
+          let extend = class.inherits
+        endif
+
+        if has_key(defs, cname)
+          let defs[cname].extend = extend
+        else
+          let defs[cname] = s:def_class(cname, extend, [])
+        endif
+
+      elseif has_key(titem, "class") && ((titem.kind == "f" || titem.kind == "m" || titem.kind == "p"))
+        " members
+        let member = titem
+        let cname = substitute(member.class, '.*\.', '', '')
+        let mname = substitute(member.name, '.*\.', '', '')
+        if mname =~ '^\~'
+          continue
+        endif
+        if !has_key(defs, cname)
+          let defs[cname] = s:def_class(cname, '', [])
+        endif
+
+        if !has_key(defs[cname], 'member_names')
+          let defs[cname].member_names = []
+        endif
+        if index(defs[cname].member_names, mname) == -1
+          try
+            let ttype = split(substitute(member.cmd, '\s*\<' . mname . '\>.*$', '', ''), '\s\+')[-1]
+          catch /.*/
+            let ttype = mname
+          endtry
+
+          if index(g:java_access_modifier, ttype) >= 0
+            let ttype = mname
+          endif
+
+          let static = 0
+          if has_key(member, 'static') && member.static == 1
+            let ttype = 'static ' . ttype
+            let static = 1
+          endif
+
+          if has_key(member, 'signature')
+            let signature = member.signature
+            let item = javaapi#method(static, 1, mname . '(', signature[1:], ttype)
+            let mname = mname . signature
+          else
+            let item = javaapi#field(static, 1, mname, ttype)
+          endif
+          call add(defs[cname].members, item)
+          call add(defs[cname].member_names, mname)
+        endif
+        call s:msg('tag load [' . ptn . '] ' . cname . '.' . mname)
+      endif
+    endfor
+  endwhile
+
+  " add s:class
+  for [key, value] in items(defs)
+    if !has_key(s:class, key)
+      let s:class[ key ] = value
+    else
+      call extend( s:class[ key ].members, value.members )
+    endif
+  endfor
+
+  call s:msg('tag loaded!')
+
+endfunction
+
 " delay load
 command! -nargs=1 -complete=customlist,javaapi#load_list JavaApiLoad :call javaapi#load(<f-args>)
 function! javaapi#load_list(A, L, P)
@@ -1014,11 +1094,10 @@ function! javaapi#load(sub)
     if file
       continue
     endif
-    exe 'echo "[java-complete] load ' . substitute(file, '^.*\','','') . '"'
-    redraw
+    call s:msg('load ' . substitute(file, '^.*\','',''))
     exe 'so ' . file
   endfor
-  echo '[java-complete] loaded!'
+  call s:msg('loadded')
   call remove(g:javaapi#delay_dirs, a:sub)
 endfunction
 
@@ -1039,8 +1118,7 @@ if !exists('s:dictionary_loaded')
     if file
       continue
     endif
-    exe 'echo "[java-complete] load ' . substitute(file, '^.*\','','') . '"'
-    redraw
+    call s:msg('load ' . substitute(file, '^.*\','',''))
     exe 'so ' . file
   endfor
   echo '[java-complete] loaded!'
