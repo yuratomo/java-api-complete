@@ -46,6 +46,9 @@ Command
 
     :JavaApiLoad [ java-api-javax | java-api-org | java-api-sun | java-api-servlet2.3 | java-api-android ]
 
+###:JavaApiLoadFromTag
+
+    :JavaApiLoadFromTag
 
 namespaces
 ----------
