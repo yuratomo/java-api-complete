@@ -832,10 +832,19 @@ function! javaapi#checkLineForRef()
   endif
 endfunction
 
+function! javaapi#reshowRef()
+  if exists("b:ref")
+    if b:ref.line == line('.')
+      call javaapi#showRef()
+    endif
+  endif
+endfunction
+
 function! javaapi#clearRef()
   let &l:statusline = g:javaapi#statusline
   augroup javaapi
     au!
+    au InsertEnter  <buffer> call javaapi#reshowRef()
   augroup END
 endfunction
 
