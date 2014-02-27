@@ -330,7 +330,7 @@ call javaapi#class('SocketOutputStream', 'FileOutputStream', [
   \ javaapi#method(0,0,'finalize(', ')', 'void'),
   \ ])
 
-call javaapi#class('StandardProtocolFamily', 'StandardProtocolFamily>', [
+call javaapi#class('StandardProtocolFamily', 'StandardProtocolFamily', [
   \ javaapi#field(1,1,'INET', 'StandardProtocolFamily'),
   \ javaapi#field(1,1,'INET6', 'StandardProtocolFamily'),
   \ javaapi#method(1,1,'values(', ')', 'StandardProtocolFamily[]'),

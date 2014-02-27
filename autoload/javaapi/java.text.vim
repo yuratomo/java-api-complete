@@ -145,7 +145,7 @@ call javaapi#class('CollationElementIterator', '', [
   \ javaapi#method(0,1,'setText(', 'CharacterIterator)', 'void'),
   \ ])
 
-call javaapi#class('CollationKey', 'CollationKey>', [
+call javaapi#class('CollationKey', 'CollationKey', [
   \ javaapi#method(0,1,'compareTo(', 'CollationKey)', 'int'),
   \ javaapi#method(0,1,'getSourceString(', ')', 'String'),
   \ javaapi#method(0,1,'toByteArray(', ')', 'byte[]'),

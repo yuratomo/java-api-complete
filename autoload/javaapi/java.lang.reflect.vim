@@ -18,7 +18,7 @@ call javaapi#interface('ParameterizedType', 'Type', [
   \ javaapi#method(0,1,'getOwnerType(', ')', 'Type'),
   \ ])
 
-call javaapi#interface('TypeVariable<D', 'GenericDeclaration>', [
+call javaapi#interface('TypeVariable<D', 'GenericDeclaration', [
   \ javaapi#method(0,1,'getBounds(', ')', 'Type[]'),
   \ javaapi#method(0,1,'getGenericDeclaration(', ')', 'D'),
   \ javaapi#method(0,1,'getName(', ')', 'String'),

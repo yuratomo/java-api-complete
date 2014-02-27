@@ -137,7 +137,7 @@ call javaapi#class('ProcessBuilder', '', [
   \ javaapi#method(0,1,'start(', ') throws IOException', 'Process'),
   \ ])
 
-call javaapi#class('ProcessEnvironment', 'String>', [
+call javaapi#class('ProcessEnvironment', 'String', [
   \ javaapi#method(0,1,'put(', 'String, String)', 'String'),
   \ javaapi#method(0,1,'get(', 'Object)', 'String'),
   \ javaapi#method(0,1,'containsKey(', 'Object)', 'boolean'),
@@ -500,7 +500,7 @@ call javaapi#namespace('java.lang')
 call javaapi#class('StringCoding', '', [
   \ ])
 
-call javaapi#class('SystemClassLoaderAction', 'ClassLoader>', [
+call javaapi#class('SystemClassLoaderAction', 'ClassLoader', [
   \ javaapi#method(0,1,'run(', ') throws Exception', 'ClassLoader'),
   \ javaapi#method(0,1,'run(', ') throws Exception', 'Object'),
   \ ])
@@ -998,7 +998,7 @@ call javaapi#class('Float', 'Number', [
   \ javaapi#method(0,1,'compareTo(', 'Object)', 'int'),
   \ ])
 
-call javaapi#class('Character', 'Character>', [
+call javaapi#class('Character', 'Character', [
   \ javaapi#field(1,1,'MIN_RADIX', 'int'),
   \ javaapi#field(1,1,'MAX_RADIX', 'int'),
   \ javaapi#field(1,1,'MIN_VALUE', 'char'),
@@ -1153,7 +1153,7 @@ call javaapi#class('Character', 'Character>', [
   \ javaapi#method(0,1,'compareTo(', 'Object)', 'int'),
   \ ])
 
-call javaapi#class('Boolean', 'Boolean>', [
+call javaapi#class('Boolean', 'Boolean', [
   \ javaapi#field(1,1,'TRUE', 'Boolean'),
   \ javaapi#field(1,1,'FALSE', 'Boolean'),
   \ javaapi#field(1,1,'TYPE', 'Boolean>'),

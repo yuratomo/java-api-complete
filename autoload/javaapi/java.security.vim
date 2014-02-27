@@ -59,7 +59,7 @@ call javaapi#class('CodeSigner', 'Serializable', [
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('CryptoPrimitive', 'CryptoPrimitive>', [
+call javaapi#class('CryptoPrimitive', 'CryptoPrimitive', [
   \ javaapi#field(1,1,'MESSAGE_DIGEST', 'CryptoPrimitive'),
   \ javaapi#field(1,1,'SECURE_RANDOM', 'CryptoPrimitive'),
   \ javaapi#field(1,1,'BLOCK_CIPHER', 'CryptoPrimitive'),
@@ -380,7 +380,7 @@ call javaapi#class('UnresolvedPermissionCollection', 'PermissionCollection', [
 
 call javaapi#namespace('java.security')
 
-call javaapi#class('PermissionsEnumerator', 'Permission>', [
+call javaapi#class('PermissionsEnumerator', 'Permission', [
   \ javaapi#method(0,1,'hasMoreElements(', ')', 'boolean'),
   \ javaapi#method(0,1,'nextElement(', ')', 'Permission'),
   \ javaapi#method(0,1,'nextElement(', ')', 'Object'),

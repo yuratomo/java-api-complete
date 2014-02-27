@@ -122,7 +122,7 @@ call javaapi#class('CharsetEncoder', '', [
 
 call javaapi#namespace('java.nio.charset')
 
-call javaapi#class('Charset', 'Charset>', [
+call javaapi#class('Charset', 'Charset', [
   \ javaapi#method(1,1,'isSupported(', 'String)', 'boolean'),
   \ javaapi#method(1,1,'forName(', 'String)', 'Charset'),
   \ javaapi#method(1,1,'availableCharsets(', ')', 'Charset>'),

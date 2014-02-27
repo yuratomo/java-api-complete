@@ -158,7 +158,7 @@ call javaapi#interface('CallableStatement', 'PreparedStatement', [
   \ javaapi#method(0,1,'getObject(', 'String, Class<T>) throws SQLException', 'T'),
   \ ])
 
-call javaapi#class('ClientInfoStatus', 'ClientInfoStatus>', [
+call javaapi#class('ClientInfoStatus', 'ClientInfoStatus', [
   \ javaapi#field(1,1,'REASON_UNKNOWN', 'ClientInfoStatus'),
   \ javaapi#field(1,1,'REASON_UNKNOWN_PROPERTY', 'ClientInfoStatus'),
   \ javaapi#field(1,1,'REASON_VALUE_INVALID', 'ClientInfoStatus'),
@@ -627,7 +627,7 @@ call javaapi#interface('PreparedStatement', 'Statement', [
   \ javaapi#method(0,1,'setNClob(', 'int, Reader) throws SQLException', 'void'),
   \ ])
 
-call javaapi#class('PseudoColumnUsage', 'PseudoColumnUsage>', [
+call javaapi#class('PseudoColumnUsage', 'PseudoColumnUsage', [
   \ javaapi#field(1,1,'SELECT_LIST_ONLY', 'PseudoColumnUsage'),
   \ javaapi#field(1,1,'WHERE_CLAUSE_ONLY', 'PseudoColumnUsage'),
   \ javaapi#field(1,1,'NO_USAGE_RESTRICTIONS', 'PseudoColumnUsage'),
@@ -879,7 +879,7 @@ call javaapi#interface('RowId', '', [
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
   \ ])
 
-call javaapi#class('RowIdLifetime', 'RowIdLifetime>', [
+call javaapi#class('RowIdLifetime', 'RowIdLifetime', [
   \ javaapi#field(1,1,'ROWID_UNSUPPORTED', 'RowIdLifetime'),
   \ javaapi#field(1,1,'ROWID_VALID_OTHER', 'RowIdLifetime'),
   \ javaapi#field(1,1,'ROWID_VALID_SESSION', 'RowIdLifetime'),

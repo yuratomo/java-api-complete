@@ -468,7 +468,7 @@ call javaapi#class('TooManyListenersException', 'Exception', [
   \ javaapi#method(0,1,'TooManyListenersException(', 'String)', ''),
   \ ])
 
-call javaapi#class('UUID', 'UUID>', [
+call javaapi#class('UUID', 'UUID', [
   \ javaapi#method(0,1,'UUID(', 'long, long)', ''),
   \ javaapi#method(1,1,'randomUUID(', ')', 'UUID'),
   \ javaapi#method(1,1,'nameUUIDFromBytes(', 'byte[])', 'UUID'),
@@ -599,7 +599,7 @@ call javaapi#class('GregorianCalendar', 'Calendar', [
   \ javaapi#method(0,0,'computeTime(', ')', 'void'),
   \ ])
 
-call javaapi#class('Calendar', 'Calendar>', [
+call javaapi#class('Calendar', 'Calendar', [
   \ javaapi#field(1,1,'ERA', 'int'),
   \ javaapi#field(1,1,'YEAR', 'int'),
   \ javaapi#field(1,1,'MONTH', 'int'),
@@ -794,7 +794,7 @@ call javaapi#class('TimeZone', 'Cloneable', [
 
 call javaapi#namespace('java.util')
 
-call javaapi#class('Date', 'Date>', [
+call javaapi#class('Date', 'Date', [
   \ javaapi#method(0,1,'Date(', ')', ''),
   \ javaapi#method(0,1,'Date(', 'long)', ''),
   \ javaapi#method(0,1,'Date(', 'int, int, int)', ''),
@@ -833,7 +833,7 @@ call javaapi#class('Date', 'Date>', [
 
 call javaapi#namespace('java.util')
 
-call javaapi#class('EventListenerProxy<T', 'EventListener>', [
+call javaapi#class('EventListenerProxy<T', 'EventListener', [
   \ javaapi#method(0,1,'EventListenerProxy(', 'T)', ''),
   \ javaapi#method(0,1,'getListener(', ')', 'T'),
   \ ])
@@ -1308,7 +1308,7 @@ call javaapi#class('Locale', 'Serializable', [
 
 call javaapi#namespace('java.util')
 
-call javaapi#class('StringTokenizer', 'Object>', [
+call javaapi#class('StringTokenizer', 'Object', [
   \ javaapi#method(0,1,'StringTokenizer(', 'String, String, boolean)', ''),
   \ javaapi#method(0,1,'StringTokenizer(', 'String, String)', ''),
   \ javaapi#method(0,1,'StringTokenizer(', 'String)', ''),
@@ -1868,7 +1868,7 @@ call javaapi#class('Hashtable<K,V>', 'Dictionary<K,V>', [
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
   \ ])
 
-call javaapi#class('Properties', 'Object>', [
+call javaapi#class('Properties', 'Object', [
   \ javaapi#field(0,0,'defaults', 'Properties'),
   \ javaapi#method(0,1,'Properties(', ')', ''),
   \ javaapi#method(0,1,'Properties(', 'Properties)', ''),

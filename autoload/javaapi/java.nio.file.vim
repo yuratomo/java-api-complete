@@ -5,7 +5,7 @@ call javaapi#class('AccessDeniedException', 'FileSystemException', [
   \ javaapi#method(0,1,'AccessDeniedException(', 'String, String, String)', ''),
   \ ])
 
-call javaapi#class('AccessMode', 'AccessMode>', [
+call javaapi#class('AccessMode', 'AccessMode', [
   \ javaapi#field(1,1,'READ', 'AccessMode'),
   \ javaapi#field(1,1,'WRITE', 'AccessMode'),
   \ javaapi#field(1,1,'EXECUTE', 'AccessMode'),
@@ -118,13 +118,13 @@ call javaapi#class('FileSystems', '', [
 call javaapi#class('FileTreeWalker', '', [
   \ ])
 
-call javaapi#class('FileVisitOption', 'FileVisitOption>', [
+call javaapi#class('FileVisitOption', 'FileVisitOption', [
   \ javaapi#field(1,1,'FOLLOW_LINKS', 'FileVisitOption'),
   \ javaapi#method(1,1,'values(', ')', 'FileVisitOption[]'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'FileVisitOption'),
   \ ])
 
-call javaapi#class('FileVisitResult', 'FileVisitResult>', [
+call javaapi#class('FileVisitResult', 'FileVisitResult', [
   \ javaapi#field(1,1,'CONTINUE', 'FileVisitResult'),
   \ javaapi#field(1,1,'TERMINATE', 'FileVisitResult'),
   \ javaapi#field(1,1,'SKIP_SUBTREE', 'FileVisitResult'),
@@ -207,7 +207,7 @@ call javaapi#class('InvalidPathException', 'IllegalArgumentException', [
   \ javaapi#method(0,1,'getMessage(', ')', 'String'),
   \ ])
 
-call javaapi#class('LinkOption', 'LinkOption>', [
+call javaapi#class('LinkOption', 'LinkOption', [
   \ javaapi#field(1,1,'NOFOLLOW_LINKS', 'LinkOption'),
   \ javaapi#method(1,1,'values(', ')', 'LinkOption[]'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'LinkOption'),
@@ -308,7 +308,7 @@ call javaapi#class('SimpleFileVisitor<T>', 'FileVisitor<T>', [
   \ javaapi#method(0,1,'postVisitDirectory(', 'T, IOException) throws IOException', 'FileVisitResult'),
   \ ])
 
-call javaapi#class('StandardCopyOption', 'StandardCopyOption>', [
+call javaapi#class('StandardCopyOption', 'StandardCopyOption', [
   \ javaapi#field(1,1,'REPLACE_EXISTING', 'StandardCopyOption'),
   \ javaapi#field(1,1,'COPY_ATTRIBUTES', 'StandardCopyOption'),
   \ javaapi#field(1,1,'ATOMIC_MOVE', 'StandardCopyOption'),
@@ -316,7 +316,7 @@ call javaapi#class('StandardCopyOption', 'StandardCopyOption>', [
   \ javaapi#method(1,1,'valueOf(', 'String)', 'StandardCopyOption'),
   \ ])
 
-call javaapi#class('StandardOpenOption', 'StandardOpenOption>', [
+call javaapi#class('StandardOpenOption', 'StandardOpenOption', [
   \ javaapi#field(1,1,'READ', 'StandardOpenOption'),
   \ javaapi#field(1,1,'WRITE', 'StandardOpenOption'),
   \ javaapi#field(1,1,'APPEND', 'StandardOpenOption'),

@@ -180,7 +180,7 @@ call javaapi#class('BigInteger', 'Number', [
 
 call javaapi#namespace('java.math')
 
-call javaapi#class('RoundingMode', 'RoundingMode>', [
+call javaapi#class('RoundingMode', 'RoundingMode', [
   \ javaapi#field(1,1,'UP', 'RoundingMode'),
   \ javaapi#field(1,1,'DOWN', 'RoundingMode'),
   \ javaapi#field(1,1,'CEILING', 'RoundingMode'),

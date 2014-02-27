@@ -957,7 +957,7 @@ call javaapi#class('FileSystem', '', [
   \ javaapi#method(0,1,'hashCode(', 'File)', 'int'),
   \ ])
 
-call javaapi#class('File', 'File>', [
+call javaapi#class('File', 'File', [
   \ javaapi#field(1,1,'separatorChar', 'char'),
   \ javaapi#field(1,1,'separator', 'String'),
   \ javaapi#field(1,1,'pathSeparatorChar', 'char'),
@@ -1235,7 +1235,7 @@ call javaapi#class('FileInputStream', 'InputStream', [
 
 call javaapi#namespace('java.io')
 
-call javaapi#class('ObjectStreamField', 'Object>', [
+call javaapi#class('ObjectStreamField', 'Object', [
   \ javaapi#method(0,1,'ObjectStreamField(', 'String, Class<?>)', ''),
   \ javaapi#method(0,1,'ObjectStreamField(', 'String, Class<?>, boolean)', ''),
   \ javaapi#method(0,1,'getName(', ')', 'String'),

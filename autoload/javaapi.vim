@@ -560,14 +560,16 @@ endfunction
 
 let s:class = {}
 function! javaapi#class(name, extend, members)
-  let s:class[ a:name ] = {
+  let extend = substitute(a:extend, '<.*', '', '')
+  let name = substitute(a:name, '<.*', '', '')
+  let s:class[ name ] = {
     \ 'name'   : a:name,
     \ 'kind'   : 't',
-    \ 'extend' : a:extend,
+    \ 'extend' : extend,
     \ 'members': a:members,
     \ }
-  if exists('s:parent') && index(s:parent.members, a:name) == -1
-    call add(s:parent.members, javaapi#field(0, 1, a:name, a:name))
+  if exists('s:parent') && index(s:parent.members, name) == -1
+    call add(s:parent.members, javaapi#field(0, 1, name, name))
   endif
 endfunction
 
@@ -631,11 +633,12 @@ function! s:def_class(name, extend, members)
 endfunction
 
 function! javaapi#method(static, public, name, detail, class)
+  let class = substitute(a:class, '<.*', '', '')
   return {
     \ 'type'   : s:TYPE_METHOD,
     \ 'kind'   : 'f', 
     \ 'name'   : a:name,
-    \ 'class'  : a:class,
+    \ 'class'  : class,
     \ 'static' : a:static,
     \ 'public' : a:public,
     \ 'detail' : a:detail,

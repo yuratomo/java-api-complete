@@ -112,7 +112,7 @@ call javaapi#interface('MemoryPoolMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,1,'isCollectionUsageThresholdSupported(', ')', 'boolean'),
   \ ])
 
-call javaapi#class('MemoryType', 'MemoryType>', [
+call javaapi#class('MemoryType', 'MemoryType', [
   \ javaapi#field(1,1,'HEAP', 'MemoryType'),
   \ javaapi#field(1,1,'NON_HEAP', 'MemoryType'),
   \ javaapi#method(1,1,'values(', ')', 'MemoryType[]'),
@@ -145,7 +145,7 @@ call javaapi#interface('OperatingSystemMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,1,'getSystemLoadAverage(', ')', 'double'),
   \ ])
 
-call javaapi#class('PlatformComponent', 'PlatformComponent>', [
+call javaapi#class('PlatformComponent', 'PlatformComponent', [
   \ javaapi#field(1,1,'CLASS_LOADING', 'PlatformComponent'),
   \ javaapi#field(1,1,'COMPILATION', 'PlatformComponent'),
   \ javaapi#field(1,1,'MEMORY', 'PlatformComponent'),

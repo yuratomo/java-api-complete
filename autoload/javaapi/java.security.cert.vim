@@ -14,7 +14,7 @@ call javaapi#class('CRLException', 'GeneralSecurityException', [
   \ javaapi#method(0,1,'CRLException(', 'Throwable)', ''),
   \ ])
 
-call javaapi#class('CRLReason', 'CRLReason>', [
+call javaapi#class('CRLReason', 'CRLReason', [
   \ javaapi#field(1,1,'UNSPECIFIED', 'CRLReason'),
   \ javaapi#field(1,1,'KEY_COMPROMISE', 'CRLReason'),
   \ javaapi#field(1,1,'CA_COMPROMISE', 'CRLReason'),
@@ -312,7 +312,7 @@ call javaapi#class('PKIXParameters', 'CertPathParameters', [
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('PKIXReason', 'PKIXReason>', [
+call javaapi#class('PKIXReason', 'PKIXReason', [
   \ javaapi#field(1,1,'NAME_CHAINING', 'PKIXReason'),
   \ javaapi#field(1,1,'INVALID_KEY_USAGE', 'PKIXReason'),
   \ javaapi#field(1,1,'INVALID_POLICY', 'PKIXReason'),

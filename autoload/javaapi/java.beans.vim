@@ -68,7 +68,7 @@ call javaapi#class('BeansAppletStub', 'AppletStub', [
   \ javaapi#method(0,1,'appletResize(', 'int, int)', 'void'),
   \ ])
 
-call javaapi#class('ChangeListenerMap<L', 'EventListener>', [
+call javaapi#class('ChangeListenerMap<L', 'EventListener', [
   \ javaapi#method(0,0,'newArray(', 'int)', 'L[]'),
   \ javaapi#method(0,0,'newProxy(', 'String, L)', 'L'),
   \ javaapi#method(0,1,'add(', 'String, L)', 'void'),
@@ -391,7 +391,7 @@ call javaapi#interface('Transient', 'Annotation', [
   \ javaapi#method(0,1,'value(', ')', 'boolean'),
   \ ])
 
-call javaapi#class('VetoableChangeListenerProxy', 'VetoableChangeListener>', [
+call javaapi#class('VetoableChangeListenerProxy', 'VetoableChangeListener', [
   \ javaapi#method(0,1,'VetoableChangeListenerProxy(', 'String, VetoableChangeListener)', ''),
   \ javaapi#method(0,1,'vetoableChange(', 'PropertyChangeEvent) throws PropertyVetoException', 'void'),
   \ javaapi#method(0,1,'getPropertyName(', ')', 'String'),
@@ -637,7 +637,7 @@ call javaapi#interface('VetoableChangeListener', 'EventListener', [
 
 call javaapi#namespace('java.beans')
 
-call javaapi#class('PropertyChangeListenerProxy', 'PropertyChangeListener>', [
+call javaapi#class('PropertyChangeListenerProxy', 'PropertyChangeListener', [
   \ javaapi#method(0,1,'PropertyChangeListenerProxy(', 'String, PropertyChangeListener)', ''),
   \ javaapi#method(0,1,'propertyChange(', 'PropertyChangeEvent)', 'void'),
   \ javaapi#method(0,1,'getPropertyName(', ')', 'String'),

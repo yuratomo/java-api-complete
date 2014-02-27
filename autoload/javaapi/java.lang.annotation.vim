@@ -15,7 +15,7 @@ call javaapi#class('AnnotationTypeMismatchException', 'RuntimeException', [
 call javaapi#interface('Documented', 'Annotation', [
   \ ])
 
-call javaapi#class('ElementType', 'ElementType>', [
+call javaapi#class('ElementType', 'ElementType', [
   \ javaapi#field(1,1,'TYPE', 'ElementType'),
   \ javaapi#field(1,1,'FIELD', 'ElementType'),
   \ javaapi#field(1,1,'METHOD', 'ElementType'),
@@ -41,7 +41,7 @@ call javaapi#interface('Retention', 'Annotation', [
   \ javaapi#method(0,1,'value(', ')', 'RetentionPolicy'),
   \ ])
 
-call javaapi#class('RetentionPolicy', 'RetentionPolicy>', [
+call javaapi#class('RetentionPolicy', 'RetentionPolicy', [
   \ javaapi#field(1,1,'SOURCE', 'RetentionPolicy'),
   \ javaapi#field(1,1,'CLASS', 'RetentionPolicy'),
   \ javaapi#field(1,1,'RUNTIME', 'RetentionPolicy'),

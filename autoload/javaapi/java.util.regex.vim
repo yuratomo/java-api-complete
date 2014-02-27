@@ -8,7 +8,7 @@ call javaapi#class('PatternSyntaxException', 'IllegalArgumentException', [
   \ javaapi#method(0,1,'getMessage(', ')', 'String'),
   \ ])
 
-call javaapi#class('UnicodeProp', 'UnicodeProp>', [
+call javaapi#class('UnicodeProp', 'UnicodeProp', [
   \ javaapi#field(1,1,'ALPHABETIC', 'UnicodeProp'),
   \ javaapi#field(1,1,'LETTER', 'UnicodeProp'),
   \ javaapi#field(1,1,'IDEOGRAPHIC', 'UnicodeProp'),

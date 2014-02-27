@@ -344,7 +344,7 @@ call javaapi#class('CyclicBarrier', '', [
   \ javaapi#method(0,1,'getNumberWaiting(', ')', 'int'),
   \ ])
 
-call javaapi#class('DelayQueue<E', 'Delayed>', [
+call javaapi#class('DelayQueue<E', 'Delayed', [
   \ javaapi#method(0,1,'DelayQueue(', ')', ''),
   \ javaapi#method(0,1,'DelayQueue(', 'Collection<? extends E>)', ''),
   \ javaapi#method(0,1,'add(', 'E)', 'boolean'),
@@ -374,7 +374,7 @@ call javaapi#class('DelayQueue<E', 'Delayed>', [
   \ javaapi#method(0,1,'put(', 'Object) throws InterruptedException', 'void'),
   \ ])
 
-call javaapi#interface('Delayed', 'Delayed>', [
+call javaapi#interface('Delayed', 'Delayed', [
   \ javaapi#method(0,1,'getDelay(', 'TimeUnit)', 'long'),
   \ ])
 
@@ -709,7 +709,7 @@ call javaapi#class('PriorityBlockingQueue<E>', 'AbstractQueue<E>', [
   \ javaapi#method(0,1,'iterator(', ')', 'Iterator<E>'),
   \ ])
 
-call javaapi#class('RecursiveAction', 'Void>', [
+call javaapi#class('RecursiveAction', 'Void', [
   \ javaapi#method(0,1,'RecursiveAction(', ')', ''),
   \ javaapi#method(0,0,'compute(', ')', 'void'),
   \ javaapi#method(0,1,'getRawResult(', ')', 'Void'),
@@ -887,7 +887,7 @@ call javaapi#class('ThreadPoolExecutor', 'AbstractExecutorService', [
   \ javaapi#method(0,0,'terminated(', ')', 'void'),
   \ ])
 
-call javaapi#class('TimeUnit', 'TimeUnit>', [
+call javaapi#class('TimeUnit', 'TimeUnit', [
   \ javaapi#field(1,1,'NANOSECONDS', 'TimeUnit'),
   \ javaapi#field(1,1,'MICROSECONDS', 'TimeUnit'),
   \ javaapi#field(1,1,'MILLISECONDS', 'TimeUnit'),

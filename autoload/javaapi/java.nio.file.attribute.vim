@@ -12,7 +12,7 @@ call javaapi#class('AclEntry', '', [
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('AclEntryFlag', 'AclEntryFlag>', [
+call javaapi#class('AclEntryFlag', 'AclEntryFlag', [
   \ javaapi#field(1,1,'FILE_INHERIT', 'AclEntryFlag'),
   \ javaapi#field(1,1,'DIRECTORY_INHERIT', 'AclEntryFlag'),
   \ javaapi#field(1,1,'NO_PROPAGATE_INHERIT', 'AclEntryFlag'),
@@ -21,7 +21,7 @@ call javaapi#class('AclEntryFlag', 'AclEntryFlag>', [
   \ javaapi#method(1,1,'valueOf(', 'String)', 'AclEntryFlag'),
   \ ])
 
-call javaapi#class('AclEntryPermission', 'AclEntryPermission>', [
+call javaapi#class('AclEntryPermission', 'AclEntryPermission', [
   \ javaapi#field(1,1,'READ_DATA', 'AclEntryPermission'),
   \ javaapi#field(1,1,'WRITE_DATA', 'AclEntryPermission'),
   \ javaapi#field(1,1,'APPEND_DATA', 'AclEntryPermission'),
@@ -43,7 +43,7 @@ call javaapi#class('AclEntryPermission', 'AclEntryPermission>', [
   \ javaapi#method(1,1,'valueOf(', 'String)', 'AclEntryPermission'),
   \ ])
 
-call javaapi#class('AclEntryType', 'AclEntryType>', [
+call javaapi#class('AclEntryType', 'AclEntryType', [
   \ javaapi#field(1,1,'ALLOW', 'AclEntryType'),
   \ javaapi#field(1,1,'DENY', 'AclEntryType'),
   \ javaapi#field(1,1,'AUDIT', 'AclEntryType'),
@@ -113,7 +113,7 @@ call javaapi#interface('FileOwnerAttributeView', 'FileAttributeView', [
 call javaapi#interface('FileStoreAttributeView', 'AttributeView', [
   \ ])
 
-call javaapi#class('FileTime', 'FileTime>', [
+call javaapi#class('FileTime', 'FileTime', [
   \ javaapi#method(1,1,'from(', 'long, TimeUnit)', 'FileTime'),
   \ javaapi#method(1,1,'fromMillis(', 'long)', 'FileTime'),
   \ javaapi#method(0,1,'to(', 'TimeUnit)', 'long'),
@@ -141,7 +141,7 @@ call javaapi#interface('PosixFileAttributes', 'BasicFileAttributes', [
   \ javaapi#method(0,1,'permissions(', ')', 'PosixFilePermission>'),
   \ ])
 
-call javaapi#class('PosixFilePermission', 'PosixFilePermission>', [
+call javaapi#class('PosixFilePermission', 'PosixFilePermission', [
   \ javaapi#field(1,1,'OWNER_READ', 'PosixFilePermission'),
   \ javaapi#field(1,1,'OWNER_WRITE', 'PosixFilePermission'),
   \ javaapi#field(1,1,'OWNER_EXECUTE', 'PosixFilePermission'),
