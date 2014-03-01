@@ -419,10 +419,6 @@ call javaapi#interface('Visibility', '', [
   \ javaapi#method(0,1,'avoidingGui(', ')', 'boolean'),
   \ ])
 
-call javaapi#T('Object)', '', [
-  \ javaapi#method(0,1,'put(', 'Object, T)', 'T'),
-  \ ])
-
 call javaapi#class('XMLDecoder', 'AutoCloseable', [
   \ javaapi#method(0,1,'XMLDecoder(', 'InputStream)', ''),
   \ javaapi#method(0,1,'XMLDecoder(', 'InputStream, Object)', ''),
