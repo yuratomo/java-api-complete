@@ -23,13 +23,13 @@ call javaapi#interface('AppletContext', '', [
   \ javaapi#method(0,1,'getAudioClip(', 'URL)', 'AudioClip'),
   \ javaapi#method(0,1,'getImage(', 'URL)', 'Image'),
   \ javaapi#method(0,1,'getApplet(', 'String)', 'Applet'),
-  \ javaapi#method(0,1,'getApplets(', ')', 'Applet>'),
+  \ javaapi#method(0,1,'getApplets(', ')', 'Enumeration'),
   \ javaapi#method(0,1,'showDocument(', 'URL)', 'void'),
   \ javaapi#method(0,1,'showDocument(', 'URL, String)', 'void'),
   \ javaapi#method(0,1,'showStatus(', 'String)', 'void'),
   \ javaapi#method(0,1,'setStream(', 'String, InputStream) throws IOException', 'void'),
   \ javaapi#method(0,1,'getStream(', 'String)', 'InputStream'),
-  \ javaapi#method(0,1,'getStreamKeys(', ')', 'String>'),
+  \ javaapi#method(0,1,'getStreamKeys(', ')', 'Iterator'),
   \ ])
 
 call javaapi#namespace('java.applet')
@@ -53,7 +53,7 @@ call javaapi#class('Applet', 'Panel', [
   \ javaapi#method(0,1,'getAudioClip(', 'URL, String)', 'AudioClip'),
   \ javaapi#method(0,1,'getAppletInfo(', ')', 'String'),
   \ javaapi#method(0,1,'getLocale(', ')', 'Locale'),
-  \ javaapi#method(0,1,'getParameterInfo(', ')', 'String[][]'),
+  \ javaapi#method(0,1,'getParameterInfo(', ')', 'String[]'),
   \ javaapi#method(0,1,'play(', 'URL)', 'void'),
   \ javaapi#method(0,1,'play(', 'URL, String)', 'void'),
   \ javaapi#method(0,1,'init(', ')', 'void'),

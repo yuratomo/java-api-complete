@@ -7,8 +7,8 @@ call javaapi#class('ExportException', 'RemoteException', [
 
 call javaapi#interface('LoaderHandler', '', [
   \ javaapi#field(1,1,'packagePrefix', 'String'),
-  \ javaapi#method(0,1,'loadClass(', 'String) throws MalformedURLException, ClassNotFoundException', 'Class<?>'),
-  \ javaapi#method(0,1,'loadClass(', 'URL, String) throws MalformedURLException, ClassNotFoundException', 'Class<?>'),
+  \ javaapi#method(0,1,'loadClass(', 'String) throws MalformedURLException, ClassNotFoundException', 'Class'),
+  \ javaapi#method(0,1,'loadClass(', 'URL, String) throws MalformedURLException, ClassNotFoundException', 'Class'),
   \ javaapi#method(0,1,'getSecurityContext(', 'ClassLoader)', 'Object'),
   \ ])
 
@@ -47,11 +47,11 @@ call javaapi#class('Operation', '', [
   \ ])
 
 call javaapi#class('RMIClassLoader', '', [
-  \ javaapi#method(1,1,'loadClass(', 'String) throws MalformedURLException, ClassNotFoundException', 'Class<?>'),
-  \ javaapi#method(1,1,'loadClass(', 'URL, String) throws MalformedURLException, ClassNotFoundException', 'Class<?>'),
-  \ javaapi#method(1,1,'loadClass(', 'String, String) throws MalformedURLException, ClassNotFoundException', 'Class<?>'),
-  \ javaapi#method(1,1,'loadClass(', 'String, String, ClassLoader) throws MalformedURLException, ClassNotFoundException', 'Class<?>'),
-  \ javaapi#method(1,1,'loadProxyClass(', 'String, String[], ClassLoader) throws ClassNotFoundException, MalformedURLException', 'Class<?>'),
+  \ javaapi#method(1,1,'loadClass(', 'String) throws MalformedURLException, ClassNotFoundException', 'Class'),
+  \ javaapi#method(1,1,'loadClass(', 'URL, String) throws MalformedURLException, ClassNotFoundException', 'Class'),
+  \ javaapi#method(1,1,'loadClass(', 'String, String) throws MalformedURLException, ClassNotFoundException', 'Class'),
+  \ javaapi#method(1,1,'loadClass(', 'String, String, ClassLoader) throws MalformedURLException, ClassNotFoundException', 'Class'),
+  \ javaapi#method(1,1,'loadProxyClass(', 'String, String[], ClassLoader) throws ClassNotFoundException, MalformedURLException', 'Class'),
   \ javaapi#method(1,1,'getClassLoader(', 'String) throws MalformedURLException, SecurityException', 'ClassLoader'),
   \ javaapi#method(1,1,'getClassAnnotation(', 'Class<?>)', 'String'),
   \ javaapi#method(1,1,'getDefaultProviderInstance(', ')', 'RMIClassLoaderSpi'),
@@ -60,8 +60,8 @@ call javaapi#class('RMIClassLoader', '', [
 
 call javaapi#class('RMIClassLoaderSpi', '', [
   \ javaapi#method(0,1,'RMIClassLoaderSpi(', ')', ''),
-  \ javaapi#method(0,1,'loadClass(', 'String, String, ClassLoader) throws MalformedURLException, ClassNotFoundException', 'Class<?>'),
-  \ javaapi#method(0,1,'loadProxyClass(', 'String, String[], ClassLoader) throws MalformedURLException, ClassNotFoundException', 'Class<?>'),
+  \ javaapi#method(0,1,'loadClass(', 'String, String, ClassLoader) throws MalformedURLException, ClassNotFoundException', 'Class'),
+  \ javaapi#method(0,1,'loadProxyClass(', 'String, String[], ClassLoader) throws MalformedURLException, ClassNotFoundException', 'Class'),
   \ javaapi#method(0,1,'getClassLoader(', 'String) throws MalformedURLException', 'ClassLoader'),
   \ javaapi#method(0,1,'getClassAnnotation(', 'Class<?>)', 'String'),
   \ ])
@@ -163,7 +163,7 @@ call javaapi#interface('ServerRef', 'RemoteRef', [
 
 call javaapi#interface('Skeleton', '', [
   \ javaapi#method(0,1,'dispatch(', 'Remote, RemoteCall, int, long) throws Exception', 'void'),
-  \ javaapi#method(0,1,'getOperations(', ')', 'Operation[]'),
+  \ javaapi#method(0,1,'getOperations(', ')', 'Operation'),
   \ ])
 
 call javaapi#class('SkeletonMismatchException', 'RemoteException', [

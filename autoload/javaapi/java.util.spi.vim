@@ -20,7 +20,7 @@ call javaapi#namespace('java.util.spi')
 
 call javaapi#class('LocaleServiceProvider', '', [
   \ javaapi#method(0,0,'LocaleServiceProvider(', ')', ''),
-  \ javaapi#method(0,1,'getAvailableLocales(', ')', 'Locale[]'),
+  \ javaapi#method(0,1,'getAvailableLocales(', ')', 'Locale'),
   \ ])
 
 call javaapi#class('TimeZoneNameProvider', 'LocaleServiceProvider', [

@@ -16,7 +16,7 @@ call javaapi#interface('Registry', 'Remote', [
   \ javaapi#method(0,1,'bind(', 'String, Remote) throws RemoteException, AlreadyBoundException, AccessException', 'void'),
   \ javaapi#method(0,1,'unbind(', 'String) throws RemoteException, NotBoundException, AccessException', 'void'),
   \ javaapi#method(0,1,'rebind(', 'String, Remote) throws RemoteException, AccessException', 'void'),
-  \ javaapi#method(0,1,'list(', ') throws RemoteException, AccessException', 'String[]'),
+  \ javaapi#method(0,1,'list(', ') throws RemoteException, AccessException', 'String'),
   \ ])
 
 call javaapi#interface('RegistryHandler', '', [

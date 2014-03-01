@@ -14,7 +14,7 @@ call javaapi#class('CRLException', 'GeneralSecurityException', [
   \ javaapi#method(0,1,'CRLException(', 'Throwable)', ''),
   \ ])
 
-call javaapi#class('CRLReason', 'CRLReason', [
+call javaapi#class('CRLReason', 'Enum', [
   \ javaapi#field(1,1,'UNSPECIFIED', 'CRLReason'),
   \ javaapi#field(1,1,'KEY_COMPROMISE', 'CRLReason'),
   \ javaapi#field(1,1,'CA_COMPROMISE', 'CRLReason'),
@@ -26,7 +26,7 @@ call javaapi#class('CRLReason', 'CRLReason', [
   \ javaapi#field(1,1,'REMOVE_FROM_CRL', 'CRLReason'),
   \ javaapi#field(1,1,'PRIVILEGE_WITHDRAWN', 'CRLReason'),
   \ javaapi#field(1,1,'AA_COMPROMISE', 'CRLReason'),
-  \ javaapi#method(1,1,'values(', ')', 'CRLReason[]'),
+  \ javaapi#method(1,1,'values(', ')', 'CRLReason'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'CRLReason'),
   \ ])
 
@@ -38,12 +38,12 @@ call javaapi#interface('CRLSelector', 'Cloneable', [
 call javaapi#class('CertPath', 'Serializable', [
   \ javaapi#method(0,0,'CertPath(', 'String)', ''),
   \ javaapi#method(0,1,'getType(', ')', 'String'),
-  \ javaapi#method(0,1,'getEncodings(', ')', 'String>'),
+  \ javaapi#method(0,1,'getEncodings(', ')', 'Iterator'),
   \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
-  \ javaapi#method(0,1,'getEncoded(', ') throws CertificateEncodingException', 'byte[]'),
-  \ javaapi#method(0,1,'getEncoded(', 'String) throws CertificateEncodingException', 'byte[]'),
+  \ javaapi#method(0,1,'getEncoded(', ') throws CertificateEncodingException', 'byte'),
+  \ javaapi#method(0,1,'getEncoded(', 'String) throws CertificateEncodingException', 'byte'),
   \ javaapi#method(0,1,'getCertificates(', ')', 'Certificate>'),
   \ javaapi#method(0,0,'writeReplace(', ') throws ObjectStreamException', 'Object'),
   \ ])
@@ -179,7 +179,7 @@ call javaapi#class('CertificateFactory', '', [
   \ javaapi#method(0,1,'getProvider(', ')', 'Provider'),
   \ javaapi#method(0,1,'getType(', ')', 'String'),
   \ javaapi#method(0,1,'generateCertificate(', 'InputStream) throws CertificateException', 'Certificate'),
-  \ javaapi#method(0,1,'getCertPathEncodings(', ')', 'String>'),
+  \ javaapi#method(0,1,'getCertPathEncodings(', ')', 'Iterator'),
   \ javaapi#method(0,1,'generateCertPath(', 'InputStream) throws CertificateException', 'CertPath'),
   \ javaapi#method(0,1,'generateCertPath(', 'InputStream, String) throws CertificateException', 'CertPath'),
   \ javaapi#method(0,1,'generateCertPath(', 'List<? extends Certificate>) throws CertificateException', 'CertPath'),
@@ -194,7 +194,7 @@ call javaapi#class('CertificateFactorySpi', '', [
   \ javaapi#method(0,1,'engineGenerateCertPath(', 'InputStream) throws CertificateException', 'CertPath'),
   \ javaapi#method(0,1,'engineGenerateCertPath(', 'InputStream, String) throws CertificateException', 'CertPath'),
   \ javaapi#method(0,1,'engineGenerateCertPath(', 'List<? extends Certificate>) throws CertificateException', 'CertPath'),
-  \ javaapi#method(0,1,'engineGetCertPathEncodings(', ')', 'String>'),
+  \ javaapi#method(0,1,'engineGetCertPathEncodings(', ')', 'Iterator'),
   \ javaapi#method(0,1,'engineGenerateCertificates(', 'InputStream) throws CertificateException', 'Certificate>'),
   \ javaapi#method(0,1,'engineGenerateCRL(', 'InputStream) throws CRLException', 'CRL'),
   \ javaapi#method(0,1,'engineGenerateCRLs(', 'InputStream) throws CRLException', 'CRL>'),
@@ -225,7 +225,7 @@ call javaapi#class('CertificateRevokedException', 'CertificateException', [
 call javaapi#class('CollectionCertStoreParameters', 'CertStoreParameters', [
   \ javaapi#method(0,1,'CollectionCertStoreParameters(', 'Collection<?>)', ''),
   \ javaapi#method(0,1,'CollectionCertStoreParameters(', ')', ''),
-  \ javaapi#method(0,1,'getCollection(', ')', 'Collection<?>'),
+  \ javaapi#method(0,1,'getCollection(', ')', 'Collection'),
   \ javaapi#method(0,1,'clone(', ')', 'Object'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
@@ -233,7 +233,7 @@ call javaapi#class('CollectionCertStoreParameters', 'CertStoreParameters', [
 call javaapi#interface('Extension', '', [
   \ javaapi#method(0,1,'getId(', ')', 'String'),
   \ javaapi#method(0,1,'isCritical(', ')', 'boolean'),
-  \ javaapi#method(0,1,'getValue(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'getValue(', ')', 'byte'),
   \ javaapi#method(0,1,'encode(', 'OutputStream) throws IOException', 'void'),
   \ ])
 
@@ -265,7 +265,7 @@ call javaapi#class('PKIXCertPathChecker', 'Cloneable', [
   \ javaapi#method(0,0,'PKIXCertPathChecker(', ')', ''),
   \ javaapi#method(0,1,'init(', 'boolean) throws CertPathValidatorException', 'void'),
   \ javaapi#method(0,1,'isForwardCheckingSupported(', ')', 'boolean'),
-  \ javaapi#method(0,1,'getSupportedExtensions(', ')', 'String>'),
+  \ javaapi#method(0,1,'getSupportedExtensions(', ')', 'Set'),
   \ javaapi#method(0,1,'check(', 'Certificate, Collection<String>) throws CertPathValidatorException', 'void'),
   \ javaapi#method(0,1,'clone(', ')', 'Object'),
   \ ])
@@ -282,13 +282,13 @@ call javaapi#class('PKIXCertPathValidatorResult', 'CertPathValidatorResult', [
 call javaapi#class('PKIXParameters', 'CertPathParameters', [
   \ javaapi#method(0,1,'PKIXParameters(', 'Set<TrustAnchor>) throws InvalidAlgorithmParameterException', ''),
   \ javaapi#method(0,1,'PKIXParameters(', 'KeyStore) throws KeyStoreException, InvalidAlgorithmParameterException', ''),
-  \ javaapi#method(0,1,'getTrustAnchors(', ')', 'TrustAnchor>'),
+  \ javaapi#method(0,1,'getTrustAnchors(', ')', 'Set'),
   \ javaapi#method(0,1,'setTrustAnchors(', 'Set<TrustAnchor>) throws InvalidAlgorithmParameterException', 'void'),
-  \ javaapi#method(0,1,'getInitialPolicies(', ')', 'String>'),
+  \ javaapi#method(0,1,'getInitialPolicies(', ')', 'Set'),
   \ javaapi#method(0,1,'setInitialPolicies(', 'Set<String>)', 'void'),
   \ javaapi#method(0,1,'setCertStores(', 'List<CertStore>)', 'void'),
   \ javaapi#method(0,1,'addCertStore(', 'CertStore)', 'void'),
-  \ javaapi#method(0,1,'getCertStores(', ')', 'CertStore>'),
+  \ javaapi#method(0,1,'getCertStores(', ')', 'List'),
   \ javaapi#method(0,1,'setRevocationEnabled(', 'boolean)', 'void'),
   \ javaapi#method(0,1,'isRevocationEnabled(', ')', 'boolean'),
   \ javaapi#method(0,1,'setExplicitPolicyRequired(', 'boolean)', 'void'),
@@ -302,7 +302,7 @@ call javaapi#class('PKIXParameters', 'CertPathParameters', [
   \ javaapi#method(0,1,'getDate(', ')', 'Date'),
   \ javaapi#method(0,1,'setDate(', 'Date)', 'void'),
   \ javaapi#method(0,1,'setCertPathCheckers(', 'List<PKIXCertPathChecker>)', 'void'),
-  \ javaapi#method(0,1,'getCertPathCheckers(', ')', 'PKIXCertPathChecker>'),
+  \ javaapi#method(0,1,'getCertPathCheckers(', ')', 'List'),
   \ javaapi#method(0,1,'addCertPathChecker(', 'PKIXCertPathChecker)', 'void'),
   \ javaapi#method(0,1,'getSigProvider(', ')', 'String'),
   \ javaapi#method(0,1,'setSigProvider(', 'String)', 'void'),
@@ -312,7 +312,7 @@ call javaapi#class('PKIXParameters', 'CertPathParameters', [
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('PKIXReason', 'PKIXReason', [
+call javaapi#class('PKIXReason', 'Enum', [
   \ javaapi#field(1,1,'NAME_CHAINING', 'PKIXReason'),
   \ javaapi#field(1,1,'INVALID_KEY_USAGE', 'PKIXReason'),
   \ javaapi#field(1,1,'INVALID_POLICY', 'PKIXReason'),
@@ -321,7 +321,7 @@ call javaapi#class('PKIXReason', 'PKIXReason', [
   \ javaapi#field(1,1,'NOT_CA_CERT', 'PKIXReason'),
   \ javaapi#field(1,1,'PATH_TOO_LONG', 'PKIXReason'),
   \ javaapi#field(1,1,'INVALID_NAME', 'PKIXReason'),
-  \ javaapi#method(1,1,'values(', ')', 'PKIXReason[]'),
+  \ javaapi#method(1,1,'values(', ')', 'PKIXReason'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'PKIXReason'),
   \ ])
 
@@ -331,15 +331,15 @@ call javaapi#interface('PolicyNode', '', [
   \ javaapi#method(0,1,'getDepth(', ')', 'int'),
   \ javaapi#method(0,1,'getValidPolicy(', ')', 'String'),
   \ javaapi#method(0,1,'getPolicyQualifiers(', ')', 'PolicyQualifierInfo>'),
-  \ javaapi#method(0,1,'getExpectedPolicies(', ')', 'String>'),
+  \ javaapi#method(0,1,'getExpectedPolicies(', ')', 'Set'),
   \ javaapi#method(0,1,'isCritical(', ')', 'boolean'),
   \ ])
 
 call javaapi#class('PolicyQualifierInfo', '', [
   \ javaapi#method(0,1,'PolicyQualifierInfo(', 'byte[]) throws IOException', ''),
   \ javaapi#method(0,1,'getPolicyQualifierId(', ')', 'String'),
-  \ javaapi#method(0,1,'getEncoded(', ')', 'byte[]'),
-  \ javaapi#method(0,1,'getPolicyQualifier(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'getEncoded(', ')', 'byte'),
+  \ javaapi#method(0,1,'getPolicyQualifier(', ')', 'byte'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
@@ -351,7 +351,7 @@ call javaapi#class('TrustAnchor', '', [
   \ javaapi#method(0,1,'getCA(', ')', 'X500Principal'),
   \ javaapi#method(0,1,'getCAName(', ')', 'String'),
   \ javaapi#method(0,1,'getCAPublicKey(', ')', 'PublicKey'),
-  \ javaapi#method(0,1,'getNameConstraints(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'getNameConstraints(', ')', 'byte'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
@@ -359,7 +359,7 @@ call javaapi#class('X509CRL', 'CRL', [
   \ javaapi#method(0,0,'X509CRL(', ')', ''),
   \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
-  \ javaapi#method(0,1,'getEncoded(', ') throws CRLException', 'byte[]'),
+  \ javaapi#method(0,1,'getEncoded(', ') throws CRLException', 'byte'),
   \ javaapi#method(0,1,'verify(', 'PublicKey) throws CRLException, NoSuchAlgorithmException, InvalidKeyException, NoSuchProviderException, SignatureException', 'void'),
   \ javaapi#method(0,1,'verify(', 'PublicKey, String) throws CRLException, NoSuchAlgorithmException, InvalidKeyException, NoSuchProviderException, SignatureException', 'void'),
   \ javaapi#method(0,1,'getVersion(', ')', 'int'),
@@ -370,18 +370,18 @@ call javaapi#class('X509CRL', 'CRL', [
   \ javaapi#method(0,1,'getRevokedCertificate(', 'BigInteger)', 'X509CRLEntry'),
   \ javaapi#method(0,1,'getRevokedCertificate(', 'X509Certificate)', 'X509CRLEntry'),
   \ javaapi#method(0,1,'getRevokedCertificates(', ')', 'X509CRLEntry>'),
-  \ javaapi#method(0,1,'getTBSCertList(', ') throws CRLException', 'byte[]'),
-  \ javaapi#method(0,1,'getSignature(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'getTBSCertList(', ') throws CRLException', 'byte'),
+  \ javaapi#method(0,1,'getSignature(', ')', 'byte'),
   \ javaapi#method(0,1,'getSigAlgName(', ')', 'String'),
   \ javaapi#method(0,1,'getSigAlgOID(', ')', 'String'),
-  \ javaapi#method(0,1,'getSigAlgParams(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'getSigAlgParams(', ')', 'byte'),
   \ ])
 
 call javaapi#class('X509CRLEntry', 'X509Extension', [
   \ javaapi#method(0,1,'X509CRLEntry(', ')', ''),
   \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
-  \ javaapi#method(0,1,'getEncoded(', ') throws CRLException', 'byte[]'),
+  \ javaapi#method(0,1,'getEncoded(', ') throws CRLException', 'byte'),
   \ javaapi#method(0,1,'getSerialNumber(', ')', 'BigInteger'),
   \ javaapi#method(0,1,'getCertificateIssuer(', ')', 'X500Principal'),
   \ javaapi#method(0,1,'getRevocationDate(', ')', 'Date'),
@@ -401,8 +401,8 @@ call javaapi#class('X509CRLSelector', 'CRLSelector', [
   \ javaapi#method(0,1,'setMaxCRLNumber(', 'BigInteger)', 'void'),
   \ javaapi#method(0,1,'setDateAndTime(', 'Date)', 'void'),
   \ javaapi#method(0,1,'setCertificateChecking(', 'X509Certificate)', 'void'),
-  \ javaapi#method(0,1,'getIssuers(', ')', 'X500Principal>'),
-  \ javaapi#method(0,1,'getIssuerNames(', ')', 'Object>'),
+  \ javaapi#method(0,1,'getIssuers(', ')', 'Collection'),
+  \ javaapi#method(0,1,'getIssuerNames(', ')', 'Collection'),
   \ javaapi#method(0,1,'getMinCRL(', ')', 'BigInteger'),
   \ javaapi#method(0,1,'getMaxCRL(', ')', 'BigInteger'),
   \ javaapi#method(0,1,'getDateAndTime(', ')', 'Date'),
@@ -445,24 +445,24 @@ call javaapi#class('X509CertSelector', 'CertSelector', [
   \ javaapi#method(0,1,'getSerialNumber(', ')', 'BigInteger'),
   \ javaapi#method(0,1,'getIssuer(', ')', 'X500Principal'),
   \ javaapi#method(0,1,'getIssuerAsString(', ')', 'String'),
-  \ javaapi#method(0,1,'getIssuerAsBytes(', ') throws IOException', 'byte[]'),
+  \ javaapi#method(0,1,'getIssuerAsBytes(', ') throws IOException', 'byte'),
   \ javaapi#method(0,1,'getSubject(', ')', 'X500Principal'),
   \ javaapi#method(0,1,'getSubjectAsString(', ')', 'String'),
-  \ javaapi#method(0,1,'getSubjectAsBytes(', ') throws IOException', 'byte[]'),
-  \ javaapi#method(0,1,'getSubjectKeyIdentifier(', ')', 'byte[]'),
-  \ javaapi#method(0,1,'getAuthorityKeyIdentifier(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'getSubjectAsBytes(', ') throws IOException', 'byte'),
+  \ javaapi#method(0,1,'getSubjectKeyIdentifier(', ')', 'byte'),
+  \ javaapi#method(0,1,'getAuthorityKeyIdentifier(', ')', 'byte'),
   \ javaapi#method(0,1,'getCertificateValid(', ')', 'Date'),
   \ javaapi#method(0,1,'getPrivateKeyValid(', ')', 'Date'),
   \ javaapi#method(0,1,'getSubjectPublicKeyAlgID(', ')', 'String'),
   \ javaapi#method(0,1,'getSubjectPublicKey(', ')', 'PublicKey'),
-  \ javaapi#method(0,1,'getKeyUsage(', ')', 'boolean[]'),
-  \ javaapi#method(0,1,'getExtendedKeyUsage(', ')', 'String>'),
+  \ javaapi#method(0,1,'getKeyUsage(', ')', 'boolean'),
+  \ javaapi#method(0,1,'getExtendedKeyUsage(', ')', 'Set'),
   \ javaapi#method(0,1,'getMatchAllSubjectAltNames(', ')', 'boolean'),
-  \ javaapi#method(0,1,'getSubjectAlternativeNames(', ')', 'List<?>>'),
-  \ javaapi#method(0,1,'getNameConstraints(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'getSubjectAlternativeNames(', ')', 'List'),
+  \ javaapi#method(0,1,'getNameConstraints(', ')', 'byte'),
   \ javaapi#method(0,1,'getBasicConstraints(', ')', 'int'),
-  \ javaapi#method(0,1,'getPolicy(', ')', 'String>'),
-  \ javaapi#method(0,1,'getPathToNames(', ')', 'List<?>>'),
+  \ javaapi#method(0,1,'getPolicy(', ')', 'Set'),
+  \ javaapi#method(0,1,'getPathToNames(', ')', 'List'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ javaapi#method(0,1,'match(', 'Certificate)', 'boolean'),
   \ javaapi#method(0,1,'clone(', ')', 'Object'),
@@ -480,25 +480,25 @@ call javaapi#class('X509Certificate', 'Certificate', [
   \ javaapi#method(0,1,'getSubjectX500Principal(', ')', 'X500Principal'),
   \ javaapi#method(0,1,'getNotBefore(', ')', 'Date'),
   \ javaapi#method(0,1,'getNotAfter(', ')', 'Date'),
-  \ javaapi#method(0,1,'getTBSCertificate(', ') throws CertificateEncodingException', 'byte[]'),
-  \ javaapi#method(0,1,'getSignature(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'getTBSCertificate(', ') throws CertificateEncodingException', 'byte'),
+  \ javaapi#method(0,1,'getSignature(', ')', 'byte'),
   \ javaapi#method(0,1,'getSigAlgName(', ')', 'String'),
   \ javaapi#method(0,1,'getSigAlgOID(', ')', 'String'),
-  \ javaapi#method(0,1,'getSigAlgParams(', ')', 'byte[]'),
-  \ javaapi#method(0,1,'getIssuerUniqueID(', ')', 'boolean[]'),
-  \ javaapi#method(0,1,'getSubjectUniqueID(', ')', 'boolean[]'),
-  \ javaapi#method(0,1,'getKeyUsage(', ')', 'boolean[]'),
-  \ javaapi#method(0,1,'getExtendedKeyUsage(', ') throws CertificateParsingException', 'String>'),
+  \ javaapi#method(0,1,'getSigAlgParams(', ')', 'byte'),
+  \ javaapi#method(0,1,'getIssuerUniqueID(', ')', 'boolean'),
+  \ javaapi#method(0,1,'getSubjectUniqueID(', ')', 'boolean'),
+  \ javaapi#method(0,1,'getKeyUsage(', ')', 'boolean'),
+  \ javaapi#method(0,1,'getExtendedKeyUsage(', ') throws CertificateParsingException', 'List'),
   \ javaapi#method(0,1,'getBasicConstraints(', ')', 'int'),
-  \ javaapi#method(0,1,'getSubjectAlternativeNames(', ') throws CertificateParsingException', 'List<?>>'),
-  \ javaapi#method(0,1,'getIssuerAlternativeNames(', ') throws CertificateParsingException', 'List<?>>'),
+  \ javaapi#method(0,1,'getSubjectAlternativeNames(', ') throws CertificateParsingException', 'List'),
+  \ javaapi#method(0,1,'getIssuerAlternativeNames(', ') throws CertificateParsingException', 'List'),
   \ ])
 
 call javaapi#interface('X509Extension', '', [
   \ javaapi#method(0,1,'hasUnsupportedCriticalExtension(', ')', 'boolean'),
-  \ javaapi#method(0,1,'getCriticalExtensionOIDs(', ')', 'String>'),
-  \ javaapi#method(0,1,'getNonCriticalExtensionOIDs(', ')', 'String>'),
-  \ javaapi#method(0,1,'getExtensionValue(', 'String)', 'byte[]'),
+  \ javaapi#method(0,1,'getCriticalExtensionOIDs(', ')', 'Set'),
+  \ javaapi#method(0,1,'getNonCriticalExtensionOIDs(', ')', 'Set'),
+  \ javaapi#method(0,1,'getExtensionValue(', 'String)', 'byte'),
   \ ])
 
 call javaapi#namespace('java.security.cert')
@@ -508,7 +508,7 @@ call javaapi#class('Certificate', 'Serializable', [
   \ javaapi#method(0,1,'getType(', ')', 'String'),
   \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
-  \ javaapi#method(0,1,'getEncoded(', ') throws CertificateEncodingException', 'byte[]'),
+  \ javaapi#method(0,1,'getEncoded(', ') throws CertificateEncodingException', 'byte'),
   \ javaapi#method(0,1,'verify(', 'PublicKey) throws CertificateException, NoSuchAlgorithmException, InvalidKeyException, NoSuchProviderException, SignatureException', 'void'),
   \ javaapi#method(0,1,'verify(', 'PublicKey, String) throws CertificateException, NoSuchAlgorithmException, InvalidKeyException, NoSuchProviderException, SignatureException', 'void'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),

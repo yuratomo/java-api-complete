@@ -4,7 +4,7 @@ call javaapi#interface('DropTargetContextPeer', '', [
   \ javaapi#method(0,1,'setTargetActions(', 'int)', 'void'),
   \ javaapi#method(0,1,'getTargetActions(', ')', 'int'),
   \ javaapi#method(0,1,'getDropTarget(', ')', 'DropTarget'),
-  \ javaapi#method(0,1,'getTransferDataFlavors(', ')', 'DataFlavor[]'),
+  \ javaapi#method(0,1,'getTransferDataFlavors(', ')', 'DataFlavor'),
   \ javaapi#method(0,1,'getTransferable(', ') throws InvalidDnDOperationException', 'Transferable'),
   \ javaapi#method(0,1,'isTransferableJVMLocal(', ')', 'boolean'),
   \ javaapi#method(0,1,'acceptDrag(', 'int)', 'void'),

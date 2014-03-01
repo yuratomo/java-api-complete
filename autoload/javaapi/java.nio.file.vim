@@ -5,11 +5,11 @@ call javaapi#class('AccessDeniedException', 'FileSystemException', [
   \ javaapi#method(0,1,'AccessDeniedException(', 'String, String, String)', ''),
   \ ])
 
-call javaapi#class('AccessMode', 'AccessMode', [
+call javaapi#class('AccessMode', 'Enum', [
   \ javaapi#field(1,1,'READ', 'AccessMode'),
   \ javaapi#field(1,1,'WRITE', 'AccessMode'),
   \ javaapi#field(1,1,'EXECUTE', 'AccessMode'),
-  \ javaapi#method(1,1,'values(', ')', 'AccessMode[]'),
+  \ javaapi#method(1,1,'values(', ')', 'AccessMode'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'AccessMode'),
   \ ])
 
@@ -45,8 +45,8 @@ call javaapi#class('DirectoryNotEmptyException', 'FileSystemException', [
   \ javaapi#method(0,1,'DirectoryNotEmptyException(', 'String)', ''),
   \ ])
 
-call javaapi#interface('DirectoryStream<T>', 'Iterable<T>', [
-  \ javaapi#method(0,1,'iterator(', ')', 'Iterator<T>'),
+call javaapi#interface('DirectoryStream', 'Iterable', [
+  \ javaapi#method(0,1,'iterator(', ')', 'Iterator'),
   \ ])
 
 call javaapi#class('FileAlreadyExistsException', 'FileSystemException', [
@@ -75,9 +75,9 @@ call javaapi#class('FileSystem', 'Closeable', [
   \ javaapi#method(0,1,'isOpen(', ')', 'boolean'),
   \ javaapi#method(0,1,'isReadOnly(', ')', 'boolean'),
   \ javaapi#method(0,1,'getSeparator(', ')', 'String'),
-  \ javaapi#method(0,1,'getRootDirectories(', ')', 'Path>'),
-  \ javaapi#method(0,1,'getFileStores(', ')', 'FileStore>'),
-  \ javaapi#method(0,1,'supportedFileAttributeViews(', ')', 'String>'),
+  \ javaapi#method(0,1,'getRootDirectories(', ')', 'Iterable'),
+  \ javaapi#method(0,1,'getFileStores(', ')', 'Iterable'),
+  \ javaapi#method(0,1,'supportedFileAttributeViews(', ')', 'Set'),
   \ javaapi#method(0,1,'getPath(', 'String, )', 'Path'),
   \ javaapi#method(0,1,'getPathMatcher(', 'String)', 'PathMatcher'),
   \ javaapi#method(0,1,'getUserPrincipalLookupService(', ')', 'UserPrincipalLookupService'),
@@ -118,22 +118,22 @@ call javaapi#class('FileSystems', '', [
 call javaapi#class('FileTreeWalker', '', [
   \ ])
 
-call javaapi#class('FileVisitOption', 'FileVisitOption', [
+call javaapi#class('FileVisitOption', 'Enum', [
   \ javaapi#field(1,1,'FOLLOW_LINKS', 'FileVisitOption'),
-  \ javaapi#method(1,1,'values(', ')', 'FileVisitOption[]'),
+  \ javaapi#method(1,1,'values(', ')', 'FileVisitOption'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'FileVisitOption'),
   \ ])
 
-call javaapi#class('FileVisitResult', 'FileVisitResult', [
+call javaapi#class('FileVisitResult', 'Enum', [
   \ javaapi#field(1,1,'CONTINUE', 'FileVisitResult'),
   \ javaapi#field(1,1,'TERMINATE', 'FileVisitResult'),
   \ javaapi#field(1,1,'SKIP_SUBTREE', 'FileVisitResult'),
   \ javaapi#field(1,1,'SKIP_SIBLINGS', 'FileVisitResult'),
-  \ javaapi#method(1,1,'values(', ')', 'FileVisitResult[]'),
+  \ javaapi#method(1,1,'values(', ')', 'FileVisitResult'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'FileVisitResult'),
   \ ])
 
-call javaapi#interface('FileVisitor<T>', '', [
+call javaapi#interface('FileVisitor', '', [
   \ javaapi#method(0,1,'preVisitDirectory(', 'T, BasicFileAttributes) throws IOException', 'FileVisitResult'),
   \ javaapi#method(0,1,'visitFile(', 'T, BasicFileAttributes) throws IOException', 'FileVisitResult'),
   \ javaapi#method(0,1,'visitFileFailed(', 'T, IOException) throws IOException', 'FileVisitResult'),
@@ -145,9 +145,9 @@ call javaapi#class('Files', '', [
   \ javaapi#method(1,1,'newOutputStream(', 'Path, ) throws IOException', 'OutputStream'),
   \ javaapi#method(1,1,'newByteChannel(', 'Path, Set<? extends OpenOption>, FileAttribute<?>) throws IOException', 'SeekableByteChannel'),
   \ javaapi#method(1,1,'newByteChannel(', 'Path, ) throws IOException', 'SeekableByteChannel'),
-  \ javaapi#method(1,1,'newDirectoryStream(', 'Path) throws IOException', 'Path>'),
-  \ javaapi#method(1,1,'newDirectoryStream(', 'Path, String) throws IOException', 'Path>'),
-  \ javaapi#method(1,1,'newDirectoryStream(', 'Path, Filter<? super Path>) throws IOException', 'Path>'),
+  \ javaapi#method(1,1,'newDirectoryStream(', 'Path) throws IOException', 'DirectoryStream'),
+  \ javaapi#method(1,1,'newDirectoryStream(', 'Path, String) throws IOException', 'DirectoryStream'),
+  \ javaapi#method(1,1,'newDirectoryStream(', 'Path, Filter<? super Path>) throws IOException', 'DirectoryStream'),
   \ javaapi#method(1,1,'createFile(', 'Path, FileAttribute<?>) throws IOException', 'Path'),
   \ javaapi#method(1,1,'createDirectory(', 'Path, FileAttribute<?>) throws IOException', 'Path'),
   \ javaapi#method(1,1,'createDirectories(', 'Path, FileAttribute<?>) throws IOException', 'Path'),
@@ -171,7 +171,7 @@ call javaapi#class('Files', '', [
   \ javaapi#method(1,1,'setAttribute(', 'Path, String, Object, ) throws IOException', 'Path'),
   \ javaapi#method(1,1,'getAttribute(', 'Path, String, ) throws IOException', 'Object'),
   \ javaapi#method(1,1,'readAttributes(', 'Path, String, ) throws IOException', 'Object>'),
-  \ javaapi#method(1,1,'getPosixFilePermissions(', 'Path, ) throws IOException', 'PosixFilePermission>'),
+  \ javaapi#method(1,1,'getPosixFilePermissions(', 'Path, ) throws IOException', 'Set'),
   \ javaapi#method(1,1,'setPosixFilePermissions(', 'Path, Set<PosixFilePermission>) throws IOException', 'Path'),
   \ javaapi#method(1,1,'getOwner(', 'Path, ) throws IOException', 'UserPrincipal'),
   \ javaapi#method(1,1,'setOwner(', 'Path, UserPrincipal) throws IOException', 'Path'),
@@ -192,8 +192,8 @@ call javaapi#class('Files', '', [
   \ javaapi#method(1,1,'newBufferedWriter(', 'Path, Charset, ) throws IOException', 'BufferedWriter'),
   \ javaapi#method(1,1,'copy(', 'InputStream, Path, ) throws IOException', 'long'),
   \ javaapi#method(1,1,'copy(', 'Path, OutputStream) throws IOException', 'long'),
-  \ javaapi#method(1,1,'readAllBytes(', 'Path) throws IOException', 'byte[]'),
-  \ javaapi#method(1,1,'readAllLines(', 'Path, Charset) throws IOException', 'String>'),
+  \ javaapi#method(1,1,'readAllBytes(', 'Path) throws IOException', 'byte'),
+  \ javaapi#method(1,1,'readAllLines(', 'Path, Charset) throws IOException', 'List'),
   \ javaapi#method(1,1,'write(', 'Path, byte[], ) throws IOException', 'Path'),
   \ javaapi#method(1,1,'write(', 'Path, Iterable<? extends CharSequence>, Charset, ) throws IOException', 'Path'),
   \ ])
@@ -207,9 +207,9 @@ call javaapi#class('InvalidPathException', 'IllegalArgumentException', [
   \ javaapi#method(0,1,'getMessage(', ')', 'String'),
   \ ])
 
-call javaapi#class('LinkOption', 'LinkOption', [
+call javaapi#class('LinkOption', 'Enum', [
   \ javaapi#field(1,1,'NOFOLLOW_LINKS', 'LinkOption'),
-  \ javaapi#method(1,1,'values(', ')', 'LinkOption[]'),
+  \ javaapi#method(1,1,'values(', ')', 'LinkOption'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'LinkOption'),
   \ ])
 
@@ -260,7 +260,7 @@ call javaapi#interface('Path', 'Watchable', [
   \ javaapi#method(0,1,'toFile(', ')', 'File'),
   \ javaapi#method(0,1,'register(', 'WatchService, Kind<?>[], ) throws IOException', 'WatchKey'),
   \ javaapi#method(0,1,'register(', 'WatchService, Kind<?>) throws IOException', 'WatchKey'),
-  \ javaapi#method(0,1,'iterator(', ')', 'Path>'),
+  \ javaapi#method(0,1,'iterator(', ')', 'Iterator'),
   \ javaapi#method(0,1,'compareTo(', 'Path)', 'int'),
   \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
@@ -290,8 +290,8 @@ call javaapi#class('ReadOnlyFileSystemException', 'UnsupportedOperationException
   \ javaapi#method(0,1,'ReadOnlyFileSystemException(', ')', ''),
   \ ])
 
-call javaapi#interface('SecureDirectoryStream<T>', 'DirectoryStream<T>', [
-  \ javaapi#method(0,1,'newDirectoryStream(', 'T, ) throws IOException', 'SecureDirectoryStream<T>'),
+call javaapi#interface('SecureDirectoryStream', 'DirectoryStream', [
+  \ javaapi#method(0,1,'newDirectoryStream(', 'T, ) throws IOException', 'SecureDirectoryStream'),
   \ javaapi#method(0,1,'newByteChannel(', 'T, Set<? extends OpenOption>, FileAttribute<?>) throws IOException', 'SeekableByteChannel'),
   \ javaapi#method(0,1,'deleteFile(', 'T) throws IOException', 'void'),
   \ javaapi#method(0,1,'deleteDirectory(', 'T) throws IOException', 'void'),
@@ -300,7 +300,7 @@ call javaapi#interface('SecureDirectoryStream<T>', 'DirectoryStream<T>', [
   \ javaapi#method(0,1,'getFileAttributeView(', 'T, Class<V>, )', 'V'),
   \ ])
 
-call javaapi#class('SimpleFileVisitor<T>', 'FileVisitor<T>', [
+call javaapi#class('SimpleFileVisitor', 'FileVisitor', [
   \ javaapi#method(0,0,'SimpleFileVisitor(', ')', ''),
   \ javaapi#method(0,1,'preVisitDirectory(', 'T, BasicFileAttributes) throws IOException', 'FileVisitResult'),
   \ javaapi#method(0,1,'visitFile(', 'T, BasicFileAttributes) throws IOException', 'FileVisitResult'),
@@ -308,15 +308,15 @@ call javaapi#class('SimpleFileVisitor<T>', 'FileVisitor<T>', [
   \ javaapi#method(0,1,'postVisitDirectory(', 'T, IOException) throws IOException', 'FileVisitResult'),
   \ ])
 
-call javaapi#class('StandardCopyOption', 'StandardCopyOption', [
+call javaapi#class('StandardCopyOption', 'Enum', [
   \ javaapi#field(1,1,'REPLACE_EXISTING', 'StandardCopyOption'),
   \ javaapi#field(1,1,'COPY_ATTRIBUTES', 'StandardCopyOption'),
   \ javaapi#field(1,1,'ATOMIC_MOVE', 'StandardCopyOption'),
-  \ javaapi#method(1,1,'values(', ')', 'StandardCopyOption[]'),
+  \ javaapi#method(1,1,'values(', ')', 'StandardCopyOption'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'StandardCopyOption'),
   \ ])
 
-call javaapi#class('StandardOpenOption', 'StandardOpenOption', [
+call javaapi#class('StandardOpenOption', 'Enum', [
   \ javaapi#field(1,1,'READ', 'StandardOpenOption'),
   \ javaapi#field(1,1,'WRITE', 'StandardOpenOption'),
   \ javaapi#field(1,1,'APPEND', 'StandardOpenOption'),
@@ -327,29 +327,29 @@ call javaapi#class('StandardOpenOption', 'StandardOpenOption', [
   \ javaapi#field(1,1,'SPARSE', 'StandardOpenOption'),
   \ javaapi#field(1,1,'SYNC', 'StandardOpenOption'),
   \ javaapi#field(1,1,'DSYNC', 'StandardOpenOption'),
-  \ javaapi#method(1,1,'values(', ')', 'StandardOpenOption[]'),
+  \ javaapi#method(1,1,'values(', ')', 'StandardOpenOption'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'StandardOpenOption'),
   \ ])
 
 call javaapi#class('StandardWatchEventKinds', '', [
-  \ javaapi#field(1,1,'OVERFLOW', 'Object>'),
-  \ javaapi#field(1,1,'ENTRY_CREATE', 'Path>'),
-  \ javaapi#field(1,1,'ENTRY_DELETE', 'Path>'),
-  \ javaapi#field(1,1,'ENTRY_MODIFY', 'Path>'),
+  \ javaapi#field(1,1,'OVERFLOW', 'Kind'),
+  \ javaapi#field(1,1,'ENTRY_CREATE', 'Kind'),
+  \ javaapi#field(1,1,'ENTRY_DELETE', 'Kind'),
+  \ javaapi#field(1,1,'ENTRY_MODIFY', 'Kind'),
   \ ])
 
 call javaapi#class('TempFileHelper', '', [
   \ ])
 
-call javaapi#interface('WatchEvent<T>', '', [
-  \ javaapi#method(0,1,'kind(', ')', 'Kind<T>'),
+call javaapi#interface('WatchEvent', '', [
+  \ javaapi#method(0,1,'kind(', ')', 'Kind'),
   \ javaapi#method(0,1,'count(', ')', 'int'),
   \ javaapi#method(0,1,'context(', ')', 'T'),
   \ ])
 
 call javaapi#interface('WatchKey', '', [
   \ javaapi#method(0,1,'isValid(', ')', 'boolean'),
-  \ javaapi#method(0,1,'pollEvents(', ')', 'WatchEvent<?>>'),
+  \ javaapi#method(0,1,'pollEvents(', ')', 'WatchEvent'),
   \ javaapi#method(0,1,'reset(', ')', 'boolean'),
   \ javaapi#method(0,1,'cancel(', ')', 'void'),
   \ javaapi#method(0,1,'watchable(', ')', 'Watchable'),

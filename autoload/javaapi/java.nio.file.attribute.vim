@@ -5,23 +5,23 @@ call javaapi#class('AclEntry', '', [
   \ javaapi#method(1,1,'newBuilder(', 'AclEntry)', 'Builder'),
   \ javaapi#method(0,1,'type(', ')', 'AclEntryType'),
   \ javaapi#method(0,1,'principal(', ')', 'UserPrincipal'),
-  \ javaapi#method(0,1,'permissions(', ')', 'AclEntryPermission>'),
-  \ javaapi#method(0,1,'flags(', ')', 'AclEntryFlag>'),
+  \ javaapi#method(0,1,'permissions(', ')', 'Set'),
+  \ javaapi#method(0,1,'flags(', ')', 'Set'),
   \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('AclEntryFlag', 'AclEntryFlag', [
+call javaapi#class('AclEntryFlag', 'Enum', [
   \ javaapi#field(1,1,'FILE_INHERIT', 'AclEntryFlag'),
   \ javaapi#field(1,1,'DIRECTORY_INHERIT', 'AclEntryFlag'),
   \ javaapi#field(1,1,'NO_PROPAGATE_INHERIT', 'AclEntryFlag'),
   \ javaapi#field(1,1,'INHERIT_ONLY', 'AclEntryFlag'),
-  \ javaapi#method(1,1,'values(', ')', 'AclEntryFlag[]'),
+  \ javaapi#method(1,1,'values(', ')', 'AclEntryFlag'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'AclEntryFlag'),
   \ ])
 
-call javaapi#class('AclEntryPermission', 'AclEntryPermission', [
+call javaapi#class('AclEntryPermission', 'Enum', [
   \ javaapi#field(1,1,'READ_DATA', 'AclEntryPermission'),
   \ javaapi#field(1,1,'WRITE_DATA', 'AclEntryPermission'),
   \ javaapi#field(1,1,'APPEND_DATA', 'AclEntryPermission'),
@@ -39,22 +39,22 @@ call javaapi#class('AclEntryPermission', 'AclEntryPermission', [
   \ javaapi#field(1,1,'LIST_DIRECTORY', 'AclEntryPermission'),
   \ javaapi#field(1,1,'ADD_FILE', 'AclEntryPermission'),
   \ javaapi#field(1,1,'ADD_SUBDIRECTORY', 'AclEntryPermission'),
-  \ javaapi#method(1,1,'values(', ')', 'AclEntryPermission[]'),
+  \ javaapi#method(1,1,'values(', ')', 'AclEntryPermission'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'AclEntryPermission'),
   \ ])
 
-call javaapi#class('AclEntryType', 'AclEntryType', [
+call javaapi#class('AclEntryType', 'Enum', [
   \ javaapi#field(1,1,'ALLOW', 'AclEntryType'),
   \ javaapi#field(1,1,'DENY', 'AclEntryType'),
   \ javaapi#field(1,1,'AUDIT', 'AclEntryType'),
   \ javaapi#field(1,1,'ALARM', 'AclEntryType'),
-  \ javaapi#method(1,1,'values(', ')', 'AclEntryType[]'),
+  \ javaapi#method(1,1,'values(', ')', 'AclEntryType'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'AclEntryType'),
   \ ])
 
 call javaapi#interface('AclFileAttributeView', 'FileOwnerAttributeView', [
   \ javaapi#method(0,1,'name(', ')', 'String'),
-  \ javaapi#method(0,1,'getAcl(', ') throws IOException', 'AclEntry>'),
+  \ javaapi#method(0,1,'getAcl(', ') throws IOException', 'List'),
   \ javaapi#method(0,1,'setAcl(', 'List<AclEntry>) throws IOException', 'void'),
   \ ])
 
@@ -96,7 +96,7 @@ call javaapi#interface('DosFileAttributes', 'BasicFileAttributes', [
   \ javaapi#method(0,1,'isSystem(', ')', 'boolean'),
   \ ])
 
-call javaapi#interface('FileAttribute<T>', '', [
+call javaapi#interface('FileAttribute', '', [
   \ javaapi#method(0,1,'name(', ')', 'String'),
   \ javaapi#method(0,1,'value(', ')', 'T'),
   \ ])
@@ -113,7 +113,7 @@ call javaapi#interface('FileOwnerAttributeView', 'FileAttributeView', [
 call javaapi#interface('FileStoreAttributeView', 'AttributeView', [
   \ ])
 
-call javaapi#class('FileTime', 'FileTime', [
+call javaapi#class('FileTime', 'Comparable', [
   \ javaapi#method(1,1,'from(', 'long, TimeUnit)', 'FileTime'),
   \ javaapi#method(1,1,'fromMillis(', 'long)', 'FileTime'),
   \ javaapi#method(0,1,'to(', 'TimeUnit)', 'long'),
@@ -138,10 +138,10 @@ call javaapi#interface('PosixFileAttributeView', 'FileOwnerAttributeView', [
 call javaapi#interface('PosixFileAttributes', 'BasicFileAttributes', [
   \ javaapi#method(0,1,'owner(', ')', 'UserPrincipal'),
   \ javaapi#method(0,1,'group(', ')', 'GroupPrincipal'),
-  \ javaapi#method(0,1,'permissions(', ')', 'PosixFilePermission>'),
+  \ javaapi#method(0,1,'permissions(', ')', 'Set'),
   \ ])
 
-call javaapi#class('PosixFilePermission', 'PosixFilePermission', [
+call javaapi#class('PosixFilePermission', 'Enum', [
   \ javaapi#field(1,1,'OWNER_READ', 'PosixFilePermission'),
   \ javaapi#field(1,1,'OWNER_WRITE', 'PosixFilePermission'),
   \ javaapi#field(1,1,'OWNER_EXECUTE', 'PosixFilePermission'),
@@ -151,19 +151,19 @@ call javaapi#class('PosixFilePermission', 'PosixFilePermission', [
   \ javaapi#field(1,1,'OTHERS_READ', 'PosixFilePermission'),
   \ javaapi#field(1,1,'OTHERS_WRITE', 'PosixFilePermission'),
   \ javaapi#field(1,1,'OTHERS_EXECUTE', 'PosixFilePermission'),
-  \ javaapi#method(1,1,'values(', ')', 'PosixFilePermission[]'),
+  \ javaapi#method(1,1,'values(', ')', 'PosixFilePermission'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'PosixFilePermission'),
   \ ])
 
 call javaapi#class('PosixFilePermissions', '', [
   \ javaapi#method(1,1,'toString(', 'Set<PosixFilePermission>)', 'String'),
-  \ javaapi#method(1,1,'fromString(', 'String)', 'PosixFilePermission>'),
-  \ javaapi#method(1,1,'asFileAttribute(', 'Set<PosixFilePermission>)', 'PosixFilePermission>>'),
+  \ javaapi#method(1,1,'fromString(', 'String)', 'Set'),
+  \ javaapi#method(1,1,'asFileAttribute(', 'Set<PosixFilePermission>)', 'Set'),
   \ ])
 
 call javaapi#interface('UserDefinedFileAttributeView', 'FileAttributeView', [
   \ javaapi#method(0,1,'name(', ')', 'String'),
-  \ javaapi#method(0,1,'list(', ') throws IOException', 'String>'),
+  \ javaapi#method(0,1,'list(', ') throws IOException', 'List'),
   \ javaapi#method(0,1,'size(', 'String) throws IOException', 'int'),
   \ javaapi#method(0,1,'read(', 'String, ByteBuffer) throws IOException', 'int'),
   \ javaapi#method(0,1,'write(', 'String, ByteBuffer) throws IOException', 'int'),

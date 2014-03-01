@@ -15,7 +15,7 @@ call javaapi#class('AnnotationTypeMismatchException', 'RuntimeException', [
 call javaapi#interface('Documented', 'Annotation', [
   \ ])
 
-call javaapi#class('ElementType', 'ElementType', [
+call javaapi#class('ElementType', 'Enum', [
   \ javaapi#field(1,1,'TYPE', 'ElementType'),
   \ javaapi#field(1,1,'FIELD', 'ElementType'),
   \ javaapi#field(1,1,'METHOD', 'ElementType'),
@@ -24,7 +24,7 @@ call javaapi#class('ElementType', 'ElementType', [
   \ javaapi#field(1,1,'LOCAL_VARIABLE', 'ElementType'),
   \ javaapi#field(1,1,'ANNOTATION_TYPE', 'ElementType'),
   \ javaapi#field(1,1,'PACKAGE', 'ElementType'),
-  \ javaapi#method(1,1,'values(', ')', 'ElementType[]'),
+  \ javaapi#method(1,1,'values(', ')', 'ElementType'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'ElementType'),
   \ ])
 
@@ -41,16 +41,16 @@ call javaapi#interface('Retention', 'Annotation', [
   \ javaapi#method(0,1,'value(', ')', 'RetentionPolicy'),
   \ ])
 
-call javaapi#class('RetentionPolicy', 'RetentionPolicy', [
+call javaapi#class('RetentionPolicy', 'Enum', [
   \ javaapi#field(1,1,'SOURCE', 'RetentionPolicy'),
   \ javaapi#field(1,1,'CLASS', 'RetentionPolicy'),
   \ javaapi#field(1,1,'RUNTIME', 'RetentionPolicy'),
-  \ javaapi#method(1,1,'values(', ')', 'RetentionPolicy[]'),
+  \ javaapi#method(1,1,'values(', ')', 'RetentionPolicy'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'RetentionPolicy'),
   \ ])
 
 call javaapi#interface('Target', 'Annotation', [
-  \ javaapi#method(0,1,'value(', ')', 'ElementType[]'),
+  \ javaapi#method(0,1,'value(', ')', 'ElementType'),
   \ ])
 
 call javaapi#namespace('java.lang.annotation')

@@ -47,8 +47,8 @@ call javaapi#class('BigDecimal', 'Number', [
   \ javaapi#method(0,1,'divideToIntegralValue(', 'BigDecimal, MathContext)', 'BigDecimal'),
   \ javaapi#method(0,1,'remainder(', 'BigDecimal)', 'BigDecimal'),
   \ javaapi#method(0,1,'remainder(', 'BigDecimal, MathContext)', 'BigDecimal'),
-  \ javaapi#method(0,1,'divideAndRemainder(', 'BigDecimal)', 'BigDecimal[]'),
-  \ javaapi#method(0,1,'divideAndRemainder(', 'BigDecimal, MathContext)', 'BigDecimal[]'),
+  \ javaapi#method(0,1,'divideAndRemainder(', 'BigDecimal)', 'BigDecimal'),
+  \ javaapi#method(0,1,'divideAndRemainder(', 'BigDecimal, MathContext)', 'BigDecimal'),
   \ javaapi#method(0,1,'pow(', 'int)', 'BigDecimal'),
   \ javaapi#method(0,1,'pow(', 'int, MathContext)', 'BigDecimal'),
   \ javaapi#method(0,1,'abs(', ')', 'BigDecimal'),
@@ -138,7 +138,7 @@ call javaapi#class('BigInteger', 'Number', [
   \ javaapi#method(0,1,'subtract(', 'BigInteger)', 'BigInteger'),
   \ javaapi#method(0,1,'multiply(', 'BigInteger)', 'BigInteger'),
   \ javaapi#method(0,1,'divide(', 'BigInteger)', 'BigInteger'),
-  \ javaapi#method(0,1,'divideAndRemainder(', 'BigInteger)', 'BigInteger[]'),
+  \ javaapi#method(0,1,'divideAndRemainder(', 'BigInteger)', 'BigInteger'),
   \ javaapi#method(0,1,'remainder(', 'BigInteger)', 'BigInteger'),
   \ javaapi#method(0,1,'pow(', 'int)', 'BigInteger'),
   \ javaapi#method(0,1,'gcd(', 'BigInteger)', 'BigInteger'),
@@ -170,7 +170,7 @@ call javaapi#class('BigInteger', 'Number', [
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
   \ javaapi#method(0,1,'toString(', 'int)', 'String'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
-  \ javaapi#method(0,1,'toByteArray(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'toByteArray(', ')', 'byte'),
   \ javaapi#method(0,1,'intValue(', ')', 'int'),
   \ javaapi#method(0,1,'longValue(', ')', 'long'),
   \ javaapi#method(0,1,'floatValue(', ')', 'float'),
@@ -180,7 +180,7 @@ call javaapi#class('BigInteger', 'Number', [
 
 call javaapi#namespace('java.math')
 
-call javaapi#class('RoundingMode', 'RoundingMode', [
+call javaapi#class('RoundingMode', 'Enum', [
   \ javaapi#field(1,1,'UP', 'RoundingMode'),
   \ javaapi#field(1,1,'DOWN', 'RoundingMode'),
   \ javaapi#field(1,1,'CEILING', 'RoundingMode'),
@@ -189,7 +189,7 @@ call javaapi#class('RoundingMode', 'RoundingMode', [
   \ javaapi#field(1,1,'HALF_DOWN', 'RoundingMode'),
   \ javaapi#field(1,1,'HALF_EVEN', 'RoundingMode'),
   \ javaapi#field(1,1,'UNNECESSARY', 'RoundingMode'),
-  \ javaapi#method(1,1,'values(', ')', 'RoundingMode[]'),
+  \ javaapi#method(1,1,'values(', ')', 'RoundingMode'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'RoundingMode'),
   \ javaapi#method(1,1,'valueOf(', 'int)', 'RoundingMode'),
   \ ])

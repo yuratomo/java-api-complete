@@ -5,9 +5,9 @@ call javaapi#class('CMMException', 'RuntimeException', [
   \ ])
 
 call javaapi#class('ICC_ProfileGray', 'ICC_Profile', [
-  \ javaapi#method(0,1,'getMediaWhitePoint(', ')', 'float[]'),
+  \ javaapi#method(0,1,'getMediaWhitePoint(', ')', 'float'),
   \ javaapi#method(0,1,'getGamma(', ')', 'float'),
-  \ javaapi#method(0,1,'getTRC(', ')', 'short[]'),
+  \ javaapi#method(0,1,'getTRC(', ')', 'short'),
   \ ])
 
 call javaapi#class('ProfileDataException', 'RuntimeException', [
@@ -19,10 +19,10 @@ call javaapi#namespace('java.awt.color')
 call javaapi#class('ICC_ColorSpace', 'ColorSpace', [
   \ javaapi#method(0,1,'ICC_ColorSpace(', 'ICC_Profile)', ''),
   \ javaapi#method(0,1,'getProfile(', ')', 'ICC_Profile'),
-  \ javaapi#method(0,1,'toRGB(', 'float[])', 'float[]'),
-  \ javaapi#method(0,1,'fromRGB(', 'float[])', 'float[]'),
-  \ javaapi#method(0,1,'toCIEXYZ(', 'float[])', 'float[]'),
-  \ javaapi#method(0,1,'fromCIEXYZ(', 'float[])', 'float[]'),
+  \ javaapi#method(0,1,'toRGB(', 'float[])', 'float'),
+  \ javaapi#method(0,1,'fromRGB(', 'float[])', 'float'),
+  \ javaapi#method(0,1,'toCIEXYZ(', 'float[])', 'float'),
+  \ javaapi#method(0,1,'fromCIEXYZ(', 'float[])', 'float'),
   \ javaapi#method(0,1,'getMinValue(', 'int)', 'float'),
   \ javaapi#method(0,1,'getMaxValue(', 'int)', 'float'),
   \ ])
@@ -31,10 +31,10 @@ call javaapi#class('ICC_ProfileRGB', 'ICC_Profile', [
   \ javaapi#field(1,1,'REDCOMPONENT', 'int'),
   \ javaapi#field(1,1,'GREENCOMPONENT', 'int'),
   \ javaapi#field(1,1,'BLUECOMPONENT', 'int'),
-  \ javaapi#method(0,1,'getMediaWhitePoint(', ')', 'float[]'),
-  \ javaapi#method(0,1,'getMatrix(', ')', 'float[][]'),
+  \ javaapi#method(0,1,'getMediaWhitePoint(', ')', 'float'),
+  \ javaapi#method(0,1,'getMatrix(', ')', 'float[]'),
   \ javaapi#method(0,1,'getGamma(', 'int)', 'float'),
-  \ javaapi#method(0,1,'getTRC(', 'int)', 'short[]'),
+  \ javaapi#method(0,1,'getTRC(', 'int)', 'short'),
   \ ])
 
 call javaapi#class('ICC_Profile', 'Serializable', [
@@ -169,8 +169,8 @@ call javaapi#class('ICC_Profile', 'Serializable', [
   \ javaapi#method(0,1,'getPCSType(', ')', 'int'),
   \ javaapi#method(0,1,'write(', 'String) throws IOException', 'void'),
   \ javaapi#method(0,1,'write(', 'OutputStream) throws IOException', 'void'),
-  \ javaapi#method(0,1,'getData(', ')', 'byte[]'),
-  \ javaapi#method(0,1,'getData(', 'int)', 'byte[]'),
+  \ javaapi#method(0,1,'getData(', ')', 'byte'),
+  \ javaapi#method(0,1,'getData(', 'int)', 'byte'),
   \ javaapi#method(0,1,'setData(', 'int, byte[])', 'void'),
   \ javaapi#method(0,1,'getNumComponents(', ')', 'int'),
   \ javaapi#method(0,0,'readResolve(', ') throws ObjectStreamException', 'Object'),
@@ -210,10 +210,10 @@ call javaapi#class('ColorSpace', 'Serializable', [
   \ javaapi#method(0,0,'ColorSpace(', 'int, int)', ''),
   \ javaapi#method(1,1,'getInstance(', 'int)', 'ColorSpace'),
   \ javaapi#method(0,1,'isCS_sRGB(', ')', 'boolean'),
-  \ javaapi#method(0,1,'toRGB(', 'float[])', 'float[]'),
-  \ javaapi#method(0,1,'fromRGB(', 'float[])', 'float[]'),
-  \ javaapi#method(0,1,'toCIEXYZ(', 'float[])', 'float[]'),
-  \ javaapi#method(0,1,'fromCIEXYZ(', 'float[])', 'float[]'),
+  \ javaapi#method(0,1,'toRGB(', 'float[])', 'float'),
+  \ javaapi#method(0,1,'fromRGB(', 'float[])', 'float'),
+  \ javaapi#method(0,1,'toCIEXYZ(', 'float[])', 'float'),
+  \ javaapi#method(0,1,'fromCIEXYZ(', 'float[])', 'float'),
   \ javaapi#method(0,1,'getType(', ')', 'int'),
   \ javaapi#method(0,1,'getNumComponents(', ')', 'int'),
   \ javaapi#method(0,1,'getName(', 'int)', 'String'),

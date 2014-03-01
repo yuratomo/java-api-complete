@@ -14,8 +14,8 @@ call javaapi#class('ArrayPersistenceDelegate', 'PersistenceDelegate', [
 call javaapi#class('BeanDescriptor', 'FeatureDescriptor', [
   \ javaapi#method(0,1,'BeanDescriptor(', 'Class<?>)', ''),
   \ javaapi#method(0,1,'BeanDescriptor(', 'Class<?>, Class<?>)', ''),
-  \ javaapi#method(0,1,'getBeanClass(', ')', 'Class<?>'),
-  \ javaapi#method(0,1,'getCustomizerClass(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'getBeanClass(', ')', 'Class'),
+  \ javaapi#method(0,1,'getCustomizerClass(', ')', 'Class'),
   \ ])
 
 call javaapi#interface('BeanInfo', '', [
@@ -24,12 +24,12 @@ call javaapi#interface('BeanInfo', '', [
   \ javaapi#field(1,1,'ICON_MONO_16x16', 'int'),
   \ javaapi#field(1,1,'ICON_MONO_32x32', 'int'),
   \ javaapi#method(0,1,'getBeanDescriptor(', ')', 'BeanDescriptor'),
-  \ javaapi#method(0,1,'getEventSetDescriptors(', ')', 'EventSetDescriptor[]'),
+  \ javaapi#method(0,1,'getEventSetDescriptors(', ')', 'EventSetDescriptor'),
   \ javaapi#method(0,1,'getDefaultEventIndex(', ')', 'int'),
-  \ javaapi#method(0,1,'getPropertyDescriptors(', ')', 'PropertyDescriptor[]'),
+  \ javaapi#method(0,1,'getPropertyDescriptors(', ')', 'PropertyDescriptor'),
   \ javaapi#method(0,1,'getDefaultPropertyIndex(', ')', 'int'),
-  \ javaapi#method(0,1,'getMethodDescriptors(', ')', 'MethodDescriptor[]'),
-  \ javaapi#method(0,1,'getAdditionalBeanInfo(', ')', 'BeanInfo[]'),
+  \ javaapi#method(0,1,'getMethodDescriptors(', ')', 'MethodDescriptor'),
+  \ javaapi#method(0,1,'getAdditionalBeanInfo(', ')', 'BeanInfo'),
   \ javaapi#method(0,1,'getIcon(', 'int)', 'Image'),
   \ ])
 
@@ -68,22 +68,22 @@ call javaapi#class('BeansAppletStub', 'AppletStub', [
   \ javaapi#method(0,1,'appletResize(', 'int, int)', 'void'),
   \ ])
 
-call javaapi#class('ChangeListenerMap<L', 'EventListener', [
-  \ javaapi#method(0,0,'newArray(', 'int)', 'L[]'),
+call javaapi#class('ChangeListenerMap<L', 'EventListener>', [
+  \ javaapi#method(0,0,'newArray(', 'int)', 'L'),
   \ javaapi#method(0,0,'newProxy(', 'String, L)', 'L'),
   \ javaapi#method(0,1,'add(', 'String, L)', 'void'),
   \ javaapi#method(0,1,'remove(', 'String, L)', 'void'),
-  \ javaapi#method(0,1,'get(', 'String)', 'L[]'),
+  \ javaapi#method(0,1,'get(', 'String)', 'L'),
   \ javaapi#method(0,1,'set(', 'String, L[])', 'void'),
-  \ javaapi#method(0,1,'getListeners(', ')', 'L[]'),
-  \ javaapi#method(0,1,'getListeners(', 'String)', 'L[]'),
+  \ javaapi#method(0,1,'getListeners(', ')', 'L'),
+  \ javaapi#method(0,1,'getListeners(', 'String)', 'L'),
   \ javaapi#method(0,1,'hasListeners(', 'String)', 'boolean'),
-  \ javaapi#method(0,1,'getEntries(', ')', 'L[]>>'),
+  \ javaapi#method(0,1,'getEntries(', ')', 'L>>'),
   \ javaapi#method(0,1,'extract(', 'L)', 'L'),
   \ ])
 
 call javaapi#interface('ConstructorProperties', 'Annotation', [
-  \ javaapi#method(0,1,'value(', ')', 'String[]'),
+  \ javaapi#method(0,1,'value(', ')', 'String'),
   \ ])
 
 call javaapi#interface('Customizer', '', [
@@ -143,9 +143,9 @@ call javaapi#class('EventSetDescriptor', 'FeatureDescriptor', [
   \ javaapi#method(0,1,'EventSetDescriptor(', 'String, Class<?>, Method[], Method, Method) throws IntrospectionException', ''),
   \ javaapi#method(0,1,'EventSetDescriptor(', 'String, Class<?>, Method[], Method, Method, Method) throws IntrospectionException', ''),
   \ javaapi#method(0,1,'EventSetDescriptor(', 'String, Class<?>, MethodDescriptor[], Method, Method) throws IntrospectionException', ''),
-  \ javaapi#method(0,1,'getListenerType(', ')', 'Class<?>'),
-  \ javaapi#method(0,1,'getListenerMethods(', ')', 'Method[]'),
-  \ javaapi#method(0,1,'getListenerMethodDescriptors(', ')', 'MethodDescriptor[]'),
+  \ javaapi#method(0,1,'getListenerType(', ')', 'Class'),
+  \ javaapi#method(0,1,'getListenerMethods(', ')', 'Method'),
+  \ javaapi#method(0,1,'getListenerMethodDescriptors(', ')', 'MethodDescriptor'),
   \ javaapi#method(0,1,'getAddListenerMethod(', ')', 'Method'),
   \ javaapi#method(0,1,'getRemoveListenerMethod(', ')', 'Method'),
   \ javaapi#method(0,1,'getGetListenerMethod(', ')', 'Method'),
@@ -184,17 +184,17 @@ call javaapi#class('FeatureDescriptor', '', [
   \ javaapi#method(0,1,'setShortDescription(', 'String)', 'void'),
   \ javaapi#method(0,1,'setValue(', 'String, Object)', 'void'),
   \ javaapi#method(0,1,'getValue(', 'String)', 'Object'),
-  \ javaapi#method(0,1,'attributeNames(', ')', 'String>'),
+  \ javaapi#method(0,1,'attributeNames(', ')', 'Enumeration'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
 call javaapi#class('GenericBeanInfo', 'SimpleBeanInfo', [
   \ javaapi#method(0,1,'GenericBeanInfo(', 'BeanDescriptor, EventSetDescriptor[], int, PropertyDescriptor[], int, MethodDescriptor[], BeanInfo)', ''),
-  \ javaapi#method(0,1,'getPropertyDescriptors(', ')', 'PropertyDescriptor[]'),
+  \ javaapi#method(0,1,'getPropertyDescriptors(', ')', 'PropertyDescriptor'),
   \ javaapi#method(0,1,'getDefaultPropertyIndex(', ')', 'int'),
-  \ javaapi#method(0,1,'getEventSetDescriptors(', ')', 'EventSetDescriptor[]'),
+  \ javaapi#method(0,1,'getEventSetDescriptors(', ')', 'EventSetDescriptor'),
   \ javaapi#method(0,1,'getDefaultEventIndex(', ')', 'int'),
-  \ javaapi#method(0,1,'getMethodDescriptors(', ')', 'MethodDescriptor[]'),
+  \ javaapi#method(0,1,'getMethodDescriptors(', ')', 'MethodDescriptor'),
   \ javaapi#method(0,1,'getBeanDescriptor(', ')', 'BeanDescriptor'),
   \ javaapi#method(0,1,'getIcon(', 'int)', 'Image'),
   \ ])
@@ -212,7 +212,7 @@ call javaapi#class('IndexedPropertyDescriptor', 'PropertyDescriptor', [
   \ javaapi#method(0,1,'setIndexedReadMethod(', 'Method) throws IntrospectionException', 'void'),
   \ javaapi#method(0,1,'getIndexedWriteMethod(', ')', 'Method'),
   \ javaapi#method(0,1,'setIndexedWriteMethod(', 'Method) throws IntrospectionException', 'void'),
-  \ javaapi#method(0,1,'getIndexedPropertyType(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'getIndexedPropertyType(', ')', 'Class'),
   \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
   \ ])
@@ -230,7 +230,7 @@ call javaapi#class('Introspector', '', [
   \ javaapi#method(1,1,'getBeanInfo(', 'Class<?>, Class<?>) throws IntrospectionException', 'BeanInfo'),
   \ javaapi#method(1,1,'getBeanInfo(', 'Class<?>, Class<?>, int) throws IntrospectionException', 'BeanInfo'),
   \ javaapi#method(1,1,'decapitalize(', 'String)', 'String'),
-  \ javaapi#method(1,1,'getBeanInfoSearchPath(', ')', 'String[]'),
+  \ javaapi#method(1,1,'getBeanInfoSearchPath(', ')', 'String'),
   \ javaapi#method(1,1,'setBeanInfoSearchPath(', 'String[])', 'void'),
   \ javaapi#method(1,1,'flushCaches(', ')', 'void'),
   \ javaapi#method(1,1,'flushFromCaches(', 'Class<?>)', 'void'),
@@ -244,7 +244,7 @@ call javaapi#class('MethodDescriptor', 'FeatureDescriptor', [
   \ javaapi#method(0,1,'MethodDescriptor(', 'Method)', ''),
   \ javaapi#method(0,1,'MethodDescriptor(', 'Method, ParameterDescriptor[])', ''),
   \ javaapi#method(0,1,'getMethod(', ')', 'Method'),
-  \ javaapi#method(0,1,'getParameterDescriptors(', ')', 'ParameterDescriptor[]'),
+  \ javaapi#method(0,1,'getParameterDescriptors(', ')', 'ParameterDescriptor'),
   \ ])
 
 call javaapi#class('NameGenerator', '', [
@@ -287,7 +287,7 @@ call javaapi#class('PropertyDescriptor', 'FeatureDescriptor', [
   \ javaapi#method(0,1,'PropertyDescriptor(', 'String, Class<?>) throws IntrospectionException', ''),
   \ javaapi#method(0,1,'PropertyDescriptor(', 'String, Class<?>, String, String) throws IntrospectionException', ''),
   \ javaapi#method(0,1,'PropertyDescriptor(', 'String, Method, Method) throws IntrospectionException', ''),
-  \ javaapi#method(0,1,'getPropertyType(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'getPropertyType(', ')', 'Class'),
   \ javaapi#method(0,1,'getReadMethod(', ')', 'Method'),
   \ javaapi#method(0,1,'setReadMethod(', 'Method) throws IntrospectionException', 'void'),
   \ javaapi#method(0,1,'getWriteMethod(', ')', 'Method'),
@@ -297,7 +297,7 @@ call javaapi#class('PropertyDescriptor', 'FeatureDescriptor', [
   \ javaapi#method(0,1,'isConstrained(', ')', 'boolean'),
   \ javaapi#method(0,1,'setConstrained(', 'boolean)', 'void'),
   \ javaapi#method(0,1,'setPropertyEditorClass(', 'Class<?>)', 'void'),
-  \ javaapi#method(0,1,'getPropertyEditorClass(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'getPropertyEditorClass(', ')', 'Class'),
   \ javaapi#method(0,1,'createPropertyEditor(', 'Object)', 'PropertyEditor'),
   \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
@@ -311,7 +311,7 @@ call javaapi#interface('PropertyEditor', '', [
   \ javaapi#method(0,1,'getJavaInitializationString(', ')', 'String'),
   \ javaapi#method(0,1,'getAsText(', ')', 'String'),
   \ javaapi#method(0,1,'setAsText(', 'String) throws IllegalArgumentException', 'void'),
-  \ javaapi#method(0,1,'getTags(', ')', 'String[]'),
+  \ javaapi#method(0,1,'getTags(', ')', 'String'),
   \ javaapi#method(0,1,'getCustomEditor(', ')', 'Component'),
   \ javaapi#method(0,1,'supportsCustomEditor(', ')', 'boolean'),
   \ javaapi#method(0,1,'addPropertyChangeListener(', 'PropertyChangeListener)', 'void'),
@@ -322,7 +322,7 @@ call javaapi#class('PropertyEditorManager', '', [
   \ javaapi#method(0,1,'PropertyEditorManager(', ')', ''),
   \ javaapi#method(1,1,'registerEditor(', 'Class<?>, Class<?>)', 'void'),
   \ javaapi#method(1,1,'findEditor(', 'Class<?>)', 'PropertyEditor'),
-  \ javaapi#method(1,1,'getEditorSearchPath(', ')', 'String[]'),
+  \ javaapi#method(1,1,'getEditorSearchPath(', ')', 'String'),
   \ javaapi#method(1,1,'setEditorSearchPath(', 'String[])', 'void'),
   \ ])
 
@@ -338,7 +338,7 @@ call javaapi#class('PropertyEditorSupport', 'PropertyEditor', [
   \ javaapi#method(0,1,'getJavaInitializationString(', ')', 'String'),
   \ javaapi#method(0,1,'getAsText(', ')', 'String'),
   \ javaapi#method(0,1,'setAsText(', 'String) throws IllegalArgumentException', 'void'),
-  \ javaapi#method(0,1,'getTags(', ')', 'String[]'),
+  \ javaapi#method(0,1,'getTags(', ')', 'String'),
   \ javaapi#method(0,1,'getCustomEditor(', ')', 'Component'),
   \ javaapi#method(0,1,'supportsCustomEditor(', ')', 'boolean'),
   \ javaapi#method(0,1,'addPropertyChangeListener(', 'PropertyChangeListener)', 'void'),
@@ -359,12 +359,12 @@ call javaapi#class('ReflectionUtils', '', [
 call javaapi#class('SimpleBeanInfo', 'BeanInfo', [
   \ javaapi#method(0,1,'SimpleBeanInfo(', ')', ''),
   \ javaapi#method(0,1,'getBeanDescriptor(', ')', 'BeanDescriptor'),
-  \ javaapi#method(0,1,'getPropertyDescriptors(', ')', 'PropertyDescriptor[]'),
+  \ javaapi#method(0,1,'getPropertyDescriptors(', ')', 'PropertyDescriptor'),
   \ javaapi#method(0,1,'getDefaultPropertyIndex(', ')', 'int'),
-  \ javaapi#method(0,1,'getEventSetDescriptors(', ')', 'EventSetDescriptor[]'),
+  \ javaapi#method(0,1,'getEventSetDescriptors(', ')', 'EventSetDescriptor'),
   \ javaapi#method(0,1,'getDefaultEventIndex(', ')', 'int'),
-  \ javaapi#method(0,1,'getMethodDescriptors(', ')', 'MethodDescriptor[]'),
-  \ javaapi#method(0,1,'getAdditionalBeanInfo(', ')', 'BeanInfo[]'),
+  \ javaapi#method(0,1,'getMethodDescriptors(', ')', 'MethodDescriptor'),
+  \ javaapi#method(0,1,'getAdditionalBeanInfo(', ')', 'BeanInfo'),
   \ javaapi#method(0,1,'getIcon(', 'int)', 'Image'),
   \ javaapi#method(0,1,'loadImage(', 'String)', 'Image'),
   \ ])
@@ -373,7 +373,7 @@ call javaapi#class('Statement', '', [
   \ javaapi#method(0,1,'Statement(', 'Object, String, Object[])', ''),
   \ javaapi#method(0,1,'getTarget(', ')', 'Object'),
   \ javaapi#method(0,1,'getMethodName(', ')', 'String'),
-  \ javaapi#method(0,1,'getArguments(', ')', 'Object[]'),
+  \ javaapi#method(0,1,'getArguments(', ')', 'Object'),
   \ javaapi#method(0,1,'execute(', ') throws Exception', 'void'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
@@ -391,7 +391,7 @@ call javaapi#interface('Transient', 'Annotation', [
   \ javaapi#method(0,1,'value(', ')', 'boolean'),
   \ ])
 
-call javaapi#class('VetoableChangeListenerProxy', 'VetoableChangeListener', [
+call javaapi#class('VetoableChangeListenerProxy', 'EventListenerProxy', [
   \ javaapi#method(0,1,'VetoableChangeListenerProxy(', 'String, VetoableChangeListener)', ''),
   \ javaapi#method(0,1,'vetoableChange(', 'PropertyChangeEvent) throws PropertyVetoException', 'void'),
   \ javaapi#method(0,1,'getPropertyName(', ')', 'String'),
@@ -401,10 +401,10 @@ call javaapi#class('VetoableChangeSupport', 'Serializable', [
   \ javaapi#method(0,1,'VetoableChangeSupport(', 'Object)', ''),
   \ javaapi#method(0,1,'addVetoableChangeListener(', 'VetoableChangeListener)', 'void'),
   \ javaapi#method(0,1,'removeVetoableChangeListener(', 'VetoableChangeListener)', 'void'),
-  \ javaapi#method(0,1,'getVetoableChangeListeners(', ')', 'VetoableChangeListener[]'),
+  \ javaapi#method(0,1,'getVetoableChangeListeners(', ')', 'VetoableChangeListener'),
   \ javaapi#method(0,1,'addVetoableChangeListener(', 'String, VetoableChangeListener)', 'void'),
   \ javaapi#method(0,1,'removeVetoableChangeListener(', 'String, VetoableChangeListener)', 'void'),
-  \ javaapi#method(0,1,'getVetoableChangeListeners(', 'String)', 'VetoableChangeListener[]'),
+  \ javaapi#method(0,1,'getVetoableChangeListeners(', 'String)', 'VetoableChangeListener'),
   \ javaapi#method(0,1,'fireVetoableChange(', 'String, Object, Object) throws PropertyVetoException', 'void'),
   \ javaapi#method(0,1,'fireVetoableChange(', 'String, int, int) throws PropertyVetoException', 'void'),
   \ javaapi#method(0,1,'fireVetoableChange(', 'String, boolean, boolean) throws PropertyVetoException', 'void'),
@@ -417,6 +417,10 @@ call javaapi#interface('Visibility', '', [
   \ javaapi#method(0,1,'dontUseGui(', ')', 'void'),
   \ javaapi#method(0,1,'okToUseGui(', ')', 'void'),
   \ javaapi#method(0,1,'avoidingGui(', ')', 'boolean'),
+  \ ])
+
+call javaapi#T('Object)', '', [
+  \ javaapi#method(0,1,'put(', 'Object, T)', 'T'),
   \ ])
 
 call javaapi#class('XMLDecoder', 'AutoCloseable', [
@@ -637,7 +641,7 @@ call javaapi#interface('VetoableChangeListener', 'EventListener', [
 
 call javaapi#namespace('java.beans')
 
-call javaapi#class('PropertyChangeListenerProxy', 'PropertyChangeListener', [
+call javaapi#class('PropertyChangeListenerProxy', 'EventListenerProxy', [
   \ javaapi#method(0,1,'PropertyChangeListenerProxy(', 'String, PropertyChangeListener)', ''),
   \ javaapi#method(0,1,'propertyChange(', 'PropertyChangeEvent)', 'void'),
   \ javaapi#method(0,1,'getPropertyName(', ')', 'String'),
@@ -667,10 +671,10 @@ call javaapi#class('PropertyChangeSupport', 'Serializable', [
   \ javaapi#method(0,1,'PropertyChangeSupport(', 'Object)', ''),
   \ javaapi#method(0,1,'addPropertyChangeListener(', 'PropertyChangeListener)', 'void'),
   \ javaapi#method(0,1,'removePropertyChangeListener(', 'PropertyChangeListener)', 'void'),
-  \ javaapi#method(0,1,'getPropertyChangeListeners(', ')', 'PropertyChangeListener[]'),
+  \ javaapi#method(0,1,'getPropertyChangeListeners(', ')', 'PropertyChangeListener'),
   \ javaapi#method(0,1,'addPropertyChangeListener(', 'String, PropertyChangeListener)', 'void'),
   \ javaapi#method(0,1,'removePropertyChangeListener(', 'String, PropertyChangeListener)', 'void'),
-  \ javaapi#method(0,1,'getPropertyChangeListeners(', 'String)', 'PropertyChangeListener[]'),
+  \ javaapi#method(0,1,'getPropertyChangeListeners(', 'String)', 'PropertyChangeListener'),
   \ javaapi#method(0,1,'firePropertyChange(', 'String, Object, Object)', 'void'),
   \ javaapi#method(0,1,'firePropertyChange(', 'String, int, int)', 'void'),
   \ javaapi#method(0,1,'firePropertyChange(', 'String, boolean, boolean)', 'void'),

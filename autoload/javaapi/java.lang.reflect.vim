@@ -13,13 +13,13 @@ call javaapi#class('MalformedParameterizedTypeException', 'RuntimeException', [
   \ ])
 
 call javaapi#interface('ParameterizedType', 'Type', [
-  \ javaapi#method(0,1,'getActualTypeArguments(', ')', 'Type[]'),
+  \ javaapi#method(0,1,'getActualTypeArguments(', ')', 'Type'),
   \ javaapi#method(0,1,'getRawType(', ')', 'Type'),
   \ javaapi#method(0,1,'getOwnerType(', ')', 'Type'),
   \ ])
 
-call javaapi#interface('TypeVariable<D', 'GenericDeclaration', [
-  \ javaapi#method(0,1,'getBounds(', ')', 'Type[]'),
+call javaapi#interface('TypeVariable<D', 'GenericDeclaration>', [
+  \ javaapi#method(0,1,'getBounds(', ')', 'Type'),
   \ javaapi#method(0,1,'getGenericDeclaration(', ')', 'D'),
   \ javaapi#method(0,1,'getName(', ')', 'String'),
   \ ])
@@ -32,8 +32,8 @@ call javaapi#class('UndeclaredThrowableException', 'RuntimeException', [
   \ ])
 
 call javaapi#interface('WildcardType', 'Type', [
-  \ javaapi#method(0,1,'getUpperBounds(', ')', 'Type[]'),
-  \ javaapi#method(0,1,'getLowerBounds(', ')', 'Type[]'),
+  \ javaapi#method(0,1,'getUpperBounds(', ')', 'Type'),
+  \ javaapi#method(0,1,'getLowerBounds(', ')', 'Type'),
   \ ])
 
 call javaapi#namespace('java.lang.reflect')
@@ -45,7 +45,7 @@ call javaapi#interface('InvocationHandler', '', [
 call javaapi#class('Proxy', 'Serializable', [
   \ javaapi#field(0,0,'h', 'InvocationHandler'),
   \ javaapi#method(0,0,'Proxy(', 'InvocationHandler)', ''),
-  \ javaapi#method(1,1,'getProxyClass(', 'ClassLoader, Class<?>) throws IllegalArgumentException', 'Class<?>'),
+  \ javaapi#method(1,1,'getProxyClass(', 'ClassLoader, Class<?>) throws IllegalArgumentException', 'Class'),
   \ javaapi#method(1,1,'newProxyInstance(', 'ClassLoader, Class<?>[], InvocationHandler) throws IllegalArgumentException', 'Object'),
   \ javaapi#method(1,1,'isProxyClass(', 'Class<?>)', 'boolean'),
   \ javaapi#method(1,1,'getInvocationHandler(', 'Object) throws IllegalArgumentException', 'InvocationHandler'),
@@ -92,18 +92,18 @@ call javaapi#namespace('java.lang.reflect')
 call javaapi#class('ReflectAccess', 'LangReflectAccess', [
   \ javaapi#method(0,1,'newField(', 'Class<?>, String, Class<?>, int, int, String, byte[])', 'Field'),
   \ javaapi#method(0,1,'newMethod(', 'Class<?>, String, Class<?>[], Class<?>, Class<?>[], int, int, String, byte[], byte[], byte[])', 'Method'),
-  \ javaapi#method(0,1,'newConstructor(', 'Class<T>, Class<?>[], Class<?>[], int, int, String, byte[], byte[])', 'Constructor<T>'),
+  \ javaapi#method(0,1,'newConstructor(', 'Class<T>, Class<?>[], Class<?>[], int, int, String, byte[], byte[])', 'Constructor'),
   \ javaapi#method(0,1,'getMethodAccessor(', 'Method)', 'MethodAccessor'),
   \ javaapi#method(0,1,'setMethodAccessor(', 'Method, MethodAccessor)', 'void'),
   \ javaapi#method(0,1,'getConstructorAccessor(', 'Constructor<?>)', 'ConstructorAccessor'),
   \ javaapi#method(0,1,'setConstructorAccessor(', 'Constructor<?>, ConstructorAccessor)', 'void'),
   \ javaapi#method(0,1,'getConstructorSlot(', 'Constructor<?>)', 'int'),
   \ javaapi#method(0,1,'getConstructorSignature(', 'Constructor<?>)', 'String'),
-  \ javaapi#method(0,1,'getConstructorAnnotations(', 'Constructor<?>)', 'byte[]'),
-  \ javaapi#method(0,1,'getConstructorParameterAnnotations(', 'Constructor<?>)', 'byte[]'),
+  \ javaapi#method(0,1,'getConstructorAnnotations(', 'Constructor<?>)', 'byte'),
+  \ javaapi#method(0,1,'getConstructorParameterAnnotations(', 'Constructor<?>)', 'byte'),
   \ javaapi#method(0,1,'copyMethod(', 'Method)', 'Method'),
   \ javaapi#method(0,1,'copyField(', 'Field)', 'Field'),
-  \ javaapi#method(0,1,'copyConstructor(', 'Constructor<T>)', 'Constructor<T>'),
+  \ javaapi#method(0,1,'copyConstructor(', 'Constructor<T>)', 'Constructor'),
   \ ])
 
 call javaapi#class('Modifier', '', [
@@ -149,15 +149,15 @@ call javaapi#class('ReflectPermission', 'BasicPermission', [
 
 call javaapi#namespace('java.lang.reflect')
 
-call javaapi#class('Constructor<T>', 'AccessibleObject', [
-  \ javaapi#method(0,1,'getDeclaringClass(', ')', 'Class<T>'),
+call javaapi#class('Constructor', 'AccessibleObject', [
+  \ javaapi#method(0,1,'getDeclaringClass(', ')', 'Class'),
   \ javaapi#method(0,1,'getName(', ')', 'String'),
   \ javaapi#method(0,1,'getModifiers(', ')', 'int'),
-  \ javaapi#method(0,1,'getTypeParameters(', ')', 'Constructor<T>>[]'),
-  \ javaapi#method(0,1,'getParameterTypes(', ')', 'Class<?>[]'),
-  \ javaapi#method(0,1,'getGenericParameterTypes(', ')', 'Type[]'),
-  \ javaapi#method(0,1,'getExceptionTypes(', ')', 'Class<?>[]'),
-  \ javaapi#method(0,1,'getGenericExceptionTypes(', ')', 'Type[]'),
+  \ javaapi#method(0,1,'getTypeParameters(', ')', 'Constructor'),
+  \ javaapi#method(0,1,'getParameterTypes(', ')', 'Class'),
+  \ javaapi#method(0,1,'getGenericParameterTypes(', ')', 'Type'),
+  \ javaapi#method(0,1,'getExceptionTypes(', ')', 'Class'),
+  \ javaapi#method(0,1,'getGenericExceptionTypes(', ')', 'Type'),
   \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
@@ -166,21 +166,21 @@ call javaapi#class('Constructor<T>', 'AccessibleObject', [
   \ javaapi#method(0,1,'isVarArgs(', ')', 'boolean'),
   \ javaapi#method(0,1,'isSynthetic(', ')', 'boolean'),
   \ javaapi#method(0,1,'getAnnotation(', 'Class<T>)', 'T'),
-  \ javaapi#method(0,1,'getDeclaredAnnotations(', ')', 'Annotation[]'),
-  \ javaapi#method(0,1,'getParameterAnnotations(', ')', 'Annotation[][]'),
+  \ javaapi#method(0,1,'getDeclaredAnnotations(', ')', 'Annotation'),
+  \ javaapi#method(0,1,'getParameterAnnotations(', ')', 'Annotation[]'),
   \ ])
 
 call javaapi#class('Method', 'AccessibleObject', [
-  \ javaapi#method(0,1,'getDeclaringClass(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'getDeclaringClass(', ')', 'Class'),
   \ javaapi#method(0,1,'getName(', ')', 'String'),
   \ javaapi#method(0,1,'getModifiers(', ')', 'int'),
-  \ javaapi#method(0,1,'getTypeParameters(', ')', 'Method>[]'),
-  \ javaapi#method(0,1,'getReturnType(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'getTypeParameters(', ')', 'TypeVariable'),
+  \ javaapi#method(0,1,'getReturnType(', ')', 'Class'),
   \ javaapi#method(0,1,'getGenericReturnType(', ')', 'Type'),
-  \ javaapi#method(0,1,'getParameterTypes(', ')', 'Class<?>[]'),
-  \ javaapi#method(0,1,'getGenericParameterTypes(', ')', 'Type[]'),
-  \ javaapi#method(0,1,'getExceptionTypes(', ')', 'Class<?>[]'),
-  \ javaapi#method(0,1,'getGenericExceptionTypes(', ')', 'Type[]'),
+  \ javaapi#method(0,1,'getParameterTypes(', ')', 'Class'),
+  \ javaapi#method(0,1,'getGenericParameterTypes(', ')', 'Type'),
+  \ javaapi#method(0,1,'getExceptionTypes(', ')', 'Class'),
+  \ javaapi#method(0,1,'getGenericExceptionTypes(', ')', 'Type'),
   \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
@@ -190,27 +190,27 @@ call javaapi#class('Method', 'AccessibleObject', [
   \ javaapi#method(0,1,'isVarArgs(', ')', 'boolean'),
   \ javaapi#method(0,1,'isSynthetic(', ')', 'boolean'),
   \ javaapi#method(0,1,'getAnnotation(', 'Class<T>)', 'T'),
-  \ javaapi#method(0,1,'getDeclaredAnnotations(', ')', 'Annotation[]'),
+  \ javaapi#method(0,1,'getDeclaredAnnotations(', ')', 'Annotation'),
   \ javaapi#method(0,1,'getDefaultValue(', ')', 'Object'),
-  \ javaapi#method(0,1,'getParameterAnnotations(', ')', 'Annotation[][]'),
+  \ javaapi#method(0,1,'getParameterAnnotations(', ')', 'Annotation[]'),
   \ ])
 
 call javaapi#interface('Member', '', [
   \ javaapi#field(1,1,'PUBLIC', 'int'),
   \ javaapi#field(1,1,'DECLARED', 'int'),
-  \ javaapi#method(0,1,'getDeclaringClass(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'getDeclaringClass(', ')', 'Class'),
   \ javaapi#method(0,1,'getName(', ')', 'String'),
   \ javaapi#method(0,1,'getModifiers(', ')', 'int'),
   \ javaapi#method(0,1,'isSynthetic(', ')', 'boolean'),
   \ ])
 
 call javaapi#class('Field', 'AccessibleObject', [
-  \ javaapi#method(0,1,'getDeclaringClass(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'getDeclaringClass(', ')', 'Class'),
   \ javaapi#method(0,1,'getName(', ')', 'String'),
   \ javaapi#method(0,1,'getModifiers(', ')', 'int'),
   \ javaapi#method(0,1,'isEnumConstant(', ')', 'boolean'),
   \ javaapi#method(0,1,'isSynthetic(', ')', 'boolean'),
-  \ javaapi#method(0,1,'getType(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'getType(', ')', 'Class'),
   \ javaapi#method(0,1,'getGenericType(', ')', 'Type'),
   \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
@@ -235,7 +235,7 @@ call javaapi#class('Field', 'AccessibleObject', [
   \ javaapi#method(0,1,'setFloat(', 'Object, float) throws IllegalArgumentException, IllegalAccessException', 'void'),
   \ javaapi#method(0,1,'setDouble(', 'Object, double) throws IllegalArgumentException, IllegalAccessException', 'void'),
   \ javaapi#method(0,1,'getAnnotation(', 'Class<T>)', 'T'),
-  \ javaapi#method(0,1,'getDeclaredAnnotations(', ')', 'Annotation[]'),
+  \ javaapi#method(0,1,'getDeclaredAnnotations(', ')', 'Annotation'),
   \ ])
 
 call javaapi#class('AccessibleObject', 'AnnotatedElement', [
@@ -245,8 +245,8 @@ call javaapi#class('AccessibleObject', 'AnnotatedElement', [
   \ javaapi#method(0,0,'AccessibleObject(', ')', ''),
   \ javaapi#method(0,1,'getAnnotation(', 'Class<T>)', 'T'),
   \ javaapi#method(0,1,'isAnnotationPresent(', 'Class<? extends Annotation>)', 'boolean'),
-  \ javaapi#method(0,1,'getAnnotations(', ')', 'Annotation[]'),
-  \ javaapi#method(0,1,'getDeclaredAnnotations(', ')', 'Annotation[]'),
+  \ javaapi#method(0,1,'getAnnotations(', ')', 'Annotation'),
+  \ javaapi#method(0,1,'getDeclaredAnnotations(', ')', 'Annotation'),
   \ ])
 
 call javaapi#namespace('java.lang.reflect')
@@ -254,14 +254,14 @@ call javaapi#namespace('java.lang.reflect')
 call javaapi#interface('AnnotatedElement', '', [
   \ javaapi#method(0,1,'isAnnotationPresent(', 'Class<? extends Annotation>)', 'boolean'),
   \ javaapi#method(0,1,'getAnnotation(', 'Class<T>)', 'T'),
-  \ javaapi#method(0,1,'getAnnotations(', ')', 'Annotation[]'),
-  \ javaapi#method(0,1,'getDeclaredAnnotations(', ')', 'Annotation[]'),
+  \ javaapi#method(0,1,'getAnnotations(', ')', 'Annotation'),
+  \ javaapi#method(0,1,'getDeclaredAnnotations(', ')', 'Annotation'),
   \ ])
 
 call javaapi#interface('Type', '', [
   \ ])
 
 call javaapi#interface('GenericDeclaration', '', [
-  \ javaapi#method(0,1,'getTypeParameters(', ')', 'TypeVariable<?>[]'),
+  \ javaapi#method(0,1,'getTypeParameters(', ')', 'TypeVariable'),
   \ ])
 

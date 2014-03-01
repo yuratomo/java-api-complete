@@ -66,7 +66,7 @@ call javaapi#class('BeanContextMembershipEvent', 'BeanContextEvent', [
   \ javaapi#method(0,1,'BeanContextMembershipEvent(', 'BeanContext, Object[])', ''),
   \ javaapi#method(0,1,'size(', ')', 'int'),
   \ javaapi#method(0,1,'contains(', 'Object)', 'boolean'),
-  \ javaapi#method(0,1,'toArray(', ')', 'Object[]'),
+  \ javaapi#method(0,1,'toArray(', ')', 'Object'),
   \ javaapi#method(0,1,'iterator(', ')', 'Iterator'),
   \ ])
 
@@ -94,7 +94,7 @@ call javaapi#interface('BeanContextServiceProvider', '', [
   \ ])
 
 call javaapi#interface('BeanContextServiceProviderBeanInfo', 'BeanInfo', [
-  \ javaapi#method(0,1,'getServicesBeanInfo(', ')', 'BeanInfo[]'),
+  \ javaapi#method(0,1,'getServicesBeanInfo(', ')', 'BeanInfo'),
   \ ])
 
 call javaapi#class('BeanContextServiceRevokedEvent', 'BeanContextEvent', [
@@ -182,8 +182,8 @@ call javaapi#class('BeanContextSupport', 'BeanContextChildSupport', [
   \ javaapi#method(0,1,'contains(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'containsKey(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'iterator(', ')', 'Iterator'),
-  \ javaapi#method(0,1,'toArray(', ')', 'Object[]'),
-  \ javaapi#method(0,1,'toArray(', 'Object[])', 'Object[]'),
+  \ javaapi#method(0,1,'toArray(', ')', 'Object'),
+  \ javaapi#method(0,1,'toArray(', 'Object[])', 'Object'),
   \ javaapi#method(0,0,'createBCSChild(', 'Object, Object)', 'BCSChild'),
   \ javaapi#method(0,1,'add(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'remove(', 'Object)', 'boolean'),
@@ -229,7 +229,7 @@ call javaapi#class('BeanContextSupport', 'BeanContextChildSupport', [
   \ javaapi#method(0,0,'fireChildrenAdded(', 'BeanContextMembershipEvent)', 'void'),
   \ javaapi#method(0,0,'fireChildrenRemoved(', 'BeanContextMembershipEvent)', 'void'),
   \ javaapi#method(0,0,'initialize(', ')', 'void'),
-  \ javaapi#method(0,0,'copyChildren(', ')', 'Object[]'),
+  \ javaapi#method(0,0,'copyChildren(', ')', 'Object'),
   \ javaapi#method(1,0,'classEquals(', 'Class, Class)', 'boolean'),
   \ ])
 

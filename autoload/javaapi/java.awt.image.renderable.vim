@@ -5,13 +5,13 @@ call javaapi#interface('ContextualRenderedImageFactory', 'RenderedImageFactory',
   \ javaapi#method(0,1,'create(', 'RenderContext, ParameterBlock)', 'RenderedImage'),
   \ javaapi#method(0,1,'getBounds2D(', 'ParameterBlock)', 'Rectangle2D'),
   \ javaapi#method(0,1,'getProperty(', 'ParameterBlock, String)', 'Object'),
-  \ javaapi#method(0,1,'getPropertyNames(', ')', 'String[]'),
+  \ javaapi#method(0,1,'getPropertyNames(', ')', 'String'),
   \ javaapi#method(0,1,'isDynamic(', ')', 'boolean'),
   \ ])
 
 call javaapi#class('ParameterBlock', 'Serializable', [
-  \ javaapi#field(0,0,'sources', 'Object>'),
-  \ javaapi#field(0,0,'parameters', 'Object>'),
+  \ javaapi#field(0,0,'sources', 'Vector'),
+  \ javaapi#field(0,0,'parameters', 'Vector'),
   \ javaapi#method(0,1,'ParameterBlock(', ')', ''),
   \ javaapi#method(0,1,'ParameterBlock(', 'Vector<Object>)', ''),
   \ javaapi#method(0,1,'ParameterBlock(', 'Vector<Object>, Vector<Object>)', ''),
@@ -23,11 +23,11 @@ call javaapi#class('ParameterBlock', 'Serializable', [
   \ javaapi#method(0,1,'getRenderedSource(', 'int)', 'RenderedImage'),
   \ javaapi#method(0,1,'getRenderableSource(', 'int)', 'RenderableImage'),
   \ javaapi#method(0,1,'getNumSources(', ')', 'int'),
-  \ javaapi#method(0,1,'getSources(', ')', 'Object>'),
+  \ javaapi#method(0,1,'getSources(', ')', 'Vector'),
   \ javaapi#method(0,1,'setSources(', 'Vector<Object>)', 'void'),
   \ javaapi#method(0,1,'removeSources(', ')', 'void'),
   \ javaapi#method(0,1,'getNumParameters(', ')', 'int'),
-  \ javaapi#method(0,1,'getParameters(', ')', 'Object>'),
+  \ javaapi#method(0,1,'getParameters(', ')', 'Vector'),
   \ javaapi#method(0,1,'setParameters(', 'Vector<Object>)', 'void'),
   \ javaapi#method(0,1,'removeParameters(', ')', 'void'),
   \ javaapi#method(0,1,'add(', 'Object)', 'ParameterBlock'),
@@ -54,7 +54,7 @@ call javaapi#class('ParameterBlock', 'Serializable', [
   \ javaapi#method(0,1,'getLongParameter(', 'int)', 'long'),
   \ javaapi#method(0,1,'getFloatParameter(', 'int)', 'float'),
   \ javaapi#method(0,1,'getDoubleParameter(', 'int)', 'double'),
-  \ javaapi#method(0,1,'getParamClasses(', ')', 'Class[]'),
+  \ javaapi#method(0,1,'getParamClasses(', ')', 'Class'),
   \ ])
 
 call javaapi#class('RenderContext', 'Cloneable', [
@@ -77,9 +77,9 @@ call javaapi#class('RenderContext', 'Cloneable', [
 
 call javaapi#interface('RenderableImage', '', [
   \ javaapi#field(1,1,'HINTS_OBSERVED', 'String'),
-  \ javaapi#method(0,1,'getSources(', ')', 'RenderableImage>'),
+  \ javaapi#method(0,1,'getSources(', ')', 'Vector'),
   \ javaapi#method(0,1,'getProperty(', 'String)', 'Object'),
-  \ javaapi#method(0,1,'getPropertyNames(', ')', 'String[]'),
+  \ javaapi#method(0,1,'getPropertyNames(', ')', 'String'),
   \ javaapi#method(0,1,'isDynamic(', ')', 'boolean'),
   \ javaapi#method(0,1,'getWidth(', ')', 'float'),
   \ javaapi#method(0,1,'getHeight(', ')', 'float'),
@@ -92,9 +92,9 @@ call javaapi#interface('RenderableImage', '', [
 
 call javaapi#class('RenderableImageOp', 'RenderableImage', [
   \ javaapi#method(0,1,'RenderableImageOp(', 'ContextualRenderedImageFactory, ParameterBlock)', ''),
-  \ javaapi#method(0,1,'getSources(', ')', 'RenderableImage>'),
+  \ javaapi#method(0,1,'getSources(', ')', 'Vector'),
   \ javaapi#method(0,1,'getProperty(', 'String)', 'Object'),
-  \ javaapi#method(0,1,'getPropertyNames(', ')', 'String[]'),
+  \ javaapi#method(0,1,'getPropertyNames(', ')', 'String'),
   \ javaapi#method(0,1,'isDynamic(', ')', 'boolean'),
   \ javaapi#method(0,1,'getWidth(', ')', 'float'),
   \ javaapi#method(0,1,'getHeight(', ')', 'float'),

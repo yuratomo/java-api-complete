@@ -61,14 +61,14 @@ call javaapi#class('Invokers', '', [
   \ ])
 
 call javaapi#class('MemberName', 'Cloneable', [
-  \ javaapi#method(0,1,'getDeclaringClass(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'getDeclaringClass(', ')', 'Class'),
   \ javaapi#method(0,1,'getClassLoader(', ')', 'ClassLoader'),
   \ javaapi#method(0,1,'getName(', ')', 'String'),
   \ javaapi#method(0,1,'getMethodType(', ')', 'MethodType'),
   \ javaapi#method(0,1,'getInvocationType(', ')', 'MethodType'),
-  \ javaapi#method(0,1,'getParameterTypes(', ')', 'Class<?>[]'),
-  \ javaapi#method(0,1,'getReturnType(', ')', 'Class<?>'),
-  \ javaapi#method(0,1,'getFieldType(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'getParameterTypes(', ')', 'Class'),
+  \ javaapi#method(0,1,'getReturnType(', ')', 'Class'),
+  \ javaapi#method(0,1,'getFieldType(', ')', 'Class'),
   \ javaapi#method(0,1,'getType(', ')', 'Object'),
   \ javaapi#method(0,1,'getSignature(', ')', 'String'),
   \ javaapi#method(0,1,'getModifiers(', ')', 'int'),
@@ -131,7 +131,7 @@ call javaapi#class('MethodHandleProxies', '', [
   \ javaapi#method(1,1,'asInterfaceInstance(', 'Class<T>, MethodHandle)', 'T'),
   \ javaapi#method(1,1,'isWrapperInstance(', 'Object)', 'boolean'),
   \ javaapi#method(1,1,'wrapperInstanceTarget(', 'Object)', 'MethodHandle'),
-  \ javaapi#method(1,1,'wrapperInstanceType(', 'Object)', 'Class<?>'),
+  \ javaapi#method(1,1,'wrapperInstanceType(', 'Object)', 'Class'),
   \ ])
 
 call javaapi#class('MethodHandleStatics', '', [
@@ -182,11 +182,11 @@ call javaapi#class('MethodType', 'Serializable', [
   \ javaapi#method(0,1,'generic(', ')', 'MethodType'),
   \ javaapi#method(0,1,'wrap(', ')', 'MethodType'),
   \ javaapi#method(0,1,'unwrap(', ')', 'MethodType'),
-  \ javaapi#method(0,1,'parameterType(', 'int)', 'Class<?>'),
+  \ javaapi#method(0,1,'parameterType(', 'int)', 'Class'),
   \ javaapi#method(0,1,'parameterCount(', ')', 'int'),
-  \ javaapi#method(0,1,'returnType(', ')', 'Class<?>'),
-  \ javaapi#method(0,1,'parameterList(', ')', 'Class<?>>'),
-  \ javaapi#method(0,1,'parameterArray(', ')', 'Class<?>[]'),
+  \ javaapi#method(0,1,'returnType(', ')', 'Class'),
+  \ javaapi#method(0,1,'parameterList(', ')', 'Class'),
+  \ javaapi#method(0,1,'parameterArray(', ')', 'Class'),
   \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
@@ -209,7 +209,7 @@ call javaapi#class('MethodTypeForm', '', [
   \ javaapi#method(0,1,'primsAsInts(', ')', 'MethodType'),
   \ javaapi#method(0,1,'primsAsLongs(', ')', 'MethodType'),
   \ javaapi#method(0,1,'primsAtEnd(', ')', 'MethodType'),
-  \ javaapi#method(1,1,'primsAtEndOrder(', 'MethodType)', 'int[]'),
+  \ javaapi#method(1,1,'primsAtEndOrder(', 'MethodType)', 'int'),
   \ javaapi#method(1,1,'reorderParameters(', 'MethodType, int[], Class<?>[])', 'MethodType'),
   \ javaapi#method(0,1,'parameterCount(', ')', 'int'),
   \ javaapi#method(0,1,'parameterSlotCount(', ')', 'int'),

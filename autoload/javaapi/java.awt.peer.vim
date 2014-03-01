@@ -31,7 +31,7 @@ call javaapi#interface('DesktopPeer', '', [
   \ ])
 
 call javaapi#interface('ListPeer', 'ComponentPeer', [
-  \ javaapi#method(0,1,'getSelectedIndexes(', ')', 'int[]'),
+  \ javaapi#method(0,1,'getSelectedIndexes(', ')', 'int'),
   \ javaapi#method(0,1,'add(', 'String, int)', 'void'),
   \ javaapi#method(0,1,'delItems(', 'int, int)', 'void'),
   \ javaapi#method(0,1,'removeAll(', ')', 'void'),
@@ -60,7 +60,7 @@ call javaapi#interface('RobotPeer', '', [
   \ javaapi#method(0,1,'keyPress(', 'int)', 'void'),
   \ javaapi#method(0,1,'keyRelease(', 'int)', 'void'),
   \ javaapi#method(0,1,'getRGBPixel(', 'int, int)', 'int'),
-  \ javaapi#method(0,1,'getRGBPixels(', 'Rectangle)', 'int[]'),
+  \ javaapi#method(0,1,'getRGBPixels(', 'Rectangle)', 'int'),
   \ javaapi#method(0,1,'dispose(', ')', 'void'),
   \ ])
 

@@ -8,7 +8,7 @@ call javaapi#class('PatternSyntaxException', 'IllegalArgumentException', [
   \ javaapi#method(0,1,'getMessage(', ')', 'String'),
   \ ])
 
-call javaapi#class('UnicodeProp', 'UnicodeProp', [
+call javaapi#class('UnicodeProp', 'Enum', [
   \ javaapi#field(1,1,'ALPHABETIC', 'UnicodeProp'),
   \ javaapi#field(1,1,'LETTER', 'UnicodeProp'),
   \ javaapi#field(1,1,'IDEOGRAPHIC', 'UnicodeProp'),
@@ -27,7 +27,7 @@ call javaapi#class('UnicodeProp', 'UnicodeProp', [
   \ javaapi#field(1,1,'GRAPH', 'UnicodeProp'),
   \ javaapi#field(1,1,'PRINT', 'UnicodeProp'),
   \ javaapi#field(1,1,'WORD', 'UnicodeProp'),
-  \ javaapi#method(1,1,'values(', ')', 'UnicodeProp[]'),
+  \ javaapi#method(1,1,'values(', ')', 'UnicodeProp'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'UnicodeProp'),
   \ javaapi#method(1,1,'forName(', 'String)', 'UnicodeProp'),
   \ javaapi#method(1,1,'forPOSIXName(', 'String)', 'UnicodeProp'),
@@ -105,8 +105,8 @@ call javaapi#class('Pattern', 'Serializable', [
   \ javaapi#method(0,1,'matcher(', 'CharSequence)', 'Matcher'),
   \ javaapi#method(0,1,'flags(', ')', 'int'),
   \ javaapi#method(1,1,'matches(', 'String, CharSequence)', 'boolean'),
-  \ javaapi#method(0,1,'split(', 'CharSequence, int)', 'String[]'),
-  \ javaapi#method(0,1,'split(', 'CharSequence)', 'String[]'),
+  \ javaapi#method(0,1,'split(', 'CharSequence, int)', 'String'),
+  \ javaapi#method(0,1,'split(', 'CharSequence)', 'String'),
   \ javaapi#method(1,1,'quote(', 'String)', 'String'),
   \ ])
 

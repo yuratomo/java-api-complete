@@ -985,7 +985,7 @@ function! javaapi#jar2vim(jar, output_dir)
 endfunction
 
 function! s:class_name(path)
-  let items = split(substitute(a:path, ";", "", ""), '[.$]')
+  let items = split(substitute(substitute(substitute(a:path, '\[[^[]*\]',"",""),'<[^<]\+>',"",""), ";", "", ""), '[.$]')
   if len(items) > 0
     return items[-1]
   else

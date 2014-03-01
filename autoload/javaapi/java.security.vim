@@ -59,7 +59,7 @@ call javaapi#class('CodeSigner', 'Serializable', [
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
-call javaapi#class('CryptoPrimitive', 'CryptoPrimitive', [
+call javaapi#class('CryptoPrimitive', 'Enum', [
   \ javaapi#field(1,1,'MESSAGE_DIGEST', 'CryptoPrimitive'),
   \ javaapi#field(1,1,'SECURE_RANDOM', 'CryptoPrimitive'),
   \ javaapi#field(1,1,'BLOCK_CIPHER', 'CryptoPrimitive'),
@@ -70,7 +70,7 @@ call javaapi#class('CryptoPrimitive', 'CryptoPrimitive', [
   \ javaapi#field(1,1,'SIGNATURE', 'CryptoPrimitive'),
   \ javaapi#field(1,1,'KEY_ENCAPSULATION', 'CryptoPrimitive'),
   \ javaapi#field(1,1,'KEY_AGREEMENT', 'CryptoPrimitive'),
-  \ javaapi#method(1,1,'values(', ')', 'CryptoPrimitive[]'),
+  \ javaapi#method(1,1,'values(', ')', 'CryptoPrimitive'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'CryptoPrimitive'),
   \ ])
 
@@ -120,7 +120,7 @@ call javaapi#class('Identity', 'Serializable', [
   \ javaapi#method(0,1,'getInfo(', ')', 'String'),
   \ javaapi#method(0,1,'addCertificate(', 'Certificate) throws KeyManagementException', 'void'),
   \ javaapi#method(0,1,'removeCertificate(', 'Certificate) throws KeyManagementException', 'void'),
-  \ javaapi#method(0,1,'certificates(', ')', 'Certificate[]'),
+  \ javaapi#method(0,1,'certificates(', ')', 'Certificate'),
   \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,0,'identityEquals(', 'Identity)', 'boolean'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
@@ -140,7 +140,7 @@ call javaapi#class('IdentityScope', 'Identity', [
   \ javaapi#method(0,1,'getIdentity(', 'PublicKey)', 'Identity'),
   \ javaapi#method(0,1,'addIdentity(', 'Identity) throws KeyManagementException', 'void'),
   \ javaapi#method(0,1,'removeIdentity(', 'Identity) throws KeyManagementException', 'void'),
-  \ javaapi#method(0,1,'identities(', ')', 'Identity>'),
+  \ javaapi#method(0,1,'identities(', ')', 'Enumeration'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
@@ -226,14 +226,14 @@ call javaapi#class('KeyStore', '', [
   \ javaapi#method(0,1,'getProvider(', ')', 'Provider'),
   \ javaapi#method(0,1,'getType(', ')', 'String'),
   \ javaapi#method(0,1,'getKey(', 'String, char[]) throws KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException', 'Key'),
-  \ javaapi#method(0,1,'getCertificateChain(', 'String) throws KeyStoreException', 'Certificate[]'),
+  \ javaapi#method(0,1,'getCertificateChain(', 'String) throws KeyStoreException', 'Certificate'),
   \ javaapi#method(0,1,'getCertificate(', 'String) throws KeyStoreException', 'Certificate'),
   \ javaapi#method(0,1,'getCreationDate(', 'String) throws KeyStoreException', 'Date'),
   \ javaapi#method(0,1,'setKeyEntry(', 'String, Key, char[], Certificate[]) throws KeyStoreException', 'void'),
   \ javaapi#method(0,1,'setKeyEntry(', 'String, byte[], Certificate[]) throws KeyStoreException', 'void'),
   \ javaapi#method(0,1,'setCertificateEntry(', 'String, Certificate) throws KeyStoreException', 'void'),
   \ javaapi#method(0,1,'deleteEntry(', 'String) throws KeyStoreException', 'void'),
-  \ javaapi#method(0,1,'aliases(', ') throws KeyStoreException', 'String>'),
+  \ javaapi#method(0,1,'aliases(', ') throws KeyStoreException', 'Enumeration'),
   \ javaapi#method(0,1,'containsAlias(', 'String) throws KeyStoreException', 'boolean'),
   \ javaapi#method(0,1,'size(', ') throws KeyStoreException', 'int'),
   \ javaapi#method(0,1,'isKeyEntry(', 'String) throws KeyStoreException', 'boolean'),
@@ -258,14 +258,14 @@ call javaapi#class('KeyStoreException', 'GeneralSecurityException', [
 call javaapi#class('KeyStoreSpi', '', [
   \ javaapi#method(0,1,'KeyStoreSpi(', ')', ''),
   \ javaapi#method(0,1,'engineGetKey(', 'String, char[]) throws NoSuchAlgorithmException, UnrecoverableKeyException', 'Key'),
-  \ javaapi#method(0,1,'engineGetCertificateChain(', 'String)', 'Certificate[]'),
+  \ javaapi#method(0,1,'engineGetCertificateChain(', 'String)', 'Certificate'),
   \ javaapi#method(0,1,'engineGetCertificate(', 'String)', 'Certificate'),
   \ javaapi#method(0,1,'engineGetCreationDate(', 'String)', 'Date'),
   \ javaapi#method(0,1,'engineSetKeyEntry(', 'String, Key, char[], Certificate[]) throws KeyStoreException', 'void'),
   \ javaapi#method(0,1,'engineSetKeyEntry(', 'String, byte[], Certificate[]) throws KeyStoreException', 'void'),
   \ javaapi#method(0,1,'engineSetCertificateEntry(', 'String, Certificate) throws KeyStoreException', 'void'),
   \ javaapi#method(0,1,'engineDeleteEntry(', 'String) throws KeyStoreException', 'void'),
-  \ javaapi#method(0,1,'engineAliases(', ')', 'String>'),
+  \ javaapi#method(0,1,'engineAliases(', ')', 'Enumeration'),
   \ javaapi#method(0,1,'engineContainsAlias(', 'String)', 'boolean'),
   \ javaapi#method(0,1,'engineSize(', ')', 'int'),
   \ javaapi#method(0,1,'engineIsKeyEntry(', 'String)', 'boolean'),
@@ -288,7 +288,7 @@ call javaapi#class('NoSuchProviderException', 'GeneralSecurityException', [
 call javaapi#class('PermissionsHash', 'PermissionCollection', [
   \ javaapi#method(0,1,'add(', 'Permission)', 'void'),
   \ javaapi#method(0,1,'implies(', 'Permission)', 'boolean'),
-  \ javaapi#method(0,1,'elements(', ')', 'Permission>'),
+  \ javaapi#method(0,1,'elements(', ')', 'Enumeration'),
   \ ])
 
 call javaapi#class('PolicySpi', '', [
@@ -319,21 +319,21 @@ call javaapi#class('SecureRandom', 'Random', [
   \ javaapi#method(0,1,'setSeed(', 'long)', 'void'),
   \ javaapi#method(0,1,'nextBytes(', 'byte[])', 'void'),
   \ javaapi#method(0,0,'next(', 'int)', 'int'),
-  \ javaapi#method(1,1,'getSeed(', 'int)', 'byte[]'),
-  \ javaapi#method(0,1,'generateSeed(', 'int)', 'byte[]'),
+  \ javaapi#method(1,1,'getSeed(', 'int)', 'byte'),
+  \ javaapi#method(0,1,'generateSeed(', 'int)', 'byte'),
   \ ])
 
 call javaapi#class('SecureRandomSpi', 'Serializable', [
   \ javaapi#method(0,1,'SecureRandomSpi(', ')', ''),
   \ javaapi#method(0,0,'engineSetSeed(', 'byte[])', 'void'),
   \ javaapi#method(0,0,'engineNextBytes(', 'byte[])', 'void'),
-  \ javaapi#method(0,0,'engineGenerateSeed(', 'int)', 'byte[]'),
+  \ javaapi#method(0,0,'engineGenerateSeed(', 'int)', 'byte'),
   \ ])
 
 call javaapi#class('SignedObject', 'Serializable', [
   \ javaapi#method(0,1,'SignedObject(', 'Serializable, PrivateKey, Signature) throws IOException, InvalidKeyException, SignatureException', ''),
   \ javaapi#method(0,1,'getObject(', ') throws IOException, ClassNotFoundException', 'Object'),
-  \ javaapi#method(0,1,'getSignature(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'getSignature(', ')', 'byte'),
   \ javaapi#method(0,1,'getAlgorithm(', ')', 'String'),
   \ javaapi#method(0,1,'verify(', 'PublicKey, Signature) throws InvalidKeyException, SignatureException', 'boolean'),
   \ ])
@@ -375,12 +375,12 @@ call javaapi#class('UnresolvedPermissionCollection', 'PermissionCollection', [
   \ javaapi#method(0,1,'UnresolvedPermissionCollection(', ')', ''),
   \ javaapi#method(0,1,'add(', 'Permission)', 'void'),
   \ javaapi#method(0,1,'implies(', 'Permission)', 'boolean'),
-  \ javaapi#method(0,1,'elements(', ')', 'Permission>'),
+  \ javaapi#method(0,1,'elements(', ')', 'Enumeration'),
   \ ])
 
 call javaapi#namespace('java.security')
 
-call javaapi#class('PermissionsEnumerator', 'Permission', [
+call javaapi#class('PermissionsEnumerator', 'Enumeration', [
   \ javaapi#method(0,1,'hasMoreElements(', ')', 'boolean'),
   \ javaapi#method(0,1,'nextElement(', ')', 'Permission'),
   \ javaapi#method(0,1,'nextElement(', ')', 'Object'),
@@ -396,7 +396,7 @@ call javaapi#class('SecurityPermission', 'BasicPermission', [
 call javaapi#namespace('java.security')
 
 call javaapi#interface('DomainCombiner', '', [
-  \ javaapi#method(0,1,'combine(', 'ProtectionDomain[], ProtectionDomain[])', 'ProtectionDomain[]'),
+  \ javaapi#method(0,1,'combine(', 'ProtectionDomain[], ProtectionDomain[])', 'ProtectionDomain'),
   \ ])
 
 call javaapi#namespace('java.security')
@@ -413,8 +413,8 @@ call javaapi#class('AlgorithmParametersSpi', '', [
   \ javaapi#method(0,0,'engineInit(', 'byte[]) throws IOException', 'void'),
   \ javaapi#method(0,0,'engineInit(', 'byte[], String) throws IOException', 'void'),
   \ javaapi#method(0,0,'engineGetParameterSpec(', 'Class<T>) throws InvalidParameterSpecException', 'T'),
-  \ javaapi#method(0,0,'engineGetEncoded(', ') throws IOException', 'byte[]'),
-  \ javaapi#method(0,0,'engineGetEncoded(', 'String) throws IOException', 'byte[]'),
+  \ javaapi#method(0,0,'engineGetEncoded(', ') throws IOException', 'byte'),
+  \ javaapi#method(0,0,'engineGetEncoded(', 'String) throws IOException', 'byte'),
   \ javaapi#method(0,0,'engineToString(', ')', 'String'),
   \ ])
 
@@ -429,8 +429,8 @@ call javaapi#class('AlgorithmParameters', '', [
   \ javaapi#method(0,1,'init(', 'byte[]) throws IOException', 'void'),
   \ javaapi#method(0,1,'init(', 'byte[], String) throws IOException', 'void'),
   \ javaapi#method(0,1,'getParameterSpec(', 'Class<T>) throws InvalidParameterSpecException', 'T'),
-  \ javaapi#method(0,1,'getEncoded(', ') throws IOException', 'byte[]'),
-  \ javaapi#method(0,1,'getEncoded(', 'String) throws IOException', 'byte[]'),
+  \ javaapi#method(0,1,'getEncoded(', ') throws IOException', 'byte'),
+  \ javaapi#method(0,1,'getEncoded(', 'String) throws IOException', 'byte'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
 
@@ -442,7 +442,7 @@ call javaapi#class('MessageDigestSpi', '', [
   \ javaapi#method(0,0,'engineUpdate(', 'byte)', 'void'),
   \ javaapi#method(0,0,'engineUpdate(', 'byte[], int, int)', 'void'),
   \ javaapi#method(0,0,'engineUpdate(', 'ByteBuffer)', 'void'),
-  \ javaapi#method(0,0,'engineDigest(', ')', 'byte[]'),
+  \ javaapi#method(0,0,'engineDigest(', ')', 'byte'),
   \ javaapi#method(0,0,'engineDigest(', 'byte[], int, int) throws DigestException', 'int'),
   \ javaapi#method(0,0,'engineReset(', ')', 'void'),
   \ javaapi#method(0,1,'clone(', ') throws CloneNotSupportedException', 'Object'),
@@ -458,9 +458,9 @@ call javaapi#class('MessageDigest', 'MessageDigestSpi', [
   \ javaapi#method(0,1,'update(', 'byte[], int, int)', 'void'),
   \ javaapi#method(0,1,'update(', 'byte[])', 'void'),
   \ javaapi#method(0,1,'update(', 'ByteBuffer)', 'void'),
-  \ javaapi#method(0,1,'digest(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'digest(', ')', 'byte'),
   \ javaapi#method(0,1,'digest(', 'byte[], int, int) throws DigestException', 'int'),
-  \ javaapi#method(0,1,'digest(', 'byte[])', 'byte[]'),
+  \ javaapi#method(0,1,'digest(', 'byte[])', 'byte'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ javaapi#method(1,1,'isEqual(', 'byte[], byte[])', 'boolean'),
   \ javaapi#method(0,1,'reset(', ')', 'void'),
@@ -475,7 +475,7 @@ call javaapi#interface('Key', 'Serializable', [
   \ javaapi#field(1,1,'serialVersionUID', 'long'),
   \ javaapi#method(0,1,'getAlgorithm(', ')', 'String'),
   \ javaapi#method(0,1,'getFormat(', ')', 'String'),
-  \ javaapi#method(0,1,'getEncoded(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'getEncoded(', ')', 'byte'),
   \ ])
 
 call javaapi#interface('PublicKey', 'Key', [
@@ -493,7 +493,7 @@ call javaapi#class('SignatureSpi', '', [
   \ javaapi#method(0,0,'engineUpdate(', 'byte) throws SignatureException', 'void'),
   \ javaapi#method(0,0,'engineUpdate(', 'byte[], int, int) throws SignatureException', 'void'),
   \ javaapi#method(0,0,'engineUpdate(', 'ByteBuffer)', 'void'),
-  \ javaapi#method(0,0,'engineSign(', ') throws SignatureException', 'byte[]'),
+  \ javaapi#method(0,0,'engineSign(', ') throws SignatureException', 'byte'),
   \ javaapi#method(0,0,'engineSign(', 'byte[], int, int) throws SignatureException', 'int'),
   \ javaapi#method(0,0,'engineVerify(', 'byte[]) throws SignatureException', 'boolean'),
   \ javaapi#method(0,0,'engineVerify(', 'byte[], int, int) throws SignatureException', 'boolean'),
@@ -518,7 +518,7 @@ call javaapi#class('Signature', 'SignatureSpi', [
   \ javaapi#method(0,1,'initVerify(', 'Certificate) throws InvalidKeyException', 'void'),
   \ javaapi#method(0,1,'initSign(', 'PrivateKey) throws InvalidKeyException', 'void'),
   \ javaapi#method(0,1,'initSign(', 'PrivateKey, SecureRandom) throws InvalidKeyException', 'void'),
-  \ javaapi#method(0,1,'sign(', ') throws SignatureException', 'byte[]'),
+  \ javaapi#method(0,1,'sign(', ') throws SignatureException', 'byte'),
   \ javaapi#method(0,1,'sign(', 'byte[], int, int) throws SignatureException', 'int'),
   \ javaapi#method(0,1,'verify(', 'byte[]) throws SignatureException', 'boolean'),
   \ javaapi#method(0,1,'verify(', 'byte[], int, int) throws SignatureException', 'boolean'),
@@ -579,13 +579,13 @@ call javaapi#class('Security', '', [
   \ javaapi#method(1,1,'insertProviderAt(', 'Provider, int)', 'int'),
   \ javaapi#method(1,1,'addProvider(', 'Provider)', 'int'),
   \ javaapi#method(1,1,'removeProvider(', 'String)', 'void'),
-  \ javaapi#method(1,1,'getProviders(', ')', 'Provider[]'),
+  \ javaapi#method(1,1,'getProviders(', ')', 'Provider'),
   \ javaapi#method(1,1,'getProvider(', 'String)', 'Provider'),
-  \ javaapi#method(1,1,'getProviders(', 'String)', 'Provider[]'),
-  \ javaapi#method(1,1,'getProviders(', 'Map<String, String>)', 'Provider[]'),
+  \ javaapi#method(1,1,'getProviders(', 'String)', 'Provider'),
+  \ javaapi#method(1,1,'getProviders(', 'Map<String, String>)', 'Provider'),
   \ javaapi#method(1,1,'getProperty(', 'String)', 'String'),
   \ javaapi#method(1,1,'setProperty(', 'String, String)', 'void'),
-  \ javaapi#method(1,1,'getAlgorithms(', 'String)', 'String>'),
+  \ javaapi#method(1,1,'getAlgorithms(', 'String)', 'Set'),
   \ ])
 
 call javaapi#class('Provider', 'Properties', [
@@ -598,16 +598,16 @@ call javaapi#class('Provider', 'Properties', [
   \ javaapi#method(0,1,'load(', 'InputStream) throws IOException', 'void'),
   \ javaapi#method(0,1,'putAll(', 'Map<?, ?>)', 'void'),
   \ javaapi#method(0,1,'entrySet(', ')', 'Object>>'),
-  \ javaapi#method(0,1,'keySet(', ')', 'Object>'),
-  \ javaapi#method(0,1,'values(', ')', 'Object>'),
+  \ javaapi#method(0,1,'keySet(', ')', 'Set'),
+  \ javaapi#method(0,1,'values(', ')', 'Collection'),
   \ javaapi#method(0,1,'put(', 'Object, Object)', 'Object'),
   \ javaapi#method(0,1,'remove(', 'Object)', 'Object'),
   \ javaapi#method(0,1,'get(', 'Object)', 'Object'),
-  \ javaapi#method(0,1,'keys(', ')', 'Object>'),
-  \ javaapi#method(0,1,'elements(', ')', 'Object>'),
+  \ javaapi#method(0,1,'keys(', ')', 'Enumeration'),
+  \ javaapi#method(0,1,'elements(', ')', 'Enumeration'),
   \ javaapi#method(0,1,'getProperty(', 'String)', 'String'),
   \ javaapi#method(0,1,'getService(', 'String, String)', 'Service'),
-  \ javaapi#method(0,1,'getServices(', ')', 'Service>'),
+  \ javaapi#method(0,1,'getServices(', ')', 'Set'),
   \ javaapi#method(0,0,'putService(', 'Service)', 'void'),
   \ javaapi#method(0,0,'removeService(', 'Service)', 'void'),
   \ ])
@@ -618,7 +618,7 @@ call javaapi#class('AllPermissionCollection', 'PermissionCollection', [
   \ javaapi#method(0,1,'AllPermissionCollection(', ')', ''),
   \ javaapi#method(0,1,'add(', 'Permission)', 'void'),
   \ javaapi#method(0,1,'implies(', 'Permission)', 'boolean'),
-  \ javaapi#method(0,1,'elements(', ')', 'Permission>'),
+  \ javaapi#method(0,1,'elements(', ')', 'Enumeration'),
   \ ])
 
 call javaapi#namespace('java.security')
@@ -634,7 +634,7 @@ call javaapi#class('BasicPermissionCollection', 'PermissionCollection', [
   \ javaapi#method(0,1,'BasicPermissionCollection(', 'Class)', ''),
   \ javaapi#method(0,1,'add(', 'Permission)', 'void'),
   \ javaapi#method(0,1,'implies(', 'Permission)', 'boolean'),
-  \ javaapi#method(0,1,'elements(', ')', 'Permission>'),
+  \ javaapi#method(0,1,'elements(', ')', 'Enumeration'),
   \ ])
 
 call javaapi#class('UnresolvedPermission', 'Permission', [
@@ -646,7 +646,7 @@ call javaapi#class('UnresolvedPermission', 'Permission', [
   \ javaapi#method(0,1,'getUnresolvedType(', ')', 'String'),
   \ javaapi#method(0,1,'getUnresolvedName(', ')', 'String'),
   \ javaapi#method(0,1,'getUnresolvedActions(', ')', 'String'),
-  \ javaapi#method(0,1,'getUnresolvedCerts(', ')', 'Certificate[]'),
+  \ javaapi#method(0,1,'getUnresolvedCerts(', ')', 'Certificate'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ javaapi#method(0,1,'newPermissionCollection(', ')', 'PermissionCollection'),
   \ ])
@@ -686,7 +686,7 @@ call javaapi#class('PermissionCollection', 'Serializable', [
   \ javaapi#method(0,1,'PermissionCollection(', ')', ''),
   \ javaapi#method(0,1,'add(', 'Permission)', 'void'),
   \ javaapi#method(0,1,'implies(', 'Permission)', 'boolean'),
-  \ javaapi#method(0,1,'elements(', ')', 'Permission>'),
+  \ javaapi#method(0,1,'elements(', ')', 'Enumeration'),
   \ javaapi#method(0,1,'setReadOnly(', ')', 'void'),
   \ javaapi#method(0,1,'isReadOnly(', ')', 'boolean'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
@@ -696,7 +696,7 @@ call javaapi#class('Permissions', 'PermissionCollection', [
   \ javaapi#method(0,1,'Permissions(', ')', ''),
   \ javaapi#method(0,1,'add(', 'Permission)', 'void'),
   \ javaapi#method(0,1,'implies(', 'Permission)', 'boolean'),
-  \ javaapi#method(0,1,'elements(', ')', 'Permission>'),
+  \ javaapi#method(0,1,'elements(', ')', 'Enumeration'),
   \ ])
 
 call javaapi#class('CodeSource', 'Serializable', [
@@ -705,8 +705,8 @@ call javaapi#class('CodeSource', 'Serializable', [
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
   \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'getLocation(', ')', 'URL'),
-  \ javaapi#method(0,1,'getCertificates(', ')', 'Certificate[]'),
-  \ javaapi#method(0,1,'getCodeSigners(', ')', 'CodeSigner[]'),
+  \ javaapi#method(0,1,'getCertificates(', ')', 'Certificate'),
+  \ javaapi#method(0,1,'getCodeSigners(', ')', 'CodeSigner'),
   \ javaapi#method(0,1,'implies(', 'CodeSource)', 'boolean'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
@@ -722,7 +722,7 @@ call javaapi#class('PrivilegedActionException', 'Exception', [
 
 call javaapi#namespace('java.security')
 
-call javaapi#interface('PrivilegedExceptionAction<T>', '', [
+call javaapi#interface('PrivilegedExceptionAction', '', [
   \ javaapi#method(0,1,'run(', ') throws Exception', 'T'),
   \ ])
 
@@ -731,14 +731,14 @@ call javaapi#namespace('java.security')
 call javaapi#class('SecureClassLoader', 'ClassLoader', [
   \ javaapi#method(0,0,'SecureClassLoader(', 'ClassLoader)', ''),
   \ javaapi#method(0,0,'SecureClassLoader(', ')', ''),
-  \ javaapi#method(0,0,'defineClass(', 'String, byte[], int, int, CodeSource)', 'Class<?>'),
-  \ javaapi#method(0,0,'defineClass(', 'String, ByteBuffer, CodeSource)', 'Class<?>'),
+  \ javaapi#method(0,0,'defineClass(', 'String, byte[], int, int, CodeSource)', 'Class'),
+  \ javaapi#method(0,0,'defineClass(', 'String, ByteBuffer, CodeSource)', 'Class'),
   \ javaapi#method(0,0,'getPermissions(', 'CodeSource)', 'PermissionCollection'),
   \ ])
 
 call javaapi#namespace('java.security')
 
-call javaapi#interface('PrivilegedAction<T>', '', [
+call javaapi#interface('PrivilegedAction', '', [
   \ javaapi#method(0,1,'run(', ')', 'T'),
   \ ])
 
@@ -799,7 +799,7 @@ call javaapi#class('ProtectionDomain', '', [
   \ javaapi#method(0,1,'ProtectionDomain(', 'CodeSource, PermissionCollection, ClassLoader, Principal[])', ''),
   \ javaapi#method(0,1,'getCodeSource(', ')', 'CodeSource'),
   \ javaapi#method(0,1,'getClassLoader(', ')', 'ClassLoader'),
-  \ javaapi#method(0,1,'getPrincipals(', ')', 'Principal[]'),
+  \ javaapi#method(0,1,'getPrincipals(', ')', 'Principal'),
   \ javaapi#method(0,1,'getPermissions(', ')', 'PermissionCollection'),
   \ javaapi#method(0,1,'implies(', 'Permission)', 'boolean'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),

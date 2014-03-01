@@ -25,7 +25,7 @@ call javaapi#class('MarshalException', 'RemoteException', [
   \ javaapi#method(0,1,'MarshalException(', 'String, Exception)', ''),
   \ ])
 
-call javaapi#class('MarshalledObject<T>', 'Serializable', [
+call javaapi#class('MarshalledObject', 'Serializable', [
   \ javaapi#method(0,1,'MarshalledObject(', 'T) throws IOException', ''),
   \ javaapi#method(0,1,'get(', ') throws IOException, ClassNotFoundException', 'T'),
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
@@ -37,7 +37,7 @@ call javaapi#class('Naming', '', [
   \ javaapi#method(1,1,'bind(', 'String, Remote) throws AlreadyBoundException, MalformedURLException, RemoteException', 'void'),
   \ javaapi#method(1,1,'unbind(', 'String) throws RemoteException, NotBoundException, MalformedURLException', 'void'),
   \ javaapi#method(1,1,'rebind(', 'String, Remote) throws RemoteException, MalformedURLException', 'void'),
-  \ javaapi#method(1,1,'list(', 'String) throws RemoteException, MalformedURLException', 'String[]'),
+  \ javaapi#method(1,1,'list(', 'String) throws RemoteException, MalformedURLException', 'String'),
   \ ])
 
 call javaapi#class('NoSuchObjectException', 'RemoteException', [

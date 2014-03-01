@@ -57,7 +57,7 @@ call javaapi#class('LogRecord', 'Serializable', [
   \ javaapi#method(0,1,'setSourceMethodName(', 'String)', 'void'),
   \ javaapi#method(0,1,'getMessage(', ')', 'String'),
   \ javaapi#method(0,1,'setMessage(', 'String)', 'void'),
-  \ javaapi#method(0,1,'getParameters(', ')', 'Object[]'),
+  \ javaapi#method(0,1,'getParameters(', ')', 'Object'),
   \ javaapi#method(0,1,'setParameters(', 'Object[])', 'void'),
   \ javaapi#method(0,1,'getThreadID(', ')', 'int'),
   \ javaapi#method(0,1,'setThreadID(', 'int)', 'void'),
@@ -68,14 +68,14 @@ call javaapi#class('LogRecord', 'Serializable', [
   \ ])
 
 call javaapi#class('Logging', 'LoggingMXBean', [
-  \ javaapi#method(0,1,'getLoggerNames(', ')', 'String>'),
+  \ javaapi#method(0,1,'getLoggerNames(', ')', 'List'),
   \ javaapi#method(0,1,'getLoggerLevel(', 'String)', 'String'),
   \ javaapi#method(0,1,'setLoggerLevel(', 'String, String)', 'void'),
   \ javaapi#method(0,1,'getParentLoggerName(', 'String)', 'String'),
   \ ])
 
 call javaapi#interface('LoggingMXBean', '', [
-  \ javaapi#method(0,1,'getLoggerNames(', ')', 'String>'),
+  \ javaapi#method(0,1,'getLoggerNames(', ')', 'List'),
   \ javaapi#method(0,1,'getLoggerLevel(', 'String)', 'String'),
   \ javaapi#method(0,1,'setLoggerLevel(', 'String, String)', 'void'),
   \ javaapi#method(0,1,'getParentLoggerName(', 'String)', 'String'),
@@ -89,7 +89,7 @@ call javaapi#class('LoggingProxyImpl', 'LoggingProxy', [
   \ javaapi#method(0,1,'log(', 'Object, Object, String)', 'void'),
   \ javaapi#method(0,1,'log(', 'Object, Object, String, Throwable)', 'void'),
   \ javaapi#method(0,1,'log(', 'Object, Object, String, )', 'void'),
-  \ javaapi#method(0,1,'getLoggerNames(', ')', 'String>'),
+  \ javaapi#method(0,1,'getLoggerNames(', ')', 'List'),
   \ javaapi#method(0,1,'getLoggerLevel(', 'String)', 'String'),
   \ javaapi#method(0,1,'setLoggerLevel(', 'String, String)', 'void'),
   \ javaapi#method(0,1,'getParentLoggerName(', 'String)', 'String'),
@@ -156,7 +156,7 @@ call javaapi#class('LogManager', '', [
   \ javaapi#method(0,1,'removePropertyChangeListener(', 'PropertyChangeListener) throws SecurityException', 'void'),
   \ javaapi#method(0,1,'addLogger(', 'Logger)', 'boolean'),
   \ javaapi#method(0,1,'getLogger(', 'String)', 'Logger'),
-  \ javaapi#method(0,1,'getLoggerNames(', ')', 'String>'),
+  \ javaapi#method(0,1,'getLoggerNames(', ')', 'Enumeration'),
   \ javaapi#method(0,1,'readConfiguration(', ') throws IOException, SecurityException', 'void'),
   \ javaapi#method(0,1,'reset(', ') throws SecurityException', 'void'),
   \ javaapi#method(0,1,'readConfiguration(', 'InputStream) throws IOException, SecurityException', 'void'),
@@ -251,7 +251,7 @@ call javaapi#class('Logger', '', [
   \ javaapi#method(0,1,'getName(', ')', 'String'),
   \ javaapi#method(0,1,'addHandler(', 'Handler) throws SecurityException', 'void'),
   \ javaapi#method(0,1,'removeHandler(', 'Handler) throws SecurityException', 'void'),
-  \ javaapi#method(0,1,'getHandlers(', ')', 'Handler[]'),
+  \ javaapi#method(0,1,'getHandlers(', ')', 'Handler'),
   \ javaapi#method(0,1,'setUseParentHandlers(', 'boolean)', 'void'),
   \ javaapi#method(0,1,'getUseParentHandlers(', ')', 'boolean'),
   \ javaapi#method(0,1,'getParent(', ')', 'Logger'),

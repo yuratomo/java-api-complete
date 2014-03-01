@@ -49,15 +49,15 @@ call javaapi#class('ManagementFactory', '', [
   \ javaapi#method(1,1,'getRuntimeMXBean(', ')', 'RuntimeMXBean'),
   \ javaapi#method(1,1,'getCompilationMXBean(', ')', 'CompilationMXBean'),
   \ javaapi#method(1,1,'getOperatingSystemMXBean(', ')', 'OperatingSystemMXBean'),
-  \ javaapi#method(1,1,'getMemoryPoolMXBeans(', ')', 'MemoryPoolMXBean>'),
-  \ javaapi#method(1,1,'getMemoryManagerMXBeans(', ')', 'MemoryManagerMXBean>'),
-  \ javaapi#method(1,1,'getGarbageCollectorMXBeans(', ')', 'GarbageCollectorMXBean>'),
+  \ javaapi#method(1,1,'getMemoryPoolMXBeans(', ')', 'List'),
+  \ javaapi#method(1,1,'getMemoryManagerMXBeans(', ')', 'List'),
+  \ javaapi#method(1,1,'getGarbageCollectorMXBeans(', ')', 'List'),
   \ javaapi#method(1,1,'getPlatformMBeanServer(', ')', 'MBeanServer'),
   \ javaapi#method(1,1,'newPlatformMXBeanProxy(', 'MBeanServerConnection, String, Class<T>) throws IOException', 'T'),
   \ javaapi#method(1,1,'getPlatformMXBean(', 'Class<T>)', 'T'),
-  \ javaapi#method(1,1,'getPlatformMXBeans(', 'Class<T>)', 'List<T>'),
+  \ javaapi#method(1,1,'getPlatformMXBeans(', 'Class<T>)', 'List'),
   \ javaapi#method(1,1,'getPlatformMXBean(', 'MBeanServerConnection, Class<T>) throws IOException', 'T'),
-  \ javaapi#method(1,1,'getPlatformMXBeans(', 'MBeanServerConnection, Class<T>) throws IOException', 'List<T>'),
+  \ javaapi#method(1,1,'getPlatformMXBeans(', 'MBeanServerConnection, Class<T>) throws IOException', 'List'),
   \ javaapi#method(1,1,'getPlatformManagementInterfaces(', ')', 'PlatformManagedObject>>'),
   \ ])
 
@@ -78,7 +78,7 @@ call javaapi#interface('MemoryMXBean', 'PlatformManagedObject', [
 call javaapi#interface('MemoryManagerMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,1,'getName(', ')', 'String'),
   \ javaapi#method(0,1,'isValid(', ')', 'boolean'),
-  \ javaapi#method(0,1,'getMemoryPoolNames(', ')', 'String[]'),
+  \ javaapi#method(0,1,'getMemoryPoolNames(', ')', 'String'),
   \ ])
 
 call javaapi#class('MemoryNotificationInfo', '', [
@@ -98,7 +98,7 @@ call javaapi#interface('MemoryPoolMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,1,'getPeakUsage(', ')', 'MemoryUsage'),
   \ javaapi#method(0,1,'resetPeakUsage(', ')', 'void'),
   \ javaapi#method(0,1,'isValid(', ')', 'boolean'),
-  \ javaapi#method(0,1,'getMemoryManagerNames(', ')', 'String[]'),
+  \ javaapi#method(0,1,'getMemoryManagerNames(', ')', 'String'),
   \ javaapi#method(0,1,'getUsageThreshold(', ')', 'long'),
   \ javaapi#method(0,1,'setUsageThreshold(', 'long)', 'void'),
   \ javaapi#method(0,1,'isUsageThresholdExceeded(', ')', 'boolean'),
@@ -112,10 +112,10 @@ call javaapi#interface('MemoryPoolMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,1,'isCollectionUsageThresholdSupported(', ')', 'boolean'),
   \ ])
 
-call javaapi#class('MemoryType', 'MemoryType', [
+call javaapi#class('MemoryType', 'Enum', [
   \ javaapi#field(1,1,'HEAP', 'MemoryType'),
   \ javaapi#field(1,1,'NON_HEAP', 'MemoryType'),
-  \ javaapi#method(1,1,'values(', ')', 'MemoryType[]'),
+  \ javaapi#method(1,1,'values(', ')', 'MemoryType'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'MemoryType'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ ])
@@ -145,7 +145,7 @@ call javaapi#interface('OperatingSystemMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,1,'getSystemLoadAverage(', ')', 'double'),
   \ ])
 
-call javaapi#class('PlatformComponent', 'PlatformComponent', [
+call javaapi#class('PlatformComponent', 'Enum', [
   \ javaapi#field(1,1,'CLASS_LOADING', 'PlatformComponent'),
   \ javaapi#field(1,1,'COMPILATION', 'PlatformComponent'),
   \ javaapi#field(1,1,'MEMORY', 'PlatformComponent'),
@@ -161,12 +161,12 @@ call javaapi#class('PlatformComponent', 'PlatformComponent', [
   \ javaapi#field(1,1,'SUN_OPERATING_SYSTEM', 'PlatformComponent'),
   \ javaapi#field(1,1,'SUN_UNIX_OPERATING_SYSTEM', 'PlatformComponent'),
   \ javaapi#field(1,1,'HOTSPOT_DIAGNOSTIC', 'PlatformComponent'),
-  \ javaapi#method(1,1,'values(', ')', 'PlatformComponent[]'),
+  \ javaapi#method(1,1,'values(', ')', 'PlatformComponent'),
   \ javaapi#method(1,1,'valueOf(', 'String)', 'PlatformComponent'),
   \ ])
 
 call javaapi#interface('PlatformLoggingMXBean', 'PlatformManagedObject', [
-  \ javaapi#method(0,1,'getLoggerNames(', ')', 'String>'),
+  \ javaapi#method(0,1,'getLoggerNames(', ')', 'List'),
   \ javaapi#method(0,1,'getLoggerLevel(', 'String)', 'String'),
   \ javaapi#method(0,1,'setLoggerLevel(', 'String, String)', 'void'),
   \ javaapi#method(0,1,'getParentLoggerName(', 'String)', 'String'),
@@ -189,7 +189,7 @@ call javaapi#interface('RuntimeMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,1,'getLibraryPath(', ')', 'String'),
   \ javaapi#method(0,1,'isBootClassPathSupported(', ')', 'boolean'),
   \ javaapi#method(0,1,'getBootClassPath(', ')', 'String'),
-  \ javaapi#method(0,1,'getInputArguments(', ')', 'String>'),
+  \ javaapi#method(0,1,'getInputArguments(', ')', 'List'),
   \ javaapi#method(0,1,'getUptime(', ')', 'long'),
   \ javaapi#method(0,1,'getStartTime(', ')', 'long'),
   \ javaapi#method(0,1,'getSystemProperties(', ')', 'String>'),
@@ -207,13 +207,13 @@ call javaapi#class('ThreadInfo', '', [
   \ javaapi#method(0,1,'getLockName(', ')', 'String'),
   \ javaapi#method(0,1,'getLockOwnerId(', ')', 'long'),
   \ javaapi#method(0,1,'getLockOwnerName(', ')', 'String'),
-  \ javaapi#method(0,1,'getStackTrace(', ')', 'StackTraceElement[]'),
+  \ javaapi#method(0,1,'getStackTrace(', ')', 'StackTraceElement'),
   \ javaapi#method(0,1,'isSuspended(', ')', 'boolean'),
   \ javaapi#method(0,1,'isInNative(', ')', 'boolean'),
   \ javaapi#method(0,1,'toString(', ')', 'String'),
   \ javaapi#method(1,1,'from(', 'CompositeData)', 'ThreadInfo'),
-  \ javaapi#method(0,1,'getLockedMonitors(', ')', 'MonitorInfo[]'),
-  \ javaapi#method(0,1,'getLockedSynchronizers(', ')', 'LockInfo[]'),
+  \ javaapi#method(0,1,'getLockedMonitors(', ')', 'MonitorInfo'),
+  \ javaapi#method(0,1,'getLockedSynchronizers(', ')', 'LockInfo'),
   \ ])
 
 call javaapi#interface('ThreadMXBean', 'PlatformManagedObject', [
@@ -221,11 +221,11 @@ call javaapi#interface('ThreadMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,1,'getPeakThreadCount(', ')', 'int'),
   \ javaapi#method(0,1,'getTotalStartedThreadCount(', ')', 'long'),
   \ javaapi#method(0,1,'getDaemonThreadCount(', ')', 'int'),
-  \ javaapi#method(0,1,'getAllThreadIds(', ')', 'long[]'),
+  \ javaapi#method(0,1,'getAllThreadIds(', ')', 'long'),
   \ javaapi#method(0,1,'getThreadInfo(', 'long)', 'ThreadInfo'),
-  \ javaapi#method(0,1,'getThreadInfo(', 'long[])', 'ThreadInfo[]'),
+  \ javaapi#method(0,1,'getThreadInfo(', 'long[])', 'ThreadInfo'),
   \ javaapi#method(0,1,'getThreadInfo(', 'long, int)', 'ThreadInfo'),
-  \ javaapi#method(0,1,'getThreadInfo(', 'long[], int)', 'ThreadInfo[]'),
+  \ javaapi#method(0,1,'getThreadInfo(', 'long[], int)', 'ThreadInfo'),
   \ javaapi#method(0,1,'isThreadContentionMonitoringSupported(', ')', 'boolean'),
   \ javaapi#method(0,1,'isThreadContentionMonitoringEnabled(', ')', 'boolean'),
   \ javaapi#method(0,1,'setThreadContentionMonitoringEnabled(', 'boolean)', 'void'),
@@ -237,12 +237,12 @@ call javaapi#interface('ThreadMXBean', 'PlatformManagedObject', [
   \ javaapi#method(0,1,'isCurrentThreadCpuTimeSupported(', ')', 'boolean'),
   \ javaapi#method(0,1,'isThreadCpuTimeEnabled(', ')', 'boolean'),
   \ javaapi#method(0,1,'setThreadCpuTimeEnabled(', 'boolean)', 'void'),
-  \ javaapi#method(0,1,'findMonitorDeadlockedThreads(', ')', 'long[]'),
+  \ javaapi#method(0,1,'findMonitorDeadlockedThreads(', ')', 'long'),
   \ javaapi#method(0,1,'resetPeakThreadCount(', ')', 'void'),
-  \ javaapi#method(0,1,'findDeadlockedThreads(', ')', 'long[]'),
+  \ javaapi#method(0,1,'findDeadlockedThreads(', ')', 'long'),
   \ javaapi#method(0,1,'isObjectMonitorUsageSupported(', ')', 'boolean'),
   \ javaapi#method(0,1,'isSynchronizerUsageSupported(', ')', 'boolean'),
-  \ javaapi#method(0,1,'getThreadInfo(', 'long[], boolean, boolean)', 'ThreadInfo[]'),
-  \ javaapi#method(0,1,'dumpAllThreads(', 'boolean, boolean)', 'ThreadInfo[]'),
+  \ javaapi#method(0,1,'getThreadInfo(', 'long[], boolean, boolean)', 'ThreadInfo'),
+  \ javaapi#method(0,1,'dumpAllThreads(', 'boolean, boolean)', 'ThreadInfo'),
   \ ])
 

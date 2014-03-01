@@ -2,12 +2,12 @@ call javaapi#namespace('java.lang.instrument')
 
 call javaapi#class('ClassDefinition', '', [
   \ javaapi#method(0,1,'ClassDefinition(', 'Class<?>, byte[])', ''),
-  \ javaapi#method(0,1,'getDefinitionClass(', ')', 'Class<?>'),
-  \ javaapi#method(0,1,'getDefinitionClassFile(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'getDefinitionClass(', ')', 'Class'),
+  \ javaapi#method(0,1,'getDefinitionClassFile(', ')', 'byte'),
   \ ])
 
 call javaapi#interface('ClassFileTransformer', '', [
-  \ javaapi#method(0,1,'transform(', 'ClassLoader, String, Class<?>, ProtectionDomain, byte[]) throws IllegalClassFormatException', 'byte[]'),
+  \ javaapi#method(0,1,'transform(', 'ClassLoader, String, Class<?>, ProtectionDomain, byte[]) throws IllegalClassFormatException', 'byte'),
   \ ])
 
 call javaapi#class('IllegalClassFormatException', 'Exception', [
@@ -24,8 +24,8 @@ call javaapi#interface('Instrumentation', '', [
   \ javaapi#method(0,1,'isRedefineClassesSupported(', ')', 'boolean'),
   \ javaapi#method(0,1,'redefineClasses(', ') throws ClassNotFoundException, UnmodifiableClassException', 'void'),
   \ javaapi#method(0,1,'isModifiableClass(', 'Class<?>)', 'boolean'),
-  \ javaapi#method(0,1,'getAllLoadedClasses(', ')', 'Class[]'),
-  \ javaapi#method(0,1,'getInitiatedClasses(', 'ClassLoader)', 'Class[]'),
+  \ javaapi#method(0,1,'getAllLoadedClasses(', ')', 'Class'),
+  \ javaapi#method(0,1,'getInitiatedClasses(', 'ClassLoader)', 'Class'),
   \ javaapi#method(0,1,'getObjectSize(', 'Object)', 'long'),
   \ javaapi#method(0,1,'appendToBootstrapClassLoaderSearch(', 'JarFile)', 'void'),
   \ javaapi#method(0,1,'appendToSystemClassLoaderSearch(', 'JarFile)', 'void'),

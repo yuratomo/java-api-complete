@@ -97,7 +97,7 @@ call javaapi#class('CharsetEncoder', '', [
   \ javaapi#method(0,0,'CharsetEncoder(', 'Charset, float, float, byte[])', ''),
   \ javaapi#method(0,0,'CharsetEncoder(', 'Charset, float, float)', ''),
   \ javaapi#method(0,1,'charset(', ')', 'Charset'),
-  \ javaapi#method(0,1,'replacement(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'replacement(', ')', 'byte'),
   \ javaapi#method(0,1,'replaceWith(', 'byte[])', 'CharsetEncoder'),
   \ javaapi#method(0,0,'implReplaceWith(', 'byte[])', 'void'),
   \ javaapi#method(0,1,'isLegalReplacement(', 'byte[])', 'boolean'),
@@ -122,14 +122,14 @@ call javaapi#class('CharsetEncoder', '', [
 
 call javaapi#namespace('java.nio.charset')
 
-call javaapi#class('Charset', 'Charset', [
+call javaapi#class('Charset', 'Comparable', [
   \ javaapi#method(1,1,'isSupported(', 'String)', 'boolean'),
   \ javaapi#method(1,1,'forName(', 'String)', 'Charset'),
   \ javaapi#method(1,1,'availableCharsets(', ')', 'Charset>'),
   \ javaapi#method(1,1,'defaultCharset(', ')', 'Charset'),
   \ javaapi#method(0,0,'Charset(', 'String, String[])', ''),
   \ javaapi#method(0,1,'name(', ')', 'String'),
-  \ javaapi#method(0,1,'aliases(', ')', 'String>'),
+  \ javaapi#method(0,1,'aliases(', ')', 'Set'),
   \ javaapi#method(0,1,'displayName(', ')', 'String'),
   \ javaapi#method(0,1,'isRegistered(', ')', 'boolean'),
   \ javaapi#method(0,1,'displayName(', 'Locale)', 'String'),

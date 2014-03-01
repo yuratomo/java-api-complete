@@ -7,12 +7,12 @@ call javaapi#class('Clipboard', '', [
   \ javaapi#method(0,1,'getName(', ')', 'String'),
   \ javaapi#method(0,1,'setContents(', 'Transferable, ClipboardOwner)', 'void'),
   \ javaapi#method(0,1,'getContents(', 'Object)', 'Transferable'),
-  \ javaapi#method(0,1,'getAvailableDataFlavors(', ')', 'DataFlavor[]'),
+  \ javaapi#method(0,1,'getAvailableDataFlavors(', ')', 'DataFlavor'),
   \ javaapi#method(0,1,'isDataFlavorAvailable(', 'DataFlavor)', 'boolean'),
   \ javaapi#method(0,1,'getData(', 'DataFlavor) throws UnsupportedFlavorException, IOException', 'Object'),
   \ javaapi#method(0,1,'addFlavorListener(', 'FlavorListener)', 'void'),
   \ javaapi#method(0,1,'removeFlavorListener(', 'FlavorListener)', 'void'),
-  \ javaapi#method(0,1,'getFlavorListeners(', ')', 'FlavorListener[]'),
+  \ javaapi#method(0,1,'getFlavorListeners(', ')', 'FlavorListener'),
   \ ])
 
 call javaapi#class('FlavorEvent', 'EventObject', [
@@ -30,7 +30,7 @@ call javaapi#class('MimeTypeParseException', 'Exception', [
 
 call javaapi#class('StringSelection', 'ClipboardOwner', [
   \ javaapi#method(0,1,'StringSelection(', 'String)', ''),
-  \ javaapi#method(0,1,'getTransferDataFlavors(', ')', 'DataFlavor[]'),
+  \ javaapi#method(0,1,'getTransferDataFlavors(', ')', 'DataFlavor'),
   \ javaapi#method(0,1,'isDataFlavorSupported(', 'DataFlavor)', 'boolean'),
   \ javaapi#method(0,1,'getTransferData(', 'DataFlavor) throws UnsupportedFlavorException, IOException', 'Object'),
   \ javaapi#method(0,1,'lostOwnership(', 'Clipboard, Transferable)', 'void'),
@@ -49,7 +49,7 @@ call javaapi#interface('ClipboardOwner', '', [
 call javaapi#namespace('java.awt.datatransfer')
 
 call javaapi#interface('Transferable', '', [
-  \ javaapi#method(0,1,'getTransferDataFlavors(', ')', 'DataFlavor[]'),
+  \ javaapi#method(0,1,'getTransferDataFlavors(', ')', 'DataFlavor'),
   \ javaapi#method(0,1,'isDataFlavorSupported(', 'DataFlavor)', 'boolean'),
   \ javaapi#method(0,1,'getTransferData(', 'DataFlavor) throws UnsupportedFlavorException, IOException', 'Object'),
   \ ])
@@ -64,7 +64,7 @@ call javaapi#class('DataFlavor', 'Cloneable', [
   \ javaapi#field(1,1,'javaFileListFlavor', 'DataFlavor'),
   \ javaapi#field(1,1,'javaJVMLocalObjectMimeType', 'String'),
   \ javaapi#field(1,1,'javaRemoteObjectMimeType', 'String'),
-  \ javaapi#method(1,0,'tryToLoadClass(', 'String, ClassLoader) throws ClassNotFoundException', 'Class<?>'),
+  \ javaapi#method(1,0,'tryToLoadClass(', 'String, ClassLoader) throws ClassNotFoundException', 'Class'),
   \ javaapi#method(0,1,'DataFlavor(', ')', ''),
   \ javaapi#method(0,1,'DataFlavor(', 'Class<?>, String)', ''),
   \ javaapi#method(0,1,'DataFlavor(', 'String, String)', ''),
@@ -75,7 +75,7 @@ call javaapi#class('DataFlavor', 'Cloneable', [
   \ javaapi#method(1,1,'selectBestTextFlavor(', 'DataFlavor[])', 'DataFlavor'),
   \ javaapi#method(0,1,'getReaderForText(', 'Transferable) throws UnsupportedFlavorException, IOException', 'Reader'),
   \ javaapi#method(0,1,'getMimeType(', ')', 'String'),
-  \ javaapi#method(0,1,'getRepresentationClass(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'getRepresentationClass(', ')', 'Class'),
   \ javaapi#method(0,1,'getHumanPresentableName(', ')', 'String'),
   \ javaapi#method(0,1,'getPrimaryType(', ')', 'String'),
   \ javaapi#method(0,1,'getSubType(', ')', 'String'),
@@ -89,7 +89,7 @@ call javaapi#class('DataFlavor', 'Cloneable', [
   \ javaapi#method(0,1,'isMimeTypeEqual(', 'String)', 'boolean'),
   \ javaapi#method(0,1,'isMimeTypeEqual(', 'DataFlavor)', 'boolean'),
   \ javaapi#method(0,1,'isMimeTypeSerializedObject(', ')', 'boolean'),
-  \ javaapi#method(0,1,'getDefaultRepresentationClass(', ')', 'Class<?>'),
+  \ javaapi#method(0,1,'getDefaultRepresentationClass(', ')', 'Class'),
   \ javaapi#method(0,1,'getDefaultRepresentationClassAsString(', ')', 'String'),
   \ javaapi#method(0,1,'isRepresentationClassInputStream(', ')', 'boolean'),
   \ javaapi#method(0,1,'isRepresentationClassReader(', ')', 'boolean'),
@@ -153,8 +153,8 @@ call javaapi#class('MimeType', 'Cloneable', [
 call javaapi#namespace('java.awt.datatransfer')
 
 call javaapi#interface('FlavorTable', 'FlavorMap', [
-  \ javaapi#method(0,1,'getNativesForFlavor(', 'DataFlavor)', 'String>'),
-  \ javaapi#method(0,1,'getFlavorsForNative(', 'String)', 'DataFlavor>'),
+  \ javaapi#method(0,1,'getNativesForFlavor(', 'DataFlavor)', 'List'),
+  \ javaapi#method(0,1,'getFlavorsForNative(', 'String)', 'List'),
   \ ])
 
 call javaapi#interface('FlavorMap', '', [
@@ -164,8 +164,8 @@ call javaapi#interface('FlavorMap', '', [
 
 call javaapi#class('SystemFlavorMap', 'FlavorTable', [
   \ javaapi#method(1,1,'getDefaultFlavorMap(', ')', 'FlavorMap'),
-  \ javaapi#method(0,1,'getNativesForFlavor(', 'DataFlavor)', 'String>'),
-  \ javaapi#method(0,1,'getFlavorsForNative(', 'String)', 'DataFlavor>'),
+  \ javaapi#method(0,1,'getNativesForFlavor(', 'DataFlavor)', 'List'),
+  \ javaapi#method(0,1,'getFlavorsForNative(', 'String)', 'List'),
   \ javaapi#method(0,1,'getNativesForFlavors(', 'DataFlavor[])', 'String>'),
   \ javaapi#method(0,1,'getFlavorsForNatives(', 'String[])', 'DataFlavor>'),
   \ javaapi#method(0,1,'addUnencodedNativeForFlavor(', 'DataFlavor, String)', 'void'),

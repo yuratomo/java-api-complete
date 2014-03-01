@@ -14,9 +14,9 @@ call javaapi#class('AlreadyConnectedException', 'IllegalStateException', [
 
 call javaapi#interface('AsynchronousByteChannel', 'AsynchronousChannel', [
   \ javaapi#method(0,1,'read(', 'ByteBuffer, A, CompletionHandler<Integer, ? super A>)', 'void'),
-  \ javaapi#method(0,1,'read(', 'ByteBuffer)', 'Integer>'),
+  \ javaapi#method(0,1,'read(', 'ByteBuffer)', 'Future'),
   \ javaapi#method(0,1,'write(', 'ByteBuffer, A, CompletionHandler<Integer, ? super A>)', 'void'),
-  \ javaapi#method(0,1,'write(', 'ByteBuffer)', 'Integer>'),
+  \ javaapi#method(0,1,'write(', 'ByteBuffer)', 'Future'),
   \ ])
 
 call javaapi#interface('AsynchronousChannel', 'Channel', [
@@ -49,14 +49,14 @@ call javaapi#class('AsynchronousFileChannel', 'AsynchronousChannel', [
   \ javaapi#method(0,1,'force(', 'boolean) throws IOException', 'void'),
   \ javaapi#method(0,1,'lock(', 'long, long, boolean, A, CompletionHandler<FileLock, ? super A>)', 'void'),
   \ javaapi#method(0,1,'lock(', 'A, CompletionHandler<FileLock, ? super A>)', 'void'),
-  \ javaapi#method(0,1,'lock(', 'long, long, boolean)', 'FileLock>'),
-  \ javaapi#method(0,1,'lock(', ')', 'FileLock>'),
+  \ javaapi#method(0,1,'lock(', 'long, long, boolean)', 'Future'),
+  \ javaapi#method(0,1,'lock(', ')', 'Future'),
   \ javaapi#method(0,1,'tryLock(', 'long, long, boolean) throws IOException', 'FileLock'),
   \ javaapi#method(0,1,'tryLock(', ') throws IOException', 'FileLock'),
   \ javaapi#method(0,1,'read(', 'ByteBuffer, long, A, CompletionHandler<Integer, ? super A>)', 'void'),
-  \ javaapi#method(0,1,'read(', 'ByteBuffer, long)', 'Integer>'),
+  \ javaapi#method(0,1,'read(', 'ByteBuffer, long)', 'Future'),
   \ javaapi#method(0,1,'write(', 'ByteBuffer, long, A, CompletionHandler<Integer, ? super A>)', 'void'),
-  \ javaapi#method(0,1,'write(', 'ByteBuffer, long)', 'Integer>'),
+  \ javaapi#method(0,1,'write(', 'ByteBuffer, long)', 'Future'),
   \ ])
 
 call javaapi#class('AsynchronousServerSocketChannel', 'NetworkChannel', [
@@ -68,7 +68,7 @@ call javaapi#class('AsynchronousServerSocketChannel', 'NetworkChannel', [
   \ javaapi#method(0,1,'bind(', 'SocketAddress, int) throws IOException', 'AsynchronousServerSocketChannel'),
   \ javaapi#method(0,1,'setOption(', 'SocketOption<T>, T) throws IOException', 'AsynchronousServerSocketChannel'),
   \ javaapi#method(0,1,'accept(', 'A, CompletionHandler<AsynchronousSocketChannel, ? super A>)', 'void'),
-  \ javaapi#method(0,1,'accept(', ')', 'AsynchronousSocketChannel>'),
+  \ javaapi#method(0,1,'accept(', ')', 'Future'),
   \ javaapi#method(0,1,'setOption(', 'SocketOption, Object) throws IOException', 'NetworkChannel'),
   \ javaapi#method(0,1,'bind(', 'SocketAddress) throws IOException', 'NetworkChannel'),
   \ ])
@@ -84,14 +84,14 @@ call javaapi#class('AsynchronousSocketChannel', 'NetworkChannel', [
   \ javaapi#method(0,1,'shutdownOutput(', ') throws IOException', 'AsynchronousSocketChannel'),
   \ javaapi#method(0,1,'getRemoteAddress(', ') throws IOException', 'SocketAddress'),
   \ javaapi#method(0,1,'connect(', 'SocketAddress, A, CompletionHandler<Void, ? super A>)', 'void'),
-  \ javaapi#method(0,1,'connect(', 'SocketAddress)', 'Void>'),
+  \ javaapi#method(0,1,'connect(', 'SocketAddress)', 'Future'),
   \ javaapi#method(0,1,'read(', 'ByteBuffer, long, TimeUnit, A, CompletionHandler<Integer, ? super A>)', 'void'),
   \ javaapi#method(0,1,'read(', 'ByteBuffer, A, CompletionHandler<Integer, ? super A>)', 'void'),
-  \ javaapi#method(0,1,'read(', 'ByteBuffer)', 'Integer>'),
+  \ javaapi#method(0,1,'read(', 'ByteBuffer)', 'Future'),
   \ javaapi#method(0,1,'read(', 'ByteBuffer[], int, int, long, TimeUnit, A, CompletionHandler<Long, ? super A>)', 'void'),
   \ javaapi#method(0,1,'write(', 'ByteBuffer, long, TimeUnit, A, CompletionHandler<Integer, ? super A>)', 'void'),
   \ javaapi#method(0,1,'write(', 'ByteBuffer, A, CompletionHandler<Integer, ? super A>)', 'void'),
-  \ javaapi#method(0,1,'write(', 'ByteBuffer)', 'Integer>'),
+  \ javaapi#method(0,1,'write(', 'ByteBuffer)', 'Future'),
   \ javaapi#method(0,1,'write(', 'ByteBuffer[], int, int, long, TimeUnit, A, CompletionHandler<Long, ? super A>)', 'void'),
   \ javaapi#method(0,1,'setOption(', 'SocketOption, Object) throws IOException', 'NetworkChannel'),
   \ javaapi#method(0,1,'bind(', 'SocketAddress) throws IOException', 'NetworkChannel'),
@@ -126,7 +126,7 @@ call javaapi#class('ClosedSelectorException', 'IllegalStateException', [
   \ javaapi#method(0,1,'ClosedSelectorException(', ')', ''),
   \ ])
 
-call javaapi#interface('CompletionHandler<V,A>', '', [
+call javaapi#interface('CompletionHandler', '', [
   \ javaapi#method(0,1,'completed(', 'V, A)', 'void'),
   \ javaapi#method(0,1,'failed(', 'Throwable, A)', 'void'),
   \ ])
@@ -217,7 +217,7 @@ call javaapi#interface('NetworkChannel', 'Channel', [
   \ javaapi#method(0,1,'getLocalAddress(', ') throws IOException', 'SocketAddress'),
   \ javaapi#method(0,1,'setOption(', 'SocketOption<T>, T) throws IOException', 'NetworkChannel'),
   \ javaapi#method(0,1,'getOption(', 'SocketOption<T>) throws IOException', 'T'),
-  \ javaapi#method(0,1,'supportedOptions(', ')', 'SocketOption<?>>'),
+  \ javaapi#method(0,1,'supportedOptions(', ')', 'SocketOption'),
   \ ])
 
 call javaapi#class('NoConnectionPendingException', 'IllegalStateException', [
@@ -290,8 +290,8 @@ call javaapi#class('Selector', 'Closeable', [
   \ javaapi#method(1,1,'open(', ') throws IOException', 'Selector'),
   \ javaapi#method(0,1,'isOpen(', ')', 'boolean'),
   \ javaapi#method(0,1,'provider(', ')', 'SelectorProvider'),
-  \ javaapi#method(0,1,'keys(', ')', 'SelectionKey>'),
-  \ javaapi#method(0,1,'selectedKeys(', ')', 'SelectionKey>'),
+  \ javaapi#method(0,1,'keys(', ')', 'Set'),
+  \ javaapi#method(0,1,'selectedKeys(', ')', 'Set'),
   \ javaapi#method(0,1,'selectNow(', ') throws IOException', 'int'),
   \ javaapi#method(0,1,'select(', 'long) throws IOException', 'int'),
   \ javaapi#method(0,1,'select(', ') throws IOException', 'int'),

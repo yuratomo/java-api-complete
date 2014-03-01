@@ -89,7 +89,7 @@ call javaapi#class('FocusAdapter', 'FocusListener', [
 
 call javaapi#namespace('java.awt.event')
 
-call javaapi#class('AWTEventListenerProxy', 'AWTEventListener', [
+call javaapi#class('AWTEventListenerProxy', 'EventListenerProxy', [
   \ javaapi#method(0,1,'AWTEventListenerProxy(', 'long, AWTEventListener)', ''),
   \ javaapi#method(0,1,'eventDispatched(', 'AWTEvent)', 'void'),
   \ javaapi#method(0,1,'getEventMask(', ')', 'long'),

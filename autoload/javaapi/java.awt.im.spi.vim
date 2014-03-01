@@ -31,7 +31,7 @@ call javaapi#interface('InputMethodContext', 'InputMethodRequests', [
 call javaapi#namespace('java.awt.im.spi')
 
 call javaapi#interface('InputMethodDescriptor', '', [
-  \ javaapi#method(0,1,'getAvailableLocales(', ') throws AWTException', 'Locale[]'),
+  \ javaapi#method(0,1,'getAvailableLocales(', ') throws AWTException', 'Locale'),
   \ javaapi#method(0,1,'hasDynamicLocaleList(', ')', 'boolean'),
   \ javaapi#method(0,1,'getInputMethodDisplayName(', 'Locale, Locale)', 'String'),
   \ javaapi#method(0,1,'getInputMethodIcon(', 'Locale)', 'Image'),

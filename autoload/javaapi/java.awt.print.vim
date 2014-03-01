@@ -26,7 +26,7 @@ call javaapi#class('PageFormat', 'Cloneable', [
   \ javaapi#method(0,1,'setPaper(', 'Paper)', 'void'),
   \ javaapi#method(0,1,'setOrientation(', 'int) throws IllegalArgumentException', 'void'),
   \ javaapi#method(0,1,'getOrientation(', ')', 'int'),
-  \ javaapi#method(0,1,'getMatrix(', ')', 'double[]'),
+  \ javaapi#method(0,1,'getMatrix(', ')', 'double'),
   \ ])
 
 call javaapi#interface('Pageable', '', [
@@ -67,8 +67,8 @@ call javaapi#class('PrinterIOException', 'PrinterException', [
 
 call javaapi#class('PrinterJob', '', [
   \ javaapi#method(1,1,'getPrinterJob(', ')', 'PrinterJob'),
-  \ javaapi#method(1,1,'lookupPrintServices(', ')', 'PrintService[]'),
-  \ javaapi#method(1,1,'lookupStreamPrintServices(', 'String)', 'StreamPrintServiceFactory[]'),
+  \ javaapi#method(1,1,'lookupPrintServices(', ')', 'PrintService'),
+  \ javaapi#method(1,1,'lookupStreamPrintServices(', 'String)', 'StreamPrintServiceFactory'),
   \ javaapi#method(0,1,'PrinterJob(', ')', ''),
   \ javaapi#method(0,1,'getPrintService(', ')', 'PrintService'),
   \ javaapi#method(0,1,'setPrintService(', 'PrintService) throws PrinterException', 'void'),

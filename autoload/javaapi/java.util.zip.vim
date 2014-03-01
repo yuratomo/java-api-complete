@@ -68,7 +68,7 @@ call javaapi#class('Deflater', '', [
 
 call javaapi#class('DeflaterInputStream', 'FilterInputStream', [
   \ javaapi#field(0,0,'def', 'Deflater'),
-  \ javaapi#field(0,0,'buf', 'byte[]'),
+  \ javaapi#field(0,0,'buf', 'byte'),
   \ javaapi#method(0,1,'DeflaterInputStream(', 'InputStream)', ''),
   \ javaapi#method(0,1,'DeflaterInputStream(', 'InputStream, Deflater)', ''),
   \ javaapi#method(0,1,'DeflaterInputStream(', 'InputStream, Deflater, int)', ''),
@@ -94,7 +94,7 @@ call javaapi#class('GZIPOutputStream', 'DeflaterOutputStream', [
 
 call javaapi#class('InflaterOutputStream', 'FilterOutputStream', [
   \ javaapi#field(0,0,'inf', 'Inflater'),
-  \ javaapi#field(0,0,'buf', 'byte[]'),
+  \ javaapi#field(0,0,'buf', 'byte'),
   \ javaapi#method(0,1,'InflaterOutputStream(', 'OutputStream)', ''),
   \ javaapi#method(0,1,'InflaterOutputStream(', 'OutputStream, Inflater)', ''),
   \ javaapi#method(0,1,'InflaterOutputStream(', 'OutputStream, Inflater, int)', ''),
@@ -142,7 +142,7 @@ call javaapi#namespace('java.util.zip')
 
 call javaapi#class('DeflaterOutputStream', 'FilterOutputStream', [
   \ javaapi#field(0,0,'def', 'Deflater'),
-  \ javaapi#field(0,0,'buf', 'byte[]'),
+  \ javaapi#field(0,0,'buf', 'byte'),
   \ javaapi#method(0,1,'DeflaterOutputStream(', 'OutputStream, Deflater, int, boolean)', ''),
   \ javaapi#method(0,1,'DeflaterOutputStream(', 'OutputStream, Deflater, int)', ''),
   \ javaapi#method(0,1,'DeflaterOutputStream(', 'OutputStream, Deflater, boolean)', ''),
@@ -226,7 +226,7 @@ call javaapi#class('Inflater', '', [
 
 call javaapi#class('InflaterInputStream', 'FilterInputStream', [
   \ javaapi#field(0,0,'inf', 'Inflater'),
-  \ javaapi#field(0,0,'buf', 'byte[]'),
+  \ javaapi#field(0,0,'buf', 'byte'),
   \ javaapi#field(0,0,'len', 'int'),
   \ javaapi#method(0,1,'InflaterInputStream(', 'InputStream, Inflater, int)', ''),
   \ javaapi#method(0,1,'InflaterInputStream(', 'InputStream, Inflater)', ''),
@@ -261,7 +261,7 @@ call javaapi#class('ZipEntry', 'Cloneable', [
   \ javaapi#method(0,1,'setMethod(', 'int)', 'void'),
   \ javaapi#method(0,1,'getMethod(', ')', 'int'),
   \ javaapi#method(0,1,'setExtra(', 'byte[])', 'void'),
-  \ javaapi#method(0,1,'getExtra(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'getExtra(', ')', 'byte'),
   \ javaapi#method(0,1,'setComment(', 'String)', 'void'),
   \ javaapi#method(0,1,'getComment(', ')', 'String'),
   \ javaapi#method(0,1,'isDirectory(', ')', 'boolean'),

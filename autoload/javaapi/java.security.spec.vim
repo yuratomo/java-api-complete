@@ -27,7 +27,7 @@ call javaapi#class('ECFieldF2m', 'ECField', [
   \ javaapi#method(0,1,'getFieldSize(', ')', 'int'),
   \ javaapi#method(0,1,'getM(', ')', 'int'),
   \ javaapi#method(0,1,'getReductionPolynomial(', ')', 'BigInteger'),
-  \ javaapi#method(0,1,'getMidTermsOfReductionPolynomial(', ')', 'int[]'),
+  \ javaapi#method(0,1,'getMidTermsOfReductionPolynomial(', ')', 'int'),
   \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
   \ ])
@@ -80,14 +80,14 @@ call javaapi#class('EllipticCurve', '', [
   \ javaapi#method(0,1,'getField(', ')', 'ECField'),
   \ javaapi#method(0,1,'getA(', ')', 'BigInteger'),
   \ javaapi#method(0,1,'getB(', ')', 'BigInteger'),
-  \ javaapi#method(0,1,'getSeed(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'getSeed(', ')', 'byte'),
   \ javaapi#method(0,1,'equals(', 'Object)', 'boolean'),
   \ javaapi#method(0,1,'hashCode(', ')', 'int'),
   \ ])
 
 call javaapi#class('EncodedKeySpec', 'KeySpec', [
   \ javaapi#method(0,1,'EncodedKeySpec(', 'byte[])', ''),
-  \ javaapi#method(0,1,'getEncoded(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'getEncoded(', ')', 'byte'),
   \ javaapi#method(0,1,'getFormat(', ')', 'String'),
   \ ])
 
@@ -117,7 +117,7 @@ call javaapi#class('MGF1ParameterSpec', 'AlgorithmParameterSpec', [
 
 call javaapi#class('PKCS8EncodedKeySpec', 'EncodedKeySpec', [
   \ javaapi#method(0,1,'PKCS8EncodedKeySpec(', 'byte[])', ''),
-  \ javaapi#method(0,1,'getEncoded(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'getEncoded(', ')', 'byte'),
   \ javaapi#method(0,1,'getFormat(', ')', 'String'),
   \ ])
 
@@ -148,7 +148,7 @@ call javaapi#class('RSAMultiPrimePrivateCrtKeySpec', 'RSAPrivateKeySpec', [
   \ javaapi#method(0,1,'getPrimeExponentP(', ')', 'BigInteger'),
   \ javaapi#method(0,1,'getPrimeExponentQ(', ')', 'BigInteger'),
   \ javaapi#method(0,1,'getCrtCoefficient(', ')', 'BigInteger'),
-  \ javaapi#method(0,1,'getOtherPrimeInfo(', ')', 'RSAOtherPrimeInfo[]'),
+  \ javaapi#method(0,1,'getOtherPrimeInfo(', ')', 'RSAOtherPrimeInfo'),
   \ ])
 
 call javaapi#class('RSAOtherPrimeInfo', '', [
@@ -182,7 +182,7 @@ call javaapi#class('RSAPublicKeySpec', 'KeySpec', [
 
 call javaapi#class('X509EncodedKeySpec', 'EncodedKeySpec', [
   \ javaapi#method(0,1,'X509EncodedKeySpec(', 'byte[])', ''),
-  \ javaapi#method(0,1,'getEncoded(', ')', 'byte[]'),
+  \ javaapi#method(0,1,'getEncoded(', ')', 'byte'),
   \ javaapi#method(0,1,'getFormat(', ')', 'String'),
   \ ])
 

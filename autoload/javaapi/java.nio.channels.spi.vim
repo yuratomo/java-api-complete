@@ -12,7 +12,7 @@ call javaapi#class('AbstractSelector', 'Selector', [
   \ javaapi#method(0,0,'implCloseSelector(', ') throws IOException', 'void'),
   \ javaapi#method(0,1,'isOpen(', ')', 'boolean'),
   \ javaapi#method(0,1,'provider(', ')', 'SelectorProvider'),
-  \ javaapi#method(0,0,'cancelledKeys(', ')', 'SelectionKey>'),
+  \ javaapi#method(0,0,'cancelledKeys(', ')', 'Set'),
   \ javaapi#method(0,0,'register(', 'AbstractSelectableChannel, int, Object)', 'SelectionKey'),
   \ javaapi#method(0,0,'deregister(', 'AbstractSelectionKey)', 'void'),
   \ javaapi#method(0,0,'begin(', ')', 'void'),

@@ -2,7 +2,7 @@ call javaapi#namespace('java.nio.file.spi')
 
 call javaapi#class('FileSystemProvider', '', [
   \ javaapi#method(0,0,'FileSystemProvider(', ')', ''),
-  \ javaapi#method(1,1,'installedProviders(', ')', 'FileSystemProvider>'),
+  \ javaapi#method(1,1,'installedProviders(', ')', 'List'),
   \ javaapi#method(0,1,'getScheme(', ')', 'String'),
   \ javaapi#method(0,1,'newFileSystem(', 'URI, Map<String, ?>) throws IOException', 'FileSystem'),
   \ javaapi#method(0,1,'getFileSystem(', 'URI)', 'FileSystem'),
@@ -13,7 +13,7 @@ call javaapi#class('FileSystemProvider', '', [
   \ javaapi#method(0,1,'newFileChannel(', 'Path, Set<? extends OpenOption>, FileAttribute<?>) throws IOException', 'FileChannel'),
   \ javaapi#method(0,1,'newAsynchronousFileChannel(', 'Path, Set<? extends OpenOption>, ExecutorService, FileAttribute<?>) throws IOException', 'AsynchronousFileChannel'),
   \ javaapi#method(0,1,'newByteChannel(', 'Path, Set<? extends OpenOption>, FileAttribute<?>) throws IOException', 'SeekableByteChannel'),
-  \ javaapi#method(0,1,'newDirectoryStream(', 'Path, Filter<? super Path>) throws IOException', 'Path>'),
+  \ javaapi#method(0,1,'newDirectoryStream(', 'Path, Filter<? super Path>) throws IOException', 'DirectoryStream'),
   \ javaapi#method(0,1,'createDirectory(', 'Path, FileAttribute<?>) throws IOException', 'void'),
   \ javaapi#method(0,1,'createSymbolicLink(', 'Path, Path, FileAttribute<?>) throws IOException', 'void'),
   \ javaapi#method(0,1,'createLink(', 'Path, Path) throws IOException', 'void'),
