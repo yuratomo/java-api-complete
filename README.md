@@ -13,6 +13,7 @@ Set your .vimrc as follows.
     Bundle 'yuratomo/java-api-sun'
     Bundle 'yuratomo/java-api-servlet2.3'
     Bundle 'yuratomo/java-api-android'
+    Bundle 'yuratomo/java-api-junit'
 
 Settings
 --------

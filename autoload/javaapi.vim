@@ -95,8 +95,10 @@ function! s:analize(line, cur)
       call add(parts, '')
     endif
     let type = s:find_type(a:line, parts[0])
-    if type.mode == s:ROOT_IS_CLASS
+    if type.mode == s:ROOT_IS_CLASS && len(parts) == 2
       let compmode = s:MODE_STATIC
+    else
+      let compmode = s:MODE_MEMBER
     endif
   else
     " value complete
@@ -163,6 +165,7 @@ function! javaapi#complete(findstart, base)
       call s:keyword_completion(a:base, res)
       call s:this_member_completion(a:base, res)
       call s:class_completion(a:base, res)
+      call s:static_import_member_completion(a:base, res)
 
     elseif s:complete_mode == s:MODE_NEW_CLASS
       call s:class_new_completion(s:type, res)
@@ -203,6 +206,7 @@ function! javaapi#complete(findstart, base)
         endif
       endif
       call s:class_member_completion(a:base, res, 0)
+      call s:static_import_member_completion(a:base, res)
     endif
     let s:last_list = res
     return res
@@ -234,6 +238,31 @@ function! s:this_member_completion(base, res)
     call s:class_member_completion(a:base, a:res, 0)
     let s:type = type
     let s:parts = parts
+endfunction
+
+function! s:static_import_member_completion(base, res)
+    let type = s:type
+    let parts = s:parts
+    for cls in s:static_imports()
+      let s:type = cls
+      let s:parts = [ cls, '' ]
+      call s:class_member_completion(a:base, a:res, 0)
+    endfor
+    let s:type = type
+    let s:parts = parts
+endfunction
+
+function! s:static_imports()
+  let classes = []
+  let s = 0
+  while s < 30
+    let line = getline(s)
+    if line =~ '^import\s\+static\>'
+      call add(classes, substitute(substitute(line, '.\+\.', '', ''), ';', '', 'g'))
+    endif
+    let s += 1
+  endwhile
+  return classes
 endfunction
 
 function! s:class_completion(base, res)
@@ -562,12 +591,7 @@ let s:class = {}
 function! javaapi#class(name, extend, members)
   let extend = substitute(a:extend, '<.*', '', '')
   let name = substitute(a:name, '<.*', '', '')
-  let s:class[ name ] = {
-    \ 'name'   : a:name,
-    \ 'kind'   : 't',
-    \ 'extend' : extend,
-    \ 'members': a:members,
-    \ }
+  let s:class[ a:name ] = s:def_class(name, extend, a:members)
   if exists('s:parent') && index(s:parent.members, name) == -1
     call add(s:parent.members, javaapi#field(0, 1, name, name))
   endif
