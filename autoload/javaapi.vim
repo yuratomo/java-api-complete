@@ -205,6 +205,7 @@ function! javaapi#complete(findstart, base)
           let s:type = s:parts[0]
         endif
       endif
+      call s:class_completion(a:base, res)
       call s:class_member_completion(a:base, res, 0)
       call s:static_import_member_completion(a:base, res)
     endif
@@ -245,7 +246,7 @@ function! s:static_import_member_completion(base, res)
     let parts = s:parts
     for cls in s:static_imports()
       let s:type = cls
-      let s:parts = [ cls, '' ]
+      let s:parts = extend([ cls ], parts)
       call s:class_member_completion(a:base, a:res, 0)
     endfor
     let s:type = type
@@ -255,10 +256,23 @@ endfunction
 function! s:static_imports()
   let classes = []
   let s = 0
-  while s < 30
+  let num = g:javaapi_analize_import_max_num
+  if num > line('$')-1
+    let num = line('$')-1
+  endif
+  while s < num
     let line = getline(s)
-    if line =~ '^import\s\+static\>'
-      call add(classes, substitute(substitute(line, '.\+\.', '', ''), ';', '', 'g'))
+    let start = matchend(line, '\<import\>\s\+static\>')
+    if start >= 0
+      let parts = split(line[ start : ], '[ \t.;]\+')
+      if len(parts) > 1
+        let part = parts[-2]
+        if javaapi#isClassExist(part)
+          if index(classes, part) < 0
+            call add(classes, part)
+          endif
+        endif
+      endif
     endif
     let s += 1
   endwhile
@@ -304,7 +318,6 @@ function! s:class_member_completion(base, res, type)
       endif
     endif
   endif
-
 
   " java class member ?
   let class = s:conv_primitive(s:normalize_type(type))
@@ -362,6 +375,9 @@ function! s:class_member_completion(base, res, type)
         return
       endif
     endwhile
+    if _break == 0
+      return
+    endif
 
     let idx += 1
   endfor
@@ -488,11 +504,11 @@ let s:primitive_dict = {
   \ 'short'  : 'Short',
   \ 'int'    : 'Integer',
   \ 'long'   : 'Long',
-  \ 'float'  : 'Single',
+  \ 'float'  : 'Float',
   \ 'double' : 'Double',
-  \ 'char'   : 'Char',
+  \ 'char'   : 'Charactor',
   \ 'string' : 'String',
-  \ 'bool'   : 'Bool',
+  \ 'bool'   : 'Boolean',
   \ }
 function! s:conv_primitive(str)
   if has_key(s:primitive_dict, a:str)
