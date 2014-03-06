@@ -205,7 +205,6 @@ function! javaapi#complete(findstart, base)
           let s:type = s:parts[0]
         endif
       endif
-      call s:class_completion(a:base, res)
       call s:class_member_completion(a:base, res, 0)
       call s:static_import_member_completion(a:base, res)
     endif
